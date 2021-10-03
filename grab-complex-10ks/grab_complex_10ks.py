@@ -3,14 +3,26 @@ import requests
 import pandas as pd
 import re
 import time
-
+from pprint import pprint
 
 # MUST DECLARE USER_AGENT!!
 # DO NOT MAKE MORE THAN 10 REQUESTS PER SECOND!!
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use the application default credentials
+cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-3d183-firebase-adminsdk-zyxu6-76a70bc31c.json')
+firebase_admin.initialize_app(cred, {
+  'projectId': 'stock-boy-3d183',
+})
+
+db = firestore.client()
+
 quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
 # quarters = ['QTR3']
-num_years = 1
+num_years = 10
 company = 'Facebook Inc'
 company2 = 'NICHOLAS FINANCIAL INC'
 company3 = 'BLONDER TONGUE LABORATORIES INC'
@@ -23,7 +35,7 @@ headers = {
     'From': 'meetstockboy@gmail.com'
 }
 
-all_10ks_w_years_and_company = {}
+stock_data = {}
 failures = []
 
 
@@ -33,8 +45,7 @@ for i in range(0, num_years):
 
   # go through all quarters
   for quarter in quarters:
-    print('going through quarter: ' + quarter + ' for year: ' + str(current_year))
-    print('IDX: ' + f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
+    # print('going through quarter: ' + quarter + ' for year: ' + str(current_year))
     download = requests.get(f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx', headers=headers).content
     download = download.decode("utf-8", errors="ignore").split('\n')
 
@@ -47,6 +58,7 @@ for i in range(0, num_years):
         continue
 
       if splitted_company[2] == filing and company in item: 
+        print('IDX: ' + f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
         company_name = splitted_company[1] # grabs company name
         url = splitted_company[-1]
         url2 = url.split('-') 
@@ -92,12 +104,14 @@ for i in range(0, num_years):
         # clean reports
         master_report_list = []
 
+        # print(xml_summary)
+
         for report in reports.find_all('report')[:-1]:
           report_dict = {}
           report_dict['name_short'] = report.shortname.text.lower()
           report_dict['name_long'] = report.longname.text
-          report_dict['position'] = report.position.text
-          report_dict['category'] = report.menucategory.text
+          # report_dict['position'] = report.position.text
+          # report_dict['category'] = report.menucategory.text
           report_dict['url'] = base_url + report.htmlfilename.text
 
           master_report_list.append(report_dict)
@@ -145,7 +159,7 @@ for i in range(0, num_years):
 
           if report['name_short'] in cash_flow_options:
               statements_url.append(('cash_flow', report['url']))
-              print(report['url'])
+              # print(report['url'])
 
           if report['name_short'] in balance_sheet_options:
               statements_url.append(('balance_sheet', report['url']))
@@ -185,40 +199,86 @@ for i in range(0, num_years):
           # grab full df
           df_list = pd.read_html(content)[0]
 
-          # grab section signifier
-          for (index, row) in df_list.iterrows():
-            if row[0] in sections:
-              row[0] = '<b>' + row[0]
-
           # clean the dataframe of rows we don't need
           clean_df = df_list.iloc[:, 0:2]
-          statements_data[statement[0]] = clean_df
 
-        print('adding year: ' + str(current_year))
+          # we need to create a clean dict here
+          clean_dict = {}
 
-        if company_name.lower() in all_10ks_w_years_and_company.keys():
-          dict_to_edit = all_10ks_w_years_and_company[company_name.lower()]
-          dict_to_edit[current_year] = statements_data
+          # grab header titles
+          if statement[0] == "balance_sheet":
+            clean_dict[clean_df.columns.values[0]] = clean_df.columns.values[1]
+          else:
+            clean_dict[clean_df.columns.values[0][0]] = clean_df.columns.values[1][1]
+
+          # create dictionary from df
+          for (index, row) in clean_df.iterrows():
+            if row[0] in sections:
+              row[0] = '<b>' + row[0]
+            if not isinstance(row[1], float):
+              # convert rows to floats
+              row[1] = row[1].replace('$ ','')
+              row[1] = row[1].replace('(','-')
+              row[1] = row[1].replace(')','')
+              row[1] = row[1].replace(',','')
+              # row[1] = float(row[1])
+            if isinstance(row[1], float):
+              row[1] = str(row[1])
+
+            clean_dict[row[0]] = row[1]
+          
+          # print('CHECKING FOR NON-STRINGS:')
+          # for key, value in clean_dict.items():
+          #   if not isinstance(key, str) or not isinstance(value, str):
+          #     print(key)
+          #     print(value)
+
+          #make the dataframe floats and rearrange for to_dict
+          statements_data[statement[0]] = clean_dict
+
+        # by this point we have clean dicts for each complex statement
+
+        print('adding year: ' + str(current_year) + " for company " + company_name)
+
+        if company_name.lower() in stock_data.keys():
+          dict_to_edit = stock_data[company_name.lower()]
+
+          if current_year in dict_to_edit['financial_data'].keys():
+            print('we already have this data! ' + company_name + ' ' + year)
+
+          complex_dict = {}
+          complex_dict['complex'] = statements_data
+
+          # adding in the complex data
+          dict_to_edit['financial_data'][current_year] = complex_dict
           # do I have to put it back in?
         else:
-          new_dict_to_add = {}
-          new_dict_to_add[current_year] = statements_data        
-          all_10ks_w_years_and_company[company_name.lower()] = new_dict_to_add
+          print('adding new dict')
+
+          complex_dict = {}
+          complex_dict['complex'] = statements_data
+          
+          year_for_stock = {}
+          year_for_stock[current_year] = complex_dict
+
+          dict_to_edit = {}
+          dict_to_edit['financial_data'] = year_for_stock
+          
+        stock_data[company_name.lower()] = dict_to_edit
+
+        doc_ref = db.collection(u'stock_data').document(u'financial_data')
+        doc_ref.add(stock_data)
 
   time.sleep(1) # pause in between each year as to not overload edgar
 
-# print(all_10ks_w_years_and_company)
 for failure in failures:
   print('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[1])) + " reports.")
   print('XML tree to check results: ' + failure[2])
   for statement_url in failure[1]:
     print(statement_url[0])
-print("number of companies " + str(len(all_10ks_w_years_and_company)))
+print("number of companies " + str(len(stock_data)))
 print("num failures: " + str(len(failures)))
-print(all_10ks_w_years_and_company)
-
-def get_financial_data_with_url(url):
-    pass
+pprint(stock_data, sort_dicts=False)
 
 '''
 Here's the object we need to store and receive from firebase
