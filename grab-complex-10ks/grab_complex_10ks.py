@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import bs4 as bs
 import requests
 import pandas as pd
@@ -28,7 +29,7 @@ company2 = 'NICHOLAS FINANCIAL INC'
 company3 = 'BLONDER TONGUE LABORATORIES INC'
 filing = '10-K' # '10-Q'
 not_filing = '10-K/A'
-year = 2020
+year = 2021
 # quarter = 'QTR3'
 headers = {
     'User-Agent': 'Stock Boy',
@@ -57,7 +58,7 @@ for i in range(0, num_years):
       if len(splitted_company) < 5:
         continue
 
-      if splitted_company[2] == filing and company in item: 
+      if splitted_company[2] == filing and company3 in item: 
         print('IDX: ' + f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
         company_name = splitted_company[1] # grabs company name
         url = splitted_company[-1]
@@ -116,7 +117,7 @@ for i in range(0, num_years):
 
           master_report_list.append(report_dict)
 
-        statements_url = []
+        statements_url = {}
 
         for report in master_report_list:
 
@@ -153,19 +154,24 @@ for i in range(0, num_years):
           item22 = 'consolidated statements of operations and comprehensive earnings and loss'
           item23 = 'consolidated results of operations'
 
-          cash_flow_options = [item3, item13, item20, item21]
+          cash_flow_options = [item3, item13, item20, item21, item24]
           balance_sheet_options = [item10, item1, item16]
           income_statement_options = [item11, item12, item8, item5, item6, item2, item14, item15, item17, item18, item19, item22, item23]
 
-          if report['name_short'] in cash_flow_options:
-              statements_url.append(('cash_flow', report['url']))
-              # print(report['url'])
+          for option in cash_flow_options:
+            if option in report['name_short'] and not 'cash_flow' in statements_url:
+              statements_url['cash_flow'] = report['url']
+              break
 
-          if report['name_short'] in balance_sheet_options:
-              statements_url.append(('balance_sheet', report['url']))
+          for option in balance_sheet_options:
+            if option in report['name_short'] and not 'balance_sheet' in statements_url:
+              statements_url['balance_sheet'] = report['url']
+              break
 
-          if report['name_short'] in income_statement_options:
-              statements_url.append(('income_statement', report['url']))
+          for option in income_statement_options:
+            if option in report['name_short'] and not 'income_statement' in statements_url:
+              statements_url['income_statement'] = report['url']
+              break
 
         # we give up on these because the company can't file properly
         if len(statements_url) == 0:
@@ -179,11 +185,11 @@ for i in range(0, num_years):
         statements_data = {}
 
         # this gets all three statements as a df
-        for statement in statements_url:
+        for statement, url in statements_url.items():
 
           sections = []
             
-          content = requests.get(statement[1], headers=headers).content
+          content = requests.get(url, headers=headers).content
           report_soup = bs.BeautifulSoup(content, 'html')
 
           # we need to loop here to preserve table formatting
@@ -203,13 +209,22 @@ for i in range(0, num_years):
           clean_df = df_list.iloc[:, 0:2]
 
           # we need to create a clean dict here
-          clean_dict = {}
+          clean_dict = OrderedDict()
+          clean_arr = []
+          clean_arr_column_one = []
+          clean_arr_column_two = []
 
           # grab header titles
-          if statement[0] == "balance_sheet":
+          if statement == "balance_sheet":
             clean_dict[clean_df.columns.values[0]] = clean_df.columns.values[1]
+            clean_arr.append((clean_df.columns.values[0], clean_df.columns.values[1]))
+            clean_arr_column_one.append(clean_df.columns.values[0])
+            clean_arr_column_two.append(clean_df.columns.values[1])
           else:
             clean_dict[clean_df.columns.values[0][0]] = clean_df.columns.values[1][1]
+            clean_arr.append((clean_df.columns.values[0][0], clean_df.columns.values[1][1]))
+            clean_arr_column_one.append(clean_df.columns.values[0][0])
+            clean_arr_column_two.append(clean_df.columns.values[1][1])
 
           # create dictionary from df
           for (index, row) in clean_df.iterrows():
@@ -226,6 +241,9 @@ for i in range(0, num_years):
               row[1] = str(row[1])
 
             clean_dict[row[0]] = row[1]
+            clean_arr.append((row[0], row[1]))
+            clean_arr_column_one.append(row[0])
+            clean_arr_column_two.append(row[1])
           
           # print('CHECKING FOR NON-STRINGS:')
           # for key, value in clean_dict.items():
@@ -233,41 +251,40 @@ for i in range(0, num_years):
           #     print(key)
           #     print(value)
 
+          columns = {
+            "one": clean_arr_column_one,
+            "two": clean_arr_column_two
+            }
+
           #make the dataframe floats and rearrange for to_dict
-          statements_data[statement[0]] = clean_dict
+          statements_data[statement] = columns
 
         # by this point we have clean dicts for each complex statement
 
         print('adding year: ' + str(current_year) + " for company " + company_name)
 
-        if company_name.lower() in stock_data.keys():
-          dict_to_edit = stock_data[company_name.lower()]
+        # if company_name.lower() in stock_data.keys():
+        #   dict_to_edit = stock_data[company_name.lower()]
 
-          if current_year in dict_to_edit['financial_data'].keys():
-            print('we already have this data! ' + company_name + ' ' + year)
+        #   if current_year in dict_to_edit['financial_data'].keys():
+        #     print('we already have this data! ' + company_name + ' ' + year)
 
-          complex_dict = {}
-          complex_dict['complex'] = statements_data
+        #   complex_dict = {}
+        #   complex_dict['complex'] = statements_data
 
-          # adding in the complex data
-          dict_to_edit['financial_data'][current_year] = complex_dict
-          # do I have to put it back in?
-        else:
-          print('adding new dict')
+        #   # adding in the complex data
+        #   dict_to_edit['financial_data'][current_year] = complex_dict
 
-          complex_dict = {}
-          complex_dict['complex'] = statements_data
-          
-          year_for_stock = {}
-          year_for_stock[current_year] = complex_dict
+        # else:
+        print('adding new dict')
 
-          dict_to_edit = {}
-          dict_to_edit['financial_data'] = year_for_stock
-          
-        stock_data[company_name.lower()] = dict_to_edit
+        complex_dict = {}
+        complex_dict['complex'] = statements_data
+                  
+        # stock_data[company_name.lower()] = dict_to_edit
 
-        doc_ref = db.collection(u'stock_data').document(u'financial_data')
-        doc_ref.add(stock_data)
+        doc_ref = db.collection(u'stock_data').document(company_name.lower()).collection(u'financial_data').document(str(current_year))
+        doc_ref.set(complex_dict)
 
   time.sleep(1) # pause in between each year as to not overload edgar
 
