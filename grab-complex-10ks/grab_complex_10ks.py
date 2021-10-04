@@ -111,8 +111,6 @@ for i in range(0, num_years):
           report_dict = {}
           report_dict['name_short'] = report.shortname.text.lower()
           report_dict['name_long'] = report.longname.text
-          # report_dict['position'] = report.position.text
-          # report_dict['category'] = report.menucategory.text
           report_dict['url'] = base_url + report.htmlfilename.text
 
           master_report_list.append(report_dict)
@@ -121,18 +119,12 @@ for i in range(0, num_years):
 
         for report in master_report_list:
 
-          # need to figure this out a bit better
-
           # cash flow possibilities
           item3 = 'consolidated statements of cash flows'
           item13 = 'consolidated statements of cash flow'
           item20 = 'consolidated statement of cash flows'
           item21 = 'consolidated statements of cashflows'
           item24 = 'consolidated cash flows'
-
-          # item4 = "consolidated statements of stockholder's (deficit) equity"
-          # item7 = "consolidated statements of stockholders' equity"
-          # item9 = "consolidated statements of shareholders' equity"
 
           # balance sheet possibilities
           item10 = 'consolidated balance sheet'
@@ -245,12 +237,6 @@ for i in range(0, num_years):
             clean_arr_column_one.append(row[0])
             clean_arr_column_two.append(row[1])
           
-          # print('CHECKING FOR NON-STRINGS:')
-          # for key, value in clean_dict.items():
-          #   if not isinstance(key, str) or not isinstance(value, str):
-          #     print(key)
-          #     print(value)
-
           columns = {
             "one": clean_arr_column_one,
             "two": clean_arr_column_two
@@ -260,29 +246,12 @@ for i in range(0, num_years):
           statements_data[statement] = columns
 
         # by this point we have clean dicts for each complex statement
-
         print('adding year: ' + str(current_year) + " for company " + company_name)
-
-        # if company_name.lower() in stock_data.keys():
-        #   dict_to_edit = stock_data[company_name.lower()]
-
-        #   if current_year in dict_to_edit['financial_data'].keys():
-        #     print('we already have this data! ' + company_name + ' ' + year)
-
-        #   complex_dict = {}
-        #   complex_dict['complex'] = statements_data
-
-        #   # adding in the complex data
-        #   dict_to_edit['financial_data'][current_year] = complex_dict
-
-        # else:
-        print('adding new dict')
 
         complex_dict = {}
         complex_dict['complex'] = statements_data
                   
-        # stock_data[company_name.lower()] = dict_to_edit
-
+        # adds to firestore in proper place
         doc_ref = db.collection(u'stock_data').document(company_name.lower()).collection(u'financial_data').document(str(current_year))
         doc_ref.set(complex_dict)
 
