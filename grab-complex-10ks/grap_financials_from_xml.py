@@ -169,7 +169,7 @@ for i in range(0, num_years):
         if len(statements_url) == 0:
           continue
         elif len(statements_url) != 3:
-          failures.append((company_name, statements_url, xml_summary))
+          failures.append((company_name, current_year, statements_url, xml_summary))
           continue
         else:
           print('SUCCESS: ' + company_name)
@@ -258,10 +258,17 @@ for i in range(0, num_years):
   time.sleep(1) # pause in between each year as to not overload edgar
 
 for failure in failures:
-  print('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[1])) + " reports.")
-  print('XML tree to check results: ' + failure[2])
-  for statement_url in failure[1]:
-    print(statement_url[0])
+  print('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[2])) + " reports.")
+  print('XML tree to check results: ' + failure[3])
+  for statement_url in failure[2]:
+    print(statement_url)
+
+# write failures to file
+textfile = open("failures_complex_10ks.txt", "w")
+for element in failures:
+  textfile.write(element + "\n")
+textfile.close()
+
 print("number of companies " + str(len(stock_data)))
 print("num failures: " + str(len(failures)))
 pprint(stock_data, sort_dicts=False)
