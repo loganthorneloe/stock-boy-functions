@@ -9,6 +9,89 @@ import nltk
 
 nltk.download('punkt')
 
+def language_processing(soup, word):
+  list = []
+  for tag in soup.div.find_all_next('span'):
+    #print(type(tag))
+    tag = tag.getText()
+    #print(tag)
+    if word in tag:
+      sentences = nltk.sent_tokenize(tag)
+      result = [sentence for sentence in sentences]
+      list.append(result)
+      # print(result)
+  # print(len(list))
+  return list
+
+def risks(soup):
+  risks = language_processing(soup, "risk")
+  for risk in risks:
+    print(risk)
+
+def competitors(soup):
+  comps = language_processing(soup, "competition")
+  for comp in comps:
+    print(comp)
+
+def business_section(soup):
+  for tag in soup.div.find_all_next('span'):
+    #print(type(tag))
+    tag = tag.getText()
+    if "Item 1." == tag:
+        print(tag)
+
+def ticker(soup):
+  ticker = ''
+  table = None
+  keywords = ["Trading symbol(s)" , "Trading Symbol(s)"]
+  for keyword in keywords:
+    try:
+      print(keyword)
+      table = soup.find(text=keyword).find_parent("table")
+      break
+    except:
+      continue
+
+  index = -1
+  for tr in table:
+    incrementer = 0
+    for td in tr:
+      if index < 0:
+        font = td.find("font")
+        if font is None:
+          font = td.find("span")
+          
+        if font is None:
+          font = ''
+        else:
+          font = font.text
+        
+        print(font)
+        if font == keyword:
+          index = incrementer
+          break
+        else:
+          incrementer += 1
+      else:
+        print(incrementer)
+        print(index)
+        if incrementer == index:
+          font = td.find("font")
+          if font is None:
+            font = td.find("span")
+            
+          if font is None:
+            font = ''
+          else:
+            font = font.text
+          ticker = font
+          break
+        else:
+          incrementer += 1
+  print('TICKER:')
+  print(ticker)
+
+
 # MUST DECLARE USER_AGENT!!
 # DO NOT MAKE MORE THAN 10 REQUESTS PER SECOND!!
 
@@ -26,13 +109,13 @@ db = firestore.client()
 
 quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
 # quarters = ['QTR3']
-num_years = 10
+num_years = 1
 company = 'Facebook Inc'
 company2 = 'NICHOLAS FINANCIAL INC'
 company3 = 'BLONDER TONGUE LABORATORIES INC'
 filing = '10-K' # '10-Q'
 not_filing = '10-K/A'
-year = 2021
+year = 2020
 # quarter = 'QTR3'
 headers = {
     'User-Agent': 'Stock Boy',
@@ -83,51 +166,25 @@ for i in range(0, num_years):
         resp = requests.get(url_to_use, headers=headers)
         this_soup = bs.BeautifulSoup(resp.text, 'lxml')
 
-        risks(this_soup) # can grab from risks section
-        competitors(this_soup) # can grab from competitors sections
-        business_section(this_soup) # can grab from business section
+        # risks(this_soup) # can grab from risks section
+        # competitors(this_soup) # can grab from competitors sections
+        # business_section(this_soup) # can grab from business section
+        ticker(this_soup)
 
     time.sleep(1) # pause in between each year as to not overload edgar
 
-for failure in failures:
-  print('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[2])) + " reports.")
-  print('XML tree to check results: ' + failure[3])
-  for statement_url in failure[2]:
-    print(statement_url)
+# for failure in failures:
+#   print('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[2])) + " reports.")
+#   print('XML tree to check results: ' + failure[3])
+#   for statement_url in failure[2]:
+#     print(statement_url)
 
-# write failures to file
-textfile = open("failures_logs.txt", "w")
-for element in failures:
-  textfile.write(element + "\n")
-textfile.close()
+# # write failures to file
+# textfile = open("failures_logs.txt", "w")
+# for element in failures:
+#   textfile.write(element + "\n")
+# textfile.close()
 
-print("number of companies " + str(len(stock_data)))
-print("num failures: " + str(len(failures)))
-pprint(stock_data, sort_dicts=False)
-
-def language_processing(soup, word):
-  list = []
-  for tag in soup.div.find_all_next('span'):
-    #print(type(tag))
-    tag = tag.getText()
-    #print(tag)
-    if word in tag:
-      sentences = nltk.sent_tokenize(tag)
-      result = [sentence for sentence in sentences]
-      list.append(result)
-      # print(result)
-  # print(len(list))
-  return list
-
-def risks(soup):
-  return language_processing(soup, "risk")
-
-def competitors(soup):
-  return language_processing(soup, "compete")
-
-def business_section(soup):
-  for tag in soup.div.find_all_next('span'):
-    #print(type(tag))
-    tag = tag.getText()
-    if "Item 1." == tag:
-        print(tag)
+# print("number of companies " + str(len(stock_data)))
+# print("num failures: " + str(len(failures)))
+# pprint(stock_data, sort_dicts=False)
