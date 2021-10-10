@@ -4,6 +4,7 @@ import requests
 import pandas as pd
 import time
 from pprint import pprint
+import os
 
 import firebase_admin
 from firebase_admin import credentials
@@ -324,6 +325,8 @@ for i in range(0, num_years):
           "source": ten_k_url
         })
 
+        trading_symbol = ''
+
         # update trading symbol
         if trading_symbol != '': 
           ticker_dict = {}
@@ -334,7 +337,8 @@ for i in range(0, num_years):
         else: # we'll put null in there if it isn't in there or leave a proper symbol if it already is in there
           doc_ref = db.collection(u'stock_data').document(company_name.lower())
           doc = doc_ref.get()
-          if not doc.exists:
+          doc_dict = doc.to_dict()
+          if 'trading_symbol' not in doc_dict.keys():
             null_ticker_dict = {}
             null_ticker_dict['trading_symbol'] = "null"
             doc_ref = db.collection(u'stock_data').document(company_name.lower())
@@ -348,21 +352,25 @@ for i in range(0, num_years):
 
 # print summary and report failures
 
-for failure in statement_failures:
+# for failure in statement_failures:
 
-  textfile = open(f"{failure[0]}/{failure[1]}/statement_failure.txt", "w")
-  textfile.write('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[2])) + " reports.")
-  for statement_url in failure[2]:
-    textfile.write(statement_url)
-  textfile.write('XML tree to check results: ' + failure[3])
-  textfile.close()
+#   failure_path = f"{failure[0].lower().replace(' ','_')}/{failure[1]}"
+#   if not os.path.exists(failure_path):
+#       os.makedirs(failure_path)
+#   textfile = open(failure_path + "/statement_failure.txt", "w")
+#   textfile.write('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[2])) + " reports.")
+#   for statement_url in failure[2]:
+#     textfile.write(statement_url)
+#   textfile.write('XML tree to check results: ' + failure[3])
+#   textfile.close()
 
-for failure in ticker_failures:
+# for failure in ticker_failures:
 
-  textfile = open(f"{failure[0]}/{failure[1]}/ticker_failure.txt", "w")
-  textfile.write('FAILED: To get ticker for: ' + failure[0])
-  textfile.write('Chart url to check the issue: ' + failure[2])
-  textfile.close()
+#   failure_path = f"{failure[0].lower().replace(' ','_')}/{failure[1]}"
+#   textfile = open(failure_path + "/ticker_failure.txt", "w")
+#   textfile.write('FAILED: To get ticker for: ' + failure[0])
+#   textfile.write('Chart url to check the issue: ' + failure[2])
+#   textfile.close()
 
 print("num statement failures: " + str(len(statement_failures)))
 print("num ticker failures: " + str(len(ticker_failures)))
