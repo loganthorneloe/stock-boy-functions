@@ -265,7 +265,7 @@ for i in range(0, num_years):
       if len(splitted_company) < 5:
         continue
 
-      if splitted_company[2] == filing and company in item: 
+      if splitted_company[2] == filing: # and ('SOUTH JERSEY GAS Co' in item or company in item): # and company in item: 
 
         base_url = 'https://www.sec.gov'
         
@@ -301,47 +301,76 @@ for i in range(0, num_years):
 
         statements_url = get_url_for_statements(xml_summary, new_base_url)
 
+        # gets rid of / which causes errors
+        company_key = company_name.lower().replace('/','')
+
         # we give up on these because the company can't file properly
         if len(statements_url) == 0:
           continue
         elif len(statements_url) != 3:
+          # these i need to take another look at - will save them as failures
           statement_failures.append((company_name, current_year, statements_url, xml_summary))
+          # we need to track what companies didn't have proper statement
+          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).set({
+            "retrieved_statements": statements_url
+          })
+          # this will update
+          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).update({
+            "xml_link": xml_summary
+          })
+          print('Statements issue for: ' + company_key + " ")
           continue
         else:
-          print('SUCCESS: ' + company_name)
+          # we need to remove this company from failures if it exists
+          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).delete()
 
         statements_data = retrieve_statement_data_from_statement_urls(statements_url)
 
         # by this point we have clean dicts for each complex statement
-        print('adding year: ' + str(current_year) + " for company " + company_name)
-                  
-        # adds to firestore in proper place
-        print('setting complex dict')
-        col_ref = db.collection(u'stock_data').document(company_name.lower()).collection(u'financial_data').document(str(current_year)).update({
-          "complex": statements_data
-        })
+        
 
-        doc_ref = db.collection(u'stock_data').document(company_name.lower()).collection(u'financial_data').document(str(current_year)).update({
-          "source": ten_k_url
-        })
+        try:
+        # pprint(statements_data)
+        # this will overwrite
+          doc_ref = db.collection(u'stock_data').document(company_key).collection(u'financial_data').document(str(current_year)).set({
+            "complex": statements_data
+          })
 
-        trading_symbol = ''
+          # this will update
+          doc_ref = db.collection(u'stock_data').document(company_key).collection(u'financial_data').document(str(current_year)).update({
+            "source": ten_k_url
+          })
+          print('adding year: ' + str(current_year) + " for company " + company_name)        
+
+        except:
+
+          statement_failures.append((company_name, current_year, statements_url, xml_summary))
+
+          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).set({
+            "retrieved_statements": statements_url
+          })
+          # this will update
+          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).update({
+            "xml_link": xml_summary
+          })
+
+          print('Array issue for: ' + company_key + " ")
 
         # update trading symbol
         if trading_symbol != '': 
           ticker_dict = {}
           ticker_dict['trading_symbol'] = trading_symbol
-          doc_ref = db.collection(u'stock_data').document(company_name.lower())
+          doc_ref = db.collection(u'stock_data').document(company_key)
           doc_ref.set(ticker_dict)
           ticker_successes += 1
         else: # we'll put null in there if it isn't in there or leave a proper symbol if it already is in there
-          doc_ref = db.collection(u'stock_data').document(company_name.lower())
+          doc_ref = db.collection(u'stock_data').document(company_key)
           doc = doc_ref.get()
           doc_dict = doc.to_dict()
-          if 'trading_symbol' not in doc_dict.keys():
+          if doc_dict is None or 'trading_symbol' not in doc_dict.keys():
             null_ticker_dict = {}
             null_ticker_dict['trading_symbol'] = "null"
-            doc_ref = db.collection(u'stock_data').document(company_name.lower())
+            doc_ref = db.collection(u'stock_data').document(company_key)
             doc_ref.set(null_ticker_dict)
             ticker_failures.append((company_name, current_year, new_base_url))
 
@@ -376,3 +405,8 @@ print("num statement failures: " + str(len(statement_failures)))
 print("num ticker failures: " + str(len(ticker_failures)))
 print("num statement successes: " + str(statement_successes))
 print("num ticker successes: " + str(ticker_successes))
+
+# adding multiple for one company name?? 2020 HYUNDAI ABS FUNDING LLC, Ally Auto Assets LLC
+# what about a chart with all NaNs?? - leave these for accuracy?
+# make sure to track failures to add correctly
+# create a script to determine missing tickers
