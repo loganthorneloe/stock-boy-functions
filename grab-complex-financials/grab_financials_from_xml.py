@@ -171,7 +171,7 @@ def get_url_for_statements(xml_summary, new_base_url):
   return statements_url
 
 def retrieve_statement_data_from_statement_urls(statements_url):
-  statements_data = {}
+  statements_data = []
 
   # this gets all three statements as a df
   for statement, url in statements_url.items():
@@ -202,6 +202,10 @@ def retrieve_statement_data_from_statement_urls(statements_url):
     clean_arr = []
     clean_arr_column_one = []
     clean_arr_column_two = []
+
+    # need to be able to separate by statement type
+    clean_arr_column_one.append(statement)
+    clean_arr_column_two.append("None")
 
     # grab header titles
     if statement == "balance_sheet":
@@ -234,15 +238,27 @@ def retrieve_statement_data_from_statement_urls(statements_url):
       clean_arr_column_one.append(row[0])
       clean_arr_column_two.append(row[1])
     
-    columns = {
-      "one": clean_arr_column_one,
-      "two": clean_arr_column_two
-      }
+    # combines all data into one list to preserve ordering
+    columns = clean_arr_column_one + clean_arr_column_two
 
-    #make the dataframe floats and rearrange for to_dict
-    statements_data[statement] = columns
+    # make the dataframe floats and rearrange for to_dict
+    statements_data += columns
 
+  # this is one list with both columns for all three statements
   return statements_data
+
+def set_or_update_trading_symbol(company_name, symbol):
+  try:
+    doc_ref = db.collection(u'single_data').document("trading_symbols")
+    doc = doc_ref.get()
+    doc_dict = doc.to_dict()
+    doc_dict[company_name] = symbol
+    doc_ref = db.collection(u'single_data').document("trading_symbols").set(doc_dict)
+  except:
+    doc_ref = db.collection(u'single_data').document("trading_symbols").set({
+      company_name: symbol
+    })
+  return doc_ref
 
 # MAIN FUNCTION: go through all years
 for i in range(0, num_years):
@@ -311,67 +327,57 @@ for i in range(0, num_years):
           # these i need to take another look at - will save them as failures
           statement_failures.append((company_name, current_year, statements_url, xml_summary))
           # we need to track what companies didn't have proper statement
-          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).set({
-            "retrieved_statements": statements_url
+          doc_ref = db.collection(u'failures').document(company_key).set({
+            str(current_year) + "_summary": xml_summary,
+            str(current_year) + "_statements": list(statements_url.keys())
           })
-          # this will update
-          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).update({
-            "xml_link": xml_summary
-          })
+          
           print('Statements issue for: ' + company_key + " ")
           continue
         else:
           # we need to remove this company from failures if it exists
-          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).delete()
-
+          try:
+            doc_ref = db.collection(u'failures').document(company_key).update({
+              str(current_year) + "_summary": "fixed",
+              str(current_year) + "_statements": list(statements_url.keys())
+            })
+          except:
+            pass
         statements_data = retrieve_statement_data_from_statement_urls(statements_url)
 
-        # by this point we have clean dicts for each complex statement
-        
+        # add url link to the array
+        statements_data.append("source")
+        statements_data.append(ten_k_url)
 
         try:
-        # pprint(statements_data)
-        # this will overwrite
-          doc_ref = db.collection(u'stock_data').document(company_key).collection(u'financial_data').document(str(current_year)).set({
-            "complex": statements_data
+          # pprint(statements_data)
+          # this will overwrite
+          doc_ref = db.collection(u'stock_data').document(company_key).set({
+            str(current_year) + "_complex": statements_data
           })
 
-          # this will update
-          doc_ref = db.collection(u'stock_data').document(company_key).collection(u'financial_data').document(str(current_year)).update({
-            "source": ten_k_url
-          })
           print('adding year: ' + str(current_year) + " for company " + company_name)        
 
         except:
 
           statement_failures.append((company_name, current_year, statements_url, xml_summary))
-
-          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).set({
-            "retrieved_statements": statements_url
-          })
-          # this will update
-          doc_ref = db.collection(u'failures').document(company_key).collection(u'statements').document(str(current_year)).update({
-            "xml_link": xml_summary
+          doc_ref = db.collection(u'failures').document(company_key).set({
+            str(current_year) + "_summary": xml_summary,
+            str(current_year) + "_statements": list(statements_url.keys())
           })
 
           print('Array issue for: ' + company_key + " ")
 
         # update trading symbol
         if trading_symbol != '': 
-          ticker_dict = {}
-          ticker_dict['trading_symbol'] = trading_symbol
-          doc_ref = db.collection(u'stock_data').document(company_key)
-          doc_ref.set(ticker_dict)
+          doc_ref = set_or_update_trading_symbol(company_key, trading_symbol)
           ticker_successes += 1
         else: # we'll put null in there if it isn't in there or leave a proper symbol if it already is in there
-          doc_ref = db.collection(u'stock_data').document(company_key)
+          doc_ref = db.collection(u'single_data').document("trading_symbols")
           doc = doc_ref.get()
           doc_dict = doc.to_dict()
           if doc_dict is None or 'trading_symbol' not in doc_dict.keys():
-            null_ticker_dict = {}
-            null_ticker_dict['trading_symbol'] = "null"
-            doc_ref = db.collection(u'stock_data').document(company_key)
-            doc_ref.set(null_ticker_dict)
+            doc_ref = set_or_update_trading_symbol(company_key, "null")
             ticker_failures.append((company_name, current_year, new_base_url))
 
         statement_successes += 1
