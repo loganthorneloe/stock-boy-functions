@@ -25,6 +25,7 @@ body {
     width: calc(300px + 1rem);
     position:absolute;
     z-index: 1000;
+    scroll-behavior: smooth;
   }
   
   .suggestions li {
