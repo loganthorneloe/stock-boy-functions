@@ -6,7 +6,8 @@ import TablePage from './TablePage';
 import Autocomplete from './Autocomplete';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
+import ReactDOM from 'react-dom';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -22,34 +23,63 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Get a list of cities from your database
-async function getStocks(db) {
-  const stockCol = collection(db, 'stock_data');
-  // const stockSnapshot = await getDocs(stockCol);
-  // const stockList = stockSnapshot.docs.map(doc => doc.data());
-  // console.log(stockList)
-  var stockList = []
-  return stockList;
-}
+// var trading_symbols = ["oranges", "apples", "bananas"]
+
+// function setDocToList(doc){
+//   var ticker_list = []
+//   for (const [key, value] of Object.entries(doc.data())) {
+//     var new_string = key + ": " + value
+//     ticker_list.push(new_string)
+//   }
+//   trading_symbols = ticker_list
+//   console.log("stocks: ", trading_symbols)
+//   return ticker_list
+// }
+
+// getting data
+// function retrieveData(){
+  // getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => {
+  //   if (docSnap.exists()) {
+  //     console.log("Document data:", docSnap.data());
+  //   } else {
+  //     // doc.data() will be undefined in this case
+  //     console.log("No such document!");
+  //   }
+  //   return setDocToList(docSnap);
+  // });
+// }
+
+// const element = <Autocomplete suggestions={retrieveData()}/>
+// ReactDOM.render(
+//   element,
+//   document.getElementById('autocomplete')
+// );
 
 // Get a list of cities from your database
-async function getTradingSymbols(db) {
-  const stockCol = collection(db, 'stock_data');
-  const stockSnapshot = await getDocs(stockCol);
-  const stockList = stockSnapshot.docs.map(doc => doc.data());
-  console.log(stockList.keys())
-  return stockList;
-}
+// async function getTickers(db) {
+//   const docRef = doc(db, 'single_data', 'trading_symbols');
+//   const docSnap = await getDoc(docRef);
+//   if (docSnap.exists()) {
+//     console.log("Document data:", docSnap.data());
+//   } else {
+//     // doc.data() will be undefined in this case
+//     console.log("No such document!");
+//   }
+//   var ticker_list = []
+//   for (const [key, value] of Object.entries(docSnap.data())) {
+//     var new_string = key + ": " + value
+//     ticker_list.push(new_string)
+//   }
+//   stocks = ticker_list
+// }
 
 function App() {
-
-  const stocks = getStocks(db) 
 
     return (
       <div>
         <div>
           <h1>Stock Boy</h1>
-          <Autocomplete suggestions={stocks}/>
+          <Autocomplete database={db}/>
         </div>
         <TablePage></TablePage>
       </div>

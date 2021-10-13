@@ -1,5 +1,31 @@
 import React, { Component, Fragment } from "react";
 import './Autocomplete.css'
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
+    authDomain: "stock-boy-3d183.firebaseapp.com",
+    projectId: "stock-boy-3d183",
+    storageBucket: "stock-boy-3d183.appspot.com",
+    messagingSenderId: "507833524956",
+    appId: "1:507833524956:web:b4b743090f1c6af4560a19",
+    measurementId: "G-ESNX47QJKM"
+  };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+function setDocToList(doc){
+    var ticker_list = []
+    for (const [key, value] of Object.entries(doc.data())) {
+      var new_string = key + ": " + value
+      ticker_list.push(new_string)
+    }
+    // trading_symbols = ticker_list
+    // console.log("stocks: ", trading_symbols)
+    return ticker_list
+  }
 
 class Autocomplete extends Component {
   constructor(props) {
@@ -8,15 +34,36 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: ""
+      userInput: "",
+      suggestions: ["orange"]
     };
   }
 
+  componentDidMount() {
+    // var db = this.props
+    this.retrieveData();
+  }
+
+  retrieveData(){
+    getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => {
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      var retrieved_suggestions = setDocToList(docSnap)
+      this.setState({
+        suggestions: retrieved_suggestions
+      })
+    });
+  }
+
   onChange = e => {
-    const { suggestions } = this.props;
+    // const { suggestions } = this.state.suggestions;
     const userInput = e.currentTarget.value;
   
-    const filteredSuggestions = suggestions.filter(
+    const filteredSuggestions = this.state.suggestions.filter(
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
@@ -71,7 +118,8 @@ class Autocomplete extends Component {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
-        userInput
+        userInput,
+        suggestions
       }
     } = this;
 
