@@ -3,6 +3,7 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import TablePage from './TablePage';
+import SuperTable from './SuperTable';
 import Autocomplete from './Autocomplete';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
@@ -35,15 +36,25 @@ function setDocToList(doc){
   return ticker_list
 }
 
-function retrieveData(){
-  return getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => {
+async function retrieveTickerData(){
+  return getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => { // this is calling twice per page load
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
     } else {
-      // doc.data() will be undefined in this case
       console.log("No such document!");
     }
     return setDocToList(docSnap)
+  });
+}
+
+async function retrieveCompanyData(company_name){
+  getDoc(doc(db, 'stock_data', company_name)).then(docSnap => { // this is calling twice per page load
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+    return docSnap.data()
   });
 }
 
@@ -51,22 +62,27 @@ function App() {
 
   const [tickerList, setTickerList] = useState();
   const [company, setCompany] = useState();
+  const [companyDict, setCompanyDict] = useState();
 
   // Use an effect to load the ticker list from the database
   useEffect(() => {
     if(typeof tickerList == 'undefined'){ // two api calls happening here for some reason
-      retrieveData().then(tickerList => {
-        setTickerList(tickerList)
+      retrieveTickerData().then(new_list => {
+        setTickerList(new_list)
+        console.log(tickerList)
       })     
     }
     if(currentCompany !== company){
-      setCompany(currentCompany) // hope this works
+      // setCompany(currentCompany) // hope this works
     }
   });
 
   const pull_data = (data) => {
-    currentCompany = data; 
-    console.log(currentCompany)
+    setCompany(data)
+    retrieveCompanyData(data.split(":")[0]).then(new_dict =>{
+      setCompanyDict(new_dict)
+    })     
+    console.log(companyDict) // this is behind for some reason
   }
 
     return (
@@ -75,7 +91,7 @@ function App() {
           <h1>Stock Boy</h1>
           <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
         </div>
-        <TablePage></TablePage>
+        <SuperTable company={company} companyDict={companyDict}/>
       </div>
     );
   }
