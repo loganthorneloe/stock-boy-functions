@@ -39,7 +39,7 @@ function setDocToList(doc){
 async function retrieveTickerData(){
   return getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => { // this is calling twice per page load
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      console.log("Ticker document data:", docSnap.data());
     } else {
       console.log("No such document!");
     }
@@ -48,9 +48,9 @@ async function retrieveTickerData(){
 }
 
 async function retrieveCompanyData(company_name){
-  getDoc(doc(db, 'stock_data', company_name)).then(docSnap => { // this is calling twice per page load
+  return getDoc(doc(db, 'stock_data', company_name)).then(docSnap => { // this is calling twice per page load
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      console.log("Company document data:", docSnap.data());
     } else {
       console.log("No such document!");
     }
@@ -69,7 +69,7 @@ function App() {
     if(typeof tickerList == 'undefined'){ // two api calls happening here for some reason
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
-        console.log(tickerList)
+        // console.log(tickerList)
       })     
     }
     if(currentCompany !== company){
@@ -78,11 +78,11 @@ function App() {
   });
 
   const pull_data = (data) => {
-    setCompany(data)
     retrieveCompanyData(data.split(":")[0]).then(new_dict =>{
       setCompanyDict(new_dict)
-    })     
-    console.log(companyDict) // this is behind for some reason
+      setCompany(data)
+    })    
+    // console.log(companyDict) // this is behind for some reason
   }
 
     return (
