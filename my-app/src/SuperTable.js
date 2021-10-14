@@ -6,6 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Tabs, Tab } from 'react-bootstrap';
 
 class SuperTable extends Component {
     constructor(props) { // props will be dict for certain stock
@@ -23,6 +24,7 @@ class SuperTable extends Component {
       this.balanceSheetHeader = {}
       this.cashFlowHeader = {}
       this.incomeStatementHeader = {}
+      this.currentSheet = "balance_sheet"
 
       this.determineYears()
       this.grab10kLink()
@@ -272,6 +274,14 @@ class SuperTable extends Component {
         }
     }
 
+    handleSelect(key) {
+        // console.log('selected ' + key);
+        this.currentSheet = key
+        // console.log(this.currentSheet)
+        this.forceUpdate()
+    }
+    
+
     render() {
         // const {
         //   state: {
@@ -299,6 +309,8 @@ class SuperTable extends Component {
     // console.log(this.balanceSheetHeader)
     // console.log(this.cashFlowHeader)
     // console.log(this.incomeStatementHeader)
+
+    console.log(this.currentSheet)
     
     if(typeof this.props.companyDict == "undefined"){
         return (
@@ -325,9 +337,9 @@ class SuperTable extends Component {
                             <h3>{this.props.company}</h3>
                         </Col>
                         <Col sm={4}>
-                        <Form.Check 
+                        <Form.Check disabled
                             type="switch"
-                            label="Simplify Statements"
+                            label="Simplify Statements (Coming Soon)"
                             id="disabled-custom-switch"
                             onChange={(checked) => {
                                 { this.simplify = checked }
@@ -335,7 +347,48 @@ class SuperTable extends Component {
                         />
                         </Col>
                     </Row>
-                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                    <Tabs activeKey={this.currentSheet} onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
+                        <Tab eventKey={"balance_sheet"} title="Balance Sheet">
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>{this.balanceSheetHeader.key}</th>
+                                        <th>{this.balanceSheetHeader.value}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.balanceSheet.map(this.renderRow)}
+                                </tbody>
+                            </Table>
+                        </Tab>
+                        <Tab eventKey={"income_statement"} title="Income Statement">
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>{this.incomeStatementHeader.key}</th>
+                                        <th>{this.incomeStatementHeader.value}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.incomeStatement.map(this.renderRow)}
+                                </tbody>
+                            </Table>
+                        </Tab>
+                        <Tab eventKey={"cash_flow"} title="Cash Flow">
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>{this.cashFlowHeader.key}</th>
+                                        <th>{this.cashFlowHeader.value}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.cashFlow.map(this.renderRow)}
+                                </tbody>
+                            </Table>
+                        </Tab>
+                    </Tabs>
+                    {/* <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="balance-tab" data-bs-toggle="tab" data-bs-target="#balance" type="button" role="tab" aria-controls="balance" aria-selected="true">Balance Sheet</button>
                         </li>
@@ -347,7 +400,7 @@ class SuperTable extends Component {
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="balance-tab">
+                        <div class="tab-pane fade show active" id="balance" role="tabpanel" aria-labelledby="balance-tab">
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
@@ -386,7 +439,7 @@ class SuperTable extends Component {
                                 </tbody>
                             </Table>
                         </div>
-                    </div>
+                    </div> */}
                     <Row>
                         <Col sm={8}>
                             <div>For more info about the company in this year, read the 10-K here:</div>
