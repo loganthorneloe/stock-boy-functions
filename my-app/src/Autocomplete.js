@@ -98,24 +98,24 @@ class Autocomplete extends Component {
               })}
             </ul>
           );
-        } else {
-          suggestionsListComponent = (
-            <div class="no-suggestions">
-              <em>No suggestions available.</em>
-            </div>
-          );
-        }
+        } // else {
+        //   suggestionsListComponent = (0
+        //     <div class="no-suggestions">
+        //       <em>No suggestions available.</em>
+        //     </div>
+        //   );
+        // }
       }
 
       return (
         <Fragment>
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-            type="text"
-            onChange={onChange}
-            onKeyDown={onKeyDown}
-            value={userInput}
-          />
-          {suggestionsListComponent}
+            <input class="form-control mr-sm-2" style={{"width":"300px"}} type="search" placeholder="Find statements here..." aria-label="Search"
+                type="text"
+                onChange={onChange}
+                onKeyDown={onKeyDown}
+                value={userInput}
+            />
+            {suggestionsListComponent}
         </Fragment>
       );
     }

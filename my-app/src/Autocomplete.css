@@ -34,7 +34,7 @@ body {
   
   .suggestion-active,
   .suggestions li:hover {
-    background-color: #000302;
+    background-color: #0d6efd;
     color: #fcfbf9;
     cursor: pointer;
     font-weight: 700;
@@ -42,4 +42,8 @@ body {
   
   .suggestions li:not(:last-of-type) {
     border-bottom: 1px solid #999;
+  }
+
+  .form-inline{
+    display: inline;
   }
