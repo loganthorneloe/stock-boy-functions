@@ -231,7 +231,8 @@ class SuperTable extends Component {
     }
 
     createCommaNumberFromString(str){
-        var arr = str.split("")
+        var split_string = str.split(".")
+        var arr = split_string[0].split("")
         var counter = 0
         var current_str = ""
         for(var i = arr.length-1; i >= 0; i--){
@@ -252,6 +253,12 @@ class SuperTable extends Component {
         if(current_str.slice(0,2) == '-,'){
             current_str = '-' + current_str.slice(2, current_str.len)
         }
+
+        // add the decimal back onto the end if it existed
+        if(split_string.length < 1){
+            current_str = current_str + split_string[1]
+        }
+
         return current_str
     }
 
