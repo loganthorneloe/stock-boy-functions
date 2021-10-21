@@ -22,6 +22,9 @@ class SuperTable extends Component {
       console.log("updating props for SuperTable")
 
       this.tenKLink = ""
+      this.balanceLink = ""
+      this.incomeLink = ""
+      this.cashLink = ""
       this.yearList = []
       this.currentYear = "2021"
       this.simplify = false 
@@ -34,7 +37,7 @@ class SuperTable extends Component {
       this.currentSheet = "balance_sheet"
 
       this.determineYears()
-      this.grab10kLink()
+      this.grabSourceLinks()
       this.generateDisplayColumns()
     }
     //   this.state = {
@@ -80,7 +83,7 @@ class SuperTable extends Component {
             console.log(this.props.companyDict)
 
             this.determineYears()
-            this.grab10kLink()
+            this.grabSourceLinks()
             this.generateDisplayColumns()
             this.forceUpdate()
         }
@@ -109,12 +112,15 @@ class SuperTable extends Component {
         // });
     }
 
-    grab10kLink(){
+    grabSourceLinks(){
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
         // console.log("grabbing 10k link")
         var ten_k_source = ""
+        var balance_source = ""
+        var cash_source = ""
+        var income_source = ""
         var list_to_use = []
         var key_to_use = ""
         if(!this.simplify){
@@ -130,10 +136,17 @@ class SuperTable extends Component {
         // console.log(this.currentYear)
         // console.log(this.yearList)
         // console.log(this.props.companyDict)
+
+        // DO I NEED TO CHECK IF THE SOURCES WERE RETRIEVED IN THE BACK END??
         if(list_to_use.at(-2) === "source"){
             ten_k_source = list_to_use.at(-1)
         }
-        this.tenKLink = ten_k_source
+        console.log("LIST_TO_USE")
+        console.log(list_to_use)
+        this.tenKLink = list_to_use.at(-1)
+        this.balanceLink = list_to_use.at(-7)
+        this.incomeLink = list_to_use.at(-5)
+        this.cashLink = list_to_use.at(-3)
         // console.log(this.tenKLink)
         // this.setState({
         //     tenKLink: ten_k_source,
@@ -154,11 +167,17 @@ class SuperTable extends Component {
             key_to_use = this.currentYear + "_simple"
         }
         list_to_use = this.props.companyDict[key_to_use]
-        if(list_to_use.at(-2) === "source"){
-            // get rid of the source in the array
-            list_to_use.pop()
+
+        // this is popping for the sources
+        for(var i = 0; i < 8; i++){
             list_to_use.pop()
         }
+
+        // if(list_to_use.at(-2) === "source"){
+        //     // get rid of the source in the array
+        //     list_to_use.pop()
+        //     list_to_use.pop()
+        // }
 
         var income_statement_index = list_to_use.indexOf("income_statement")
         var cash_flow_index = list_to_use.indexOf("cash_flow")
@@ -288,7 +307,7 @@ class SuperTable extends Component {
         if(typeof url !== 'undefined'){
             // console.log('opening window')
             // console.log(this.tenKLink)
-            window.open(this.tenKLink, '_blank');
+            window.open(url, '_blank');
         }
     }
 
@@ -326,6 +345,9 @@ class SuperTable extends Component {
 
     console.log("logging before render")
     console.log(this.tenKLink)
+    console.log(this.balanceLink)
+    console.log(this.incomeLink)
+    console.log(this.cashLink)
     // console.log(this.yearList)
     // console.log(this.currentYear)
     // console.log(this.simplify)
@@ -411,6 +433,14 @@ class SuperTable extends Component {
                                                 {this.balanceSheet.map(this.renderRow)}
                                             </tbody>
                                         </Table>
+                                        <div class="row">
+                                            <div class="col my-auto">
+                                                Source Link for this financial sheet:
+                                            </div>
+                                            <div class="col my-auto">
+                                                <button onClick={() => this.openURL(this.balanceLink)} type="button" class="btn btn-outline-primary float-right">Balance Sheet</button>
+                                            </div>
+                                        </div>
                                     </Tab>
                                     <Tab eventKey={"income_statement"} title="Income Statement" class="nav nav-tabs justify-content-center custom-tab">
                                         <Table striped bordered hover>
@@ -424,6 +454,14 @@ class SuperTable extends Component {
                                                 {this.incomeStatement.map(this.renderRow)}
                                             </tbody>
                                         </Table>
+                                        <div class="row">
+                                            <div class="col my-auto">
+                                                Source Link for this financial sheet:
+                                            </div>
+                                            <div class="col my-auto">
+                                                <button onClick={() => this.openURL(this.incomeLink)} type="button" class="btn btn-outline-primary float-right">Income statement</button>
+                                            </div>
+                                        </div>
                                     </Tab>
                                     <Tab eventKey={"cash_flow"} title="Cash Flow" class="nav nav-tabs justify-content-center  custom-tab">
                                         <Table striped bordered hover>
@@ -437,6 +475,14 @@ class SuperTable extends Component {
                                                 {this.cashFlow.map(this.renderRow)}
                                             </tbody>
                                         </Table>
+                                        <div class="row">
+                                            <div class="col my-auto">
+                                                Source Link for this financial sheet:
+                                            </div>
+                                            <div class="col my-auto">
+                                                <button onClick={() => this.openURL(this.cashLink)} type="button" class="btn btn-outline-primary float-right">Cash Flow</button>
+                                            </div>
+                                        </div>
                                     </Tab>
                                 </Tabs>
                             </div>

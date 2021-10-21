@@ -174,7 +174,7 @@ function App() {
               {/* Stock Boy */}
             </a>
             <form class="form-inline">
-              <Autocomplete id="autocomplete" class="col-sm-4" suggestions={tickerList} func={pull_data}/>
+              <Autocomplete id="autocomplete" class="col-md-4" suggestions={tickerList} func={pull_data}/>
             </form>
             <div></div>
             {/* <Form.Check disabled
