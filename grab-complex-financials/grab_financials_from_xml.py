@@ -43,6 +43,24 @@ ticker_failures = []
 statement_successes = 0
 ticker_successes = 0
 
+def submit_to_failures(company_key, current_year, reason_dict):
+  key = company_key + "_" + str(current_year)
+  doc_ref = db.collection(u'failures').document(key).set(reason_dict)
+            
+  print('Failure for: ' + key)
+
+def remove_from_failures(company_key, current_year):
+  key = company_key + "_" + str(current_year)
+  try:
+    doc_ref = db.collection(u'failures').document(key).delete()
+  except:
+    pass
+
+def set_statement_data_to_firebase(company_key, current_year, statements_data):
+  doc_ref = db.collection(u'stock_data').document(company_key).set({
+              str(current_year) + "_complex": statements_data
+            })
+
 def retrieve_idx_for_given_url(url):
   download = requests.get(url, headers=headers).content
   return download.decode("utf-8", errors="ignore").split('\n')
@@ -181,6 +199,10 @@ def retrieve_statement_data_from_statement_urls(statements_url):
     content = requests.get(url, headers=headers).content
     report_soup = bs.BeautifulSoup(content, 'html')
 
+    # no table for the document - wtf??
+    if report_soup.table is None:
+      return None
+
     # we need to loop here to preserve table formatting
     for index, row in enumerate(report_soup.table.find_all('tr')):
 
@@ -260,159 +282,238 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
+current_year = 2020
+statement_failure_file_name = str(current_year) + "_statement_failures.txt"
+statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
+other_failure_file_name = str(current_year) + "_other_failures.txt"
+other_failure_full_path = 'other_retrieval_failures/' + statement_failure_file_name
+
+# remove any existing logs to replace for the year
+if os.path.exists(statement_failure_full_path):
+  os.remove(statement_failure_full_path)
+else:
+  print("Can't delete " + statement_failure_full_path + " because it doesn't exist.")
+
+if os.path.exists(other_failure_full_path):
+  os.remove(other_failure_full_path)
+else:
+  print("Can't delete " + other_failure_full_path + " because it doesn't exist.")
+
 # MAIN FUNCTION: go through all years
-for i in range(0, num_years):
-  # needs to ascend in order to have the most recent data overwrite older data
-  current_year = starting_year + i
+# go through all quarters
+for quarter in quarters:
+  # print('going through quarter: ' + quarter + ' for year: ' + str(current_year))
+  # download = retrieve_idx_for_given_url(f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
+  # print('IDX: ' + f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
 
-  # go through all quarters
-  for quarter in quarters:
-    # print('going through quarter: ' + quarter + ' for year: ' + str(current_year))
-    download = retrieve_idx_for_given_url(f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
-    print('IDX: ' + f'https://www.sec.gov/Archives/edgar/full-index/{current_year}/{quarter}/master.idx')
+  download = []
 
-    #build the first part of the url
-    for item in download:
+  # grab 10ks from idx from local analysis
+  with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
+    for line in file:
+        download.append(line.rstrip())
 
-      # clean item
-      this_company = item
-      this_company = this_company.strip()
-      splitted_company = this_company.split('|')
-      if len(splitted_company) < 5:
-        continue
+  #build the first part of the url
+  for item in download:
+    
+    # try:
 
-      if splitted_company[2] == filing: # and ('SOUTH JERSEY GAS Co' in item or company in item): # and company in item: 
+    # clean item
+    this_company = item
+    this_company = this_company.strip()
+    splitted_company = this_company.split('|')
+    if len(splitted_company) < 5:
+      continue
 
-        base_url = 'https://www.sec.gov'
-        
-        company_name = splitted_company[1] # grabs company name
-        url = splitted_company[-1]
-        url2 = url.split('-')
-        url2 = url2[0] + url2[1] + url2[2]
-        url2 = url2.split('.txt')[0]
+    base_url = 'https://www.sec.gov'
+    
+    company_name = splitted_company[1] # grabs company name
+    url = splitted_company[-1]
+    url2 = url.split('-')
+    url2 = url2[0] + url2[1] + url2[2]
+    url2 = url2.split('.txt')[0]
 
-        # ten_k_url = base_url + '/Archives/'+ url2 + '/' + data
+    # ten_k_url = base_url + '/Archives/'+ url2 + '/' + data
 
-        ten_k_url = request_for_10k_url(base_url, url, url2)
+    ten_k_url = request_for_10k_url(base_url, url, url2)
 
-        # this gives us the index for all the tables
-        index_url = base_url + '/Archives/'+ url2 + '/' + 'index.json'
-        # print(index_url)
+    # this gives us the index for all the tables
+    index_url = base_url + '/Archives/'+ url2 + '/' + 'index.json'
+    # print(index_url)
 
-        content = requests.get(index_url, headers=headers).json()
+    content = requests.get(index_url, headers=headers).json()
 
-        # find xml overview
-        for file in content['directory']['item']:
-            if file['name'] == 'FilingSummary.xml':
+    xml_summary = ''
 
-                # this is a summary of what can be seen in the 10-k - we need to parse this to find individual tables
-                xml_summary = base_url + content['directory']['name'] + '/' + file['name']
+    # find xml overview
+    for file in content['directory']['item']:
+        if file['name'] == 'FilingSummary.xml':
 
-                break
+            # this is a summary of what can be seen in the 10-k - we need to parse this to find individual tables
+            xml_summary = base_url + content['directory']['name'] + '/' + file['name']
 
-        # grab a soup for the xml
-        new_base_url = xml_summary.replace('FilingSummary.xml','')
+            break
 
-        trading_symbol = request_for_ticker(new_base_url)
+    # this means there is no xml summary
+    if xml_summary == '':
+      continue
 
-        statements_url = get_url_for_statements(xml_summary, new_base_url)
+    # grab a soup for the xml
+    new_base_url = xml_summary.replace('FilingSummary.xml','')
 
-        # gets rid of / which causes errors
-        company_key = company_name.lower().replace('/','')
+    trading_symbol = request_for_ticker(new_base_url)
 
-        # we give up on these because the company can't file properly
-        if len(statements_url) == 0:
-          continue
-        elif len(statements_url) != 3:
-          # these i need to take another look at - will save them as failures
-          statement_failures.append((company_name, current_year, statements_url, xml_summary))
-          # we need to track what companies didn't have proper statement
-          doc_ref = db.collection(u'failures').document(company_key).set({
-            str(current_year) + "_summary": xml_summary,
-            str(current_year) + "_statements": list(statements_url.keys())
-          })
+    statements_url = get_url_for_statements(xml_summary, new_base_url)
+
+    # gets rid of / which causes errors
+    company_key = company_name.lower().replace('/','')
+
+    # we give up on these because the company can't file properly
+    if len(statements_url) == 0:
+      continue
+    elif len(statements_url) != 3:
+      # these i need to take another look at - will save them as failures
+      statement_failures.append((company_name, current_year, statements_url, xml_summary))
+      # we need to track what companies didn't have proper statement
+      # doc_ref = db.collection(u'failures').document(company_key).set({
+      #   str(current_year) + "_summary": xml_summary,
+      #   str(current_year) + "_statements": list(statements_url.keys()),
+      #   "details":"couldn't retrieve a table url"
+      # })
+
+      print('Statement failure for: ' + company_name)
+
+      error_str = company_name + ': ' + xml_summary + ' working statements: '
+      for key, value in statements_url.items():
+        error_str += key + " "
+      error_str += "\n"
+
+      with open(statement_failure_full_path, 'a') as the_file:
+        the_file.write(error_str)
+        # the_file.write(company_name + ': ' + xml_summary + ' working statements: ' + statements_url.keys() + '\n')
+
+      # reason_dict = {
+      #   str(current_year) + "_summary": xml_summary,
+      #   str(current_year) + "_statements": list(statements_url.keys()),
+      #   "details":"couldn't retrieve a table url"
+      # }
+
+      # submit_to_failures(company_key, current_year, reason_dict)
+      
+      # print('Statements issue for: ' + company_key + " ")
+      continue
+    else:
+      # we need to remove this company from failures if it exists
+      # remove_from_failures(company_key, current_year)
+      pass
+    
+    statements_data = retrieve_statement_data_from_statement_urls(statements_url)
+
+    # this checks for the issue where a table can't be found in one of the urls
+    if statements_data is None:
+
+      statement_failures.append((company_name, current_year, statements_url, xml_summary))
+
+      print("Table error for: " + company_name)
+
+      error_str = company_name + ': ' + xml_summary + ' table was not found at one of the table urls\n'
+
+      with open(other_failure_full_path, 'a') as the_file:
+        the_file.write(error_str)
+      # we need to track what companies didn't have proper statement
+      # reason_dict = {
+      #   str(current_year) + "_summary": xml_summary,
+      #   str(current_year) + "_statements": list(statements_url.keys()),
+      #   "details": "couldn't grab a table from within url"
+      # }
+      # submit_to_failures(company_key, current_year, reason_dict)
+      # doc_ref = db.collection(u'failures').document(company_key).set({
+      #   str(current_year) + "_summary": xml_summary,
+      #   str(current_year) + "_statements": list(statements_url.keys()),
+      #   "details": "couldn't grab a table from within url"
+      # })
+      
+      # print('Tables issue for: ' + company_key + " ")
+
+    # add url link to the array
+    statements_data.append("balance_source")
+    statements_data.append(statements_url['balance_sheet'])
+    statements_data.append("income_source")
+    statements_data.append(statements_url['income_statement'])
+    statements_data.append("cash_source")
+    statements_data.append(statements_url['cash_flow'])
+    statements_data.append("source")
+    statements_data.append(ten_k_url)
+
+    try:
+      # pprint(statements_data)
+      # this will overwrite
+      # doc_ref = db.collection(u'stock_data').document(company_key).set({
+      #   str(current_year) + "_complex": statements_data
+      # })
+
+      set_statement_data_to_firebase(company_key, current_year, statements_data)
+      # remove_from_failures(company_key, current_year)
+
+      # need to remove from failures here if this works
+
+      print('adding year: ' + str(current_year) + " for company " + company_name)        
+
+    except:
+
+      statement_failures.append((company_name, current_year, statements_url, xml_summary))
+
+      print('Array error for: ' + company_name)
+
+      error_str = company_name + ': ' + xml_summary + ' array error for given company\n'
+
+      with open(other_failure_full_path, 'a') as the_file:
+        the_file.write(error_str)
+
+      # reason_dict = {
+      #   str(current_year) + "_summary": xml_summary,
+      #   str(current_year) + "_statements": list(statements_url.keys()),
+      #   "details": "array issue"
+      # }
+
+      # submit_to_failures(company_key, current_year, reason_dict)
+      # doc_ref = db.collection(u'failures').document(company_key).set({
+      #   str(current_year) + "_summary": xml_summary,
+      #   str(current_year) + "_statements": list(statements_url.keys())
+      # })
+
+      # print('Array issue for: ' + company_key + " ")
+
+    # update trading symbol
+    if trading_symbol != '': 
+      doc_ref = set_or_update_trading_symbol(company_key, trading_symbol)
+      ticker_successes += 1
+    else: # we'll put null in there if it isn't in there or leave a proper symbol if it already is in there
+      doc_ref = db.collection(u'single_data').document("trading_symbols")
+      doc = doc_ref.get()
+      doc_dict = doc.to_dict()
+      if doc_dict is None or 'trading_symbol' not in doc_dict.keys():
+        doc_ref = set_or_update_trading_symbol(company_key, "null")
+        ticker_failures.append((company_name, current_year, new_base_url))
+
+    statement_successes += 1
+
+    # except Exception as e:
+
+    #   reason_dict = {
+    #     "details": "{e}"
+    #   }
+    #   submit_to_failures(company_key, current_year, reason_dict)
+      # we need to track what companies didn't have proper statement
+      # doc_ref = db.collection(u'failures').document(company_key).set({
+      #   "details": "{e}"
+      #     })
           
-          print('Statements issue for: ' + company_key + " ")
-          continue
-        else:
-          # we need to remove this company from failures if it exists
-          try:
-            doc_ref = db.collection(u'failures').document(company_key).update({
-              str(current_year) + "_summary": "fixed",
-              str(current_year) + "_statements": list(statements_url.keys())
-            })
-          except:
-            pass
-        statements_data = retrieve_statement_data_from_statement_urls(statements_url)
-
-        # add url link to the array
-        statements_data.append("source")
-        statements_data.append(ten_k_url)
-
-        try:
-          # pprint(statements_data)
-          # this will overwrite
-          doc_ref = db.collection(u'stock_data').document(company_key).set({
-            str(current_year) + "_complex": statements_data
-          })
-
-          print('adding year: ' + str(current_year) + " for company " + company_name)        
-
-        except:
-
-          statement_failures.append((company_name, current_year, statements_url, xml_summary))
-          doc_ref = db.collection(u'failures').document(company_key).set({
-            str(current_year) + "_summary": xml_summary,
-            str(current_year) + "_statements": list(statements_url.keys())
-          })
-
-          print('Array issue for: ' + company_key + " ")
-
-        # update trading symbol
-        if trading_symbol != '': 
-          doc_ref = set_or_update_trading_symbol(company_key, trading_symbol)
-          ticker_successes += 1
-        else: # we'll put null in there if it isn't in there or leave a proper symbol if it already is in there
-          doc_ref = db.collection(u'single_data').document("trading_symbols")
-          doc = doc_ref.get()
-          doc_dict = doc.to_dict()
-          if doc_dict is None or 'trading_symbol' not in doc_dict.keys():
-            doc_ref = set_or_update_trading_symbol(company_key, "null")
-            ticker_failures.append((company_name, current_year, new_base_url))
-
-        statement_successes += 1
-
+      # print('Exception caught for: ' + company_key)
 
   time.sleep(1) # pause in between each year as to not overload edgar
-
-# print summary and report failures
-
-# for failure in statement_failures:
-
-#   failure_path = f"{failure[0].lower().replace(' ','_')}/{failure[1]}"
-#   if not os.path.exists(failure_path):
-#       os.makedirs(failure_path)
-#   textfile = open(failure_path + "/statement_failure.txt", "w")
-#   textfile.write('FAILED: Cannot get all financials for: ' + failure[0] + " got " + str(len(failure[2])) + " reports.")
-#   for statement_url in failure[2]:
-#     textfile.write(statement_url)
-#   textfile.write('XML tree to check results: ' + failure[3])
-#   textfile.close()
-
-# for failure in ticker_failures:
-
-#   failure_path = f"{failure[0].lower().replace(' ','_')}/{failure[1]}"
-#   textfile = open(failure_path + "/ticker_failure.txt", "w")
-#   textfile.write('FAILED: To get ticker for: ' + failure[0])
-#   textfile.write('Chart url to check the issue: ' + failure[2])
-#   textfile.close()
 
 print("num statement failures: " + str(len(statement_failures)))
 print("num ticker failures: " + str(len(ticker_failures)))
 print("num statement successes: " + str(statement_successes))
 print("num ticker successes: " + str(ticker_successes))
-
-# adding multiple for one company name?? 2020 HYUNDAI ABS FUNDING LLC, Ally Auto Assets LLC
-# what about a chart with all NaNs?? - leave these for accuracy?
-# make sure to track failures to add correctly
-# create a script to determine missing tickers
