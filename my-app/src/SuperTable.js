@@ -141,6 +141,7 @@ class SuperTable extends Component {
         if(list_to_use.at(-2) === "source"){
             ten_k_source = list_to_use.at(-1)
         }
+        console.log(this.props.companyDict)
         console.log("LIST_TO_USE")
         console.log(list_to_use)
         this.tenKLink = list_to_use.at(-1)
@@ -200,8 +201,8 @@ class SuperTable extends Component {
         }
 
         this.balanceSheet = this.createList(balance_sheet_columns)
-        this.cashFlow = this.createList(income_statement_columns)
-        this.incomeStatement = this.createList(cash_flow_columns)
+        this.cashFlow = this.createList(cash_flow_columns)
+        this.incomeStatement = this.createList(income_statement_columns)
         this.balanceSheetHeader = this.createHeader(balance_sheet_columns)
         this.cashFlowHeader = this.createHeader(cash_flow_columns)
         this.incomeStatementHeader = this.createHeader(income_statement_columns)
@@ -343,11 +344,11 @@ class SuperTable extends Component {
         //   }
         // } = this;
 
-    console.log("logging before render")
-    console.log(this.tenKLink)
-    console.log(this.balanceLink)
-    console.log(this.incomeLink)
-    console.log(this.cashLink)
+    // console.log("logging before render")
+    // console.log(this.tenKLink)
+    // console.log(this.balanceLink)
+    // console.log(this.incomeLink)
+    // console.log(this.cashLink)
     // console.log(this.yearList)
     // console.log(this.currentYear)
     // console.log(this.simplify)
@@ -358,7 +359,7 @@ class SuperTable extends Component {
     // console.log(this.cashFlowHeader)
     // console.log(this.incomeStatementHeader)
 
-    console.log(this.currentSheet)
+    // console.log(this.currentSheet)
     
     if(typeof this.props.companyDict == "undefined"){
         return (
