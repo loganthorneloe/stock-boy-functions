@@ -1,3 +1,0 @@
-SOUTH JERSEY GAS Co: https://www.sec.gov/Archives/edgar/data/1035216/000009192820000013/FilingSummary.xml array error for given company
-SONIC AUTOMOTIVE INC: https://www.sec.gov/Archives/edgar/data/1043509/000104350920000006/FilingSummary.xml array error for given company
-EPR PROPERTIES: https://www.sec.gov/Archives/edgar/data/1045450/000104545020000019/FilingSummary.xml array error for given company
