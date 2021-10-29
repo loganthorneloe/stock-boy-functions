@@ -275,8 +275,8 @@ class SuperTable extends Component {
         }
 
         // add the decimal back onto the end if it existed
-        if(split_string.length < 1){
-            current_str = current_str + split_string[1]
+        if(split_string.length > 1){
+            current_str = current_str + "." + split_string[1]
         }
 
         return current_str
@@ -287,6 +287,10 @@ class SuperTable extends Component {
         for (var i = 2; i < columns.one.length; i++) {
             if(typeof columns.one[i] !== 'string'){
                 continue // this needs to be checked
+            }
+            // get rid of sentences in second column - must be a better way of doing this
+            if(columns.two[i].length > 15){
+                continue
             }
             var new_value = ""
             if(columns.two[i] !== "nan"){
