@@ -5,6 +5,7 @@ import pandas as pd
 import time
 from pprint import pprint
 import os
+import math
 
 import firebase_admin
 from firebase_admin import credentials
@@ -131,15 +132,17 @@ def get_url_for_statements(xml_summary, new_base_url):
     cash_item3 = 'consolidated statement of cash flows'
     cash_item4 = 'consolidated statements of cashflows'
     cash_item5 = 'consolidated cash flows'
+    cash_item6 = 'cash flows statement'
 
-    cash_flow_options = [cash_item1, cash_item2, cash_item3, cash_item4, cash_item5]
+    cash_flow_options = [cash_item1, cash_item2, cash_item3, cash_item4, cash_item5, cash_item6]
 
     # balance sheet possibilities
     balance_item1 = 'consolidated balance sheet'
     balance_item2 = 'consolidated balance sheets'
     balance_item3 = 'consolidated statements of financial condition'
+    balance_item4 = 'balance sheet'
 
-    balance_sheet_options = [balance_item1, balance_item2, balance_item3]
+    balance_sheet_options = [balance_item1, balance_item2, balance_item3, balance_item4]
 
     #income statement possibilities
     income_item1 = 'consolidated statements of operations'
@@ -155,6 +158,7 @@ def get_url_for_statements(xml_summary, new_base_url):
     income_item11 = 'consolidated statement of income (loss)'
     income_item12 = 'consolidated statements of operations and comprehensive earnings and loss'
     income_item13 = 'consolidated results of operations'
+    income_item14 = 'income statement'
 
     income_statement_options = [
       income_item1, 
@@ -169,7 +173,8 @@ def get_url_for_statements(xml_summary, new_base_url):
       income_item10, 
       income_item11, 
       income_item12, 
-      income_item13]
+      income_item13,
+      income_item14]
 
     for option in cash_flow_options:
       if option in report['name_short'] and not 'cash_flow' in statements_url:
@@ -187,6 +192,22 @@ def get_url_for_statements(xml_summary, new_base_url):
         break
 
   return statements_url
+
+def is_nan_col(column):
+  num_non_nans = 0
+  num_nans = 0
+  for val in column:
+    try:
+      if math.isnan(float(val)):
+        num_nans += 1
+      else:
+        num_non_nans += 1
+    except:
+      num_non_nans +=1
+
+  if num_nans > num_non_nans:
+    return True
+  return False
 
 def retrieve_statement_data_from_statement_urls(statements_url):
   # we need this order: balance sheet, income statement, cash flow
@@ -219,12 +240,6 @@ def retrieve_statement_data_from_statement_urls(statements_url):
     # grab full df
     df_list = pd.read_html(content)[0]
 
-    # clean the dataframe of rows we don't need
-    clean_df = df_list.iloc[:, 0:2]
-
-    # we need to create a clean dict here
-    clean_dict = OrderedDict()
-    clean_arr = []
     clean_arr_column_one = []
     clean_arr_column_two = []
 
@@ -232,39 +247,44 @@ def retrieve_statement_data_from_statement_urls(statements_url):
     clean_arr_column_one.append(statement)
     clean_arr_column_two.append("None")
 
-    # grab header titles
+    first_col = df_list.iloc[:, 0]
+    second_col = df_list.iloc[:, 1]
+
+    # this checks for a single gap row and switches it
+    if is_nan_col(second_col):
+      second_col = df_list.iloc[:, 2]
+
+    # grab headers
     if statement == "balance_sheet":
-      clean_dict[clean_df.columns.values[0]] = clean_df.columns.values[1]
-      clean_arr.append((clean_df.columns.values[0], clean_df.columns.values[1]))
-      clean_arr_column_one.append(clean_df.columns.values[0])
-      clean_arr_column_two.append(clean_df.columns.values[1])
+      clean_arr_column_one.append(first_col.name)
+      clean_arr_column_two.append(second_col.name)
     else:
-      clean_dict[clean_df.columns.values[0][0]] = clean_df.columns.values[1][1]
-      clean_arr.append((clean_df.columns.values[0][0], clean_df.columns.values[1][1]))
-      clean_arr_column_one.append(clean_df.columns.values[0][0])
-      clean_arr_column_two.append(clean_df.columns.values[1][1])
+      clean_arr_column_one.append(first_col.name[0])
+      clean_arr_column_two.append(second_col.name[1])
 
-    # create dictionary from df
-    for (index, row) in clean_df.iterrows():
-      if row[0] in sections:
-        row[0] = '<b>' + row[0]
-      if not isinstance(row[1], float):
+    # first column
+    for val in first_col:
+      if val in sections:
+        val = '<b>' + val
+      clean_arr_column_one.append(val)
+    
+    # second column
+    for val in second_col:
+      if not isinstance(val, float):
         # convert rows to floats
-        row[1] = row[1].replace('$ ','')
-        row[1] = row[1].replace('(','-')
-        row[1] = row[1].replace(')','')
-        row[1] = row[1].replace(',','')
+        val = val.replace('$ ','')
+        val = val.replace('(','-')
+        val = val.replace(')','')
+        val = val.replace(',','')
         # row[1] = float(row[1])
-      if isinstance(row[1], float):
-        row[1] = str(row[1])
-
-      clean_dict[row[0]] = row[1]
-      clean_arr.append((row[0], row[1]))
-      clean_arr_column_one.append(row[0])
-      clean_arr_column_two.append(row[1])
+      if isinstance(val, float):
+        val = str(val)
+      clean_arr_column_two.append(val)
     
     # combines all data into one list to preserve ordering
     columns = clean_arr_column_one + clean_arr_column_two
+
+    # pprint(columns)
 
     # make the dataframe floats and rearrange for to_dict
     if statement == "balance_sheet":
@@ -321,13 +341,13 @@ with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r
   for line in file:
       download.append(line.rstrip())
 
+# print(len(download))
+
+count = 0
+
 #build the first part of the url
 for item in download:
   
-  if "Apple Inc." not in item:
-    continue
-  # try:
-
   # clean item
   this_company = item
   this_company = this_company.strip()
@@ -375,13 +395,13 @@ for item in download:
 
   statements_url = get_url_for_statements(xml_summary, new_base_url)
 
+  print('got statements_url ' + str(len(statements_url)) + ' and ticker: ' + trading_symbol)
+
   # gets rid of / which causes errors
   company_key = company_name.lower().replace('/','')
 
   # we give up on these because the company can't file properly
-  if len(statements_url) == 0:
-    continue
-  elif len(statements_url) != 3:
+  if len(statements_url) != 3:
     # these i need to take another look at - will save them as failures
     statement_failures.append((company_name, current_year, statements_url, xml_summary))
     # we need to track what companies didn't have proper statement
@@ -457,7 +477,7 @@ for item in download:
   statements_data.append("source")
   statements_data.append(ten_k_url)
 
-  pprint(statements_data)
+  # pprint(statements_data)
 
   try:
     # pprint(statements_data)
