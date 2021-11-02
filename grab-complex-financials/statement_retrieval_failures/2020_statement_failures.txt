@@ -1,0 +1,74 @@
+NANOVIRICIDES, INC.: https://www.sec.gov/Archives/edgar/data/1379006/000110465920114577/FilingSummary.xml working statements: balance_sheet 
+ESSA Bancorp, Inc.: https://www.sec.gov/Archives/edgar/data/1382230/000156459020056993/FilingSummary.xml working statements: balance_sheet cash_flow 
+THC Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1404935/000147793220006275/FilingSummary.xml working statements: balance_sheet 
+Bespoke Extracts, Inc.: https://www.sec.gov/Archives/edgar/data/1409197/000121390020043297/FilingSummary.xml working statements: balance_sheet 
+Voip-pal.com Inc: https://www.sec.gov/Archives/edgar/data/1410738/000149315220023764/FilingSummary.xml working statements: balance_sheet cash_flow 
+Concrete Leveling Systems Inc: https://www.sec.gov/Archives/edgar/data/1414382/000147793220006149/FilingSummary.xml working statements: balance_sheet 
+SOUTHWEST IOWA RENEWABLE ENERGY, LLC: https://www.sec.gov/Archives/edgar/data/1424844/000142484420000019/FilingSummary.xml working statements: balance_sheet 
+Rise Gold Corp.: https://www.sec.gov/Archives/edgar/data/1424864/000127351120000243/FilingSummary.xml working statements: balance_sheet cash_flow 
+ALTEROLA BIOTECH INC.: https://www.sec.gov/Archives/edgar/data/1442999/000166357720000468/FilingSummary.xml working statements: balance_sheet 
+Xiamen Lutong International Travel Agency Co., Ltd.: https://www.sec.gov/Archives/edgar/data/1445175/000173112220001040/FilingSummary.xml working statements: balance_sheet 
+Texas Mineral Resources Corp.: https://www.sec.gov/Archives/edgar/data/1445942/000107878220000930/FilingSummary.xml working statements: balance_sheet 
+Wall Street Media Co, Inc.: https://www.sec.gov/Archives/edgar/data/1473490/000149315220021005/FilingSummary.xml working statements: balance_sheet 
+NEUROONE MEDICAL TECHNOLOGIES Corp: https://www.sec.gov/Archives/edgar/data/1500198/000121390020041661/FilingSummary.xml working statements: balance_sheet 
+Globe Net Wireless Corp.: https://www.sec.gov/Archives/edgar/data/1511820/000149315220023476/FilingSummary.xml working statements: balance_sheet 
+Artisan Consumer Goods, Inc.: https://www.sec.gov/Archives/edgar/data/1530425/000147793220007342/FilingSummary.xml working statements: balance_sheet 
+Pazoo, Inc.: https://www.sec.gov/Archives/edgar/data/1533427/000147793220007118/FilingSummary.xml working statements: balance_sheet 
+Tianci International, Inc.: https://www.sec.gov/Archives/edgar/data/1557798/000168316820003354/FilingSummary.xml working statements: balance_sheet 
+PETROTEQ ENERGY INC.: https://www.sec.gov/Archives/edgar/data/1561180/000121390020042837/FilingSummary.xml working statements: balance_sheet cash_flow 
+Bionovate Technologies Corp.: https://www.sec.gov/Archives/edgar/data/1575420/000164033420002607/FilingSummary.xml working statements: balance_sheet 
+PRUDENTIAL BANCORP, INC.: https://www.sec.gov/Archives/edgar/data/1578776/000155837020014473/FilingSummary.xml working statements: income_statement 
+BALLY, CORP.: https://www.sec.gov/Archives/edgar/data/1591565/000164033420003131/FilingSummary.xml working statements: balance_sheet 
+Keysight Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1601046/000160104620000154/FilingSummary.xml working statements: balance_sheet cash_flow 
+Agentix Corp.: https://www.sec.gov/Archives/edgar/data/1603345/000147793220007176/FilingSummary.xml working statements: balance_sheet cash_flow 
+Evoqua Water Technologies Corp.: https://www.sec.gov/Archives/edgar/data/1604643/000160464320000035/FilingSummary.xml working statements: balance_sheet income_statement 
+Life Clips, Inc.: https://www.sec.gov/Archives/edgar/data/1604930/000149315220022464/FilingSummary.xml working statements: balance_sheet 
+TRENDMAKER INC. LTD.: https://www.sec.gov/Archives/edgar/data/1613685/000149315220019776/FilingSummary.xml working statements: balance_sheet 
+LEGACY VENTURES INTERNATIONAL INC.: https://www.sec.gov/Archives/edgar/data/1616788/000107997320000881/FilingSummary.xml working statements: balance_sheet 
+World Gold Trust: https://www.sec.gov/Archives/edgar/data/1618181/000119312520301507/FilingSummary.xml working statements: 
+Summit Networks Inc.: https://www.sec.gov/Archives/edgar/data/1619096/000121390020036967/FilingSummary.xml working statements: balance_sheet cash_flow 
+PANAMERA HEALTHCARE Corp: https://www.sec.gov/Archives/edgar/data/1620749/000164033420002680/FilingSummary.xml working statements: balance_sheet 
+Odyssey Group International, Inc.: https://www.sec.gov/Archives/edgar/data/1626644/000168316820003913/FilingSummary.xml working statements: balance_sheet 
+VISIBER57 CORP.: https://www.sec.gov/Archives/edgar/data/1627041/000149315220022651/FilingSummary.xml working statements: balance_sheet 
+OPTILEAF, INC.: https://www.sec.gov/Archives/edgar/data/1628228/000121390020043998/FilingSummary.xml working statements: balance_sheet 
+Appsoft Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1651992/000147793220007062/FilingSummary.xml working statements: balance_sheet 
+Road Marshall, Inc.: https://www.sec.gov/Archives/edgar/data/1657249/000159991620000158/FilingSummary.xml working statements: balance_sheet 
+Zedge, Inc.: https://www.sec.gov/Archives/edgar/data/1667313/000121390020033714/FilingSummary.xml working statements: balance_sheet cash_flow 
+GSG GROUP INC.: https://www.sec.gov/Archives/edgar/data/1668523/000164033420002974/FilingSummary.xml working statements: balance_sheet 
+ASHLAND GLOBAL HOLDINGS INC: https://www.sec.gov/Archives/edgar/data/1674862/000156459020054890/FilingSummary.xml working statements: balance_sheet cash_flow 
+VALVOLINE INC: https://www.sec.gov/Archives/edgar/data/1674910/000167491020000221/FilingSummary.xml working statements: balance_sheet cash_flow 
+BOOMER HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1678746/000114036120024891/FilingSummary.xml working statements: balance_sheet cash_flow 
+Boxxy Inc.: https://www.sec.gov/Archives/edgar/data/1680689/000164033420003148/FilingSummary.xml working statements: balance_sheet 
+Varex Imaging Corp: https://www.sec.gov/Archives/edgar/data/1681622/000168162220000116/FilingSummary.xml working statements: balance_sheet cash_flow 
+TEMIR CORP.: https://www.sec.gov/Archives/edgar/data/1685237/000121390020042718/FilingSummary.xml working statements: balance_sheet cash_flow 
+NetPay International Inc: https://www.sec.gov/Archives/edgar/data/1689490/000107878220000762/FilingSummary.xml working statements: balance_sheet cash_flow 
+Crona Corp.: https://www.sec.gov/Archives/edgar/data/1696411/000169641120000020/FilingSummary.xml working statements: balance_sheet 
+Ciclet Holdings Inc.: https://www.sec.gov/Archives/edgar/data/1699126/000164033420002990/FilingSummary.xml working statements: balance_sheet 
+Leader Hill Corp: https://www.sec.gov/Archives/edgar/data/1723187/000149315220023456/FilingSummary.xml working statements: balance_sheet 
+BANGFU TECHNOLOGY GROUP CO., LTD.: https://www.sec.gov/Archives/edgar/data/1741257/000173112220001042/FilingSummary.xml working statements: balance_sheet 
+BIGEON CORP.: https://www.sec.gov/Archives/edgar/data/1753391/000175339120000012/FilingSummary.xml working statements: balance_sheet 
+Pacific Sports Exchange Inc.: https://www.sec.gov/Archives/edgar/data/1765651/000164033420003065/FilingSummary.xml working statements: balance_sheet 
+Union Acquisition Corp. II: https://www.sec.gov/Archives/edgar/data/1766146/000121390020045308/FilingSummary.xml working statements: balance_sheet 
+Cerence Inc.: https://www.sec.gov/Archives/edgar/data/1768267/000156459020054595/FilingSummary.xml working statements: balance_sheet 
+KURA SUSHI USA, INC.: https://www.sec.gov/Archives/edgar/data/1772177/000156459020054401/FilingSummary.xml working statements: balance_sheet 
+AZEK Co Inc.: https://www.sec.gov/Archives/edgar/data/1782754/000119312520310665/FilingSummary.xml working statements: balance_sheet cash_flow 
+Nowtransit Inc: https://www.sec.gov/Archives/edgar/data/1784440/000168316820004096/FilingSummary.xml working statements: balance_sheet 
+Excellerant, Inc.: https://www.sec.gov/Archives/edgar/data/1786119/000139390520000342/FilingSummary.xml working statements: balance_sheet 
+Azar International Corp.: https://www.sec.gov/Archives/edgar/data/1787123/000147793220005756/FilingSummary.xml working statements: balance_sheet 
+NUGENEREX IMMUNO-ONCOLOGY, INC.: https://www.sec.gov/Archives/edgar/data/1804585/000160706220000307/FilingSummary.xml working statements: balance_sheet 
+PISMO COAST VILLAGE INC: https://www.sec.gov/Archives/edgar/data/216877/000151316220000246/FilingSummary.xml working statements: balance_sheet 
+CUBIC CORP /DE/: https://www.sec.gov/Archives/edgar/data/26076/000155837020013974/FilingSummary.xml working statements: balance_sheet 
+DEERE JOHN CAPITAL CORP: https://www.sec.gov/Archives/edgar/data/27673/000155837020014439/FilingSummary.xml working statements: balance_sheet cash_flow 
+PHX MINERALS INC.: https://www.sec.gov/Archives/edgar/data/315131/000156459020056736/FilingSummary.xml working statements: balance_sheet 
+DEERE & CO: https://www.sec.gov/Archives/edgar/data/315189/000155837020014436/FilingSummary.xml working statements: balance_sheet cash_flow 
+GEE Group Inc.: https://www.sec.gov/Archives/edgar/data/40570/000147793220007544/FilingSummary.xml working statements: balance_sheet cash_flow 
+Hill-Rom Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/47518/000004751820000129/FilingSummary.xml working statements: balance_sheet cash_flow 
+IEH Corp: https://www.sec.gov/Archives/edgar/data/50292/000117494720000987/FilingSummary.xml working statements: balance_sheet 
+CEL SCI CORP: https://www.sec.gov/Archives/edgar/data/725363/000165495420013975/FilingSummary.xml working statements: balance_sheet 
+ABM INDUSTRIES INC /DE/: https://www.sec.gov/Archives/edgar/data/771497/000077149720000018/FilingSummary.xml working statements: balance_sheet cash_flow 
+DAILY JOURNAL CORP: https://www.sec.gov/Archives/edgar/data/783412/000143774920025531/FilingSummary.xml working statements: balance_sheet cash_flow 
+PLEXUS CORP: https://www.sec.gov/Archives/edgar/data/785786/000078578620000102/FilingSummary.xml working statements: balance_sheet cash_flow 
+Clearfield, Inc.: https://www.sec.gov/Archives/edgar/data/796505/000117184320007946/FilingSummary.xml working statements: balance_sheet 
+FINOTEC GROUP INC: https://www.sec.gov/Archives/edgar/data/831378/000121390020037910/FilingSummary.xml working statements: balance_sheet 
+Johnson Controls International plc: https://www.sec.gov/Archives/edgar/data/833444/000083344420000048/FilingSummary.xml working statements: income_statement cash_flow 
+THANKSGIVING COFFEE CO INC: https://www.sec.gov/Archives/edgar/data/949852/000143774920021636/FilingSummary.xml working statements: balance_sheet 

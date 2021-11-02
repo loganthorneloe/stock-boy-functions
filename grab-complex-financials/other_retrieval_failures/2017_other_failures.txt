@@ -1,0 +1,26 @@
+SYNTEL INC: https://www.sec.gov/Archives/edgar/data/1040426/000119312517066104/FilingSummary.xml table was not found at one of the table urls
+CARDINAL FINANCIAL CORP: https://www.sec.gov/Archives/edgar/data/1060523/000110465917016575/FilingSummary.xml array error for given company
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060617000006/FilingSummary.xml array error for given company
+CITIZENS HOLDING CO /MS/: https://www.sec.gov/Archives/edgar/data/1075706/000119312517083390/FilingSummary.xml array error for given company
+BOEING CO: https://www.sec.gov/Archives/edgar/data/12927/000001292717000006/FilingSummary.xml array error for given company
+People's United Financial, Inc.: https://www.sec.gov/Archives/edgar/data/1378946/000119312517065121/FilingSummary.xml array error for given company
+Bank of Marin Bancorp: https://www.sec.gov/Archives/edgar/data/1403475/000140347517000012/FilingSummary.xml array error for given company
+NorthStar Real Estate Income Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1455650/000145565017000008/FilingSummary.xml array error for given company
+NorthStar Healthcare Income, Inc.: https://www.sec.gov/Archives/edgar/data/1503707/000150370717000004/FilingSummary.xml array error for given company
+NorthStar/RXR New York Metro Real Estate, Inc.: https://www.sec.gov/Archives/edgar/data/1603671/000160367117000021/FilingSummary.xml array error for given company
+CHEMICAL FINANCIAL CORP: https://www.sec.gov/Archives/edgar/data/19612/000001961217000015/FilingSummary.xml array error for given company
+DIEBOLD NIXDORF, Inc: https://www.sec.gov/Archives/edgar/data/28823/000002882317000052/FilingSummary.xml array error for given company
+ALLSTATE LIFE INSURANCE CO: https://www.sec.gov/Archives/edgar/data/352736/000035273617000012/FilingSummary.xml array error for given company
+TRUSTCO BANK CORP N Y: https://www.sec.gov/Archives/edgar/data/357301/000114036117010584/FilingSummary.xml array error for given company
+BANK OF HAWAII CORP: https://www.sec.gov/Archives/edgar/data/46195/000004619517000013/FilingSummary.xml array error for given company
+ACNB CORP: https://www.sec.gov/Archives/edgar/data/715579/000104746917001613/FilingSummary.xml array error for given company
+COMMUNITY BANK SYSTEM, INC.: https://www.sec.gov/Archives/edgar/data/723188/000072318817000011/FilingSummary.xml array error for given company
+SUFFOLK BANCORP: https://www.sec.gov/Archives/edgar/data/754673/000114036117013483/FilingSummary.xml array error for given company
+CLIFFS NATURAL RESOURCES INC.: https://www.sec.gov/Archives/edgar/data/764065/000076406517000021/FilingSummary.xml array error for given company
+SANDY SPRING BANCORP INC: https://www.sec.gov/Archives/edgar/data/824410/000082441017000003/FilingSummary.xml array error for given company
+ON ASSIGNMENT INC: https://www.sec.gov/Archives/edgar/data/890564/000089056417000046/FilingSummary.xml array error for given company
+ALLSTATE CORP: https://www.sec.gov/Archives/edgar/data/899051/000089905117000005/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060617000006/FilingSummary.xml array error for given company
+DELTA NATURAL GAS CO INC: https://www.sec.gov/Archives/edgar/data/277375/000027737517000180/FilingSummary.xml array error for given company
+ESCALON MEDICAL CORP: https://www.sec.gov/Archives/edgar/data/862668/000086266817000014/FilingSummary.xml array error for given company
+TFS Financial CORP: https://www.sec.gov/Archives/edgar/data/1381668/000138166817000077/FilingSummary.xml table was not found at one of the table urls

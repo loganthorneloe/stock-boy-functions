@@ -86,6 +86,8 @@ class SuperTable extends Component {
             this.grabSourceLinks()
             this.generateDisplayColumns()
             this.forceUpdate()
+
+            console.log(this.yearList)
         }
     }
 
@@ -93,16 +95,19 @@ class SuperTable extends Component {
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
+        console.log(this.props.companyDict)
         // console.log("determing years")
         var keys_to_use = Object.keys(this.props.companyDict)
+        console.log("keys")
+        console.log(keys_to_use)
         var years_arr = []
         for (var i = 0; i < keys_to_use.length; i++){
             var split_key_array = keys_to_use[i].split('_')
-            years_arr.push(split_key_array.at(0))
+            years_arr.unshift(split_key_array.at(0))
         }
         
         this.yearList = years_arr
-        this.currentYear = years_arr.at(-1)
+        this.currentYear = years_arr.at(0)
         // console.log('error checking in determine years')
         // console.log(this.yearList)
         // console.log(this.currentYear)
@@ -223,13 +228,13 @@ class SuperTable extends Component {
         // })
     }
 
-    renderDropdown(dropDownYear, index) {
-        return (
-            <Dropdown.Item /*onClick={this.currentYear=dropDownYear}*/ class="dropdown-item">
-                {dropDownYear}
-            </Dropdown.Item>
-        )
-    }
+    // renderDropdown(dropDownYear, index) {
+    //     return (
+    //         <Dropdown.Item onClick={(e) => this.currentYear = e} class="dropdown-item">
+    //             {dropDownYear}
+    //         </Dropdown.Item>
+    //     )
+    // }
 
     renderRow(new_list_row, index) {
         // console.log(new_list_row)
@@ -325,11 +330,18 @@ class SuperTable extends Component {
 
     renderDropdown = (dropDownYear, index) => {
         return (
-            <Dropdown.Item href="#/action-{dropDownYear}" class="dropdown-item">
-                {dropDownYear}
-            </Dropdown.Item>
+            <Dropdown.Item eventKey={dropDownYear} onClick={(e) => this.changeValue(e.target.textContent)}>{dropDownYear}</Dropdown.Item>
         )
      }
+
+    changeValue(text) {
+        // console.log(text)
+        this.currentYear = text
+        // console.log(this.currentYear)
+        this.grabSourceLinks()
+        this.generateDisplayColumns()
+        this.forceUpdate()
+    }
     
 
     render() {
@@ -396,9 +408,16 @@ class SuperTable extends Component {
                                         <div class="col-sm-4 my-auto" align="center">
                                             <div class="row">
                                                 <div class="col my-auto">
-                                                    <DropdownButton id="dropdown-basic-button" style={{"display":"inline-block"}} title={this.props.currentYear}>
-                                                        {this.renderDropdownMenu}
+                                                    <DropdownButton id="dropdown-basic-button" style={{"display":"inline-block"}} title={this.currentYear}>
+                                                        {this.yearList.map(this.renderDropdown)}
                                                     </DropdownButton>
+                                                    {/* <DropdownButton align="end" title={this.currentYear} id="dropdown-menu-align-end">
+                                                        <Dropdown.Item eventKey="1" onClick={(e) => this.changeValue(e.target.textContent)}>2017</Dropdown.Item>
+                                                        <Dropdown.Item eventKey="2" onClick={(e) => this.changeValue(e.target.textContent)}>2018</Dropdown.Item>
+                                                        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+                                                        <Dropdown.Divider />
+                                                        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                                                    </DropdownButton> */}
                                                 </div>
                                                 <div class="col my-auto">
                                                     <button onClick={() => this.openURL(this.tenKLink)} type="button" class="btn btn-outline-primary float-right">10-K</button>

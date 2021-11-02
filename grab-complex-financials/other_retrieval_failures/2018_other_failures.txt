@@ -1,0 +1,23 @@
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060618000010/FilingSummary.xml array error for given company
+ZIONS BANCORPORATION /UT/: https://www.sec.gov/Archives/edgar/data/109380/000010938018000102/FilingSummary.xml array error for given company
+BOEING CO: https://www.sec.gov/Archives/edgar/data/12927/000001292718000007/FilingSummary.xml array error for given company
+People's United Financial, Inc.: https://www.sec.gov/Archives/edgar/data/1378946/000119312518067489/FilingSummary.xml array error for given company
+Bank of Marin Bancorp: https://www.sec.gov/Archives/edgar/data/1403475/000140347518000006/FilingSummary.xml array error for given company
+BLACKHAWK NETWORK HOLDINGS, INC: https://www.sec.gov/Archives/edgar/data/1411488/000141148818000011/FilingSummary.xml array error for given company
+Groupon, Inc.: https://www.sec.gov/Archives/edgar/data/1490281/000149028118000018/FilingSummary.xml array error for given company
+NorthStar/RXR New York Metro Real Estate, Inc.: https://www.sec.gov/Archives/edgar/data/1603671/000160367118000029/FilingSummary.xml array error for given company
+CHEMICAL FINANCIAL CORP: https://www.sec.gov/Archives/edgar/data/19612/000001961218000037/FilingSummary.xml array error for given company
+ALLSTATE LIFE INSURANCE CO: https://www.sec.gov/Archives/edgar/data/352736/000035273618000004/FilingSummary.xml array error for given company
+TRUSTCO BANK CORP N Y: https://www.sec.gov/Archives/edgar/data/357301/000114036118011110/FilingSummary.xml array error for given company
+BANK OF HAWAII CORP: https://www.sec.gov/Archives/edgar/data/46195/000004619518000025/FilingSummary.xml array error for given company
+ACNB CORP: https://www.sec.gov/Archives/edgar/data/715579/000104746918001446/FilingSummary.xml array error for given company
+COMMUNITY BANK SYSTEM, INC.: https://www.sec.gov/Archives/edgar/data/723188/000114036118011107/FilingSummary.xml array error for given company
+CLEVELAND-CLIFFS INC.: https://www.sec.gov/Archives/edgar/data/764065/000076406518000035/FilingSummary.xml array error for given company
+PENN VIRGINIA CORP: https://www.sec.gov/Archives/edgar/data/77159/000007715918000008/FilingSummary.xml array error for given company
+SANDY SPRING BANCORP INC: https://www.sec.gov/Archives/edgar/data/824410/000082441018000004/FilingSummary.xml array error for given company
+ALLSTATE CORP: https://www.sec.gov/Archives/edgar/data/899051/000089905118000007/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060618000010/FilingSummary.xml array error for given company
+NorthStar Healthcare Income, Inc.: https://www.sec.gov/Archives/edgar/data/1503707/000150370718000004/FilingSummary.xml array error for given company
+LEGG MASON, INC.: https://www.sec.gov/Archives/edgar/data/704051/000070405118000066/FilingSummary.xml array error for given company
+ESCALON MEDICAL CORP: https://www.sec.gov/Archives/edgar/data/862668/000086266818000014/FilingSummary.xml array error for given company
+TFS Financial CORP: https://www.sec.gov/Archives/edgar/data/1381668/000138166818000104/FilingSummary.xml table was not found at one of the table urls

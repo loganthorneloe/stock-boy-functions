@@ -58,7 +58,7 @@ ticker_successes = 0
 #     pass
 
 def set_statement_data_to_firebase(company_key, current_year, statements_data):
-  doc_ref = db.collection(u'stock_data').document(company_key).set({
+  doc_ref = db.collection(u'stock_data').document(company_key).update({
               str(current_year) + "_complex": statements_data
             })
 
@@ -88,13 +88,17 @@ def request_for_ticker(url):
 
 def request_for_10k_url(base_url, url, url2):
 
-  # this is to get the 10k link
-  to_get_html_site = 'https://www.sec.gov/Archives/' + url
-  # print(to_get_html_site)
-  data = requests.get(to_get_html_site, headers=headers).content
-  data = data.decode("utf-8") 
-  data = data.split('<FILENAME>')
-  data = data[1].split('\n')[0]
+  try:
+    # this is to get the 10k link
+    to_get_html_site = 'https://www.sec.gov/Archives/' + url
+    # print(to_get_html_site)
+    data = requests.get(to_get_html_site, headers=headers).content
+    data = data.decode("utf-8") 
+    data = data.split('<FILENAME>')
+    data = data[1].split('\n')[0]
+
+  except:
+    return None
 
   return base_url + '/Archives/'+ url2 + '/' + data
 
@@ -252,7 +256,10 @@ def retrieve_statement_data_from_statement_urls(statements_url):
 
     # this checks for a single gap row and switches it
     if is_nan_col(second_col):
-      second_col = df_list.iloc[:, 2]
+      try:
+        second_col = df_list.iloc[:, 2]
+      except:
+        return None
 
     # grab headers
     if statement == "balance_sheet":
@@ -310,7 +317,7 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
-current_year = 2020
+current_year = 2018
 statement_failure_file_name = str(current_year) + "_statement_failures.txt"
 statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
 other_failure_file_name = str(current_year) + "_other_failures.txt"
@@ -345,9 +352,19 @@ with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r
 
 count = 0
 
+start_item = "NANOVIRICIDES, INC."
+start = True
+
 #build the first part of the url
 for item in download:
   
+  # for testing specific companies
+  # if start_item in item:
+  #   start = True
+
+  if not start:
+    continue
+
   # clean item
   this_company = item
   this_company = this_company.strip()
@@ -366,6 +383,18 @@ for item in download:
   # ten_k_url = base_url + '/Archives/'+ url2 + '/' + data
 
   ten_k_url = request_for_10k_url(base_url, url, url2)
+
+  if ten_k_url is None:
+    statement_failures.append((company_name, current_year, statements_url, xml_summary))
+
+    print('10k link failure for: ' + company_name)
+
+    error_str = company_name + ': ' + ' 10k link failure'
+    error_str += "\n"
+
+    with open(statement_failure_full_path, 'a') as the_file:
+      the_file.write(error_str)
+    continue
 
   # this gives us the index for all the tables
   index_url = base_url + '/Archives/'+ url2 + '/' + 'index.json'
@@ -393,9 +422,31 @@ for item in download:
 
   trading_symbol = request_for_ticker(new_base_url)
 
-  statements_url = get_url_for_statements(xml_summary, new_base_url)
+  try:
 
-  print('got statements_url ' + str(len(statements_url)) + ' and ticker: ' + trading_symbol)
+    statements_url = get_url_for_statements(xml_summary, new_base_url)
+
+  except:
+
+    statement_failures.append((company_name, current_year, statements_url, xml_summary))
+    # we need to track what companies didn't have proper statement
+    # doc_ref = db.collection(u'failures').document(company_key).set({
+    #   str(current_year) + "_summary": xml_summary,
+    #   str(current_year) + "_statements": list(statements_url.keys()),
+    #   "details":"couldn't retrieve a table url"
+    # })
+
+    print('Reports is null failure for: ' + company_name)
+
+    error_str = company_name + ': ' + xml_summary + ' reports are null?? '
+    error_str += "\n"
+
+    with open(statement_failure_full_path, 'a') as the_file:
+      the_file.write(error_str)
+
+    continue
+
+  # print('got statements_url ' + str(len(statements_url)) + ' and ticker: ' + trading_symbol)
 
   # gets rid of / which causes errors
   company_key = company_name.lower().replace('/','')
@@ -452,6 +503,7 @@ for item in download:
 
     with open(other_failure_full_path, 'a') as the_file:
       the_file.write(error_str)
+    continue
     # we need to track what companies didn't have proper statement
     # reason_dict = {
     #   str(current_year) + "_summary": xml_summary,

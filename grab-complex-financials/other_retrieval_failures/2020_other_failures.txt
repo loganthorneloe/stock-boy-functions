@@ -1,0 +1,2 @@
+TFS Financial CORP: https://www.sec.gov/Archives/edgar/data/1381668/000138166820000107/FilingSummary.xml table was not found at one of the table urls
+Atlas Financial Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1539894/000153989420000071/FilingSummary.xml array error for given company
