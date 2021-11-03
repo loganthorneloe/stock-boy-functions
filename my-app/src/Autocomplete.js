@@ -44,9 +44,11 @@ class Autocomplete extends Component {
     const { activeSuggestion, filteredSuggestions } = this.state;
   
     if (e.keyCode === 13) {
-      // e.PreventDefault()
+      console.log("on enter")
+      e.PreventDefault()
       this.setState({
         activeSuggestion: 0,
+        filteredSuggestions: [],
         showSuggestions: false,
         userInput: filteredSuggestions[activeSuggestion]
       }, () => {

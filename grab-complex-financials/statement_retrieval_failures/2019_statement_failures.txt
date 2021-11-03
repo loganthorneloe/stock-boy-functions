@@ -249,7 +249,7 @@ RIDGEWOOD ENERGY V FUND LLC: https://www.sec.gov/Archives/edgar/data/1385662/000
 CERES ABINGDON L.P.: https://www.sec.gov/Archives/edgar/data/1386164/000119312519086260/FilingSummary.xml working statements: 
 U.S. Stem Cell, Inc.: https://www.sec.gov/Archives/edgar/data/1388319/000118518519000351/FilingSummary.xml working statements: balance_sheet 
 MARIN SOFTWARE INC: https://www.sec.gov/Archives/edgar/data/1389002/000143774919004926/FilingSummary.xml working statements: balance_sheet cash_flow 
-ACQUIRED SALES CORP: https://www.sec.gov/Archives/edgar/data/1391135/000144586619000245/FilingSummary.xml reports are null?? 
+ACQUIRED SALES CORP: https://www.sec.gov/Archives/edgar/data/1391135/000144586619000245/FilingSummary.xml working statements: balance_sheet 
 Green Planet Bio Engineering Co. Ltd.: https://www.sec.gov/Archives/edgar/data/1392449/000165495419002154/FilingSummary.xml working statements: balance_sheet 
 Lightning Gaming, Inc.: https://www.sec.gov/Archives/edgar/data/1392545/000089016319000014/FilingSummary.xml working statements: balance_sheet income_statement 
 PROS Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1392972/000139297219000067/FilingSummary.xml working statements: balance_sheet cash_flow 

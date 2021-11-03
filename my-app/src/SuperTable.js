@@ -78,16 +78,16 @@ class SuperTable extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.company !== this.props.company) {
-            console.log('something prop has changed.')
-            console.log(this.props.company)
-            console.log(this.props.companyDict)
+            // console.log('something prop has changed.')
+            // console.log(this.props.company)
+            // console.log(this.props.companyDict)
 
             this.determineYears()
             this.grabSourceLinks()
             this.generateDisplayColumns()
             this.forceUpdate()
 
-            console.log(this.yearList)
+            // console.log(this.yearList)
         }
     }
 
@@ -95,7 +95,7 @@ class SuperTable extends Component {
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
-        console.log(this.props.companyDict)
+        // console.log(this.props.companyDict)
         // console.log("determing years")
         var keys_to_use = Object.keys(this.props.companyDict)
         console.log("keys")
@@ -106,8 +106,8 @@ class SuperTable extends Component {
             years_arr.unshift(split_key_array.at(0))
         }
         
-        this.yearList = years_arr
-        this.currentYear = years_arr.at(0)
+        this.yearList = years_arr.sort()
+        this.currentYear = this.yearList.at(0)
         // console.log('error checking in determine years')
         // console.log(this.yearList)
         // console.log(this.currentYear)
@@ -123,9 +123,6 @@ class SuperTable extends Component {
         }
         // console.log("grabbing 10k link")
         var ten_k_source = ""
-        var balance_source = ""
-        var cash_source = ""
-        var income_source = ""
         var list_to_use = []
         var key_to_use = ""
         if(!this.simplify){
@@ -146,9 +143,10 @@ class SuperTable extends Component {
         if(list_to_use.at(-2) === "source"){
             ten_k_source = list_to_use.at(-1)
         }
-        console.log(this.props.companyDict)
-        console.log("LIST_TO_USE")
-        console.log(list_to_use)
+        // console.log(this.props.companyDict)
+        // console.log("LIST_TO_USE")
+        // console.log(list_to_use)
+        // console.log(this.tenKLink)
         this.tenKLink = list_to_use.at(-1)
         this.balanceLink = list_to_use.at(-7)
         this.incomeLink = list_to_use.at(-5)
@@ -175,9 +173,11 @@ class SuperTable extends Component {
         list_to_use = this.props.companyDict[key_to_use]
 
         // this is popping for the sources
-        for(var i = 0; i < 8; i++){
-            list_to_use.pop()
-        }
+        // for(var i = 0; i < 8; i++){
+        //     list_to_use.pop()
+        // }
+
+        var list_to_use_minus_sources = list_to_use.slice(0, list_to_use.length-8)
 
         // if(list_to_use.at(-2) === "source"){
         //     // get rid of the source in the array
@@ -185,12 +185,12 @@ class SuperTable extends Component {
         //     list_to_use.pop()
         // }
 
-        var income_statement_index = list_to_use.indexOf("income_statement")
-        var cash_flow_index = list_to_use.indexOf("cash_flow")
+        var income_statement_index = list_to_use_minus_sources.indexOf("income_statement")
+        var cash_flow_index = list_to_use_minus_sources.indexOf("cash_flow")
 
-        var balance_sheet_arr = list_to_use.slice(0, income_statement_index)
-        var income_statement_arr = list_to_use.slice(income_statement_index, cash_flow_index)
-        var cash_flow_arr = list_to_use.slice(cash_flow_index, list_to_use.length)
+        var balance_sheet_arr = list_to_use_minus_sources.slice(0, income_statement_index)
+        var income_statement_arr = list_to_use_minus_sources.slice(income_statement_index, cash_flow_index)
+        var cash_flow_arr = list_to_use_minus_sources.slice(cash_flow_index, list_to_use_minus_sources.length)
 
         var balance_sheet_columns = {
             one: balance_sheet_arr.slice(0, (balance_sheet_arr.length/2)),
@@ -211,6 +211,8 @@ class SuperTable extends Component {
         this.balanceSheetHeader = this.createHeader(balance_sheet_columns)
         this.cashFlowHeader = this.createHeader(cash_flow_columns)
         this.incomeStatementHeader = this.createHeader(income_statement_columns)
+
+
 
         // console.log(this.balanceSheetHeader)
         // console.log(this.cashFlowHeader)
@@ -237,7 +239,6 @@ class SuperTable extends Component {
     // }
 
     renderRow(new_list_row, index) {
-        // console.log(new_list_row)
         if(new_list_row.key.includes("<b>")){
             var replaced = new_list_row.key.replace("<b>","")
             return (
@@ -308,24 +309,18 @@ class SuperTable extends Component {
     }
 
     createHeader (columns) {
-        // console.log(columns)
         var header = {"key" : columns.one[1], "value" : columns.two[1]}
         return header
     }
 
     openURL(url){
         if(typeof url !== 'undefined'){
-            // console.log('opening window')
-            // console.log(this.tenKLink)
             window.open(url, '_blank');
         }
     }
 
     handleSelect(key) {
-        // console.log('selected ' + key);
         this.currentSheet = key
-        // console.log(this.currentSheet)
-        // this.forceUpdate()
     }
 
     renderDropdown = (dropDownYear, index) => {
@@ -335,12 +330,16 @@ class SuperTable extends Component {
      }
 
     changeValue(text) {
-        // console.log(text)
         this.currentYear = text
-        // console.log(this.currentYear)
         this.grabSourceLinks()
         this.generateDisplayColumns()
         this.forceUpdate()
+        // console.log(this.balanceSheetHeader)
+        // console.log(this.balanceSheet)
+        // console.log(this.incomeStatementHeader)
+        // console.log(this.incomeStatement)
+        // console.log(this.cashFlowHeader)
+        // console.log(this.cashFlow)
     }
     
 

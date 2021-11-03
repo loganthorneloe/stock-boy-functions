@@ -1,5 +1,4 @@
 REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060619000006/FilingSummary.xml array error for given company
-BLACK HILLS CORP /SD/: https://www.sec.gov/Archives/edgar/data/1130464/000113046419000012/FilingSummary.xml table was not found at one of the table urls
 BOEING CO: https://www.sec.gov/Archives/edgar/data/12927/000001292719000010/FilingSummary.xml array error for given company
 People's United Financial, Inc.: https://www.sec.gov/Archives/edgar/data/1378946/000119312519060912/FilingSummary.xml array error for given company
 Bank of Marin Bancorp: https://www.sec.gov/Archives/edgar/data/1403475/000140347519000006/FilingSummary.xml array error for given company
