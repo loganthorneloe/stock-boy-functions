@@ -1,1 +1,3 @@
-*_failure.txt
+./grab-complex-financials/master_10k_idx/*
+./grab-complex-financials/other_retrieval_failures/*
+./ggrab-complex-financials/statement_retrieval_failures/*

@@ -1,20 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import TablePage from './TablePage';
 import SuperTable from './SuperTable';
 import Autocomplete from './Autocomplete';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
-import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInAnonymously } from "firebase/auth";
-import Dropdown from 'react-bootstrap/Dropdown'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -48,8 +39,6 @@ signInAnonymously(auth)
     // Signed in..
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
     console.log("anon sign in failed with error: ", error.code, error.message)
   });
 
@@ -137,7 +126,7 @@ function App() {
 
   const pull_data = (data) => {
     retrieveCompanyData(data.split(":")[0]).then(new_dict =>{
-      console.log("pulling data")
+      console.log("pulling data for: " + data)
       setCompanyDict(new_dict)
       setCompany(data)
       determineYears(new_dict)
@@ -169,7 +158,7 @@ function App() {
         </nav> */}
         <nav class="navbar fixed-top navbar-light bg-primary blue-nav" style={{"padding-top":"2px","padding-bottom":"2px"}}>
           <div class="container-fluid">
-            <a class="navbar-brand" style={{color :'white'}} href="#">
+            <a class="navbar-brand" style={{color :'white'}}>
               <img src="stockBoy.png" class="d-inline-block align-top" alt="Logo"/>
               {/* Stock Boy */}
             </a>
@@ -201,13 +190,13 @@ function App() {
 export default App;
 
 // this is code for the bottom header for mobile app
-{/* <nav class="navbar fixed-bottom navbar-light bg-primary blue-nav">
-          <div class="container-fluid">
-            <form class="form-inline">
-              <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
-            </form>
-            <DropdownButton id="dropdown-basic-button" title={currentYear}>
-              {renderDropdownMenu}
-            </DropdownButton>
-          </div>
-        </nav> */}
+//  <nav class="navbar fixed-bottom navbar-light bg-primary blue-nav">
+//           <div class="container-fluid">
+//             <form class="form-inline">
+//               <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
+//             </form>
+//             <DropdownButton id="dropdown-basic-button" title={currentYear}>
+//               {renderDropdownMenu}
+//             </DropdownButton>
+//           </div>
+//         </nav>

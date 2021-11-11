@@ -1,2 +1,32 @@
+SOUTH JERSEY GAS Co: https://www.sec.gov/Archives/edgar/data/1035216/000009192820000013/FilingSummary.xml array error for given company
+SONIC AUTOMOTIVE INC: https://www.sec.gov/Archives/edgar/data/1043509/000104350920000006/FilingSummary.xml array error for given company
+EPR PROPERTIES: https://www.sec.gov/Archives/edgar/data/1045450/000104545020000019/FilingSummary.xml array error for given company
+PROVIDENCE SERVICE CORP: https://www.sec.gov/Archives/edgar/data/1220754/000122075420000007/FilingSummary.xml array error for given company
+BATTALION OIL CORP: https://www.sec.gov/Archives/edgar/data/1282648/000155837020003121/FilingSummary.xml array error for given company
+BOEING CO: https://www.sec.gov/Archives/edgar/data/12927/000001292720000014/FilingSummary.xml array error for given company
+Compass Group Diversified Holdings LLC: https://www.sec.gov/Archives/edgar/data/1345122/000134512620000007/FilingSummary.xml array error for given company
+Compass Diversified Holdings: https://www.sec.gov/Archives/edgar/data/1345126/000134512620000007/FilingSummary.xml array error for given company
+People's United Financial, Inc.: https://www.sec.gov/Archives/edgar/data/1378946/000162828020002693/FilingSummary.xml array error for given company
+Bank of Marin Bancorp: https://www.sec.gov/Archives/edgar/data/1403475/000140347520000008/FilingSummary.xml array error for given company
+Atlas Financial Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1539894/000153989420000009/FilingSummary.xml array error for given company
+Zyla Life Sciences: https://www.sec.gov/Archives/edgar/data/1586105/000155837020003190/FilingSummary.xml array error for given company
+GTY Technology Holdings Inc.: https://www.sec.gov/Archives/edgar/data/1682325/000155837020002686/FilingSummary.xml array error for given company
+CNL Strategic Capital, LLC: https://www.sec.gov/Archives/edgar/data/1684682/000168468220000003/FilingSummary.xml array error for given company
+Andover National Corp: https://www.sec.gov/Archives/edgar/data/1712543/000110465920040347/FilingSummary.xml array error for given company
+Tradeweb Markets Inc.: https://www.sec.gov/Archives/edgar/data/1758730/000155837020001170/FilingSummary.xml array error for given company
+ALLSTATE LIFE INSURANCE CO: https://www.sec.gov/Archives/edgar/data/352736/000035273620000002/FilingSummary.xml array error for given company
+TRUSTCO BANK CORP N Y: https://www.sec.gov/Archives/edgar/data/357301/000114036120004402/FilingSummary.xml array error for given company
+GOLDFIELD CORP: https://www.sec.gov/Archives/edgar/data/42316/000156459020010101/FilingSummary.xml table was not found at one of the table urls
+BANK OF HAWAII CORP: https://www.sec.gov/Archives/edgar/data/46195/000004619520000023/FilingSummary.xml array error for given company
+ACNB CORP: https://www.sec.gov/Archives/edgar/data/715579/000104746920001268/FilingSummary.xml array error for given company
+COMMUNITY BANK SYSTEM, INC.: https://www.sec.gov/Archives/edgar/data/723188/000114036120004510/FilingSummary.xml array error for given company
+CAMDEN NATIONAL CORP: https://www.sec.gov/Archives/edgar/data/750686/000075068620000044/FilingSummary.xml array error for given company
+CLEVELAND-CLIFFS INC.: https://www.sec.gov/Archives/edgar/data/764065/000076406520000041/FilingSummary.xml array error for given company
+SANDY SPRING BANCORP INC: https://www.sec.gov/Archives/edgar/data/824410/000082441020000004/FilingSummary.xml array error for given company
+TREDEGAR CORP: https://www.sec.gov/Archives/edgar/data/850429/000085042920000014/FilingSummary.xml array error for given company
+ALLSTATE CORP: https://www.sec.gov/Archives/edgar/data/899051/000089905120000013/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192820000013/FilingSummary.xml array error for given company
+LABORATORY CORP OF AMERICA HOLDINGS: https://www.sec.gov/Archives/edgar/data/920148/000092014820000011/FilingSummary.xml array error for given company
+MAXIM INTEGRATED PRODUCTS INC: https://www.sec.gov/Archives/edgar/data/743316/000074331620000025/FilingSummary.xml array error for given company
 TFS Financial CORP: https://www.sec.gov/Archives/edgar/data/1381668/000138166820000107/FilingSummary.xml table was not found at one of the table urls
 Atlas Financial Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1539894/000153989420000071/FilingSummary.xml array error for given company

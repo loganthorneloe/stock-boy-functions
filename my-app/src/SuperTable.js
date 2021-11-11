@@ -1,15 +1,8 @@
 import React, { Component, Fragment } from "react";
 import Table from 'react-bootstrap/Table'
-import Card from 'react-bootstrap/Card'
-import Form from 'react-bootstrap/Form'
 import Dropdown from 'react-bootstrap/Dropdown'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { Tabs, Tab } from 'react-bootstrap';
-// import { Tabs, Tab } from "@tarragon/swipeable-tabs";
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import Nav from 'react-bootstrap/Nav'
 
 // const changeTab () => {
 //     setSelectedTab(updatedTab.label);
@@ -107,6 +100,7 @@ class SuperTable extends Component {
         }
         
         this.yearList = years_arr.sort()
+        years_arr.reverse()
         this.currentYear = this.yearList.at(0)
         // console.log('error checking in determine years')
         // console.log(this.yearList)
@@ -262,7 +256,7 @@ class SuperTable extends Component {
         var counter = 0
         var current_str = ""
         for(var i = arr.length-1; i >= 0; i--){
-            if(arr[i] == "."){
+            if(arr[i] === "."){
                 current_str = arr[i] + current_str
             }else{
                 current_str = arr[i] + current_str
@@ -273,10 +267,10 @@ class SuperTable extends Component {
                 counter = 0
             }
         }
-        if(current_str[0] == ','){
+        if(current_str[0] === ','){
             current_str = current_str.slice(1, current_str.length)
         }
-        if(current_str.slice(0,2) == '-,'){
+        if(current_str.slice(0,2) === '-,'){
             current_str = '-' + current_str.slice(2, current_str.len)
         }
 
@@ -395,8 +389,8 @@ class SuperTable extends Component {
         return (
             <div class="container-fluid">
                 <div class="row">
-                    <div class= "col-sm-2"></div>
-                    <div class= "col-sm-8">
+                    <div class= "col-sm-1"></div>
+                    <div class= "col-sm-10">
                         <div class="card justify-content-center border-light mb-3" style={{"margin-top":"4em","margin-bottom":"3em"}}>
                             <div class="card-body">
                                 <div class="container-fluid">
@@ -511,7 +505,7 @@ class SuperTable extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class= "col-sm-2"></div>
+                    <div class= "col-sm-1"></div>
                 </div>
             </div>
         )

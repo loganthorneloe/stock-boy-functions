@@ -71,7 +71,10 @@ def request_for_ticker(url):
   cover_content = requests.get(stock_cover_url, headers=headers).content
 
   # grab full df
-  cover_df_list = pd.read_html(cover_content)[0]
+  try:
+    cover_df_list = pd.read_html(cover_content)[0]
+  except:
+    return ''
 
   # clean the dataframe of rows we don't need
   cover_clean_df = cover_df_list.iloc[:, 0:2]
@@ -317,7 +320,7 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
-current_year = 2019
+current_year = 2013
 statement_failure_file_name = str(current_year) + "_statement_failures.txt"
 statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
 other_failure_file_name = str(current_year) + "_other_failures.txt"

@@ -1,18 +1,60 @@
 body {
-    font-family: sans-serif;
-  }
-  
-  input {
+  font-family: sans-serif;
+}
+
+input.form-control {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  width: 300px;
+}
+
+.no-suggestions {
+  color: #999;
+  padding: 0.5rem;
+}
+
+.suggestions {
+  border: 1px solid #999;
+  background-color: #fcfbf9;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: 300px;
+  position:absolute;
+  z-index: 1000;
+  scroll-behavior: smooth;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: #0d6efd;
+  color: #fcfbf9;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
+.form-inline{
+  display: inline;
+}
+
+@media (max-width: 480px) { 
+  input.form-control {
     border: 1px solid #999;
     padding: 0.5rem;
-    width: 300px;
+    width: 250px;
   }
-  
-  .no-suggestions {
-    color: #999;
-    padding: 0.5rem;
-  }
-  
+
   .suggestions {
     border: 1px solid #999;
     background-color: #fcfbf9;
@@ -22,28 +64,9 @@ body {
     max-height: 143px;
     overflow-y: auto;
     padding-left: 0;
-    width: calc(300px + 1rem);
+    width: 250px;
     position:absolute;
     z-index: 1000;
     scroll-behavior: smooth;
   }
-  
-  .suggestions li {
-    padding: 0.5rem;
-  }
-  
-  .suggestion-active,
-  .suggestions li:hover {
-    background-color: #0d6efd;
-    color: #fcfbf9;
-    cursor: pointer;
-    font-weight: 700;
-  }
-  
-  .suggestions li:not(:last-of-type) {
-    border-bottom: 1px solid #999;
-  }
-
-  .form-inline{
-    display: inline;
-  }
+}
