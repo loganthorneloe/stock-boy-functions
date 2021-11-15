@@ -48,7 +48,7 @@ function setDocToList(doc){
 async function retrieveTickerData(){
   return getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => { // this is calling twice per page load
     if (docSnap.exists()) {
-      console.log("Ticker document data:", docSnap.data());
+      // console.log("Ticker document data:", docSnap.data());
     } else {
       console.log("No such document for tickers!");
     }
@@ -59,7 +59,7 @@ async function retrieveTickerData(){
 async function retrieveCompanyData(company_name){
   return getDoc(doc(db, 'stock_data', company_name)).then(docSnap => { // this is calling twice per page load
     if (docSnap.exists()) {
-      console.log("Company document data:", docSnap.data());
+      //console.log("Company document data:", docSnap.data());
     } else {
       console.log("No such document with name: ", company_name);
     }

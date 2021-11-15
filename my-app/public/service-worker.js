@@ -19,22 +19,7 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function () {
     try {
-      return await fetch(event.request).then(
-        function(response) {
-          // IMPORTANT: Clone the response. A response is a stream
-          // and because we want the browser to consume the response
-          // as well as the cache consuming the response, we need
-          // to clone it so we have 2 stream.
-          var responseToCache = response.clone();
-
-          caches.open(CACHE_NAME)
-            .then(function(cache) {
-              cache.put(event.request, responseToCache);
-            });
-
-          return response;
-        }
-      );
+      return await fetch(event.request);
     } catch (err) {
       return caches.match(event.request);
     }
