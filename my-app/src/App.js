@@ -18,18 +18,6 @@ const firebaseConfig = {
   measurementId: "G-ESNX47QJKM"
 };
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     const uid = user.uid;
-//     // ...
-//   } else {
-//     // User is signed out
-//     // ...
-//   }
-// });
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -42,18 +30,6 @@ signInAnonymously(auth)
     console.log("anon sign in failed with error: ", error.code, error.message)
   });
 
-// firebase.auth().onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     const uid = user.uid;
-//     // ...
-//   } else {
-//     // User is signed out
-//     // ...
-//   }
-// });
-
 var currentCompany = ''
 
 function setDocToList(doc){
@@ -62,7 +38,7 @@ function setDocToList(doc){
     if(value !== "null"){
       var new_string = key + ": " + value
     }else{
-      var new_string = key
+      new_string = key
     }
     ticker_list.push(new_string)
   }
@@ -74,7 +50,7 @@ async function retrieveTickerData(){
     if (docSnap.exists()) {
       console.log("Ticker document data:", docSnap.data());
     } else {
-      console.log("No such document!");
+      console.log("No such document for tickers!");
     }
     return setDocToList(docSnap)
   });
@@ -85,7 +61,7 @@ async function retrieveCompanyData(company_name){
     if (docSnap.exists()) {
       console.log("Company document data:", docSnap.data());
     } else {
-      console.log("No such document!");
+      console.log("No such document with name: ", company_name);
     }
     return docSnap.data()
   });
@@ -100,12 +76,9 @@ function App() {
   const [yearList, setYearList] = useState();
 
   const determineYears = (new_dict) => {
-    console.log('determining years')
-    console.log(new_dict)
     if(typeof new_dict == "undefined" || new_dict == null){
         return
     }
-    // console.log("determing years")
     var keys_to_use = Object.keys(new_dict)
     var years_arr = []
     for (var i = 0; i < keys_to_use.length; i++){
@@ -115,23 +88,14 @@ function App() {
     
     setYearList(years_arr)
     setCurrentYear(years_arr.at(-1))
-    // console.log('error checking in determine years')
-    // console.log(this.yearList)
-    // console.log(this.currentYear)
-    // this.setState({
-    //     yearList: years_arr,
-    //     currentYear: years_arr[-1]
-    // });
   }
 
   const pull_data = (data) => {
     retrieveCompanyData(data.split(":")[0]).then(new_dict =>{
-      console.log("pulling data for: " + data)
       setCompanyDict(new_dict)
       setCompany(data)
       determineYears(new_dict)
     })    
-    // console.log(companyDict) // this is behind for some reason
   }
 
   // Use an effect to load the ticker list from the database
@@ -139,28 +103,18 @@ function App() {
     if(typeof tickerList == 'undefined'){ // two api calls happening here for some reason
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
-        // console.log(tickerList)
       })     
     }
     if(currentCompany !== company){
-      // setCompany(currentCompany) // hope this works
     }
   });
 
     return (
       <div>
-        {/* <nav class="navbar navbar-light bg-light fixed-top justify-content-between">
-          <a class="navbar-brand">Navbar</a>
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </nav> */}
         <nav class="navbar fixed-top navbar-light bg-primary blue-nav" style={{"padding-top":"2px","padding-bottom":"2px"}}>
           <div class="container-fluid">
             <a class="navbar-brand" style={{color :'white'}}>
-              <img src="stockBoy.png" class="d-inline-block align-top" alt="Logo"/>
-              {/* Stock Boy */}
+              <img src="stockBoy.png" class="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
             </a>
             <form class="form-inline">
               <Autocomplete id="autocomplete" class="col-md-4" suggestions={tickerList} func={pull_data}/>

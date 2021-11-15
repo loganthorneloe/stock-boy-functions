@@ -1,19 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Table from 'react-bootstrap/Table'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { Tabs, Tab } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
-
-// const changeTab () => {
-//     setSelectedTab(updatedTab.label);
-// };
+import Card from 'react-bootstrap/Card'
 
 class SuperTable extends Component {
     constructor(props) { // props will be dict for certain stock
       super(props);
-    //   this.prevProps = props;
-      console.log("updating props for SuperTable")
-
       this.tenKLink = ""
       this.balanceLink = ""
       this.incomeLink = ""
@@ -33,54 +27,14 @@ class SuperTable extends Component {
       this.grabSourceLinks()
       this.generateDisplayColumns()
     }
-    //   this.state = {
-    //     tenKLink: "",
-    //     yearList: [],
-    //     currentYear: "",
-    //     simplify: false, // default to start on 
-    //     balanceSheet: [],
-    //     cashFlow: [],
-    //     incomeStatement: [],
-    //     balanceSheetHeader: {},
-    //     cashFlowHeader: {},
-    //     incomeStatementHeader: {}
-    //   };
-    // }
-
-    // functions start here
-    // useEffect() {
-    //     console.log("use effect for super table!")
-    //     if(this.props.company !== ""){
-    //         console.log("updating super table")
-    //         this.determineYears()
-    //         this.grab10kLink()
-    //         this.generateDisplayColumns()
-    //         this.setStockAndTicker()
-    //     }
-    // }
-
-    // useEffect = () => {
-    //     console.log("use effect for super table!")
-    //     if(this.props.company !== ""){
-    //         console.log("updating super table")
-    //         this.determineYears()
-    //         this.grab10kLink()
-    //         this.generateDisplayColumns()
-    //     }
-    // }, [companyname]);
 
     componentDidUpdate(prevProps) {
         if (prevProps.company !== this.props.company) {
-            // console.log('something prop has changed.')
-            // console.log(this.props.company)
-            // console.log(this.props.companyDict)
 
             this.determineYears()
             this.grabSourceLinks()
             this.generateDisplayColumns()
             this.forceUpdate()
-
-            // console.log(this.yearList)
         }
     }
 
@@ -88,11 +42,7 @@ class SuperTable extends Component {
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
-        // console.log(this.props.companyDict)
-        // console.log("determing years")
         var keys_to_use = Object.keys(this.props.companyDict)
-        console.log("keys")
-        console.log(keys_to_use)
         var years_arr = []
         for (var i = 0; i < keys_to_use.length; i++){
             var split_key_array = keys_to_use[i].split('_')
@@ -102,21 +52,12 @@ class SuperTable extends Component {
         this.yearList = years_arr.sort()
         years_arr.reverse()
         this.currentYear = this.yearList.at(0)
-        // console.log('error checking in determine years')
-        // console.log(this.yearList)
-        // console.log(this.currentYear)
-        // this.setState({
-        //     yearList: years_arr,
-        //     currentYear: years_arr[-1]
-        // });
     }
 
     grabSourceLinks(){
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
-        // console.log("grabbing 10k link")
-        var ten_k_source = ""
         var list_to_use = []
         var key_to_use = ""
         if(!this.simplify){
@@ -126,36 +67,16 @@ class SuperTable extends Component {
             key_to_use = this.currentYear + "_simple"
         }
         list_to_use = this.props.companyDict[key_to_use]
-        // console.log('error checking in grab 10k link')
-        // console.log(key_to_use)
-        // console.log(this.simplify)
-        // console.log(this.currentYear)
-        // console.log(this.yearList)
-        // console.log(this.props.companyDict)
-
-        // DO I NEED TO CHECK IF THE SOURCES WERE RETRIEVED IN THE BACK END??
-        if(list_to_use.at(-2) === "source"){
-            ten_k_source = list_to_use.at(-1)
-        }
-        // console.log(this.props.companyDict)
-        // console.log("LIST_TO_USE")
-        // console.log(list_to_use)
-        // console.log(this.tenKLink)
         this.tenKLink = list_to_use.at(-1)
         this.balanceLink = list_to_use.at(-7)
         this.incomeLink = list_to_use.at(-5)
         this.cashLink = list_to_use.at(-3)
-        // console.log(this.tenKLink)
-        // this.setState({
-        //     tenKLink: ten_k_source,
-        // });
     }
 
     generateDisplayColumns(){
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
-        // console.log("generating columns")
         var list_to_use = []
         var key_to_use = ""
         if(!this.simplify){
@@ -165,19 +86,7 @@ class SuperTable extends Component {
             key_to_use = this.currentYear + "_simple"
         }
         list_to_use = this.props.companyDict[key_to_use]
-
-        // this is popping for the sources
-        // for(var i = 0; i < 8; i++){
-        //     list_to_use.pop()
-        // }
-
         var list_to_use_minus_sources = list_to_use.slice(0, list_to_use.length-8)
-
-        // if(list_to_use.at(-2) === "source"){
-        //     // get rid of the source in the array
-        //     list_to_use.pop()
-        //     list_to_use.pop()
-        // }
 
         var income_statement_index = list_to_use_minus_sources.indexOf("income_statement")
         var cash_flow_index = list_to_use_minus_sources.indexOf("cash_flow")
@@ -205,32 +114,7 @@ class SuperTable extends Component {
         this.balanceSheetHeader = this.createHeader(balance_sheet_columns)
         this.cashFlowHeader = this.createHeader(cash_flow_columns)
         this.incomeStatementHeader = this.createHeader(income_statement_columns)
-
-
-
-        // console.log(this.balanceSheetHeader)
-        // console.log(this.cashFlowHeader)
-        // console.log(this.incomeStatementHeader)
-        // console.log(this.balanceSheet)
-        // console.log(this.cashFlow)
-        // console.log(this.incomeStatement)
-        // this.setState({
-        //     balanceSheet: this.createList(balance_sheet_columns),
-        //     cashFlow: this.createList(income_statement_columns),
-        //     incomeStatement: this.createList(cash_flow_columns),
-        //     balanceSheetHeader: this.createHeader(balance_sheet_columns),
-        //     cashFlowHeader: this.createHeader(income_statement_columns),
-        //     incomeStatementHeader: this.createHeader(cash_flow_columns),
-        // })
     }
-
-    // renderDropdown(dropDownYear, index) {
-    //     return (
-    //         <Dropdown.Item onClick={(e) => this.currentYear = e} class="dropdown-item">
-    //             {dropDownYear}
-    //         </Dropdown.Item>
-    //     )
-    // }
 
     renderRow(new_list_row, index) {
         if(new_list_row.key.includes("<b>")){
@@ -262,7 +146,7 @@ class SuperTable extends Component {
                 current_str = arr[i] + current_str
                 counter++;
             }
-            if(counter == 3){
+            if(counter === 3){
                 current_str = "," + current_str
                 counter = 0
             }
@@ -328,60 +212,64 @@ class SuperTable extends Component {
         this.grabSourceLinks()
         this.generateDisplayColumns()
         this.forceUpdate()
-        // console.log(this.balanceSheetHeader)
-        // console.log(this.balanceSheet)
-        // console.log(this.incomeStatementHeader)
-        // console.log(this.incomeStatement)
-        // console.log(this.cashFlowHeader)
-        // console.log(this.cashFlow)
     }
     
 
-    render() {
-        // const {
-        //   state: {
-        //     tenKLink,
-        //     yearList,
-        //     currentYear,
-        //     simplify,
-        //     balanceSheet,
-        //     cashFlow,
-        //     incomeStatement,
-        //     balanceSheetHeader,
-        //     cashFlowHeader,
-        //     incomeStatementHeader
-        //   }
-        // } = this;
-
-    // console.log("logging before render")
-    // console.log(this.tenKLink)
-    // console.log(this.balanceLink)
-    // console.log(this.incomeLink)
-    // console.log(this.cashLink)
-    // console.log(this.yearList)
-    // console.log(this.currentYear)
-    // console.log(this.simplify)
-    // console.log(this.balanceSheet)
-    // console.log(this.cashFlow)
-    // console.log(this.incomeStatement)
-    // console.log(this.balanceSheetHeader)
-    // console.log(this.cashFlowHeader)
-    // console.log(this.incomeStatementHeader)
-
-    // console.log(this.currentSheet)
-    
+    render() {    
     if(typeof this.props.companyDict == "undefined"){
         return (
             <div class="container-fluid">
-                <div class="row">
-                    <div class= "col-sm-2"></div>
-                    <div class= "col-sm-8" align="center">
-                        <div class="card justify-content-center border-light mb-3" style={{"margin-top":"10em","margin-bottom":"3em","border":"none"}}>
-                            <h1>Easy-to-use financial statements for the everyday investor.</h1>
-                            <h2>All you have to do is <strong>search.</strong></h2>
-                        </div>
+                <div class="row" style={{"margin-top":"6em","margin-bottom":"3em"}}>
+                    <div class= "col-sm-1"></div>
+                    <div class= "col-sm-7">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title align="center">Welcome to Stock Boy!</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted" align="center">We firmly believe everyone <b>should</b> make money in the stock market.</Card.Subtitle>
+                                <Card.Text>
+                                Stock Boy puts the foundation of great investments right at your fingertips - easy-to-use financial statements.  
+                                <b> All you need to do is search above. </b>
+                                All retail investors should have access to and utilize this information when choosing an investment so they can make money in the stock market.
+                                </Card.Text>
+                                <Card.Text>
+                                Stock Boy currently has ~70% of financial statements dating back to 2013. More will be added/updated as time goes on. The information from each financial statement is kept as similar as possible to the original company filing while also making them easier to use.
+                                </Card.Text>
+                                <Card.Text>
+                                Future work includes:
+                                <ul>
+                                    <li>Adding more statements</li>
+                                    <li>Simplifying statements to make understanding them easier</li>
+                                    <li>Comparing financial statements across timeframes</li>
+                                    <li>More!</li>
+                                </ul>
+                                </Card.Text>
+                                <Card.Text>
+                                The app is brand new so we anticipate growing pains. Follow <a href="https://twitter.com/meetstockboy">Stock Boy on Twitter</a> for future updates and DM with any questions or bugs.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
                     </div>
-                    <div class= "col-sm-2"></div>
+                    <div class= "col-sm-3">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title align="center">Support Stock Boy</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted" align="center">Keep Stock Boy <b>free for all</b>.</Card.Subtitle>
+                                <Card.Text>
+                                The best way to support us is by investing in yourself - and you get paid for doing it.
+                                </Card.Text>
+                                <Card.Text>
+                                Use <a href="https://m1.finance/UHVHgaUnLsdA">M1 Finance</a>: a great automated brokerage to invest in your freedom.
+                                </Card.Text>
+                                <Card.Text>
+                                Use <a href="https://blockfi.com/?ref=c06c8f56">BlockFi</a>: a trusted company to securely invest in cryptocurrency.
+                                </Card.Text>
+                                <Card.Text>
+                                Feel free to donate to our cause on <a href="https://www.patreon.com/stockboy">Patreon</a> to help keep the servers running.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                    <div class= "col-sm-1"></div>
                 </div>
             </div>
         )
@@ -404,13 +292,6 @@ class SuperTable extends Component {
                                                     <DropdownButton id="dropdown-basic-button" style={{"display":"inline-block"}} title={this.currentYear}>
                                                         {this.yearList.map(this.renderDropdown)}
                                                     </DropdownButton>
-                                                    {/* <DropdownButton align="end" title={this.currentYear} id="dropdown-menu-align-end">
-                                                        <Dropdown.Item eventKey="1" onClick={(e) => this.changeValue(e.target.textContent)}>2017</Dropdown.Item>
-                                                        <Dropdown.Item eventKey="2" onClick={(e) => this.changeValue(e.target.textContent)}>2018</Dropdown.Item>
-                                                        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-                                                        <Dropdown.Divider />
-                                                        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-                                                    </DropdownButton> */}
                                                 </div>
                                                 <div class="col my-auto">
                                                     <button onClick={() => this.openURL(this.tenKLink)} type="button" class="btn btn-outline-primary float-right">10-K</button>
@@ -419,24 +300,6 @@ class SuperTable extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <div style={{ height: "300px", width: "100%", border: "1px solid black" }}>
-      
-                                    <Tabs value={this.currentSheet} onChange={this.handleSelect(this)}>
-                                        <Tab label="Tab 1" key={0}>
-                                        <div>Tab 1 Content</div>
-                                        </Tab>
-                                        <Tab label="Tab 2" key={1}>
-                                        <div>Tab 2 content</div>
-                                        </Tab>
-                                        <Tab label="Tab 3" key={2}>
-                                        <div>Tab 3 content</div>
-                                        </Tab>
-                                        <Tab label="Tab 4" key={3}>
-                                        <div>Tab 4 content</div>
-                                        </Tab>
-                                    </Tabs>
-                                // onChange -> onSelect, key -> eventKey, label -> title, value -> currentKey
-                                </div> */}
                                 <Tabs className="justify-content-center" style={{"margin-top":"10px"}} currentKey={this.currentSheet} onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
                                     <Tab eventKey={"balance_sheet"} title="Balance Sheet" class="nav nav-tabs justify-content-center custom-tab">
                                         <Table striped bordered hover>
@@ -494,7 +357,7 @@ class SuperTable extends Component {
                                         </Table>
                                         <div class="row">
                                             <div class="col my-auto">
-                                                Source Link for this financial sheet:
+                                                Source for this financial sheet:
                                             </div>
                                             <div class="col my-auto">
                                                 <button onClick={() => this.openURL(this.cashLink)} type="button" class="btn btn-outline-primary float-right">Cash Flow</button>

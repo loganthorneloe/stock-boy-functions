@@ -37,7 +37,7 @@ class Autocomplete extends Component {
       userInput: e.currentTarget.innerText
     }, () => {
         this.props.func(this.state.userInput)
-        this.state.userInput=""
+        this.setState({ userInput: "" });
     });
   };
 
@@ -54,7 +54,7 @@ class Autocomplete extends Component {
         userInput: filteredSuggestions[activeSuggestion]
       }, () => {
         this.props.func(this.state.userInput)
-        this.state.userInput=""
+        this.setState({ userInput: "" });
       });
     } else if (e.keyCode === 38) {
       if (activeSuggestion === 0) {
@@ -116,7 +116,7 @@ class Autocomplete extends Component {
 
       return (
         <Fragment>
-            <input class="form-control" type="search" placeholder="Find statements here..." aria-label="Search"
+            <input class="form-control" type="search" placeholder="Search companies here..." aria-label="Search"
                 type="text"
                 onChange={onChange}
                 onKeyDown={onKeyDown}

@@ -1,0 +1,555 @@
+Riley Exploration Permian, Inc.: https://www.sec.gov/Archives/edgar/data/1001614/000114036121010616/FilingSummary.xml array error for given company
+SPAR Group, Inc.: https://www.sec.gov/Archives/edgar/data/1004989/000143774921007784/FilingSummary.xml array error for given company
+NOV Inc.: https://www.sec.gov/Archives/edgar/data/1021860/000156459021005708/FilingSummary.xml array error for given company
+Panbela Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1029125/000143774921007154/FilingSummary.xml array error for given company
+EURONET WORLDWIDE, INC.: https://www.sec.gov/Archives/edgar/data/1029199/000121390021010724/FilingSummary.xml array error for given company
+PINNACLE BANKSHARES CORP: https://www.sec.gov/Archives/edgar/data/1031233/000156459021016418/FilingSummary.xml array error for given company
+BENTLEY SYSTEMS INC: https://www.sec.gov/Archives/edgar/data/1031308/000162828021003727/FilingSummary.xml array error for given company
+SOUTH JERSEY GAS Co: https://www.sec.gov/Archives/edgar/data/1035216/000009192821000014/FilingSummary.xml array error for given company
+INDUS REALTY TRUST, INC.: https://www.sec.gov/Archives/edgar/data/1037390/000155837021001230/FilingSummary.xml array error for given company
+ARCH RESOURCES, INC.: https://www.sec.gov/Archives/edgar/data/1037676/000155837021000957/FilingSummary.xml array error for given company
+Stabilis Solutions, Inc.: https://www.sec.gov/Archives/edgar/data/1043186/000104318621000010/FilingSummary.xml array error for given company
+SONIC AUTOMOTIVE INC: https://www.sec.gov/Archives/edgar/data/1043509/000104350921000004/FilingSummary.xml array error for given company
+ENVIRO TECHNOLOGIES U.S., INC.: https://www.sec.gov/Archives/edgar/data/1043894/000109991021000039/FilingSummary.xml array error for given company
+PARETEUM Corp: https://www.sec.gov/Archives/edgar/data/1084384/000110465921035333/FilingSummary.xml array error for given company
+AYRO, Inc.: https://www.sec.gov/Archives/edgar/data/1086745/000149315221007529/FilingSummary.xml array error for given company
+XEROX CORP: https://www.sec.gov/Archives/edgar/data/108772/000177045021000013/FilingSummary.xml array error for given company
+MASTERMIND, INC.: https://www.sec.gov/Archives/edgar/data/1088638/000143774921003526/FilingSummary.xml array error for given company
+Orbital Energy Group, Inc.: https://www.sec.gov/Archives/edgar/data/1108967/000143774921007559/FilingSummary.xml array error for given company
+DYNARESOURCE INC: https://www.sec.gov/Archives/edgar/data/1111741/000165495421003661/FilingSummary.xml array error for given company
+BANCPLUS CORP: https://www.sec.gov/Archives/edgar/data/1118004/000111800421000006/FilingSummary.xml array error for given company
+BROADWIND, INC.: https://www.sec.gov/Archives/edgar/data/1120370/000143774921004032/FilingSummary.xml array error for given company
+AVIENT CORP: https://www.sec.gov/Archives/edgar/data/1122976/000112297621000014/FilingSummary.xml array error for given company
+LUMOS PHARMA, INC.: https://www.sec.gov/Archives/edgar/data/1126234/000112623421000034/FilingSummary.xml array error for given company
+Pulmonx Corp: https://www.sec.gov/Archives/edgar/data/1127537/000112753721000008/FilingSummary.xml array error for given company
+ZION OIL & GAS INC: https://www.sec.gov/Archives/edgar/data/1131312/000121390021017527/FilingSummary.xml array error for given company
+New Momentum Corp.: https://www.sec.gov/Archives/edgar/data/1132509/000147793221001712/FilingSummary.xml array error for given company
+Ontrak, Inc.: https://www.sec.gov/Archives/edgar/data/1136174/000162828021004260/FilingSummary.xml array error for given company
+BUNGELTD: https://www.sec.gov/Archives/edgar/data/1144519/000114451921000006/FilingSummary.xml array error for given company
+CENTENNIAL GROWTH EQUITIES INC: https://www.sec.gov/Archives/edgar/data/1145604/000182646621000075/FilingSummary.xml array error for given company
+WIZARD BRANDS, INC.: https://www.sec.gov/Archives/edgar/data/1162896/000149315221007036/FilingSummary.xml array error for given company
+Noble Finance Co: https://www.sec.gov/Archives/edgar/data/1169055/000162828021004612/FilingSummary.xml array error for given company
+ORAGENICS INC: https://www.sec.gov/Archives/edgar/data/1174940/000149315221005122/FilingSummary.xml array error for given company
+ComSovereign Holding Corp.: https://www.sec.gov/Archives/edgar/data/1178727/000121390021018749/FilingSummary.xml array error for given company
+ModivCare Inc: https://www.sec.gov/Archives/edgar/data/1220754/000122075421000008/FilingSummary.xml array error for given company
+AIkido Pharma Inc.: https://www.sec.gov/Archives/edgar/data/12239/000121390021017738/FilingSummary.xml array error for given company
+IBM CREDIT LLC: https://www.sec.gov/Archives/edgar/data/1225307/000155837021002014/FilingSummary.xml array error for given company
+BATTALION OIL CORP: https://www.sec.gov/Archives/edgar/data/1282648/000155837021002578/FilingSummary.xml array error for given company
+BOEING CO: https://www.sec.gov/Archives/edgar/data/12927/000001292721000011/FilingSummary.xml array error for given company
+ATHENA GOLD CORP: https://www.sec.gov/Archives/edgar/data/1304409/000168316821000721/FilingSummary.xml array error for given company
+Healthtech Solutions, Inc./UT: https://www.sec.gov/Archives/edgar/data/1307624/000126246321000053/FilingSummary.xml array error for given company
+BIOFORCE NANOSCIENCES HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1310488/000109181821000016/FilingSummary.xml array error for given company
+Galaxy Gaming, Inc.: https://www.sec.gov/Archives/edgar/data/13156/000156459021016756/FilingSummary.xml array error for given company
+SIGNET INTERNATIONAL HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1317833/000121390021017969/FilingSummary.xml array error for given company
+Palantir Technologies Inc.: https://www.sec.gov/Archives/edgar/data/1321655/000119312521060650/FilingSummary.xml array error for given company
+AVEO PHARMACEUTICALS, INC.: https://www.sec.gov/Archives/edgar/data/1325879/000156459021013607/FilingSummary.xml array error for given company
+Lyra Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1327273/000156459021011767/FilingSummary.xml array error for given company
+Fresh Harvest Products, Inc.: https://www.sec.gov/Archives/edgar/data/1331612/000147793221000541/FilingSummary.xml array error for given company
+Fresh Harvest Products, Inc.: https://www.sec.gov/Archives/edgar/data/1331612/000147793221000564/FilingSummary.xml array error for given company
+ACRES Commercial Realty Corp.: https://www.sec.gov/Archives/edgar/data/1332551/000156459021012662/FilingSummary.xml array error for given company
+LOGIQ, INC.: https://www.sec.gov/Archives/edgar/data/1335112/000121390021018884/FilingSummary.xml array error for given company
+Limoneira CO: https://www.sec.gov/Archives/edgar/data/1342423/000134242321000006/FilingSummary.xml array error for given company
+Compass Group Diversified Holdings LLC: https://www.sec.gov/Archives/edgar/data/1345122/000134512621000007/FilingSummary.xml array error for given company
+Compass Diversified Holdings: https://www.sec.gov/Archives/edgar/data/1345126/000134512621000007/FilingSummary.xml array error for given company
+CMG HOLDINGS GROUP, INC.: https://www.sec.gov/Archives/edgar/data/1346655/000101738621000080/FilingSummary.xml array error for given company
+PALTALK, INC.: https://www.sec.gov/Archives/edgar/data/1355839/000121390021017135/FilingSummary.xml array error for given company
+Protara Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1359931/000121390021014709/FilingSummary.xml array error for given company
+Travel & Leisure Co.: https://www.sec.gov/Archives/edgar/data/1361658/000136165821000025/FilingSummary.xml array error for given company
+Evolve Transition Infrastructure LP: https://www.sec.gov/Archives/edgar/data/1362705/000136270521000017/FilingSummary.xml array error for given company
+MYOMO, INC.: https://www.sec.gov/Archives/edgar/data/1369290/000156459021012068/FilingSummary.xml array error for given company
+Ameritrust Corp: https://www.sec.gov/Archives/edgar/data/1372954/000109181821000012/FilingSummary.xml array error for given company
+Larimar Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1374690/000156459021011003/FilingSummary.xml array error for given company
+National CineMedia, Inc.: https://www.sec.gov/Archives/edgar/data/1377630/000137763021000079/FilingSummary.xml array error for given company
+People's United Financial, Inc.: https://www.sec.gov/Archives/edgar/data/1378946/000162828021003563/FilingSummary.xml array error for given company
+CarParts.com, Inc.: https://www.sec.gov/Archives/edgar/data/1378950/000155837021003023/FilingSummary.xml array error for given company
+Histogen Inc.: https://www.sec.gov/Archives/edgar/data/1383701/000156459021012536/FilingSummary.xml array error for given company
+Clubhouse Media Group, Inc.: https://www.sec.gov/Archives/edgar/data/1389518/000149315221006020/FilingSummary.xml array error for given company
+ACQUIRED SALES CORP: https://www.sec.gov/Archives/edgar/data/1391135/000109690621000646/FilingSummary.xml array error for given company
+American Well Corp: https://www.sec.gov/Archives/edgar/data/1393584/000156459021015812/FilingSummary.xml array error for given company
+MedAvail Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1402479/000162828021006267/FilingSummary.xml array error for given company
+Sculptor Capital Management, Inc.: https://www.sec.gov/Archives/edgar/data/1403256/000140325621000045/FilingSummary.xml array error for given company
+Bank of Marin Bancorp: https://www.sec.gov/Archives/edgar/data/1403475/000140347521000015/FilingSummary.xml array error for given company
+Eledon Pharmaceuticals, Inc.: https://www.sec.gov/Archives/edgar/data/1404281/000156459021016828/FilingSummary.xml array error for given company
+Phreesia, Inc.: https://www.sec.gov/Archives/edgar/data/1412408/000141240821000024/FilingSummary.xml array error for given company
+Value Exchange International, Inc.: https://www.sec.gov/Archives/edgar/data/1417664/000107878221000290/FilingSummary.xml array error for given company
+Forte Biosciences, Inc.: https://www.sec.gov/Archives/edgar/data/1419041/000156459021013249/FilingSummary.xml array error for given company
+Hanjiao Group, Inc.: https://www.sec.gov/Archives/edgar/data/1421819/000168316821001163/FilingSummary.xml array error for given company
+SOBR Safe, Inc.: https://www.sec.gov/Archives/edgar/data/1425627/000147793221001930/FilingSummary.xml array error for given company
+Travere Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1438533/000143853321000008/FilingSummary.xml array error for given company
+YUMANITY THERAPEUTICS, INC.: https://www.sec.gov/Archives/edgar/data/1445283/000119312521101509/FilingSummary.xml array error for given company
+AUGUSTA GOLD CORP.: https://www.sec.gov/Archives/edgar/data/1448597/000139390521000121/FilingSummary.xml array error for given company
+Sylios Corp: https://www.sec.gov/Archives/edgar/data/1448695/000149315221006240/FilingSummary.xml array error for given company
+HGR Liquidating Trust: https://www.sec.gov/Archives/edgar/data/1453818/000145381821000008/FilingSummary.xml array error for given company
+Trane Technologies plc: https://www.sec.gov/Archives/edgar/data/1466258/000146625821000027/FilingSummary.xml array error for given company
+AMERICAN CRYOSTEM Corp: https://www.sec.gov/Archives/edgar/data/1468679/000101905621000028/FilingSummary.xml array error for given company
+BGSF, INC.: https://www.sec.gov/Archives/edgar/data/1474903/000147490321000035/FilingSummary.xml array error for given company
+Asana, Inc.: https://www.sec.gov/Archives/edgar/data/1477720/000147772021000007/FilingSummary.xml array error for given company
+PREFERRED APARTMENT COMMUNITIES INC: https://www.sec.gov/Archives/edgar/data/1481832/000148183221000012/FilingSummary.xml array error for given company
+fuboTV Inc. /FL: https://www.sec.gov/Archives/edgar/data/1484769/000149315221006813/FilingSummary.xml array error for given company
+Freeze Tag, Inc.: https://www.sec.gov/Archives/edgar/data/1485074/000147793221001920/FilingSummary.xml array error for given company
+Home Bistro, Inc. /NV/: https://www.sec.gov/Archives/edgar/data/1489588/000121390021016941/FilingSummary.xml array error for given company
+Schrodinger, Inc.: https://www.sec.gov/Archives/edgar/data/1490978/000156459021010727/FilingSummary.xml array error for given company
+Sensus Healthcare, Inc.: https://www.sec.gov/Archives/edgar/data/1494891/000121390021013664/FilingSummary.xml array error for given company
+Global Indemnity Group, LLC: https://www.sec.gov/Archives/edgar/data/1494904/000156459021012923/FilingSummary.xml array error for given company
+Brookfield Property REIT Inc.: https://www.sec.gov/Archives/edgar/data/1496048/000149604821000006/FilingSummary.xml array error for given company
+Spirit Airlines, Inc.: https://www.sec.gov/Archives/edgar/data/1498710/000149871021000020/FilingSummary.xml array error for given company
+LiquidValue Development Inc.: https://www.sec.gov/Archives/edgar/data/1503658/000165495421003068/FilingSummary.xml array error for given company
+MARATHON DIGITAL HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1507605/000149315221006139/FilingSummary.xml array error for given company
+Silo Pharma, Inc.: https://www.sec.gov/Archives/edgar/data/1514183/000121390021018270/FilingSummary.xml array error for given company
+Gatos Silver, Inc.: https://www.sec.gov/Archives/edgar/data/1517006/000110465921043336/FilingSummary.xml array error for given company
+Sprout Social, Inc.: https://www.sec.gov/Archives/edgar/data/1517375/000151737521000009/FilingSummary.xml array error for given company
+Acutus Medical, Inc.: https://www.sec.gov/Archives/edgar/data/1522860/000156459021014208/FilingSummary.xml array error for given company
+Annexon, Inc.: https://www.sec.gov/Archives/edgar/data/1528115/000156459021015262/FilingSummary.xml array error for given company
+Franchise Group, Inc.: https://www.sec.gov/Archives/edgar/data/1528930/000152893021000013/FilingSummary.xml array error for given company
+FTS International, Inc.: https://www.sec.gov/Archives/edgar/data/1529463/000155837021002464/FilingSummary.xml array error for given company
+Inari Medical, Inc.: https://www.sec.gov/Archives/edgar/data/1531048/000156459021011763/FilingSummary.xml array error for given company
+Andina Gold Corp.: https://www.sec.gov/Archives/edgar/data/1533030/000121390021018703/FilingSummary.xml array error for given company
+Anchiano Therapeutics Ltd.: https://www.sec.gov/Archives/edgar/data/1534248/000110465921033822/FilingSummary.xml array error for given company
+U.S. Lighting Group, Inc.: https://www.sec.gov/Archives/edgar/data/1536394/000121390021017529/FilingSummary.xml array error for given company
+Forma Therapeutics Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1538927/000156459021016642/FilingSummary.xml array error for given company
+Trilogy Metals Inc.: https://www.sec.gov/Archives/edgar/data/1543418/000155837021000933/FilingSummary.xml array error for given company
+Lument Finance Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1547546/000162828021004756/FilingSummary.xml array error for given company
+Nurix Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1549595/000156459021006071/FilingSummary.xml array error for given company
+DUESENBERG TECHNOLOGIES INC.: https://www.sec.gov/Archives/edgar/data/1551887/000139390521000025/FilingSummary.xml array error for given company
+Thryv Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1556739/000162828021005660/FilingSummary.xml array error for given company
+CORPORATE PROPERTY ASSOCIATES 18 GLOBAL INC: https://www.sec.gov/Archives/edgar/data/1558235/000155823521000005/FilingSummary.xml array error for given company
+PROTHENA CORP PUBLIC LTD CO: https://www.sec.gov/Archives/edgar/data/1559053/000155905321000008/FilingSummary.xml array error for given company
+Resource REIT, Inc.: https://www.sec.gov/Archives/edgar/data/1559484/000156459021015432/FilingSummary.xml array error for given company
+Tri Pointe Homes, Inc.: https://www.sec.gov/Archives/edgar/data/1561680/000156168021000023/FilingSummary.xml array error for given company
+NUTRALIFE BIOSCIENCES, INC: https://www.sec.gov/Archives/edgar/data/1563463/000149315221006466/FilingSummary.xml array error for given company
+Oak Street Health, Inc.: https://www.sec.gov/Archives/edgar/data/1564406/000156459021011903/FilingSummary.xml array error for given company
+VYNE Therapeutics Inc.: https://www.sec.gov/Archives/edgar/data/1566044/000156604421000010/FilingSummary.xml array error for given company
+F-star Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1566373/000119312521100530/FilingSummary.xml array error for given company
+NCINO, INC.: https://www.sec.gov/Archives/edgar/data/1566895/000156689521000007/FilingSummary.xml array error for given company
+Benefitfocus, Inc.: https://www.sec.gov/Archives/edgar/data/1576169/000156459021011839/FilingSummary.xml array error for given company
+Vital Farms, Inc.: https://www.sec.gov/Archives/edgar/data/1579733/000156459021014969/FilingSummary.xml array error for given company
+NewAge, Inc.: https://www.sec.gov/Archives/edgar/data/1579823/000149315221006345/FilingSummary.xml array error for given company
+PROGENITY, INC.: https://www.sec.gov/Archives/edgar/data/1580063/000156459021014182/FilingSummary.xml array error for given company
+Vroom, Inc.: https://www.sec.gov/Archives/edgar/data/1580864/000156459021010584/FilingSummary.xml array error for given company
+Knowles Corp: https://www.sec.gov/Archives/edgar/data/1587523/000158752321000012/FilingSummary.xml array error for given company
+Viridian Therapeutics, Inc.\DE: https://www.sec.gov/Archives/edgar/data/1590750/000159075021000029/FilingSummary.xml array error for given company
+Caesars Entertainment, Inc.: https://www.sec.gov/Archives/edgar/data/1590895/000159089521000085/FilingSummary.xml array error for given company
+FG Financial Group, Inc.: https://www.sec.gov/Archives/edgar/data/1591890/000149315221006325/FilingSummary.xml array error for given company
+AgroFresh Solutions, Inc.: https://www.sec.gov/Archives/edgar/data/1592016/000159201621000015/FilingSummary.xml array error for given company
+Atea Pharmaceuticals, Inc.: https://www.sec.gov/Archives/edgar/data/1593899/000156459021016724/FilingSummary.xml array error for given company
+MAGNITE, INC.: https://www.sec.gov/Archives/edgar/data/1595974/000159597421000016/FilingSummary.xml array error for given company
+Casper Sleep Inc.: https://www.sec.gov/Archives/edgar/data/1598674/000159867421000022/FilingSummary.xml array error for given company
+Summit Therapeutics Inc.: https://www.sec.gov/Archives/edgar/data/1599298/000159929821000011/FilingSummary.xml array error for given company
+GigWorld Inc.: https://www.sec.gov/Archives/edgar/data/1600347/000165495421003081/FilingSummary.xml array error for given company
+Aurinia Pharmaceuticals Inc.: https://www.sec.gov/Archives/edgar/data/1600620/000162828021003060/FilingSummary.xml array error for given company
+EASTERN ENERGY GAS HOLDINGS, LLC: https://www.sec.gov/Archives/edgar/data/1603291/000108131621000011/FilingSummary.xml array error for given company
+SQZ Biotechnologies Co: https://www.sec.gov/Archives/edgar/data/1604477/000156459021013996/FilingSummary.xml array error for given company
+Life Clips, Inc.: https://www.sec.gov/Archives/edgar/data/1604930/000149315221000080/FilingSummary.xml array error for given company
+Watermark Lodging Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1609471/000160947121000025/FilingSummary.xml array error for given company
+Exela Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1620179/000155837021003326/FilingSummary.xml array error for given company
+Athira Pharma, Inc.: https://www.sec.gov/Archives/edgar/data/1620463/000156459021015495/FilingSummary.xml array error for given company
+Cogent Biosciences, Inc.: https://www.sec.gov/Archives/edgar/data/1622229/000156459021013325/FilingSummary.xml array error for given company
+BigCommerce Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1626450/000156459021009501/FilingSummary.xml array error for given company
+Revolution Medicines, Inc.: https://www.sec.gov/Archives/edgar/data/1628171/000156459021010276/FilingSummary.xml array error for given company
+Professional Holding Corp.: https://www.sec.gov/Archives/edgar/data/1630856/000155837021003552/FilingSummary.xml array error for given company
+Metacrine, Inc.: https://www.sec.gov/Archives/edgar/data/1634379/000156459021014178/FilingSummary.xml array error for given company
+ISUN, INC.: https://www.sec.gov/Archives/edgar/data/1634447/000114036121008539/FilingSummary.xml array error for given company
+Altabancorp: https://www.sec.gov/Archives/edgar/data/1636286/000156459021013194/FilingSummary.xml array error for given company
+Tri-State Generation & Transmission Association, Inc.: https://www.sec.gov/Archives/edgar/data/1637880/000162828021004006/FilingSummary.xml array error for given company
+Snowflake Inc.: https://www.sec.gov/Archives/edgar/data/1640147/000164014721000073/FilingSummary.xml array error for given company
+EverQuote, Inc.: https://www.sec.gov/Archives/edgar/data/1640428/000119312521063397/FilingSummary.xml array error for given company
+Code Chain New Continent Ltd: https://www.sec.gov/Archives/edgar/data/1641398/000121390021017928/FilingSummary.xml array error for given company
+OncoCyte Corp: https://www.sec.gov/Archives/edgar/data/1642380/000149315221006465/FilingSummary.xml array error for given company
+Sumo Logic, Inc.: https://www.sec.gov/Archives/edgar/data/1643269/000164326921000006/FilingSummary.xml array error for given company
+Monopar Therapeutics: https://www.sec.gov/Archives/edgar/data/1645469/000165495421003243/FilingSummary.xml array error for given company
+MODIV INC.: https://www.sec.gov/Archives/edgar/data/1645873/000164587321000080/FilingSummary.xml array error for given company
+WillScot Mobile Mini Holdings Corp.: https://www.sec.gov/Archives/edgar/data/1647088/000164708821000015/FilingSummary.xml array error for given company
+Checkmate Pharmaceuticals, Inc.: https://www.sec.gov/Archives/edgar/data/1651431/000119312521098414/FilingSummary.xml array error for given company
+PINEAPPLE, INC.: https://www.sec.gov/Archives/edgar/data/1654672/000149315221003729/FilingSummary.xml array error for given company
+BEYOND MEAT, INC.: https://www.sec.gov/Archives/edgar/data/1655210/000165521021000032/FilingSummary.xml array error for given company
+Verona Pharma plc: https://www.sec.gov/Archives/edgar/data/1657312/000165731221000004/FilingSummary.xml array error for given company
+Codiak BioSciences, Inc.: https://www.sec.gov/Archives/edgar/data/1659352/000156459021013870/FilingSummary.xml array error for given company
+Poseida Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1661460/000156459021012509/FilingSummary.xml array error for given company
+C4 Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1662579/000156459021012531/FilingSummary.xml array error for given company
+Keros Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1664710/000166471021000018/FilingSummary.xml array error for given company
+Cantor Fitzgerald Income Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1666244/000156459021015520/FilingSummary.xml array error for given company
+Oncorus, Inc.: https://www.sec.gov/Archives/edgar/data/1671818/000156459021012059/FilingSummary.xml array error for given company
+IMARA Inc.: https://www.sec.gov/Archives/edgar/data/1672619/000156459021011098/FilingSummary.xml array error for given company
+Terra Property Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1674356/000167435621000008/FilingSummary.xml array error for given company
+FVCBankcorp, Inc.: https://www.sec.gov/Archives/edgar/data/1675644/000110465921041263/FilingSummary.xml array error for given company
+HealthLynked Corp: https://www.sec.gov/Archives/edgar/data/1680139/000121390021019166/FilingSummary.xml array error for given company
+GTY Technology Holdings Inc.: https://www.sec.gov/Archives/edgar/data/1682325/000155837021001283/FilingSummary.xml array error for given company
+Zomedica Corp.: https://www.sec.gov/Archives/edgar/data/1684144/000117184321001378/FilingSummary.xml array error for given company
+Folkup Development Inc.: https://www.sec.gov/Archives/edgar/data/1684506/000147793221001878/FilingSummary.xml array error for given company
+CNL Strategic Capital, LLC: https://www.sec.gov/Archives/edgar/data/1684682/000168468221000002/FilingSummary.xml array error for given company
+FORGE INNOVATION DEVELOPMENT CORP.: https://www.sec.gov/Archives/edgar/data/1687919/000149315221007074/FilingSummary.xml array error for given company
+Crypto Co: https://www.sec.gov/Archives/edgar/data/1688126/000149315221007183/FilingSummary.xml array error for given company
+NEXTIER OILFIELD SOLUTIONS INC.: https://www.sec.gov/Archives/edgar/data/1688476/000168847621000039/FilingSummary.xml array error for given company
+Praxis Precision Medicines, Inc.: https://www.sec.gov/Archives/edgar/data/1689548/000168954821000016/FilingSummary.xml array error for given company
+Berkeley Lights, Inc.: https://www.sec.gov/Archives/edgar/data/1689657/000168965721000005/FilingSummary.xml array error for given company
+Lemonade, Inc.: https://www.sec.gov/Archives/edgar/data/1691421/000169142121000024/FilingSummary.xml array error for given company
+Velocity Financial, Inc.: https://www.sec.gov/Archives/edgar/data/1692376/000156459021013680/FilingSummary.xml array error for given company
+Vistra Corp.: https://www.sec.gov/Archives/edgar/data/1692819/000169281921000004/FilingSummary.xml array error for given company
+Inozyme Pharma, Inc.: https://www.sec.gov/Archives/edgar/data/1693011/000156459021015250/FilingSummary.xml array error for given company
+Korth Direct Mortgage Inc.: https://www.sec.gov/Archives/edgar/data/1695963/000121465921003563/FilingSummary.xml array error for given company
+Ingersoll Rand Inc.: https://www.sec.gov/Archives/edgar/data/1699150/000162828021003454/FilingSummary.xml array error for given company
+Baker Hughes Co: https://www.sec.gov/Archives/edgar/data/1701605/000170160521000026/FilingSummary.xml array error for given company
+AEP Transmission Company, LLC: https://www.sec.gov/Archives/edgar/data/1702494/000000490421000010/FilingSummary.xml array error for given company
+WRAP TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/1702924/000165495421002358/FilingSummary.xml array error for given company
+VIVIC CORP.: https://www.sec.gov/Archives/edgar/data/1703073/000154972721000016/FilingSummary.xml array error for given company
+Zai Lab Ltd: https://www.sec.gov/Archives/edgar/data/1704292/000119312521062279/FilingSummary.xml array error for given company
+Alpha Metallurgical Resources, Inc.: https://www.sec.gov/Archives/edgar/data/1704715/000170471521000026/FilingSummary.xml array error for given company
+Cannae Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1704720/000170472021000024/FilingSummary.xml array error for given company
+American Virtual Cloud Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1704760/000121390021018977/FilingSummary.xml array error for given company
+Bantec, Inc.: https://www.sec.gov/Archives/edgar/data/1704795/000121390021001662/FilingSummary.xml array error for given company
+Venator Materials PLC: https://www.sec.gov/Archives/edgar/data/1705682/000170568221000005/FilingSummary.xml array error for given company
+Hall of Fame Resort & Entertainment Co: https://www.sec.gov/Archives/edgar/data/1708176/000121390021014620/FilingSummary.xml array error for given company
+AZIYO BIOLOGICS, INC.: https://www.sec.gov/Archives/edgar/data/1708527/000110465921036360/FilingSummary.xml array error for given company
+Andover National Corp: https://www.sec.gov/Archives/edgar/data/1712543/000110465921044727/FilingSummary.xml array error for given company
+Vivint Smart Home, Inc.: https://www.sec.gov/Archives/edgar/data/1713952/000171395221000006/FilingSummary.xml array error for given company
+Transphorm, Inc.: https://www.sec.gov/Archives/edgar/data/1715768/000171576821000035/FilingSummary.xml array error for given company
+Vivos Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1716166/000149315221006806/FilingSummary.xml array error for given company
+HYCROFT MINING HOLDING CORP: https://www.sec.gov/Archives/edgar/data/1718405/000171840521000029/FilingSummary.xml array error for given company
+Eargo, Inc.: https://www.sec.gov/Archives/edgar/data/1719395/000156459021013613/FilingSummary.xml array error for given company
+Kaleyra, Inc.: https://www.sec.gov/Archives/edgar/data/1719489/000156459021013298/FilingSummary.xml array error for given company
+Adicet Bio, Inc.: https://www.sec.gov/Archives/edgar/data/1720580/000156459021012664/FilingSummary.xml array error for given company
+AEP Texas Inc.: https://www.sec.gov/Archives/edgar/data/1721781/000000490421000010/FilingSummary.xml array error for given company
+Jamf Holding Corp.: https://www.sec.gov/Archives/edgar/data/1721947/000155837021002391/FilingSummary.xml array error for given company
+ChampionX Corp: https://www.sec.gov/Archives/edgar/data/1723089/000172308921000047/FilingSummary.xml array error for given company
+Crescent Acquisition Corp: https://www.sec.gov/Archives/edgar/data/1723648/000156459021010384/FilingSummary.xml array error for given company
+DATTO HOLDING CORP.: https://www.sec.gov/Archives/edgar/data/1724570/000172457021000015/FilingSummary.xml array error for given company
+Digital Media Solutions, Inc.: https://www.sec.gov/Archives/edgar/data/1725134/000172513421000043/FilingSummary.xml array error for given company
+Zentalis Pharmaceuticals, Inc.: https://www.sec.gov/Archives/edgar/data/1725160/000172516021000075/FilingSummary.xml array error for given company
+BM Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1725872/000121390021019315/FilingSummary.xml array error for given company
+Kubient, Inc.: https://www.sec.gov/Archives/edgar/data/1729750/000110465921043439/FilingSummary.xml array error for given company
+Nikola Corp: https://www.sec.gov/Archives/edgar/data/1731289/000173128921000006/FilingSummary.xml array error for given company
+Generation Bio Co.: https://www.sec.gov/Archives/edgar/data/1733294/000119312521085043/FilingSummary.xml array error for given company
+Viela Bio, Inc.: https://www.sec.gov/Archives/edgar/data/1734517/000156459021009902/FilingSummary.xml array error for given company
+Golden Developing Solutions, Inc.: https://www.sec.gov/Archives/edgar/data/1736865/000168316821000755/FilingSummary.xml array error for given company
+Luduson G Inc.: https://www.sec.gov/Archives/edgar/data/1737193/000168316821001054/FilingSummary.xml array error for given company
+Allogene Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1737287/000173728721000009/FilingSummary.xml array error for given company
+Compass Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1738021/000156459021011110/FilingSummary.xml array error for given company
+BiomX Inc.: https://www.sec.gov/Archives/edgar/data/1739174/000121390021019233/FilingSummary.xml array error for given company
+Utz Brands, Inc.: https://www.sec.gov/Archives/edgar/data/1739566/000173956621000030/FilingSummary.xml array error for given company
+Inhibrx, Inc.: https://www.sec.gov/Archives/edgar/data/1739614/000173961421000047/FilingSummary.xml array error for given company
+Tattooed Chef, Inc.: https://www.sec.gov/Archives/edgar/data/1741231/000121390021016721/FilingSummary.xml array error for given company
+REVIVA PHARMACEUTICALS HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1742927/000143774921006681/FilingSummary.xml array error for given company
+GRID DYNAMICS HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1743725/000121390021013771/FilingSummary.xml array error for given company
+Corsair Gaming, Inc.: https://www.sec.gov/Archives/edgar/data/1743759/000156459021012507/FilingSummary.xml array error for given company
+Velodyne Lidar, Inc.: https://www.sec.gov/Archives/edgar/data/1745317/000162828021004964/FilingSummary.xml array error for given company
+Beam Therapeutics Inc.: https://www.sec.gov/Archives/edgar/data/1745999/000156459021013190/FilingSummary.xml array error for given company
+Bally's Corp: https://www.sec.gov/Archives/edgar/data/1747079/000174707921000071/FilingSummary.xml array error for given company
+New Fortress Energy Inc.: https://www.sec.gov/Archives/edgar/data/1749723/000114036121008724/FilingSummary.xml array error for given company
+Canoo Inc.: https://www.sec.gov/Archives/edgar/data/1750153/000155837021003823/FilingSummary.xml array error for given company
+CareClix Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1750384/000106594921000038/FilingSummary.xml array error for given company
+Hawkeye Systems, Inc.: https://www.sec.gov/Archives/edgar/data/1750777/000147793221000520/FilingSummary.xml array error for given company
+California BanCorp: https://www.sec.gov/Archives/edgar/data/1752036/000119312521094619/FilingSummary.xml array error for given company
+GX Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1752828/000121390021013228/FilingSummary.xml array error for given company
+Fathom Holdings Inc.: https://www.sec.gov/Archives/edgar/data/1753162/000110465921041032/FilingSummary.xml array error for given company
+Allovir, Inc.: https://www.sec.gov/Archives/edgar/data/1754068/000156459021005652/FilingSummary.xml array error for given company
+AerSale Corp: https://www.sec.gov/Archives/edgar/data/1754170/000110465921037098/FilingSummary.xml array error for given company
+Desktop Metal, Inc.: https://www.sec.gov/Archives/edgar/data/1754820/000155837021002963/FilingSummary.xml array error for given company
+Tradeweb Markets Inc.: https://www.sec.gov/Archives/edgar/data/1758730/000175873021000007/FilingSummary.xml array error for given company
+Star Peak Energy Transition Corp.: https://www.sec.gov/Archives/edgar/data/1758766/000110465921031725/FilingSummary.xml array error for given company
+CarLotz, Inc.: https://www.sec.gov/Archives/edgar/data/1759008/000110465921036389/FilingSummary.xml array error for given company
+Hyliion Holdings Corp.: https://www.sec.gov/Archives/edgar/data/1759631/000121390021011788/FilingSummary.xml array error for given company
+ALTA EQUIPMENT GROUP INC.: https://www.sec.gov/Archives/edgar/data/1759824/000156459021014150/FilingSummary.xml array error for given company
+Kaival Brands Innovations Group, Inc.: https://www.sec.gov/Archives/edgar/data/1762239/000173112221000225/FilingSummary.xml array error for given company
+SHIFT TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/1762322/000176232221000012/FilingSummary.xml array error for given company
+Acreage Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1762359/000176235921000018/FilingSummary.xml array error for given company
+Replay Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1763731/000110465921041129/FilingSummary.xml array error for given company
+Lantern Pharma Inc.: https://www.sec.gov/Archives/edgar/data/1763950/000121390021014576/FilingSummary.xml array error for given company
+CLARIVATE Plc: https://www.sec.gov/Archives/edgar/data/1764046/000176404621000022/FilingSummary.xml array error for given company
+Carrier EQ, LLC: https://www.sec.gov/Archives/edgar/data/1766352/000155335021000027/FilingSummary.xml array error for given company
+Augmedix, Inc.: https://www.sec.gov/Archives/edgar/data/1769804/000121390021018844/FilingSummary.xml array error for given company
+Xerox Holdings Corp: https://www.sec.gov/Archives/edgar/data/1770450/000177045021000013/FilingSummary.xml array error for given company
+XL Fleet Corp.: https://www.sec.gov/Archives/edgar/data/1772720/000121390021019311/FilingSummary.xml array error for given company
+DraftKings Inc.: https://www.sec.gov/Archives/edgar/data/1772757/000110465921028617/FilingSummary.xml array error for given company
+BTRS Holdings Inc.: https://www.sec.gov/Archives/edgar/data/1774155/000114036121009706/FilingSummary.xml array error for given company
+SmileDirectClub, Inc.: https://www.sec.gov/Archives/edgar/data/1775625/000177562521000025/FilingSummary.xml array error for given company
+Advantage Solutions Inc.: https://www.sec.gov/Archives/edgar/data/1776661/000119312521082812/FilingSummary.xml array error for given company
+CuriosityStream Inc.: https://www.sec.gov/Archives/edgar/data/1776909/000121390021018943/FilingSummary.xml array error for given company
+Switchback Energy Acquisition Corp: https://www.sec.gov/Archives/edgar/data/1777393/000121390021008053/FilingSummary.xml array error for given company
+Apex Technology Acquisition Corp: https://www.sec.gov/Archives/edgar/data/1777921/000121390021014139/FilingSummary.xml array error for given company
+Danimer Scientific, Inc.: https://www.sec.gov/Archives/edgar/data/1779020/000121390021018433/FilingSummary.xml array error for given company
+Experience Investment Corp.: https://www.sec.gov/Archives/edgar/data/1779128/000110465921034054/FilingSummary.xml array error for given company
+Stable Road Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1781162/000121390021013891/FilingSummary.xml array error for given company
+Otis Worldwide Corp: https://www.sec.gov/Archives/edgar/data/1781335/000178133521000023/FilingSummary.xml array error for given company
+McAfee Corp.: https://www.sec.gov/Archives/edgar/data/1783317/000156459021009891/FilingSummary.xml array error for given company
+Forum Merger III Corp: https://www.sec.gov/Archives/edgar/data/1784168/000121390021019197/FilingSummary.xml array error for given company
+Porch Group, Inc.: https://www.sec.gov/Archives/edgar/data/1784535/000155837021003776/FilingSummary.xml array error for given company
+Harbor Custom Development, Inc.: https://www.sec.gov/Archives/edgar/data/1784567/000149315221007553/FilingSummary.xml array error for given company
+Broadmark Realty Capital Inc.: https://www.sec.gov/Archives/edgar/data/1784797/000155837021002180/FilingSummary.xml array error for given company
+FinServ Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1785424/000121390021013844/FilingSummary.xml array error for given company
+Reynolds Consumer Products Inc.: https://www.sec.gov/Archives/edgar/data/1786431/000156459021005649/FilingSummary.xml array error for given company
+Root, Inc.: https://www.sec.gov/Archives/edgar/data/1788882/000178888221000011/FilingSummary.xml array error for given company
+InterPrivate Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1789029/000121390021014857/FilingSummary.xml array error for given company
+SOC Telemed, Inc.: https://www.sec.gov/Archives/edgar/data/1791091/000121390021018724/FilingSummary.xml array error for given company
+Viatris Inc: https://www.sec.gov/Archives/edgar/data/1792044/000179204421000009/FilingSummary.xml array error for given company
+Kiromic Biopharma, Inc.: https://www.sec.gov/Archives/edgar/data/1792581/000155837021003774/FilingSummary.xml array error for given company
+DoorDash, Inc.: https://www.sec.gov/Archives/edgar/data/1792789/000162828021004032/FilingSummary.xml array error for given company
+PPD, Inc.: https://www.sec.gov/Archives/edgar/data/1793294/000179329421000009/FilingSummary.xml array error for given company
+Rush Street Interactive, Inc.: https://www.sec.gov/Archives/edgar/data/1793659/000110465921041536/FilingSummary.xml array error for given company
+ZoomInfo Technologies Inc.: https://www.sec.gov/Archives/edgar/data/1794515/000179451521000061/FilingSummary.xml array error for given company
+Shift4 Payments, Inc.: https://www.sec.gov/Archives/edgar/data/1794669/000156459021011368/FilingSummary.xml array error for given company
+Green Thumb Industries Inc.: https://www.sec.gov/Archives/edgar/data/1795139/000119312521084882/FilingSummary.xml array error for given company
+APi Group Corp: https://www.sec.gov/Archives/edgar/data/1796209/000156459021014986/FilingSummary.xml array error for given company
+NETSTREIT Corp.: https://www.sec.gov/Archives/edgar/data/1798100/000179810021000011/FilingSummary.xml array error for given company
+Carriage House Event Center, Inc.: https://www.sec.gov/Archives/edgar/data/1798458/000182646621000079/FilingSummary.xml array error for given company
+Dun & Bradstreet Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1799208/000179920821000013/FilingSummary.xml array error for given company
+Aligos Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1799448/000156459021014872/FilingSummary.xml array error for given company
+iCap Vault 1, LLC: https://www.sec.gov/Archives/edgar/data/1800199/000149315221007379/FilingSummary.xml array error for given company
+Galecto, Inc.: https://www.sec.gov/Archives/edgar/data/1800315/000156459021015916/FilingSummary.xml array error for given company
+JFrog Ltd: https://www.sec.gov/Archives/edgar/data/1800667/000119312521041470/FilingSummary.xml array error for given company
+Opendoor Technologies Inc.: https://www.sec.gov/Archives/edgar/data/1801169/000180116921000011/FilingSummary.xml array error for given company
+CLOVER HEALTH INVESTMENTS, CORP. /DE: https://www.sec.gov/Archives/edgar/data/1801170/000119312521102551/FilingSummary.xml array error for given company
+MP Materials Corp. / DE: https://www.sec.gov/Archives/edgar/data/1801368/000180136821000011/FilingSummary.xml array error for given company
+Skillz Inc.: https://www.sec.gov/Archives/edgar/data/1801661/000162828021004659/FilingSummary.xml array error for given company
+Harmony Biosciences Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1802665/000156459021015274/FilingSummary.xml array error for given company
+Xperi Holding Corp: https://www.sec.gov/Archives/edgar/data/1803696/000156459021009444/FilingSummary.xml array error for given company
+BIO LAB NATURALS, INC.: https://www.sec.gov/Archives/edgar/data/1803977/000106594921000040/FilingSummary.xml array error for given company
+Butterfly Network, Inc.: https://www.sec.gov/Archives/edgar/data/1804176/000110465921043278/FilingSummary.xml array error for given company
+Eos Energy Enterprises, Inc.: https://www.sec.gov/Archives/edgar/data/1805077/000162828021003349/FilingSummary.xml array error for given company
+Rocket Companies, Inc.: https://www.sec.gov/Archives/edgar/data/1805284/000180528421000010/FilingSummary.xml array error for given company
+Cerevel Therapeutics Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1805387/000156459021015106/FilingSummary.xml array error for given company
+Fusion Pharmaceuticals Inc.: https://www.sec.gov/Archives/edgar/data/1805890/000156459021015271/FilingSummary.xml array error for given company
+Open Lending Corp: https://www.sec.gov/Archives/edgar/data/1806201/000180620121000012/FilingSummary.xml array error for given company
+Taysha Gene Therapies, Inc.: https://www.sec.gov/Archives/edgar/data/1806310/000156459021010433/FilingSummary.xml array error for given company
+Rayonier, L.P.: https://www.sec.gov/Archives/edgar/data/1806931/000005282721000035/FilingSummary.xml array error for given company
+Novus Capital Corp: https://www.sec.gov/Archives/edgar/data/1807707/000110465921009139/FilingSummary.xml array error for given company
+Pandion Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1807901/000156459021012895/FilingSummary.xml array error for given company
+Repare Therapeutics Inc.: https://www.sec.gov/Archives/edgar/data/1808158/000156459021011011/FilingSummary.xml array error for given company
+GoHealth, Inc.: https://www.sec.gov/Archives/edgar/data/1808220/000180822021000010/FilingSummary.xml array error for given company
+PROG Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1808834/000180883421000012/FilingSummary.xml array error for given company
+iTeos Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1808865/000156459021015146/FilingSummary.xml array error for given company
+GoodRx Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1809519/000156459021012614/FilingSummary.xml array error for given company
+ALX ONCOLOGY HOLDINGS INC: https://www.sec.gov/Archives/edgar/data/1810182/000156459021014169/FilingSummary.xml array error for given company
+Eastern Bankshares, Inc.: https://www.sec.gov/Archives/edgar/data/1810546/000162828021005933/FilingSummary.xml array error for given company
+Radius Global Infrastructure, Inc.: https://www.sec.gov/Archives/edgar/data/1810739/000156459021016621/FilingSummary.xml array error for given company
+Unity Software Inc.: https://www.sec.gov/Archives/edgar/data/1810806/000181080621000052/FilingSummary.xml array error for given company
+Nuvation Bio Inc.: https://www.sec.gov/Archives/edgar/data/1811063/000119312521077880/FilingSummary.xml array error for given company
+Texas Pacific Land Corp: https://www.sec.gov/Archives/edgar/data/1811074/000181107421000013/FilingSummary.xml array error for given company
+Applied UV, Inc.: https://www.sec.gov/Archives/edgar/data/1811109/000160706221000068/FilingSummary.xml array error for given company
+QuantumScape Corp: https://www.sec.gov/Archives/edgar/data/1811414/000156459021007621/FilingSummary.xml array error for given company
+Relay Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1812364/000156459021015518/FilingSummary.xml array error for given company
+Reliance Global Group, Inc.: https://www.sec.gov/Archives/edgar/data/1812727/000149315221006675/FilingSummary.xml array error for given company
+Hestia Insight Inc.: https://www.sec.gov/Archives/edgar/data/1813603/000182912621001487/FilingSummary.xml array error for given company
+World Scan Project, Inc.: https://www.sec.gov/Archives/edgar/data/1813744/000159991621000017/FilingSummary.xml array error for given company
+Blockchain of Things, Inc.: https://www.sec.gov/Archives/edgar/data/1813793/000166357721000157/FilingSummary.xml array error for given company
+BBX Capital, Inc.: https://www.sec.gov/Archives/edgar/data/1814974/000181497421000016/FilingSummary.xml array error for given company
+Kymera Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1815442/000156459021012240/FilingSummary.xml array error for given company
+MediaAlpha, Inc.: https://www.sec.gov/Archives/edgar/data/1818383/000156459021013026/FilingSummary.xml array error for given company
+Dyne Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1818794/000156459021010726/FilingSummary.xml array error for given company
+TPG Pace Beneficial Finance Corp.: https://www.sec.gov/Archives/edgar/data/1819399/000156459021014960/FilingSummary.xml array error for given company
+Liquidia Corp: https://www.sec.gov/Archives/edgar/data/1819576/000143774921007174/FilingSummary.xml array error for given company
+GCM Grosvenor Inc.: https://www.sec.gov/Archives/edgar/data/1819796/000181979621000029/FilingSummary.xml array error for given company
+Array Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1820721/000182072121000009/FilingSummary.xml array error for given company
+Apartment Income REIT Corp.: https://www.sec.gov/Archives/edgar/data/1820877/000156459021012964/FilingSummary.xml array error for given company
+Aimco OP L.P.: https://www.sec.gov/Archives/edgar/data/1820878/000156459021012671/FilingSummary.xml array error for given company
+Guild Holdings Co: https://www.sec.gov/Archives/edgar/data/1821160/000156459021014943/FilingSummary.xml array error for given company
+Motorsport Games Inc.: https://www.sec.gov/Archives/edgar/data/1821175/000149315221006719/FilingSummary.xml array error for given company
+ContextLogic Inc.: https://www.sec.gov/Archives/edgar/data/1822250/000156459021015544/FilingSummary.xml array error for given company
+Foghorn Therapeutics Inc.: https://www.sec.gov/Archives/edgar/data/1822462/000119312521085777/FilingSummary.xml array error for given company
+Clene Inc.: https://www.sec.gov/Archives/edgar/data/1822791/000121390021018061/FilingSummary.xml array error for given company
+Generations Bancorp NY, Inc.: https://www.sec.gov/Archives/edgar/data/1823365/000155837021003627/FilingSummary.xml array error for given company
+Amalgamated Financial Corp.: https://www.sec.gov/Archives/edgar/data/1823608/000182360821000010/FilingSummary.xml array error for given company
+Poshmark, Inc.: https://www.sec.gov/Archives/edgar/data/1825480/000156459021014879/FilingSummary.xml array error for given company
+Wetouch Technology Inc.: https://www.sec.gov/Archives/edgar/data/1826660/000149315221006657/FilingSummary.xml array error for given company
+Forian Inc.: https://www.sec.gov/Archives/edgar/data/1829280/000114036121011044/FilingSummary.xml array error for given company
+Lumen Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/18926/000001892621000017/FilingSummary.xml array error for given company
+COMMUNICATIONS SYSTEMS INC: https://www.sec.gov/Archives/edgar/data/22701/000089710121000260/FilingSummary.xml array error for given company
+CTO Realty Growth, Inc.: https://www.sec.gov/Archives/edgar/data/23795/000155837021002457/FilingSummary.xml array error for given company
+ONEMAIN FINANCE CORP: https://www.sec.gov/Archives/edgar/data/25598/000158420721000006/FilingSummary.xml array error for given company
+Bluegreen Vacations Holding Corp: https://www.sec.gov/Archives/edgar/data/315858/000031585821000008/FilingSummary.xml array error for given company
+RELIABILITY INC: https://www.sec.gov/Archives/edgar/data/34285/000149315221007359/FilingSummary.xml array error for given company
+TRUSTCO BANK CORP N Y: https://www.sec.gov/Archives/edgar/data/357301/000114036121006418/FilingSummary.xml array error for given company
+FIRST HORIZON CORP: https://www.sec.gov/Archives/edgar/data/36966/000003696621000012/FilingSummary.xml array error for given company
+Glatfelter Corp: https://www.sec.gov/Archives/edgar/data/41719/000156459021008961/FilingSummary.xml array error for given company
+BANK OF HAWAII CORP: https://www.sec.gov/Archives/edgar/data/46195/000156459021009934/FilingSummary.xml array error for given company
+AMERICAN ELECTRIC POWER CO INC: https://www.sec.gov/Archives/edgar/data/4904/000000490421000010/FilingSummary.xml array error for given company
+EASTGROUP PROPERTIES INC: https://www.sec.gov/Archives/edgar/data/49600/000004960021000027/FilingSummary.xml table was not found at one of the table urls
+INDIANA MICHIGAN POWER CO: https://www.sec.gov/Archives/edgar/data/50172/000000490421000010/FilingSummary.xml array error for given company
+AMERICAN INTERNATIONAL GROUP, INC.: https://www.sec.gov/Archives/edgar/data/5272/000110465921025742/FilingSummary.xml array error for given company
+Quad M Solutions, Inc.: https://www.sec.gov/Archives/edgar/data/66600/000147793221000201/FilingSummary.xml array error for given company
+APPALACHIAN POWER CO: https://www.sec.gov/Archives/edgar/data/6879/000000490421000010/FilingSummary.xml array error for given company
+STAR EQUITY HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/707388/000070738821000009/FilingSummary.xml array error for given company
+ACNB CORP: https://www.sec.gov/Archives/edgar/data/715579/000071557921000012/FilingSummary.xml array error for given company
+COMMUNITY BANK SYSTEM, INC.: https://www.sec.gov/Archives/edgar/data/723188/000110465921030055/FilingSummary.xml array error for given company
+Equitable Financial Life Insurance Co: https://www.sec.gov/Archives/edgar/data/727920/000072792021000004/FilingSummary.xml array error for given company
+WELLS FARGO & COMPANY/MN: https://www.sec.gov/Archives/edgar/data/72971/000007297121000197/FilingSummary.xml array error for given company
+OHIO POWER CO: https://www.sec.gov/Archives/edgar/data/73986/000000490421000010/FilingSummary.xml array error for given company
+OKLAHOMA GAS & ELECTRIC CO: https://www.sec.gov/Archives/edgar/data/74145/000102163521000026/FilingSummary.xml array error for given company
+SHYFT GROUP, INC.: https://www.sec.gov/Archives/edgar/data/743238/000143774921007163/FilingSummary.xml array error for given company
+CLOUDCOMMERCE, INC.: https://www.sec.gov/Archives/edgar/data/743758/000106594921000044/FilingSummary.xml array error for given company
+CAMDEN NATIONAL CORP: https://www.sec.gov/Archives/edgar/data/750686/000075068621000026/FilingSummary.xml array error for given company
+POPULAR, INC.: https://www.sec.gov/Archives/edgar/data/763901/000119312521063781/FilingSummary.xml array error for given company
+KOPIN CORP: https://www.sec.gov/Archives/edgar/data/771266/000149315221005466/FilingSummary.xml array error for given company
+M.D.C. HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/773141/000077314121000024/FilingSummary.xml array error for given company
+Alto Ingredients, Inc.: https://www.sec.gov/Archives/edgar/data/778164/000121390021017995/FilingSummary.xml array error for given company
+Essential Utilities, Inc.: https://www.sec.gov/Archives/edgar/data/78128/000156276221000081/FilingSummary.xml array error for given company
+HALLADOR ENERGY CO: https://www.sec.gov/Archives/edgar/data/788965/000143774921005315/FilingSummary.xml array error for given company
+ODP Corp: https://www.sec.gov/Archives/edgar/data/800240/000156459021008074/FilingSummary.xml array error for given company
+Mitesco, Inc.: https://www.sec.gov/Archives/edgar/data/802257/000118518521000369/FilingSummary.xml array error for given company
+Baker Hughes Holdings LLC: https://www.sec.gov/Archives/edgar/data/808362/000080836221000004/FilingSummary.xml array error for given company
+PUBLIC SERVICE CO OF OKLAHOMA: https://www.sec.gov/Archives/edgar/data/81027/000000490421000010/FilingSummary.xml array error for given company
+SUMMIT FINANCIAL GROUP, INC.: https://www.sec.gov/Archives/edgar/data/811808/000081180821000009/FilingSummary.xml array error for given company
+Emmaus Life Sciences, Inc.: https://www.sec.gov/Archives/edgar/data/822370/000156459021001977/FilingSummary.xml array error for given company
+SANDY SPRING BANCORP INC: https://www.sec.gov/Archives/edgar/data/824410/000082441021000017/FilingSummary.xml array error for given company
+VIDLER WATER RESOURCES, INC.: https://www.sec.gov/Archives/edgar/data/830122/000083012221000013/FilingSummary.xml array error for given company
+PARTNERS BANCORP: https://www.sec.gov/Archives/edgar/data/832090/000155837021003683/FilingSummary.xml array error for given company
+FIRSTCASH, INC: https://www.sec.gov/Archives/edgar/data/840489/000084048921000028/FilingSummary.xml array error for given company
+Dime Community Bancshares, Inc. /NY/: https://www.sec.gov/Archives/edgar/data/846617/000084661721000014/FilingSummary.xml array error for given company
+Fovea Jewelry Holdings Ltd.: https://www.sec.gov/Archives/edgar/data/850971/000147793221001720/FilingSummary.xml array error for given company
+BOK FINANCIAL CORP: https://www.sec.gov/Archives/edgar/data/875357/000087535721000013/FilingSummary.xml array error for given company
+ASENSUS SURGICAL, INC.: https://www.sec.gov/Archives/edgar/data/876378/000143774921005730/FilingSummary.xml array error for given company
+Primo Water Corp /CN/: https://www.sec.gov/Archives/edgar/data/884713/000088471321000004/FilingSummary.xml array error for given company
+CONSUMER PORTFOLIO SERVICES, INC.: https://www.sec.gov/Archives/edgar/data/889609/000168316821000868/FilingSummary.xml array error for given company
+OHIO VALLEY BANC CORP: https://www.sec.gov/Archives/edgar/data/894671/000089467121000014/FilingSummary.xml array error for given company
+theMaven, Inc.: https://www.sec.gov/Archives/edgar/data/894871/000149315221000653/FilingSummary.xml array error for given company
+ALLSTATE CORP: https://www.sec.gov/Archives/edgar/data/899051/000089905121000011/FilingSummary.xml array error for given company
+SAUL CENTERS, INC.: https://www.sec.gov/Archives/edgar/data/907254/000090725421000018/FilingSummary.xml array error for given company
+UFP INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/912767/000155837021002324/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192821000014/FilingSummary.xml array error for given company
+LABORATORY CORP OF AMERICA HOLDINGS: https://www.sec.gov/Archives/edgar/data/920148/000092014821000018/FilingSummary.xml array error for given company
+SOUTHWEST AIRLINES CO: https://www.sec.gov/Archives/edgar/data/92380/000009238021000033/FilingSummary.xml array error for given company
+SOUTHWESTERN ELECTRIC POWER CO: https://www.sec.gov/Archives/edgar/data/92487/000000490421000010/FilingSummary.xml array error for given company
+Aspira Women's Health Inc.: https://www.sec.gov/Archives/edgar/data/926617/000092661721000033/FilingSummary.xml array error for given company
+COVENANT LOGISTICS GROUP, INC.: https://www.sec.gov/Archives/edgar/data/928658/000143774921005174/FilingSummary.xml array error for given company
+DENBURY INC: https://www.sec.gov/Archives/edgar/data/945764/000094576421000022/FilingSummary.xml array error for given company
+PREMIER FINANCIAL CORP: https://www.sec.gov/Archives/edgar/data/946647/000156459021012879/FilingSummary.xml array error for given company
+LifeMD, Inc.: https://www.sec.gov/Archives/edgar/data/948320/000149315221007194/FilingSummary.xml array error for given company
+Capstone Green Energy Corp: https://www.sec.gov/Archives/edgar/data/1009759/000155837021008246/FilingSummary.xml array error for given company
+Elys Game Technology, Corp.: https://www.sec.gov/Archives/edgar/data/1080319/000101738621000091/FilingSummary.xml array error for given company
+PARETEUM Corp: https://www.sec.gov/Archives/edgar/data/1084384/000162828021012457/FilingSummary.xml array error for given company
+SMITH & WESSON BRANDS, INC.: https://www.sec.gov/Archives/edgar/data/1092796/000156459021033352/FilingSummary.xml array error for given company
+Worksport, Ltd: https://www.sec.gov/Archives/edgar/data/1096275/000149315221008647/FilingSummary.xml array error for given company
+ADVANCED CONTAINER TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/1096950/000172186821000228/FilingSummary.xml array error for given company
+BUILD-A-BEAR WORKSHOP INC: https://www.sec.gov/Archives/edgar/data/1113809/000143774921009026/FilingSummary.xml array error for given company
+ECO INNOVATION GROUP, INC.: https://www.sec.gov/Archives/edgar/data/1144169/000107997321000285/FilingSummary.xml array error for given company
+Simply, Inc.: https://www.sec.gov/Archives/edgar/data/1274032/000156459021022561/FilingSummary.xml array error for given company
+SCIENTIFIC ENERGY, INC: https://www.sec.gov/Archives/edgar/data/1276531/000127653121000003/FilingSummary.xml array error for given company
+QUANTUM ENERGY INC.: https://www.sec.gov/Archives/edgar/data/1295961/000143774921009779/FilingSummary.xml array error for given company
+Premier Product Group, Inc.: https://www.sec.gov/Archives/edgar/data/1301838/000147793221002900/FilingSummary.xml array error for given company
+QSAM Biosciences, Inc.: https://www.sec.gov/Archives/edgar/data/1310527/000149315221008885/FilingSummary.xml array error for given company
+China Foods Holdings Ltd.: https://www.sec.gov/Archives/edgar/data/1310630/000149315221008621/FilingSummary.xml array error for given company
+Global Fiber Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1338929/000147793221002576/FilingSummary.xml array error for given company
+Iconic Brands, Inc.: https://www.sec.gov/Archives/edgar/data/1350073/000147793221002220/FilingSummary.xml array error for given company
+Pure Harvest Corporate Group, Inc.: https://www.sec.gov/Archives/edgar/data/1351573/000149315221009177/FilingSummary.xml array error for given company
+ZZLL INFORMATION TECHNOLOGY, INC: https://www.sec.gov/Archives/edgar/data/1365357/000121390021021707/FilingSummary.xml array error for given company
+ZW Data Action Technologies Inc.: https://www.sec.gov/Archives/edgar/data/1376321/000117184321002452/FilingSummary.xml array error for given company
+SurgePays, Inc.: https://www.sec.gov/Archives/edgar/data/1392694/000149315221007818/FilingSummary.xml array error for given company
+WECONNECT Tech International, Inc.: https://www.sec.gov/Archives/edgar/data/1409175/000168316821002391/FilingSummary.xml array error for given company
+Digital Development Partners, Inc.: https://www.sec.gov/Archives/edgar/data/1409999/000147793221002405/FilingSummary.xml array error for given company
+MARIZYME INC: https://www.sec.gov/Archives/edgar/data/1413754/000149315221008936/FilingSummary.xml array error for given company
+CHINOOK THERAPEUTICS, INC.: https://www.sec.gov/Archives/edgar/data/1435049/000156459021018017/FilingSummary.xml array error for given company
+Accolade, Inc.: https://www.sec.gov/Archives/edgar/data/1481646/000155837021006527/FilingSummary.xml array error for given company
+CITRINE GLOBAL, CORP.: https://www.sec.gov/Archives/edgar/data/1498067/000149315221008866/FilingSummary.xml array error for given company
+NGL Energy Partners LP: https://www.sec.gov/Archives/edgar/data/1504461/000150446121000025/FilingSummary.xml array error for given company
+TILLY'S, INC.: https://www.sec.gov/Archives/edgar/data/1524025/000162828021006293/FilingSummary.xml array error for given company
+Bristow Group Inc.: https://www.sec.gov/Archives/edgar/data/1525221/000152522121000021/FilingSummary.xml array error for given company
+MCX Technologies Corp: https://www.sec.gov/Archives/edgar/data/1535079/000143774921009014/FilingSummary.xml array error for given company
+Quarta-Rad, Inc.: https://www.sec.gov/Archives/edgar/data/1549631/000149315221008862/FilingSummary.xml array error for given company
+Rocky Mountain Industrials, Inc.: https://www.sec.gov/Archives/edgar/data/1556179/000110465921058890/FilingSummary.xml array error for given company
+Sipup Corp: https://www.sec.gov/Archives/edgar/data/1563227/000121390021025233/FilingSummary.xml array error for given company
+Sipup Corp: https://www.sec.gov/Archives/edgar/data/1563227/000121390021028130/FilingSummary.xml array error for given company
+NUTRALIFE BIOSCIENCES, INC: https://www.sec.gov/Archives/edgar/data/1563463/000149315221015197/FilingSummary.xml array error for given company
+Phoenix Rising Companies, Inc.: https://www.sec.gov/Archives/edgar/data/1572384/000164033421001266/FilingSummary.xml array error for given company
+RENAVOTIO, INC.: https://www.sec.gov/Archives/edgar/data/1574910/000147793221002329/FilingSummary.xml array error for given company
+C3.ai, Inc.: https://www.sec.gov/Archives/edgar/data/1577526/000162828021012990/FilingSummary.xml array error for given company
+Kisses From Italy Inc.: https://www.sec.gov/Archives/edgar/data/1608092/000168316821001432/FilingSummary.xml array error for given company
+MULIANG VIAGOO TECHNOLOGY, INC.: https://www.sec.gov/Archives/edgar/data/1629665/000121390021021760/FilingSummary.xml array error for given company
+Sio Gene Therapies Inc.: https://www.sec.gov/Archives/edgar/data/1636050/000163605021000059/FilingSummary.xml array error for given company
+Deep Green Waste & Recycling, Inc.: https://www.sec.gov/Archives/edgar/data/1637866/000149315221008278/FilingSummary.xml array error for given company
+Sigyn Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1642159/000149315221008047/FilingSummary.xml array error for given company
+Loop Media, Inc.: https://www.sec.gov/Archives/edgar/data/1643988/000138713121004517/FilingSummary.xml array error for given company
+TODOS MEDICAL LTD.: https://www.sec.gov/Archives/edgar/data/1645260/000149315221009396/FilingSummary.xml array error for given company
+Jialijia Group Corp Ltd: https://www.sec.gov/Archives/edgar/data/1659559/000121390021022871/FilingSummary.xml array error for given company
+Vinco Ventures, Inc.: https://www.sec.gov/Archives/edgar/data/1717556/000149315221008880/FilingSummary.xml array error for given company
+Big Rock Partners Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1719406/000165495421003783/FilingSummary.xml array error for given company
+BurgerFi International, Inc.: https://www.sec.gov/Archives/edgar/data/1723580/000156459021021480/FilingSummary.xml array error for given company
+Alset EHome International Inc.: https://www.sec.gov/Archives/edgar/data/1750106/000165495421004178/FilingSummary.xml array error for given company
+Romeo Power, Inc.: https://www.sec.gov/Archives/edgar/data/1757932/000110465921050862/FilingSummary.xml array error for given company
+Luminar Technologies, Inc./DE: https://www.sec.gov/Archives/edgar/data/1758057/000162828021006908/FilingSummary.xml array error for given company
+4Front Ventures Corp.: https://www.sec.gov/Archives/edgar/data/1783875/000156459021017873/FilingSummary.xml array error for given company
+StepStone Group Inc.: https://www.sec.gov/Archives/edgar/data/1796022/000179602221000044/FilingSummary.xml array error for given company
+Kenongwo Group US, Inc.: https://www.sec.gov/Archives/edgar/data/1797762/000121390021021581/FilingSummary.xml array error for given company
+E2open Parent Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1800347/000156459021029113/FilingSummary.xml array error for given company
+KONA GOLD BEVERAGE, INC.: https://www.sec.gov/Archives/edgar/data/1802546/000173112221000613/FilingSummary.xml array error for given company
+PLBY Group, Inc.: https://www.sec.gov/Archives/edgar/data/1803914/000110465921050869/FilingSummary.xml array error for given company
+Enigma MPC: https://www.sec.gov/Archives/edgar/data/1816114/000121390021032506/FilingSummary.xml array error for given company
+Gaming Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1816906/000168316821001442/FilingSummary.xml array error for given company
+Academy Sports & Outdoors, Inc.: https://www.sec.gov/Archives/edgar/data/1817358/000181735821000059/FilingSummary.xml array error for given company
+Affinity Bancshares, Inc.: https://www.sec.gov/Archives/edgar/data/1823406/000156459021017146/FilingSummary.xml array error for given company
+NATHANS FAMOUS, INC.: https://www.sec.gov/Archives/edgar/data/69733/000143774921014536/FilingSummary.xml array error for given company
+RCM TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/700841/000070084121000013/FilingSummary.xml array error for given company
+Global Clean Energy Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/748790/000152013821000195/FilingSummary.xml array error for given company
+Gene Biotherapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/772320/000149315221009535/FilingSummary.xml array error for given company
+Kaspien Holdings Inc.: https://www.sec.gov/Archives/edgar/data/795212/000114036121015301/FilingSummary.xml array error for given company
+Emmaus Life Sciences, Inc.: https://www.sec.gov/Archives/edgar/data/822370/000156459021022930/FilingSummary.xml array error for given company
+ALLEGRO MICROSYSTEMS, INC.: https://www.sec.gov/Archives/edgar/data/866291/000086629121000020/FilingSummary.xml array error for given company
+MONRO, INC.: https://www.sec.gov/Archives/edgar/data/876427/000156276221000233/FilingSummary.xml array error for given company
+Enveric Biosciences, Inc.: https://www.sec.gov/Archives/edgar/data/890821/000149315221007757/FilingSummary.xml array error for given company
+Nano Magic Holdings Inc.: https://www.sec.gov/Archives/edgar/data/891417/000149315221013246/FilingSummary.xml array error for given company
+theMaven, Inc.: https://www.sec.gov/Archives/edgar/data/894871/000149315221008388/FilingSummary.xml array error for given company
+Ault Global Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/896493/000121465921004221/FilingSummary.xml array error for given company
+Oncotelic Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/908259/000149315221008920/FilingSummary.xml array error for given company
+SECTOR 10, Inc.: https://www.sec.gov/Archives/edgar/data/925661/000109690621000869/FilingSummary.xml array error for given company
+MIND TECHNOLOGY, INC: https://www.sec.gov/Archives/edgar/data/926423/000092642321000011/FilingSummary.xml array error for given company
+UNITED BANCSHARES INC /PA: https://www.sec.gov/Archives/edgar/data/944792/000109690621001248/FilingSummary.xml array error for given company
+Troika Media Group, Inc.: https://www.sec.gov/Archives/edgar/data/1021096/000147793221006888/FilingSummary.xml array error for given company
+RESOURCES CONNECTION, INC.: https://www.sec.gov/Archives/edgar/data/1084765/000108476521000017/FilingSummary.xml array error for given company
+QDM International Inc.: https://www.sec.gov/Archives/edgar/data/1094032/000173112221001155/FilingSummary.xml array error for given company
+TRICCAR INC.: https://www.sec.gov/Archives/edgar/data/1108645/000101054921000153/FilingSummary.xml array error for given company
+GHST World Inc.: https://www.sec.gov/Archives/edgar/data/1121795/000155335021000852/FilingSummary.xml array error for given company
+PREVENTION INSURANCE COM INC: https://www.sec.gov/Archives/edgar/data/1134982/000147793221006527/FilingSummary.xml array error for given company
+Seagate Technology Holdings plc: https://www.sec.gov/Archives/edgar/data/1137789/000113778921000049/FilingSummary.xml array error for given company
+Stride, Inc.: https://www.sec.gov/Archives/edgar/data/1157408/000155837021011173/FilingSummary.xml array error for given company
+UNIQUE LOGISTICS INTERNATIONAL INC: https://www.sec.gov/Archives/edgar/data/1281845/000149315221021666/FilingSummary.xml array error for given company
+THERALINK TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/1362703/000149315221023839/FilingSummary.xml array error for given company
+XTREME FIGHTING CHAMPIONSHIPS, INC.: https://www.sec.gov/Archives/edgar/data/1379043/000101738621000411/FilingSummary.xml array error for given company
+AYTU BIOPHARMA, INC: https://www.sec.gov/Archives/edgar/data/1385818/000155837021012825/FilingSummary.xml array error for given company
+Netcapital Inc.: https://www.sec.gov/Archives/edgar/data/1414767/000172186821000563/FilingSummary.xml array error for given company
+Vicapsys Life Sciences, Inc.: https://www.sec.gov/Archives/edgar/data/1468639/000149315221022984/FilingSummary.xml array error for given company
+VERDE BIO HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1490054/000109690621002272/FilingSummary.xml array error for given company
+Biopower Operations Corp: https://www.sec.gov/Archives/edgar/data/1510832/000149315221022000/FilingSummary.xml array error for given company
+Enochian Biosciences Inc: https://www.sec.gov/Archives/edgar/data/1527728/000173112221001565/FilingSummary.xml array error for given company
+MacKenzie Realty Capital, Inc.: https://www.sec.gov/Archives/edgar/data/1550913/000114036121032741/FilingSummary.xml array error for given company
+Jialijia Group Corp Ltd: https://www.sec.gov/Archives/edgar/data/1659559/000121390021048359/FilingSummary.xml array error for given company
+Lazuriton Nano Biotechnology (U.S.A.) Inc.: https://www.sec.gov/Archives/edgar/data/1666178/000164033421002291/FilingSummary.xml array error for given company
+Shengshi Elevator International Holding Group Inc.: https://www.sec.gov/Archives/edgar/data/1673504/000182912621008579/FilingSummary.xml array error for given company
+OMNIA WELLNESS INC.: https://www.sec.gov/Archives/edgar/data/1676852/000149315221018171/FilingSummary.xml array error for given company
+180 Life Sciences Corp.: https://www.sec.gov/Archives/edgar/data/1690080/000121390021036392/FilingSummary.xml array error for given company
+GBS Inc.: https://www.sec.gov/Archives/edgar/data/1725430/000149315221022851/FilingSummary.xml array error for given company
+Piedmont Lithium Inc.: https://www.sec.gov/Archives/edgar/data/1728205/000114036121032488/FilingSummary.xml array error for given company
+InMed Pharmaceuticals Inc.: https://www.sec.gov/Archives/edgar/data/1728328/000121390021049679/FilingSummary.xml array error for given company
+Golden Developing Solutions, Inc.: https://www.sec.gov/Archives/edgar/data/1736865/000168316821004184/FilingSummary.xml array error for given company
+Lux Amber, Corp.: https://www.sec.gov/Archives/edgar/data/1740695/000168316821004611/FilingSummary.xml array error for given company
+AVITA Medical, Inc.: https://www.sec.gov/Archives/edgar/data/1762303/000156459021045962/FilingSummary.xml array error for given company
+GROVE, INC.: https://www.sec.gov/Archives/edgar/data/1775194/000147793221006796/FilingSummary.xml array error for given company
+MedMen Enterprises, Inc.: https://www.sec.gov/Archives/edgar/data/1776932/000182912621010556/FilingSummary.xml array error for given company
+Pony Group Inc.: https://www.sec.gov/Archives/edgar/data/1784058/000121390021039960/FilingSummary.xml array error for given company
+MJ Harvest, Inc.: https://www.sec.gov/Archives/edgar/data/1789330/000172186821000609/FilingSummary.xml array error for given company
+Lifesci Acquisition II Corp.: https://www.sec.gov/Archives/edgar/data/1819113/000110465921110580/FilingSummary.xml array error for given company
+Affirm Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1820953/000182095321000102/FilingSummary.xml array error for given company
+Goldenbridge Acquisition Ltd: https://www.sec.gov/Archives/edgar/data/1822792/000121390021046135/FilingSummary.xml array error for given company
+William Penn Bancorporation: https://www.sec.gov/Archives/edgar/data/1828376/000155837021012519/FilingSummary.xml array error for given company
+iPower Inc.: https://www.sec.gov/Archives/edgar/data/1830072/000168316821004546/FilingSummary.xml array error for given company
+Great Elm Group, Inc.: https://www.sec.gov/Archives/edgar/data/1831096/000156459021048342/FilingSummary.xml array error for given company
+InnovAge Holding Corp.: https://www.sec.gov/Archives/edgar/data/1834376/000155837021012679/FilingSummary.xml array error for given company
+Marathon Bancorp, Inc. /MD/: https://www.sec.gov/Archives/edgar/data/1835385/000155837021012801/FilingSummary.xml array error for given company
+PAYCOR HCM, INC.: https://www.sec.gov/Archives/edgar/data/1839439/000183943921000011/FilingSummary.xml array error for given company
+Glimpse Group, Inc.: https://www.sec.gov/Archives/edgar/data/1854445/000149315221023976/FilingSummary.xml array error for given company
+EMERGE HEALTH INTERNATIONAL INC: https://www.sec.gov/Archives/edgar/data/32567/000147793221006917/FilingSummary.xml array error for given company
+ADVANCED OXYGEN TECHNOLOGIES INC: https://www.sec.gov/Archives/edgar/data/352991/000173112221001546/FilingSummary.xml array error for given company
+NUNZIA PHARMACEUTICAL Co: https://www.sec.gov/Archives/edgar/data/886093/000156288421000047/FilingSummary.xml array error for given company
+theMaven, Inc.: https://www.sec.gov/Archives/edgar/data/894871/000149315221019973/FilingSummary.xml array error for given company
+CANTALOUPE, INC.: https://www.sec.gov/Archives/edgar/data/896429/000162828021018059/FilingSummary.xml array error for given company
+TANDY LEATHER FACTORY INC: https://www.sec.gov/Archives/edgar/data/909724/000114036121030267/FilingSummary.xml array error for given company
+Cang Bao Tian Xia International Art Trade Center, Inc.: https://www.sec.gov/Archives/edgar/data/1006840/000155335021000905/FilingSummary.xml array error for given company
+Simulations Plus, Inc.: https://www.sec.gov/Archives/edgar/data/1023459/000168316821005076/FilingSummary.xml array error for given company
+DUCK CREEK TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/1160951/000156459021052973/FilingSummary.xml array error for given company
+Cannagistics Inc.: https://www.sec.gov/Archives/edgar/data/1304741/000166357721000582/FilingSummary.xml array error for given company
+INNOVATIVE MEDTECH, INC.: https://www.sec.gov/Archives/edgar/data/1331612/000147793221007237/FilingSummary.xml array error for given company
+Global Fiber Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1338929/000147793221006965/FilingSummary.xml array error for given company
+Life Clips, Inc.: https://www.sec.gov/Archives/edgar/data/1604930/000149315221025369/FilingSummary.xml array error for given company
+PINEAPPLE, INC.: https://www.sec.gov/Archives/edgar/data/1654672/000149315221024497/FilingSummary.xml array error for given company
+TOKEN COMMUNITIES LTD.: https://www.sec.gov/Archives/edgar/data/1683252/000121390021052400/FilingSummary.xml array error for given company
+Hawkeye Systems, Inc.: https://www.sec.gov/Archives/edgar/data/1750777/000147793221007236/FilingSummary.xml array error for given company
+CXJ GROUP CO., Ltd: https://www.sec.gov/Archives/edgar/data/1823635/000149315221024405/FilingSummary.xml array error for given company
+Vintage Wine Estates, Inc.: https://www.sec.gov/Archives/edgar/data/1834045/000095017021002112/FilingSummary.xml array error for given company
+MPHASE TECHNOLOGIES, INC.: https://www.sec.gov/Archives/edgar/data/825322/000149315221025336/FilingSummary.xml array error for given company

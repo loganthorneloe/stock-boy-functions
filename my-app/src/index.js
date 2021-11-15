@@ -21,3 +21,8 @@ serviceWorker.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// This is to keep the back button from closing the pwa
+window.addEventListener('load', function() {
+  window.history.pushState({}, '')
+})
