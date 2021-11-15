@@ -219,10 +219,10 @@ class SuperTable extends Component {
     if(typeof this.props.companyDict == "undefined"){
         return (
             <div class="container-fluid">
-                <div class="row" style={{"margin-top":"6em","margin-bottom":"3em"}}>
+                <div class="row" style={{"margin-top":"6em"}}>
                     <div class= "col-sm-1"></div>
                     <div class= "col-sm-7">
-                        <Card>
+                        <Card style={{"margin-bottom":"1em"}}>
                             <Card.Body>
                                 <Card.Title align="center">Welcome to Stock Boy!</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted" align="center">We firmly believe everyone <b>should</b> make money in the stock market.</Card.Subtitle>
@@ -250,7 +250,7 @@ class SuperTable extends Component {
                         </Card>
                     </div>
                     <div class= "col-sm-3">
-                        <Card>
+                        <Card style={{"margin-bottom":"1em"}}>
                             <Card.Body>
                                 <Card.Title align="center">Support Stock Boy</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted" align="center">Keep Stock Boy <b>free for all</b>.</Card.Subtitle>
