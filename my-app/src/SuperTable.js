@@ -256,7 +256,7 @@ class SuperTable extends Component {
                                 <Card.Title align="center">Support Stock Boy</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted" align="center">Keep Stock Boy <b>free for all</b>.</Card.Subtitle>
                                 <Card.Text>
-                                The best way to support us is by investing in yourself - and you get paid for doing it.
+                                The best way to support Stock Boy is by investing in yourself - and you get paid for doing it!
                                 </Card.Text>
                                 <Card.Text>
                                 Use <a href="https://m1.finance/UHVHgaUnLsdA">M1 Finance</a>: a great automated brokerage to invest in your freedom.
@@ -265,7 +265,7 @@ class SuperTable extends Component {
                                 Use <a href="https://blockfi.com/?ref=c06c8f56">BlockFi</a>: a trusted company to securely invest in cryptocurrency.
                                 </Card.Text>
                                 <Card.Text>
-                                Feel free to donate to our cause on <a href="https://www.patreon.com/stockboy">Patreon</a> to help keep the servers running.
+                                Feel free to donate on <a href="https://www.patreon.com/stockboy">Patreon</a> to keep the servers running.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
