@@ -50,7 +50,7 @@ async function retrieveTickerData(){
     if (docSnap.exists()) {
       // console.log("Ticker document data:", docSnap.data());
     } else {
-      console.log("No such document for tickers/");
+      console.log("No such document for tickers!");
     }
     return setDocToList(docSnap)
   });

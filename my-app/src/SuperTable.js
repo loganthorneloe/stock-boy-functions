@@ -217,7 +217,7 @@ class SuperTable extends Component {
     
 
     render() {    
-    if(typeof this.props.companyDict == "undefined"){
+    if(typeof this.props.companyDict === "undefined" && typeof this.props.company === "undefined"){
         return (
             <div className="container-fluid">
                 <div className="row" style={{"marginTop":"6em"}}>
@@ -274,6 +274,33 @@ class SuperTable extends Component {
                 </div>
             </div>
         )
+    }else if(typeof this.props.companyDict === "undefined" && typeof this.props.company !== "undefined"){
+        return (
+            <div className="container-fluid">
+                <div className="row">
+                    <div className= "col-sm-1"></div>
+                    <div className= "col-sm-10">
+                        <div className="card justify-content-center border-light mb-3" style={{"marginTop":"4em","marginBottom":"3em"}}>
+                            <div className="card-body">
+                                <div className="container-fluid">
+                                    <div className="row justify-content-center" style={{"marginTop":"10px"}}>
+                                        <div className="col-sm-12 my-auto" align="center">
+                                            <h4 className="card-title"><strong>{this.props.company}</strong></h4>
+                                        </div>
+                                    </div>
+                                    <div className="row justify-content-center" style={{"marginTop":"10px"}}>
+                                        <div className="col-sm-12 my-auto" align="center">
+                                            <img src="noStatements.png" height="300px" width= "300px" alt="No statements for this company yet"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className= "col-sm-1"></div>
+                </div>
+            </div>
+        )
     }else{
         return (
             <div className="container-fluid">
@@ -283,7 +310,7 @@ class SuperTable extends Component {
                         <div className="card justify-content-center border-light mb-3" style={{"marginTop":"4em","marginBottom":"3em"}}>
                             <div className="card-body">
                                 <div className="container-fluid">
-                                    <div className="row justify-content-center" style={{"margin-top":"10px"}}>
+                                    <div className="row justify-content-center" style={{"marginTop":"10px"}}>
                                         <div className="col-sm-8 my-auto" align="center">
                                             <h4 className="card-title"><strong>{this.props.company}</strong></h4>
                                         </div>
@@ -301,7 +328,7 @@ class SuperTable extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <Tabs className="justify-content-center" style={{"margin-top":"10px"}} currentkey={this.currentSheet} onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
+                                <Tabs className="justify-content-center" style={{"marginTop":"10px"}} currentkey={this.currentSheet} onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
                                     <Tab eventKey={"balance_sheet"} title="Balance Sheet" className="nav nav-tabs justify-content-center custom-tab">
                                         <Table striped bordered hover>
                                             <thead>
