@@ -105,13 +105,7 @@ class Autocomplete extends Component {
               })}
             </ul>
           );
-        } // else {
-        //   suggestionsListComponent = (0
-        //     <div class="no-suggestions">
-        //       <em>No suggestions available.</em>
-        //     </div>
-        //   );
-        // }
+        } 
       }
 
       return (

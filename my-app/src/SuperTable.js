@@ -46,12 +46,12 @@ class SuperTable extends Component {
         var years_arr = []
         for (var i = 0; i < keys_to_use.length; i++){
             var split_key_array = keys_to_use[i].split('_')
-            years_arr.unshift(split_key_array.at(0))
+            years_arr.unshift(split_key_array[0])
         }
         
         this.yearList = years_arr.sort()
         years_arr.reverse()
-        this.currentYear = this.yearList.at(0)
+        this.currentYear = this.yearList[0]
     }
 
     grabSourceLinks(){
@@ -67,10 +67,10 @@ class SuperTable extends Component {
             key_to_use = this.currentYear + "_simple"
         }
         list_to_use = this.props.companyDict[key_to_use]
-        this.tenKLink = list_to_use.at(-1)
-        this.balanceLink = list_to_use.at(-7)
-        this.incomeLink = list_to_use.at(-5)
-        this.cashLink = list_to_use.at(-3)
+        this.tenKLink = list_to_use[-1]
+        this.balanceLink = list_to_use[-7]
+        this.incomeLink = list_to_use[-5]
+        this.cashLink = list_to_use[-3]
     }
 
     generateDisplayColumns(){

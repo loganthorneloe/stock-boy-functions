@@ -83,11 +83,11 @@ function App() {
     var years_arr = []
     for (var i = 0; i < keys_to_use.length; i++){
         var split_key_array = keys_to_use[i].split('_')
-        years_arr.push(split_key_array.at(0))
+        years_arr.push(split_key_array[0])
     }
     
     setYearList(years_arr)
-    setCurrentYear(years_arr.at(-1))
+    setCurrentYear(years_arr[-1])
   }
 
   const pull_data = (data) => {
