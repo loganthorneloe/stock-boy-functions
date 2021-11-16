@@ -50,7 +50,7 @@ async function retrieveTickerData(){
     if (docSnap.exists()) {
       // console.log("Ticker document data:", docSnap.data());
     } else {
-      console.log("No such document for tickers!");
+      console.log("No such document for tickers/");
     }
     return setDocToList(docSnap)
   });
@@ -87,7 +87,7 @@ function App() {
     }
     
     setYearList(years_arr)
-    setCurrentYear(years_arr[-1])
+    setCurrentYear(years_arr[years_arr.length-1])
   }
 
   const pull_data = (data) => {
@@ -111,13 +111,13 @@ function App() {
 
     return (
       <div>
-        <nav class="navbar fixed-top navbar-light bg-primary blue-nav" style={{"padding-top":"2px","padding-bottom":"2px"}}>
-          <div class="container-fluid">
-            <a class="navbar-brand" style={{color :'white'}}>
-              <img src="stockBoy.png" class="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
+        <nav className="navbar fixed-top navbar-light bg-primary blue-nav" style={{"paddingTop":"2px","paddingBottom":"2px"}}>
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#home" style={{color :'white'}}>
+              <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
             </a>
-            <form class="form-inline">
-              <Autocomplete id="autocomplete" class="col-md-4" suggestions={tickerList} func={pull_data}/>
+            <form className="form-inline">
+              <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
             </form>
             <div></div>
             {/* <Form.Check disabled
@@ -142,15 +142,3 @@ function App() {
   }
 
 export default App;
-
-// this is code for the bottom header for mobile app
-//  <nav class="navbar fixed-bottom navbar-light bg-primary blue-nav">
-//           <div class="container-fluid">
-//             <form class="form-inline">
-//               <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
-//             </form>
-//             <DropdownButton id="dropdown-basic-button" title={currentYear}>
-//               {renderDropdownMenu}
-//             </DropdownButton>
-//           </div>
-//         </nav>

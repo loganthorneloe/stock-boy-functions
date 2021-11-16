@@ -558,6 +558,7 @@ for item in download:
 
     with open(other_failure_full_path, 'a') as the_file:
       the_file.write(error_str)
+    continue
 
     # reason_dict = {
     #   str(current_year) + "_summary": xml_summary,

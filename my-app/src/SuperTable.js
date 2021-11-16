@@ -4,6 +4,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import { Tabs, Tab } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 class SuperTable extends Component {
     constructor(props) { // props will be dict for certain stock
@@ -67,10 +68,10 @@ class SuperTable extends Component {
             key_to_use = this.currentYear + "_simple"
         }
         list_to_use = this.props.companyDict[key_to_use]
-        this.tenKLink = list_to_use[-1]
-        this.balanceLink = list_to_use[-7]
-        this.incomeLink = list_to_use[-5]
-        this.cashLink = list_to_use[-3]
+        this.tenKLink = list_to_use[list_to_use.length-1]
+        this.balanceLink = list_to_use[list_to_use.length-7]
+        this.incomeLink = list_to_use[list_to_use.length-5]
+        this.cashLink = list_to_use[list_to_use.length-3]
     }
 
     generateDisplayColumns(){
@@ -122,14 +123,14 @@ class SuperTable extends Component {
             return (
                 <tr key={index}>
                     <td><strong>{replaced}</strong></td>
-                    <td style={{"text-align":"right"}}>{new_list_row.value}</td>
+                    <td style={{"textAlign":"right"}}>{new_list_row.value}</td>
                 </tr>
             )
         }
         return (
             <tr key={index}>
                 <td>{new_list_row.key}</td>
-                <td style={{"text-align":"right"}}>{new_list_row.value}</td>
+                <td style={{"textAlign":"right"}}>{new_list_row.value}</td>
             </tr>
         )
     }
@@ -218,11 +219,11 @@ class SuperTable extends Component {
     render() {    
     if(typeof this.props.companyDict == "undefined"){
         return (
-            <div class="container-fluid">
-                <div class="row" style={{"margin-top":"6em"}}>
-                    <div class= "col-sm-1"></div>
-                    <div class= "col-sm-7">
-                        <Card style={{"margin-bottom":"1em"}}>
+            <div className="container-fluid">
+                <div className="row" style={{"marginTop":"6em"}}>
+                    <div className= "col-sm-1"></div>
+                    <div className= "col-sm-7">
+                        <Card style={{"marginBottom":"1em"}}>
                             <Card.Body>
                                 <Card.Title align="center">Welcome to Stock Boy!</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted" align="center">We firmly believe everyone <b>should</b> make money in the stock market.</Card.Subtitle>
@@ -235,22 +236,22 @@ class SuperTable extends Component {
                                 Stock Boy currently has ~70% of financial statements dating back to 2013. More will be added/updated as time goes on. The information from each financial statement is kept as similar as possible to the original company filing while also making them easier to use.
                                 </Card.Text>
                                 <Card.Text>
-                                Future work includes:
-                                <ul>
-                                    <li>Adding more statements</li>
-                                    <li>Simplifying statements to make understanding them easier</li>
-                                    <li>Comparing financial statements across timeframes</li>
-                                    <li>More!</li>
-                                </ul>
-                                </Card.Text>
-                                <Card.Text>
                                 The app is brand new so we anticipate growing pains. Follow <a href="https://twitter.com/meetstockboy">Stock Boy on Twitter</a> for future updates and DM with any questions or bugs.
                                 </Card.Text>
+                                <Card.Text>
+                                    <b>Future work:</b>
+                                </Card.Text>
+                                <ListGroup variant="flush">
+                                    <ListGroup.Item>Adding more statements</ListGroup.Item>
+                                    <ListGroup.Item>Simplifying statements to make understanding them easier</ListGroup.Item>
+                                    <ListGroup.Item>Comparing financial statements across timeframes</ListGroup.Item>
+                                    <ListGroup.Item>More!</ListGroup.Item>
+                                </ListGroup>
                             </Card.Body>
                         </Card>
                     </div>
-                    <div class= "col-sm-3">
-                        <Card style={{"margin-bottom":"1em"}}>
+                    <div className= "col-sm-3">
+                        <Card style={{"marginBottom":"1em"}}>
                             <Card.Body>
                                 <Card.Title align="center">Support Stock Boy</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted" align="center">Keep Stock Boy <b>free for all</b>.</Card.Subtitle>
@@ -269,39 +270,39 @@ class SuperTable extends Component {
                             </Card.Body>
                         </Card>
                     </div>
-                    <div class= "col-sm-1"></div>
+                    <div className= "col-sm-1"></div>
                 </div>
             </div>
         )
     }else{
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class= "col-sm-1"></div>
-                    <div class= "col-sm-10">
-                        <div class="card justify-content-center border-light mb-3" style={{"margin-top":"4em","margin-bottom":"3em"}}>
-                            <div class="card-body">
-                                <div class="container-fluid">
-                                    <div class="row justify-content-center" style={{"margin-top":"10px"}}>
-                                        <div class="col-sm-8 my-auto" align="center">
-                                            <h4 class="card-title"><strong>{this.props.company}</strong></h4>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className= "col-sm-1"></div>
+                    <div className= "col-sm-10">
+                        <div className="card justify-content-center border-light mb-3" style={{"marginTop":"4em","marginBottom":"3em"}}>
+                            <div className="card-body">
+                                <div className="container-fluid">
+                                    <div className="row justify-content-center" style={{"margin-top":"10px"}}>
+                                        <div className="col-sm-8 my-auto" align="center">
+                                            <h4 className="card-title"><strong>{this.props.company}</strong></h4>
                                         </div>
-                                        <div class="col-sm-4 my-auto" align="center">
-                                            <div class="row">
-                                                <div class="col my-auto">
+                                        <div className="col-sm-4 my-auto" align="center">
+                                            <div className="row">
+                                                <div className="col my-auto">
                                                     <DropdownButton id="dropdown-basic-button" style={{"display":"inline-block"}} title={this.currentYear}>
                                                         {this.yearList.map(this.renderDropdown)}
                                                     </DropdownButton>
                                                 </div>
-                                                <div class="col my-auto">
-                                                    <button onClick={() => this.openURL(this.tenKLink)} type="button" class="btn btn-outline-primary float-right">10-K</button>
+                                                <div className="col my-auto">
+                                                    <button onClick={() => this.openURL(this.tenKLink)} type="button" className="btn btn-outline-primary float-right">10-K</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <Tabs className="justify-content-center" style={{"margin-top":"10px"}} currentKey={this.currentSheet} onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
-                                    <Tab eventKey={"balance_sheet"} title="Balance Sheet" class="nav nav-tabs justify-content-center custom-tab">
+                                <Tabs className="justify-content-center" style={{"margin-top":"10px"}} currentkey={this.currentSheet} onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
+                                    <Tab eventKey={"balance_sheet"} title="Balance Sheet" className="nav nav-tabs justify-content-center custom-tab">
                                         <Table striped bordered hover>
                                             <thead>
                                                 <tr>
@@ -313,16 +314,16 @@ class SuperTable extends Component {
                                                 {this.balanceSheet.map(this.renderRow)}
                                             </tbody>
                                         </Table>
-                                        <div class="row">
-                                            <div class="col my-auto">
+                                        <div className="row">
+                                            <div className="col my-auto">
                                                 Source Link for this financial sheet:
                                             </div>
-                                            <div class="col my-auto">
-                                                <button onClick={() => this.openURL(this.balanceLink)} type="button" class="btn btn-outline-primary float-right">Balance Sheet</button>
+                                            <div className="col my-auto">
+                                                <button onClick={() => this.openURL(this.balanceLink)} type="button" className="btn btn-outline-primary float-right">Balance Sheet</button>
                                             </div>
                                         </div>
                                     </Tab>
-                                    <Tab eventKey={"income_statement"} title="Income Statement" class="nav nav-tabs justify-content-center custom-tab">
+                                    <Tab eventKey={"income_statement"} title="Income Statement" className="nav nav-tabs justify-content-center custom-tab">
                                         <Table striped bordered hover>
                                             <thead>
                                                 <tr>
@@ -334,16 +335,16 @@ class SuperTable extends Component {
                                                 {this.incomeStatement.map(this.renderRow)}
                                             </tbody>
                                         </Table>
-                                        <div class="row">
-                                            <div class="col my-auto">
+                                        <div className="row">
+                                            <div className="col my-auto">
                                                 Source Link for this financial sheet:
                                             </div>
-                                            <div class="col my-auto">
-                                                <button onClick={() => this.openURL(this.incomeLink)} type="button" class="btn btn-outline-primary float-right">Income statement</button>
+                                            <div className="col my-auto">
+                                                <button onClick={() => this.openURL(this.incomeLink)} type="button" className="btn btn-outline-primary float-right">Income statement</button>
                                             </div>
                                         </div>
                                     </Tab>
-                                    <Tab eventKey={"cash_flow"} title="Cash Flow" class="nav nav-tabs justify-content-center  custom-tab">
+                                    <Tab eventKey={"cash_flow"} title="Cash Flow" className="nav nav-tabs justify-content-center  custom-tab">
                                         <Table striped bordered hover>
                                             <thead>
                                                 <tr>
@@ -355,12 +356,12 @@ class SuperTable extends Component {
                                                 {this.cashFlow.map(this.renderRow)}
                                             </tbody>
                                         </Table>
-                                        <div class="row">
-                                            <div class="col my-auto">
+                                        <div className="row">
+                                            <div className="col my-auto">
                                                 Source for this financial sheet:
                                             </div>
-                                            <div class="col my-auto">
-                                                <button onClick={() => this.openURL(this.cashLink)} type="button" class="btn btn-outline-primary float-right">Cash Flow</button>
+                                            <div className="col my-auto">
+                                                <button onClick={() => this.openURL(this.cashLink)} type="button" className="btn btn-outline-primary float-right">Cash Flow</button>
                                             </div>
                                         </div>
                                     </Tab>
@@ -368,7 +369,7 @@ class SuperTable extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class= "col-sm-1"></div>
+                    <div className= "col-sm-1"></div>
                 </div>
             </div>
         )

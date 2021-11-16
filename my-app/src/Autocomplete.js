@@ -45,7 +45,6 @@ class Autocomplete extends Component {
     const { activeSuggestion, filteredSuggestions } = this.state;
   
     if (e.keyCode === 13) {
-      console.log("on enter")
       e.preventDefault()
       this.setState({
         activeSuggestion: 0,
@@ -89,7 +88,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
         if (filteredSuggestions.length) {
           suggestionsListComponent = (
-            <ul class="suggestions">
+            <ul className="suggestions">
               {filteredSuggestions.map((suggestion, index) => {
                 let className;
       
@@ -110,8 +109,7 @@ class Autocomplete extends Component {
 
       return (
         <Fragment>
-            <input class="form-control" type="search" placeholder="Search companies here..." aria-label="Search"
-                type="text"
+            <input className="form-control" type="search" placeholder="Search companies here..." aria-label="Search"
                 onChange={onChange}
                 onKeyDown={onKeyDown}
                 value={userInput}
