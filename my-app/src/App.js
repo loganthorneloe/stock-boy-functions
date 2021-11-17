@@ -7,7 +7,6 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInAnonymously } from "firebase/auth";
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
   authDomain: "stock-boy-3d183.firebaseapp.com",

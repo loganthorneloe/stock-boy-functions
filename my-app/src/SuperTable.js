@@ -226,7 +226,7 @@ class SuperTable extends Component {
                         <Card style={{"marginBottom":"1em"}}>
                             <Card.Body>
                                 <Card.Title align="center">Welcome to Stock Boy!</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted" align="center">We firmly believe everyone <b>should</b> make money in the stock market.</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted" align="center">Everyone <b>should</b> make money in the stock market.</Card.Subtitle>
                                 <Card.Text>
                                 Stock Boy puts the foundation of great investments right at your fingertips - easy-to-use financial statements.  
                                 <b> All you need to do is search above. </b>
@@ -236,7 +236,7 @@ class SuperTable extends Component {
                                 Stock Boy currently has ~70% of financial statements dating back to 2013. More will be added/updated as time goes on. The information from each financial statement is kept as similar as possible to the original company filing while also making them easier to use.
                                 </Card.Text>
                                 <Card.Text>
-                                The app is brand new so we anticipate growing pains. Follow <a href="https://twitter.com/meetstockboy">Stock Boy on Twitter</a> for future updates and DM with any questions or bugs.
+                                The app is brand new and may have bugs. Follow <a href="https://twitter.com/meetstockboy" target="_blank">Stock Boy on Twitter</a> for future updates and DM with any questions or bugs.
                                 </Card.Text>
                                 <Card.Text>
                                     <b>Future work:</b>
@@ -259,13 +259,22 @@ class SuperTable extends Component {
                                 The best way to support Stock Boy is by investing in yourself - and you get paid for doing it!
                                 </Card.Text>
                                 <Card.Text>
-                                Use <a href="https://m1.finance/UHVHgaUnLsdA">M1 Finance</a>: a great automated brokerage to invest in your freedom.
+                                Use <a href="https://m1.finance/UHVHgaUnLsdA" target="_blank">M1 Finance</a>: a great automated brokerage to invest in your freedom.
                                 </Card.Text>
                                 <Card.Text>
-                                Use <a href="https://blockfi.com/?ref=c06c8f56">BlockFi</a>: a trusted company to securely invest in cryptocurrency.
+                                Use <a href="https://blockfi.com/?ref=c06c8f56" target="_blank">BlockFi</a>: a trusted company to securely invest in cryptocurrency.
                                 </Card.Text>
                                 <Card.Text>
-                                Feel free to donate on <a href="https://www.patreon.com/stockboy">Patreon</a> to keep the servers running.
+                                Feel free to donate on <a href="https://www.patreon.com/stockboy" target="_blank">Patreon</a> to keep the servers running.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{"marginBottom":"1em"}}>
+                            <Card.Body>
+                                <Card.Title align="center">Disclaimer</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted" align="center">Anything on this site does not constitute financial advice.</Card.Subtitle>
+                                <Card.Text>
+                                Instead Stock Boy enables you to make your own investing decisions.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -343,7 +352,7 @@ class SuperTable extends Component {
                                         </Table>
                                         <div className="row">
                                             <div className="col my-auto">
-                                                Source Link for this financial sheet:
+                                                Source for this financial sheet:
                                             </div>
                                             <div className="col my-auto">
                                                 <button onClick={() => this.openURL(this.balanceLink)} type="button" className="btn btn-outline-primary float-right">Balance Sheet</button>
@@ -364,7 +373,7 @@ class SuperTable extends Component {
                                         </Table>
                                         <div className="row">
                                             <div className="col my-auto">
-                                                Source Link for this financial sheet:
+                                                Source for this financial sheet:
                                             </div>
                                             <div className="col my-auto">
                                                 <button onClick={() => this.openURL(this.incomeLink)} type="button" className="btn btn-outline-primary float-right">Income statement</button>

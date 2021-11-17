@@ -109,7 +109,7 @@ class Autocomplete extends Component {
 
       return (
         <Fragment>
-            <input className="form-control" type="search" placeholder="Search companies here..." aria-label="Search"
+            <input id="search" className="form-control" autoComplete="off" type="search" placeholder="Search companies here..." aria-label="Search"
                 onChange={onChange}
                 onKeyDown={onKeyDown}
                 value={userInput}
