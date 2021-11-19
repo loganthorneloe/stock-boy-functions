@@ -65,7 +65,6 @@ class Autocomplete extends Component {
   
     if (e.keyCode === 13) {
       e.preventDefault()
-      console.log(filteredSuggestions.length)
       if(filteredSuggestions.length !== 0){
         this.setState({
           activeSuggestion: 0,
