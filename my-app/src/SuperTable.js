@@ -1,3 +1,4 @@
+import './SuperTable.css';
 import React, { Component } from "react";
 import Table from 'react-bootstrap/Table'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -204,7 +205,7 @@ class SuperTable extends Component {
 
     renderDropdown = (dropDownYear, index) => {
         return (
-            <Dropdown.Item eventKey={dropDownYear} onClick={(e) => this.changeValue(e.target.textContent)}>{dropDownYear}</Dropdown.Item>
+            <Dropdown.Item key={dropDownYear} eventKey={dropDownYear} onClick={(e) => this.changeValue(e.target.textContent)}>{dropDownYear}</Dropdown.Item>
         )
      }
 
@@ -236,16 +237,16 @@ class SuperTable extends Component {
                                 Stock Boy currently has ~70% of financial statements dating back to 2013. More will be added/updated as time goes on. The information from each financial statement is kept as similar as possible to the original company filing while also making them easier to use.
                                 </Card.Text>
                                 <Card.Text>
-                                The app is brand new and may have bugs. Follow <a href="https://twitter.com/meetstockboy" target="_blank">Stock Boy on Twitter</a> for future updates and DM with any questions or bugs.
+                                The app is brand new and may have bugs. Follow <a href="https://twitter.com/meetstockboy" target="_blank" rel="noreferrer">Stock Boy on Twitter</a> for future updates and DM with any questions or bugs.
                                 </Card.Text>
                                 <Card.Text>
                                     <b>Future work:</b>
                                 </Card.Text>
                                 <ListGroup variant="flush">
-                                    <ListGroup.Item>Adding more statements</ListGroup.Item>
-                                    <ListGroup.Item>Simplifying statements to make understanding them easier</ListGroup.Item>
-                                    <ListGroup.Item>Comparing financial statements across timeframes</ListGroup.Item>
-                                    <ListGroup.Item>More!</ListGroup.Item>
+                                    <ListGroup.Item key="uniqueId1">Adding more statements</ListGroup.Item>
+                                    <ListGroup.Item key="uniqueId2">Simplifying statements to make understanding them easier</ListGroup.Item>
+                                    <ListGroup.Item key="uniqueId3">Comparing financial statements across timeframes</ListGroup.Item>
+                                    <ListGroup.Item key="uniqueId4">More!</ListGroup.Item>
                                 </ListGroup>
                             </Card.Body>
                         </Card>
@@ -259,13 +260,13 @@ class SuperTable extends Component {
                                 The best way to support Stock Boy is by investing in yourself - and you get paid for doing it!
                                 </Card.Text>
                                 <Card.Text>
-                                Use <a href="https://m1.finance/UHVHgaUnLsdA" target="_blank">M1 Finance</a>: a great automated brokerage to invest in your freedom.
+                                Use <a href="https://m1.finance/UHVHgaUnLsdA" target="_blank" rel="noreferrer">M1 Finance</a>: a great automated brokerage to invest in your freedom.
                                 </Card.Text>
                                 <Card.Text>
-                                Use <a href="https://blockfi.com/?ref=c06c8f56" target="_blank">BlockFi</a>: a trusted company to securely invest in cryptocurrency.
+                                Use <a href="https://blockfi.com/?ref=c06c8f56" target="_blank" rel="noreferrer">BlockFi</a>: a trusted company to securely invest in cryptocurrency.
                                 </Card.Text>
                                 <Card.Text>
-                                Feel free to donate on <a href="https://www.patreon.com/stockboy" target="_blank">Patreon</a> to keep the servers running.
+                                Feel free to donate on <a href="https://www.patreon.com/stockboy" target="_blank" rel="noreferrer">Patreon</a> to keep the servers running.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -299,7 +300,7 @@ class SuperTable extends Component {
                                     </div>
                                     <div className="row justify-content-center" style={{"marginTop":"10px"}}>
                                         <div className="col-sm-12 my-auto" align="center">
-                                            <img src="noStatements.png" height="300px" width= "300px" alt="No statements for this company yet"></img>
+                                            <img className="stock-boy-caption" src="noStatements.png" alt="No statements for this company yet"></img>
                                         </div>
                                     </div>
                                 </div>

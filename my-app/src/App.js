@@ -99,7 +99,7 @@ function App() {
 
   // Use an effect to load the ticker list from the database
   useEffect(() => {
-    if(typeof tickerList == 'undefined'){ // two api calls happening here for some reason
+    if(typeof tickerList == 'undefined'){ 
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
       })     
@@ -119,14 +119,6 @@ function App() {
               <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
             </form>
             <div></div>
-            {/* <Form.Check disabled
-                type="switch"
-                label="simple"
-                id="disabled-custom-switch"
-                onChange={(checked) => {
-                    { this.simplify = checked }
-                }}
-            /> */}
           </div>
         </nav>
         <div style={{

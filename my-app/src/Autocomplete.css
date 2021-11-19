@@ -19,7 +19,7 @@ input.form-control {
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
-  max-height: 143px;
+  max-height: 500px;
   overflow-y: auto;
   padding-left: 0;
   width: 300px;
@@ -48,48 +48,22 @@ input.form-control {
   display: inline;
 }
 
-@media (max-width: 480px) and (min-width: 350px) { 
+@media (max-width: 480px) and (min-width: 360px) { 
   input.form-control {
-    border: 1px solid #999;
-    padding: 0.5rem;
     width: 250px;
   }
 
   .suggestions {
-    border: 1px solid #999;
-    background-color: #fcfbf9;
-    border-top-width: 0;
-    list-style: none;
-    margin-top: 0;
-    max-height: 143px;
-    overflow-y: auto;
-    padding-left: 0;
     width: 250px;
-    position:absolute;
-    z-index: 1000;
-    scroll-behavior: smooth;
   }
 }
 
 @media (max-width: 360px) { 
   input.form-control {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    width: 180px;
+    width: 175px;
   }
 
   .suggestions {
-    border: 1px solid #999;
-    background-color: #fcfbf9;
-    border-top-width: 0;
-    list-style: none;
-    margin-top: 0;
-    max-height: 143px;
-    overflow-y: auto;
-    padding-left: 0;
-    width: 180px;
-    position:absolute;
-    z-index: 1000;
-    scroll-behavior: smooth;
+    width: 175px;
   }
 }
