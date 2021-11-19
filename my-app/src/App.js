@@ -34,7 +34,7 @@ var currentCompany = ''
 function setDocToList(doc){
   var ticker_list = []
   for (const [key, value] of Object.entries(doc.data())) {
-    if(value !== "null"){
+    if(value !== "null" && !(value.toString().toLowerCase().includes('cik') && value.length > 4)){
       var new_string = key + ": " + value
     }else{
       new_string = key
@@ -68,7 +68,7 @@ async function retrieveCompanyData(company_name){
 
 function App() {
 
-  const [tickerList, setTickerList] = useState();
+  const [tickerList, setTickerList] = useState([]);
   const [company, setCompany] = useState();
   const [companyDict, setCompanyDict] = useState();
   const [currentYear, setCurrentYear] = useState();
@@ -99,7 +99,7 @@ function App() {
 
   // Use an effect to load the ticker list from the database
   useEffect(() => {
-    if(typeof tickerList == 'undefined'){ 
+    if(tickerList.length === 0){ 
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
       })     
@@ -112,7 +112,7 @@ function App() {
       <div>
         <nav className="navbar fixed-top navbar-light bg-primary blue-nav" style={{"paddingTop":"2px","paddingBottom":"2px"}}>
           <div className="container-fluid">
-            <a className="navbar-brand" href="#home" style={{color :'white'}}>
+            <a className="navbar-brand" href="#home">
               <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
             </a>
             <form className="form-inline">

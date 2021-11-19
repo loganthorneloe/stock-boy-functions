@@ -60,10 +60,10 @@ input.form-control {
 
 @media (max-width: 360px) { 
   input.form-control {
-    width: 175px;
+    width: 170px;
   }
 
   .suggestions {
-    width: 175px;
+    width: 170px;
   }
 }

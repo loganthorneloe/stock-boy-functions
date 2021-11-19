@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import './Autocomplete.css'
 
+const numResults = 10
+
 class Autocomplete extends Component {
   constructor(props) {
     super(props);
@@ -8,18 +10,34 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: ""
+      userInput: "",
+      showEndStatement: false
     };
   }
 
   onChange = e => {
     const { suggestions } = this.props;
-    const userInput = e.currentTarget.value;
-  
-    const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
+    const lowerSuggestions = suggestions.map(s => s.toLowerCase())
+    const userInput = e.currentTarget.value.toLowerCase();
+    // const filteredSuggestions = suggestions.filter(
+    //   suggestion =>
+    //     suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    // );
+    this.setState({
+      showEndStatement: false
+    });
+    const filteredSuggestions = [];   
+    for (let i = 0; i < suggestions.length; i++) {
+      if (lowerSuggestions[i].indexOf(userInput) > -1 && userInput !== "") {
+        filteredSuggestions.push(suggestions[i]);
+      }
+      if(filteredSuggestions.length >= numResults){
+        this.setState({
+          showEndStatement: true
+        });
+        break
+      }
+    }
   
     this.setState({
       activeSuggestion: 0,
@@ -34,7 +52,8 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.currentTarget.innerText
+      userInput: e.currentTarget.innerText,
+      showEndStatement: false
     }, () => {
         this.props.func(this.state.userInput)
         this.setState({ userInput: "" });
@@ -46,15 +65,19 @@ class Autocomplete extends Component {
   
     if (e.keyCode === 13) {
       e.preventDefault()
-      this.setState({
-        activeSuggestion: 0,
-        filteredSuggestions: [],
-        showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion]
-      }, () => {
-        this.props.func(this.state.userInput)
-        this.setState({ userInput: "" });
-      });
+      console.log(filteredSuggestions.length)
+      if(filteredSuggestions.length !== 0){
+        this.setState({
+          activeSuggestion: 0,
+          filteredSuggestions: [],
+          showSuggestions: false,
+          userInput: filteredSuggestions[activeSuggestion],
+          showEndStatement: false
+        }, () => {
+          this.props.func(this.state.userInput)
+          this.setState({ userInput: "" });
+        });
+      }
     } else if (e.keyCode === 38) {
       if (activeSuggestion === 0) {
         return;
@@ -79,7 +102,8 @@ class Autocomplete extends Component {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
-        userInput
+        userInput,
+        showEndStatement
       }
     } = this;
 
@@ -102,6 +126,7 @@ class Autocomplete extends Component {
                   </li>
                 );
               })}
+              {showEndStatement && <ul><i>Showing first {numResults} results...</i></ul>}
             </ul>
           );
         } 
