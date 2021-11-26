@@ -304,7 +304,7 @@ class SuperTable extends Component {
                         <Card.Body>
                             <h2 className="roboto title"><strong>Invest in yourself.</strong></h2>
                             <Card.Text className="roboto">
-                            Use these free accounts to help your money grow - work-free!
+                            Use these free accounts to help your money grow &ndash; work-free!
                             </Card.Text>
                             <a href="https://m1.finance/UHVHgaUnLsdA">
                                 <img src="m1.png" width="100" height="100" alt="M1 Finance Logo" style={{"margin":"1em"}}></img>
