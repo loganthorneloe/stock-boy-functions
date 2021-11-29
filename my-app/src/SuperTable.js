@@ -251,13 +251,11 @@ class SuperTable extends Component {
                 <div className="row">
                     <div className= "col-sm-4"></div>
                     <div className= "col-sm-4" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
+                    <Card className="border-0">
                         <Card.Body>
-                            <h2 className="roboto title"><strong>Make investing easy.</strong></h2>
-                            <Card.Text className="roboto">
-                            Stop working for money - make money work for you.
-                            </Card.Text>
-                            <a class="gumroad-button" href="https://gumroad.com/l/ngaxy">Show me how!</a>
+                            <h2 className="roboto title" style={{"marginBottom":".5em"}}><strong>Financial freedom starts here.</strong></h2>
+                            <h5 className="roboto title" style={{"marginBottom":"1em"}}>Everyone belongs in the stock market. You just need to know which investing strategy is right for you.</h5>
+                            <h5 className="roboto title"><strong>Why do you want to invest?</strong></h5>
                         </Card.Body>
                     </Card>
                     </div>
@@ -266,17 +264,56 @@ class SuperTable extends Component {
                 <div className="row">
                     <div className= "col-sm-4"></div>
                     <div className= "col-sm-4" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
+                    <Card className="border-0">
                         <Card.Body>
-                            <h2 className="roboto title"><strong>Stay in the know.</strong></h2>
-                            <Card.Text className="roboto">
-                            The best investing and passive income strategies delivered right to your fingertips.
-                            </Card.Text>
-                            <form action="https://app.gumroad.com/follow_from_embed_form" class="form gumroad-follow-form-embed" method="post" style={{"marginBottom":"1em"}}> 
-                                <input name="seller_id" type="hidden" value="6943259428485"></input>
-                                <input name="email" placeholder="Your email address" type="email"></input>
-                                <button data-custom-highlight-color="" type="submit">Follow</button> 
-                            </form>
+                        <Accordion flush>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>I want to increase my monthly income.</Accordion.Header>
+                                <Accordion.Body>
+                                Dividend cash flow is right for you. You can buy assets in the stock market that will cash flow into your bank account as long as you own them! DivCultivator gives a great overview of this.
+                                <div></div>
+                                <a class="gumroad-button" href="https://gumroad.com/a/820270195/CSdwG" style={{"margin":"1em"}}>Create a Cash Flow Machine</a>
+                                <div></div>
+                                <a href="https://twitter.com/DivCultivator?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @DivCultivator</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header>I want my money to grow hassle-free.</Accordion.Header>
+                                <Accordion.Body>
+                                Index fund investing is for you. This a low-risk, low-work investing strategy that will still get you to millionaire status. I'm currently working on procurring a good source to learn this method.
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="2">
+                                <Accordion.Header>I want to be super rich!</Accordion.Header>
+                                <Accordion.Body>
+                                Individual stock investing is right for you. This high reward investing strategy requires a lot of research to manage risk properly and should only be attempted by seasoned investors. Check out my book to know how to identify the best companies to invest in.
+                                <div></div>
+                                <a class="gumroad-button" href="https://gumroad.com/l/ngaxy" style={{"margin":"1em"}}>I want to learn!</a>
+                                <div></div>
+                                <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="en" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="3">
+                                <Accordion.Header>Wtf? I don't even know where to start...</Accordion.Header>
+                                <Accordion.Body>
+                                Learning the basics of financial freedom is best for you. Start here to learn the importance of becoming financially free and use FiSavvyDad's roadmap to get there.
+                                <div></div>
+                                <a class="gumroad-button" href="https://gumroad.com/a/310580339/EvgKt" style={{"margin":"1em"}}>Get the Financial Freedom Playbook</a>
+                                <div></div>
+                                <a href="https://twitter.com/FiSavvyDad?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @FiSavvyDad</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                        </Card.Body>
+                    </Card>
+                    </div>
+                    <div className= "col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className= "col-sm-4"></div>
+                    <div className= "col-sm-4" align="center">
+                    <Card className="border-0">
+                        <Card.Body>
                             <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="en" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                           
                         </Card.Body>
                     </Card>
@@ -286,11 +323,11 @@ class SuperTable extends Component {
                 <div className="row">
                     <div className= "col-sm-4"></div>
                     <div className= "col-sm-4" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
+                    <Card className="border-0">
                         <Card.Body>
-                            <h2 className="roboto title"><strong>How does this work?</strong></h2>
+                            <h2 className="roboto title"><strong>What is Stock Boy?</strong></h2>
                             <Card.Text className="roboto">
-                            Stock Boy pulls data from the SEC website and makes it easy to read and easy to find. <strong>You just need to search above.</strong> The database contains ~70% of financial statements from 2013 to now with more on the way. Other company data will be added too. Please direct feedback to the Twitter above.
+                            Stock Boy is your investing personal assistant. He points you to the proper investing strategy based on your financial goals. He also pulls data from the SEC and makes it readily available and easy to read. This enables the common investor to understand companies by just searching for a company at the top of this page.
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -300,36 +337,15 @@ class SuperTable extends Component {
                 <div className="row">
                     <div className= "col-sm-4"></div>
                     <div className= "col-sm-4" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
+                    <Card className="border-0">
                         <Card.Body>
                             <h2 className="roboto title"><strong>Invest in yourself.</strong></h2>
                             <Card.Text className="roboto">
-                            Use these free accounts to help your money grow &ndash; work-free!
+                            Every investor needs a brokerage. Try <a href="https://m1.finance/UHVHgaUnLsdA">M1 Finance</a> &ndash; they make investing simple (practically automated!) and keep new investors out of trouble. Just press their logo below.
                             </Card.Text>
                             <a href="https://m1.finance/UHVHgaUnLsdA">
                                 <img src="m1.png" width="100" height="100" alt="M1 Finance Logo" style={{"margin":"1em"}}></img>
                             </a>
-                            <a href="https://blockfi.com/?ref=c06c8f56">
-                                <img src="blockfi.png" width="100" height="100" alt="BlockFi Logo" style={{"margin":"1em"}}></img>
-                            </a>
-                            <a href="https://celsiusnetwork.app.link/1410746914">
-                                <img src="celsius.png" width="100" height="100" alt="Celsius Logo" style={{"margin":"1em"}}></img>
-                            </a>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
-                        <Card.Body>
-                            <h2 className="roboto title"><strong>Feeling lost?</strong></h2>
-                            <Card.Text className="roboto">
-                            Start here to learn the basics of financial freedom.
-                            </Card.Text>
-                            <a class="gumroad-button" href="https://gumroad.com/a/310580339/EvgKt">Financial Freedom Playbook</a>
                         </Card.Body>
                     </Card>
                     </div>
@@ -342,7 +358,7 @@ class SuperTable extends Component {
                         <Card.Body>
                             <h2 className="roboto title"><strong>Invest in Stock Boy.</strong></h2>
                             <Card.Text className="roboto">
-                            Patrons keep Stock Boy free.
+                            Patrons help others invest responsibly.
                             </Card.Text>
                             <a href="https://www.patreon.com/bePatron?u=58846812" data-patreon-widget-type="become-patron-button">Become a Patron!</a>
                         </Card.Body>
@@ -356,7 +372,7 @@ class SuperTable extends Component {
                     <Card className="border-0" style={{"marginBottom":"1em"}}>
                         <Card.Body>
                             <font size="2" className="roboto">
-                            None of the information on this site is financial advice. Instead Stock Boy enables you to make your own investing decisions. Contains affiliate links. The M1 Finance, BlockFi, and Celsius logos are owned by their respective companies and these companies are in no way affiliated with Stock Boy.
+                            None of the information on this page is financial advice. Please seek a licensed professional for any investment or tax advice. Always do your own research before making investment decisions. This web app contains affiliate links. The M1 Finance logo is owned by its respective company and is in no way affiliated with Stock Boy.
                             </font>
                         </Card.Body>
                     </Card>
@@ -373,7 +389,7 @@ class SuperTable extends Component {
                     <div className= "col-sm-10">
                         <div className="card justify-content-center border-light mb-3" style={{"marginTop":"4em","marginBottom":"3em"}}>
                             <div className="card-body">
-                                <div className="container-fluid">
+                                <div className="container-fluid" align="center">
                                     <div className="row justify-content-center" style={{"marginTop":"10px"}}>
                                         <div className="col-sm-12 my-auto" align="center">
                                             <h4 className="card-title"><strong>{this.props.company}</strong></h4>

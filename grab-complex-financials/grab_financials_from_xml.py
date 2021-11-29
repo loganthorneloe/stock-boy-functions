@@ -27,7 +27,7 @@ quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
 num_years = 1
 filing = '10-K' # '10-Q'
 not_filing = '10-K/A'
-starting_year = 2020
+# starting_year = 2020
 headers = {
     'User-Agent': 'Stock Boy',
     'From': 'meetstockboy@gmail.com'
@@ -134,54 +134,65 @@ def get_url_for_statements(xml_summary, new_base_url):
   for report in master_report_list:
 
     # cash flow possibilities
-    cash_item1 = 'consolidated statements of cash flows'
-    cash_item2 = 'consolidated statements of cash flow'
-    cash_item3 = 'consolidated statement of cash flows'
-    cash_item4 = 'consolidated statements of cashflows'
-    cash_item5 = 'consolidated cash flows'
-    cash_item6 = 'cash flows statement'
+    cash_item1 = 'cash flows'
+    cash_item2 = 'cash flow'
+    cash_item3 = 'cashflows'
+    cash_item4 = 'cashflow'
 
-    cash_flow_options = [cash_item1, cash_item2, cash_item3, cash_item4, cash_item5, cash_item6]
+    cash_flow_options = [cash_item1, cash_item2, cash_item3, cash_item4]
 
     # balance sheet possibilities
     balance_item1 = 'consolidated balance sheet'
     balance_item2 = 'consolidated balance sheets'
     balance_item3 = 'consolidated statements of financial condition'
     balance_item4 = 'balance sheet'
+    balance_item5 = 'consolidated statements of condition'
+    balance_item6 = 'of financial position'
+    balance_item7 = 'of financial condition'
 
-    balance_sheet_options = [balance_item1, balance_item2, balance_item3, balance_item4]
+    balance_sheet_options = [balance_item1, balance_item2, balance_item3, balance_item4, balance_item5, balance_item6, balance_item7]
 
     #income statement possibilities
-    income_item1 = 'consolidated statements of operations'
-    income_item2 = 'consolidated statements of earnings'
-    income_item3 = 'consolidated statements of operations and comprehensive loss'
-    income_item4 = 'consolidated statements of income'
-    income_item5 = 'consolidated statements of income (loss)'
-    income_item6 = 'consolidated statements of operation and comprehensive income (loss)'
-    income_item7 = 'consolidated statements of operations and comprehensive income (loss)'
-    income_item8 = 'consolidated statements of operations and comprehensive (loss) income'
-    income_item9 = 'consolidated statements of operations and comprehensive income'
-    income_item10 = 'consolidated statements of income (loss) and comprehensive income (loss)'
-    income_item11 = 'consolidated statement of income (loss)'
-    income_item12 = 'consolidated statements of operations and comprehensive earnings and loss'
-    income_item13 = 'consolidated results of operations'
+    income_item2 = 'statements of earnings'
+    income_item13 = 'results of operations'
     income_item14 = 'income statement'
+    income_item15 = 'of consolidated operations'
+    income_item16 = 'statements of income'
+    income_item17 = 'statements of comprehensive income'
+    income_item18 = 'statements of operations'
+    income_item19 = 'statement of operations'
+    income_item20 = 'statements of operation'
+    income_item21 = 'statement of operation'
+    income_item22 = 'statement of income'
+    income_item23 = 'statement of comprehensive income'
+    income_item24 = 'statements of loss'
+    income_item25 = 'statement of loss'
+    income_item26 = 'statement of comprehensive loss'
+    income_item27 = 'statements of comprehensive loss'
+    income_item28 = 'statments of operations'
+    income_item30 = 'statements of consolidated income'
+    income_item31 = 'statement of consolidated income'
 
     income_statement_options = [
-      income_item1, 
       income_item2, 
-      income_item3, 
-      income_item4, 
-      income_item5, 
-      income_item6, 
-      income_item7, 
-      income_item8, 
-      income_item9, 
-      income_item10, 
-      income_item11, 
-      income_item12, 
       income_item13,
-      income_item14]
+      income_item14,
+      income_item15,
+      income_item16,
+      income_item17,
+      income_item18,
+      income_item19,
+      income_item20,
+      income_item21,
+      income_item22,
+      income_item23,
+      income_item24,
+      income_item25,
+      income_item26,
+      income_item27,
+      income_item28,
+      income_item30,
+      income_item31]
 
     for option in cash_flow_options:
       if option in report['name_short'] and not 'cash_flow' in statements_url:
@@ -320,7 +331,7 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
-current_year = 2021
+current_year = 2017
 statement_failure_file_name = str(current_year) + "_statement_failures.txt"
 statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
 other_failure_file_name = str(current_year) + "_other_failures.txt"
@@ -601,9 +612,10 @@ for item in download:
         
     # print('Exception caught for: ' + company_key)
 
-  time.sleep(1) # pause in between each year as to not overload edgar
+  time.sleep(0.5) # pause in between each year as to not overload edgar
 
 print("num statement failures: " + str(len(statement_failures)))
 print("num ticker failures: " + str(len(ticker_failures)))
 print("num statement successes: " + str(statement_successes))
 print("num ticker successes: " + str(ticker_successes))
+print("percent statement successes: " + str(statement_successes/(statement_successes + len(statement_failures))*100))
