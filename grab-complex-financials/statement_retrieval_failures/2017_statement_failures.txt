@@ -53,3 +53,4 @@ Altegris QIM Futures Fund, L.P.: https://www.sec.gov/Archives/edgar/data/1469317
 ML BlueTrend FuturesAccess LLC: https://www.sec.gov/Archives/edgar/data/1471270/000110465917017462/FilingSummary.xml working statements: balance_sheet income_statement 
 Teucrium Commodity Trust: https://www.sec.gov/Archives/edgar/data/1471824/000138713117001418/FilingSummary.xml working statements: income_statement cash_flow 
 KMP Futures Fund I LLC: https://www.sec.gov/Archives/edgar/data/1474307/000158064217002047/FilingSummary.xml working statements: balance_sheet income_statement 
+ETFS Precious Metals Basket Trust: https://www.sec.gov/Archives/edgar/data/1483386/000148338617000005/FilingSummary.xml working statements: income_statement 

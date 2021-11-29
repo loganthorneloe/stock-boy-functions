@@ -274,7 +274,7 @@ class SuperTable extends Component {
                                 <div></div>
                                 <a class="gumroad-button" href="https://gumroad.com/a/820270195/CSdwG" style={{"margin":"1em"}}>Create a Cash Flow Machine</a>
                                 <div></div>
-                                <a href="https://twitter.com/DivCultivator?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @DivCultivator</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <a href="https://twitter.com/DivCultivator?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @DivCultivator</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
@@ -300,21 +300,10 @@ class SuperTable extends Component {
                                 <div></div>
                                 <a class="gumroad-button" href="https://gumroad.com/a/310580339/EvgKt" style={{"margin":"1em"}}>Get the Financial Freedom Playbook</a>
                                 <div></div>
-                                <a href="https://twitter.com/FiSavvyDad?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @FiSavvyDad</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <a href="https://twitter.com/FiSavvyDad?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @FiSavvyDad</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0">
-                        <Card.Body>
-                            <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="en" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                           
                         </Card.Body>
                     </Card>
                     </div>
@@ -329,6 +318,17 @@ class SuperTable extends Component {
                             <Card.Text className="roboto">
                             Stock Boy is your investing personal assistant. He points you to the proper investing strategy based on your financial goals. He also pulls data from the SEC and makes it readily available and easy to read. This enables the common investor to understand companies by just searching for a company at the top of this page.
                             </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    </div>
+                    <div className= "col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className= "col-sm-4"></div>
+                    <div className= "col-sm-4" align="center">
+                    <Card className="border-0">
+                        <Card.Body>
+                            <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="en" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                           
                         </Card.Body>
                     </Card>
                     </div>

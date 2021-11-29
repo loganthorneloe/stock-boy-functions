@@ -332,3 +332,26 @@ United States Brent Oil Fund, LP: https://www.sec.gov/Archives/edgar/data/147249
 STR HOLDINGS, INC.: https://www.sec.gov/Archives/edgar/data/1473597/000117184317001394/FilingSummary.xml array error for given company
 AlphaPoint Technology, Inc.: https://www.sec.gov/Archives/edgar/data/1473654/000116169717000172/FilingSummary.xml array error for given company
 GENERAC HOLDINGS INC.: https://www.sec.gov/Archives/edgar/data/1474735/000143774917003237/FilingSummary.xml array error for given company
+Medbook World, Inc: https://www.sec.gov/Archives/edgar/data/1478259/000147793217000334/FilingSummary.xml array error for given company
+Viva Entertainment Group Inc.: https://www.sec.gov/Archives/edgar/data/1479000/000126493117000020/FilingSummary.xml array error for given company
+United States Commodity Index Funds Trust: https://www.sec.gov/Archives/edgar/data/1479247/000114420417013891/FilingSummary.xml array error for given company
+PREFERRED APARTMENT COMMUNITIES INC: https://www.sec.gov/Archives/edgar/data/1481832/000148183217000050/FilingSummary.xml array error for given company
+Carter Validus Mission Critical REIT, Inc.: https://www.sec.gov/Archives/edgar/data/1482974/000148297417000010/FilingSummary.xml array error for given company
+WILLIAMS PARTNERS L.P.: https://www.sec.gov/Archives/edgar/data/1483096/000148309617000003/FilingSummary.xml array error for given company
+Gigamon Inc.: https://www.sec.gov/Archives/edgar/data/1484504/000148450417000013/FilingSummary.xml array error for given company
+Freeze Tag, Inc.: https://www.sec.gov/Archives/edgar/data/1485074/000147793217001489/FilingSummary.xml array error for given company
+GenMark Diagnostics, Inc.: https://www.sec.gov/Archives/edgar/data/1487371/000148737117000062/FilingSummary.xml array error for given company
+METROSPACES, INC.: https://www.sec.gov/Archives/edgar/data/1488501/000072174817000171/FilingSummary.xml array error for given company
+Golden Growers Cooperative: https://www.sec.gov/Archives/edgar/data/1489874/000155837017001413/FilingSummary.xml array error for given company
+Mewbourne Energy Partners 10-A, L.P.: https://www.sec.gov/Archives/edgar/data/1491262/000138713117001766/FilingSummary.xml array error for given company
+Horizon Pharma plc: https://www.sec.gov/Archives/edgar/data/1492426/000156459017002491/FilingSummary.xml array error for given company
+Lifeloc Technologies, Inc: https://www.sec.gov/Archives/edgar/data/1493137/000107997317000193/FilingSummary.xml array error for given company
+Northfield Bancorp, Inc.: https://www.sec.gov/Archives/edgar/data/1493225/000149322517000015/FilingSummary.xml array error for given company
+PROTECT PHARMACEUTICAL Corp: https://www.sec.gov/Archives/edgar/data/1493526/000155116317000043/FilingSummary.xml array error for given company
+OTONOMY, INC.: https://www.sec.gov/Archives/edgar/data/1493566/000156459017003217/FilingSummary.xml array error for given company
+Sensus Healthcare, Inc.: https://www.sec.gov/Archives/edgar/data/1494891/000161577417000965/FilingSummary.xml array error for given company
+Spirit Airlines, Inc.: https://www.sec.gov/Archives/edgar/data/1498710/000149871017000044/FilingSummary.xml array error for given company
+Sabine Pass Liquefaction, LLC: https://www.sec.gov/Archives/edgar/data/1499200/000149920017000003/FilingSummary.xml array error for given company
+Ariel Clean Energy, Inc.: https://www.sec.gov/Archives/edgar/data/1499684/000164033417000467/FilingSummary.xml array error for given company
+China Herb Group Holdings Corp: https://www.sec.gov/Archives/edgar/data/1499785/000121390017002815/FilingSummary.xml array error for given company
+American Assets Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1500217/000150021717000006/FilingSummary.xml array error for given company
