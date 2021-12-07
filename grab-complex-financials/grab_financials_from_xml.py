@@ -331,7 +331,7 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
-current_year = 2017
+current_year = 2021
 statement_failure_file_name = str(current_year) + "_statement_failures.txt"
 statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
 other_failure_file_name = str(current_year) + "_other_failures.txt"
