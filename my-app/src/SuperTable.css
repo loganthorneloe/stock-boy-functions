@@ -3,18 +3,18 @@
 .card {display:inline-block;}
 
 .stock-boy-caption {
-    width: 300px;
+    width: 500px;
 }
 
 @media (max-width: 480px) and (min-width: 350px) { 
     .stock-boy-caption {
-      width: 250px;
+      width: 300px;
     }
 }
   
 @media (max-width: 350px) { 
     .stock-boy-caption {
-      width: 220px;
+      width: 250;
     }
 }
 

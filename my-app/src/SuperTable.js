@@ -2,17 +2,13 @@ import './SuperTable.css';
 import React, { Component } from "react";
 import Table from 'react-bootstrap/Table'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { Tabs, Tab, ButtonGroup } from 'react-bootstrap';
-import DropdownButton from 'react-bootstrap/DropdownButton'
+import { Tabs, Tab } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
 import Accordion from 'react-bootstrap/Accordion'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
 import { NavDropdown } from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
-import {TwitterFollowButton} from 'react-twitter-embed';
 
 class SuperTable extends Component {
     constructor(props) { // props will be dict for certain stock
@@ -248,7 +244,54 @@ class SuperTable extends Component {
     if(typeof this.props.companyDict === "undefined" && typeof this.props.company === "undefined"){
         return (
             <div className="container-fluid" style={{"marginTop":"5em"}}>
-                <div className="row">
+              <div className="row justify-content-center" style={{"marginTop":"10px"}}>
+                <div className="col-sm-12 my-auto" align="center">
+                  <img className="stock-boy-caption" src="title_boy.png" alt="Welcome to Stock Boy! Search for companies above to find financial statements."></img>
+                </div>
+              </div>
+              <div className="row justify-content-center" style={{"marginTop":"10px"}}>
+                <div className= "col-sm-6" align="center">
+                  <Card className="border-0">
+                    <Card.Body>
+                      <h4 className="roboto title" style={{"marginBottom":".5em"}}><strong>What is Stock Boy?</strong></h4>
+                      <p>Stock Boy contains 98% of financial statements from the SEC and makes it easy for retail investors to read them from their pocket. Download Stock Boy as an app to give it a try. <strong>Coming Soon</strong>: Stock Boy will do simple fundamental analysis for you!</p>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                <div className= "col-sm-6" align="center">
+                  <Card.Body>
+                    <p style={{"marginTop":"-10px"}}>The goal is to keep Stock Boy free. If Stock Boy has been helpful for you, please consider supporting my work on Buy Me a Coffee or following me on Twitter.</p> 
+                  </Card.Body>
+                </div>
+              </div>
+              <div className="row justify-content-center align-items-center" style={{"marginTop":"-26px"}}>
+                <div className= "col-sm-4" align="center">
+                  <Card.Body>
+                    <a href="https://buymeacoffee.com/loganthorneloe">
+                      <img src="bmc-button.png" width="200px" alt="Buy me a coffee logo" style={{"margin":"1em"}}></img>
+                    </a>
+                  </Card.Body>
+                  <Card.Body>
+                  <a href="https://twitter.com/loganthorneloe?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-size="large" data-show-count="false">Follow @loganthorneloe</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>                           
+                  </Card.Body>
+                </div>
+              </div>
+              <div className="row">
+                <div className= "col-sm-1"></div>
+                <div className= "col-sm-10" align="center">
+                <Card className="border-0" style={{"marginBottom":"1em"}}>
+                  <Card.Body>
+                    <font size="2" className="roboto">
+                    None of the information on this page is financial advice. Please seek a licensed professional for any investment or tax advice. Always do your own research before making investment decisions. This web app contains affiliate links. The Buy Me a Coffee logo is owned by its respective company and is in no way affiliated with Stock Boy.
+                    </font>
+                  </Card.Body>
+                </Card>
+                </div>
+                <div className= "col-sm-1"></div>
+              </div>
+                {/* <div className="row">
                     <div className= "col-sm-4"></div>
                     <div className= "col-sm-4" align="center">
                     <Card className="border-0">
@@ -294,7 +337,7 @@ class SuperTable extends Component {
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="3">
-                                <Accordion.Header>Wtf? I don't even know where to start...</Accordion.Header>
+                                <Accordion.Header>I don't even know where to start...</Accordion.Header>
                                 <Accordion.Body>
                                 Learning the basics of financial freedom is best for you. Start here to learn the importance of becoming financially free and use FiSavvyDad's roadmap to get there.
                                 <div></div>
@@ -360,7 +403,6 @@ class SuperTable extends Component {
                             <Card.Text className="roboto">
                             Patrons help others invest responsibly.
                             </Card.Text>
-                            <a href="https://www.patreon.com/bePatron?u=58846812" data-patreon-widget-type="become-patron-button">Become a Patron!</a>
                         </Card.Body>
                     </Card>
                     </div>
@@ -378,7 +420,7 @@ class SuperTable extends Component {
                     </Card>
                     </div>
                     <div className= "col-sm-1"></div>
-                </div>
+                </div> */}
             </div>
         )
     }else if(typeof this.props.companyDict === "undefined" && typeof this.props.company !== "undefined"){
