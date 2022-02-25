@@ -125,4 +125,37 @@ def create_simple_data(company_name):
             Repurchase of common stock and it should be negative
             '''
 
+            '''
+            Things we need to pull from financials:
+            Profit Margin
+            Revenue
+            Admin costs
+            Research and development costs
+            Depreciation
+            Interest expense
+            Provisions for income tax
+            pre-tax income
+            Net income
+            Net sales
+            EPS(basic)
+            Cash and cash equivalents (short-term cash)
+            inventory
+            Account receivables, net
+            property, plant, equipment value
+            goodwill
+            intangible assets
+            long-term investments
+            total assets
+            short-term debt
+            long-term debt
+            total liabilities
+            total shareholders' equity
+            treasury shares
+            preferred stock
+            retained earnings (possible subcategories instead)
+            treasury shares
+            payments in investing activities
+            repurchase of common stock
+            '''
+
 create_simple_data('tesla, inc.')
