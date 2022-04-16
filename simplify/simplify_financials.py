@@ -127,35 +127,39 @@ def create_simple_data(company_name):
 
             '''
             Things we need to pull from financials:
-            Profit Margin
-            Revenue
-            Admin costs
-            Research and development costs
-            Depreciation
-            Interest expense
-            Provisions for income tax
-            pre-tax income
-            Net income
-            Net sales
-            EPS(basic)
-            Cash and cash equivalents (short-term cash)
-            inventory
-            Account receivables, net
-            property, plant, equipment value
-            goodwill
-            intangible assets
-            long-term investments
-            total assets
-            short-term debt
-            long-term debt
-            total liabilities
-            total shareholders' equity
-            treasury shares
-            preferred stock
-            retained earnings (possible subcategories instead)
-            treasury shares
-            payments in investing activities
-            repurchase of common stock
+            Profit Margin us-gaap:GrossProfit
+            Revenue us-gaap:Revenues
+            Admin costs us-gaap:SellingGeneralAndAdministrativeExpense
+            Research and development costs us-gaap:ResearchAndDevelopmentExpense
+            Depreciation tsla:DepreciationAmortizationAndImpairment
+            Interest expense us-gaap:InterestExpense
+            Provisions for income tax us-gaap:IncomeTaxExpenseBenefit
+            pre-tax income us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+            Net income us-gaap:ProfitLoss
+            Net sales -> us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+            EPS(basic) us-gaap:EarningsPerShareBasic
+            Cash and cash equivalents (short-term cash) us-gaap:CashAndCashEquivalentsAtCarryingValue
+            inventory us-gaap:InventoryNet
+            Account receivables, net us-gaap:AccountsReceivableNetCurrent
+            property, plant, equipment value us-gaap:PropertyPlantAndEquipmentNet
+            goodwill us-gaap:Goodwill
+            intangible assets us-gaap:IntangibleAssetsNetExcludingGoodwill
+            long-term investments us-gaap:LongTermInvestments or us-gaap:OtherAssetsNoncurrent -> needs a manual review
+            total assets us-gaap:Assets
+            short-term debt us-gaap:LiabilitiesCurrent
+            long-term us-gaap:Liabilities - us-gaap:LiabilitiesCurrent
+            total liabilities us-gaap:Liabilities
+            total shareholders' equity us-gaap:StockholdersEquity
+            preferred stock us-gaap:PreferredStockValue
+            retained earnings (possible subcategories instead) us-gaap:RetainedEarningsAccumulatedDeficit
+            treasury shares us-gaap:TreasuryStockValue
+            payments in investing activities us-gaap:NetCashProvidedByUsedInInvestingActivities
+            repurchase of common stock us-gaap:PaymentsForRepurchaseOfCommonStock
+
+
+            possible issues: tags are reused on financials?? - Microsoft 2021 is a good example of this
+            Apple 2021 also shows this with cost of goods sold and net sales
+
             '''
 
 create_simple_data('tesla, inc.')

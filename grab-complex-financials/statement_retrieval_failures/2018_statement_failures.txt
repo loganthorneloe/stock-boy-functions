@@ -54,7 +54,6 @@ CATERPILLAR INC: https://www.sec.gov/Archives/edgar/data/18230/00000182301800004
 AKORN INC: https://www.sec.gov/Archives/edgar/data/3116/000162828018002518/FilingSummary.xml working statements: balance_sheet cash_flow 
 GALLAGHER ARTHUR J & CO: https://www.sec.gov/Archives/edgar/data/354190/000119312518038261/FilingSummary.xml working statements: balance_sheet cash_flow 
 Winthrop Realty Liquidating Trust: https://www.sec.gov/Archives/edgar/data/37008/000119312518085854/FilingSummary.xml working statements: 
-MARCUS CORP: https://www.sec.gov/Archives/edgar/data/62234/000114420418014385/FilingSummary.xml reports are null?? 
 KIEWIT ROYALTY TRUST: https://www.sec.gov/Archives/edgar/data/711477/000110465918021464/FilingSummary.xml working statements: 
 RELIV INTERNATIONAL INC: https://www.sec.gov/Archives/edgar/data/768710/000143774918005793/FilingSummary.xml working statements: balance_sheet cash_flow 
 OGLETHORPE POWER CORP: https://www.sec.gov/Archives/edgar/data/788816/000104746918002324/FilingSummary.xml working statements: balance_sheet cash_flow 

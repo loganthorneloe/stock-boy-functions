@@ -71,7 +71,6 @@ Managed Futures Premier BHM L.P.: https://www.sec.gov/Archives/edgar/data/150488
 Point Capital, Inc.: https://www.sec.gov/Archives/edgar/data/1514183/000121390014002019/FilingSummary.xml working statements: income_statement cash_flow 
 Memorial Production Partners LP: https://www.sec.gov/Archives/edgar/data/1521847/000119312514089366/FilingSummary.xml working statements: balance_sheet cash_flow 
 AAA Energy Opportunities Fund LLC: https://www.sec.gov/Archives/edgar/data/1529004/000110465914022181/FilingSummary.xml working statements: balance_sheet income_statement 
-Sanborn Resources, Ltd.: https://www.sec.gov/Archives/edgar/data/1530874/000158972814000022/FilingSummary.xml reports are null?? 
 WMI Liquidating Trust: https://www.sec.gov/Archives/edgar/data/1545078/000119312514123867/FilingSummary.xml working statements: 
 Professional Diversity Network, Inc.: https://www.sec.gov/Archives/edgar/data/1546296/000121465914002277/FilingSummary.xml working statements: balance_sheet cash_flow 
 TriLinc Global Impact Fund LLC: https://www.sec.gov/Archives/edgar/data/1550453/000119312514124163/FilingSummary.xml working statements: income_statement cash_flow 

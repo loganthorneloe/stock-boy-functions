@@ -44,23 +44,10 @@ ticker_failures = []
 statement_successes = 0
 ticker_successes = 0
 
-# def submit_to_failures(company_key, current_year, reason_dict):
-#   key = company_key + "_" + str(current_year)
-#   doc_ref = db.collection(u'failures').document(key).set(reason_dict)
-            
-#   print('Failure for: ' + key)
-
-# def remove_from_failures(company_key, current_year):
-#   key = company_key + "_" + str(current_year)
-#   try:
-#     doc_ref = db.collection(u'failures').document(key).delete()
-#   except:
-#     pass
-
-def set_statement_data_to_firebase(company_key, current_year, statements_data):
-  doc_ref = db.collection(u'stock_data').document(company_key).update({
-              str(current_year) + "_complex": statements_data
-            })
+# def set_statement_data_to_firebase(company_key, current_year, statements_data):
+#   doc_ref = db.collection(u'stock_data').document(company_key).update({
+#               str(current_year) + "_complex": statements_data
+#             })
 
 # def retrieve_idx_for_given_url(url):
 #   download = requests.get(url, headers=headers).content
@@ -312,7 +299,7 @@ def retrieve_statement_data_from_statement_urls(statements_url):
       balance_arr = columns
     elif statement == "income_statement":
       income_arr = columns
-    else: # cash flow
+    else: # cash flowcd g
       cash_arr = columns
 
   # this is one list with both columns for all three statements
@@ -376,8 +363,11 @@ for item in download:
   # if start_item in item:
   #   start = True
 
-  if not start:
-    continue
+  # if not start:
+  #   continue
+
+  # if "TESLA MOTORS INC" not in item and "HENRY SCHEIN INC" not in item:
+  #   continue
 
   # clean item
   this_company = item
@@ -440,17 +430,12 @@ for item in download:
 
     statements_url = get_url_for_statements(xml_summary, new_base_url)
 
-  except:
+  except Exception as ex:
 
     statement_failures.append((company_name, current_year, statements_url, xml_summary))
-    # we need to track what companies didn't have proper statement
-    # doc_ref = db.collection(u'failures').document(company_key).set({
-    #   str(current_year) + "_summary": xml_summary,
-    #   str(current_year) + "_statements": list(statements_url.keys()),
-    #   "details":"couldn't retrieve a table url"
-    # })
 
     print('Reports is null failure for: ' + company_name)
+    print(ex)
 
     error_str = company_name + ': ' + xml_summary + ' reports are null?? '
     error_str += "\n"
@@ -470,11 +455,6 @@ for item in download:
     # these i need to take another look at - will save them as failures
     statement_failures.append((company_name, current_year, statements_url, xml_summary))
     # we need to track what companies didn't have proper statement
-    # doc_ref = db.collection(u'failures').document(company_key).set({
-    #   str(current_year) + "_summary": xml_summary,
-    #   str(current_year) + "_statements": list(statements_url.keys()),
-    #   "details":"couldn't retrieve a table url"
-    # })
 
     print('Statement failure for: ' + company_name)
 
@@ -518,18 +498,6 @@ for item in download:
     with open(other_failure_full_path, 'a') as the_file:
       the_file.write(error_str)
     continue
-    # we need to track what companies didn't have proper statement
-    # reason_dict = {
-    #   str(current_year) + "_summary": xml_summary,
-    #   str(current_year) + "_statements": list(statements_url.keys()),
-    #   "details": "couldn't grab a table from within url"
-    # }
-    # submit_to_failures(company_key, current_year, reason_dict)
-    # doc_ref = db.collection(u'failures').document(company_key).set({
-    #   str(current_year) + "_summary": xml_summary,
-    #   str(current_year) + "_statements": list(statements_url.keys()),
-    #   "details": "couldn't grab a table from within url"
-    # })
     
     # print('Tables issue for: ' + company_key + " ")
 
@@ -548,42 +516,39 @@ for item in download:
   try:
     # pprint(statements_data)
     # this will overwrite
-    # doc_ref = db.collection(u'stock_data').document(company_key).set({
-    #   str(current_year) + "_complex": statements_data
-    # })
 
-    set_statement_data_to_firebase(company_key, current_year, statements_data)
+    # set_statement_data_to_firebase(company_key, current_year, statements_data)
+    doc_ref = db.collection(u'stock_data').document(company_key).update({
+              str(current_year) + "_complex": statements_data
+            })
     # remove_from_failures(company_key, current_year)
 
     # need to remove from failures here if this works
 
     print('adding year: ' + str(current_year) + " for company " + company_name)        
 
-  except:
+  except Exception as e:
 
-    statement_failures.append((company_name, current_year, statements_url, xml_summary))
+    try:
 
-    print('Array error for: ' + company_name)
+      # print('setting instead of updating...')
+      # try setting instead of updating??
+      doc_ref = db.collection(u'stock_data').document(company_key).set({
+                str(current_year) + "_complex": statements_data
+              })
+    
+    except Exception as ex:
+    
+      statement_failures.append((company_name, current_year, statements_url, xml_summary))
 
-    error_str = company_name + ': ' + xml_summary + ' array error for given company\n'
+      print('Array error for: ' + company_name)
+      print(ex)
+      error_str = company_name + ': ' + xml_summary + ' array error for given company\n'
 
-    with open(other_failure_full_path, 'a') as the_file:
-      the_file.write(error_str)
-    continue
-
-    # reason_dict = {
-    #   str(current_year) + "_summary": xml_summary,
-    #   str(current_year) + "_statements": list(statements_url.keys()),
-    #   "details": "array issue"
-    # }
-
-    # submit_to_failures(company_key, current_year, reason_dict)
-    # doc_ref = db.collection(u'failures').document(company_key).set({
-    #   str(current_year) + "_summary": xml_summary,
-    #   str(current_year) + "_statements": list(statements_url.keys())
-    # })
-
-    # print('Array issue for: ' + company_key + " ")
+      with open(other_failure_full_path, 'a') as the_file:
+        the_file.write(error_str)
+      continue
+      # print('Array issue for: ' + company_key + " ")
 
   # update trading symbol
   if trading_symbol != '': 
@@ -598,19 +563,6 @@ for item in download:
       ticker_failures.append((company_name, current_year, new_base_url))
 
   statement_successes += 1
-
-  # except Exception as e:
-
-  #   reason_dict = {
-  #     "details": "{e}"
-  #   }
-  #   submit_to_failures(company_key, current_year, reason_dict)
-    # we need to track what companies didn't have proper statement
-    # doc_ref = db.collection(u'failures').document(company_key).set({
-    #   "details": "{e}"
-    #     })
-        
-    # print('Exception caught for: ' + company_key)
 
   time.sleep(0.5) # pause in between each year as to not overload edgar
 

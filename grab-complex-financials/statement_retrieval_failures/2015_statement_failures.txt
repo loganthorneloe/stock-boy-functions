@@ -90,14 +90,15 @@ GRANT PARK FUTURES FUND LIMITED PARTNERSHIP: https://www.sec.gov/Archives/edgar/
 PRUDENTIAL VARIABLE CONTRACT REAL PROPERTY ACCOUNT: https://www.sec.gov/Archives/edgar/data/846581/000119312515089578/FilingSummary.xml working statements: income_statement 
 MORGAN STANLEY SMITH BARNEY SPECTRUM SELECT LP: https://www.sec.gov/Archives/edgar/data/873799/000087379915000002/FilingSummary.xml working statements: balance_sheet income_statement 
 AMBAC FINANCIAL GROUP INC: https://www.sec.gov/Archives/edgar/data/874501/000087450115000013/FilingSummary.xml working statements: balance_sheet cash_flow 
+NATUS MEDICAL INC: https://www.sec.gov/Archives/edgar/data/878526/000119312515093490/FilingSummary.xml reports are null?? 
 OLD DOMINION ELECTRIC COOPERATIVE: https://www.sec.gov/Archives/edgar/data/885568/000119312515087047/FilingSummary.xml working statements: balance_sheet cash_flow 
 U S PHYSICAL THERAPY INC /NV: https://www.sec.gov/Archives/edgar/data/885978/000114036115011450/FilingSummary.xml working statements: balance_sheet cash_flow 
 NESTOR PARTNERS: https://www.sec.gov/Archives/edgar/data/888471/000114420415019380/FilingSummary.xml working statements: balance_sheet income_statement 
 MORGAN STANLEY SMITH BARNEY CHARTER ASPECT L.P.: https://www.sec.gov/Archives/edgar/data/914747/000091474715000002/FilingSummary.xml working statements: balance_sheet income_statement 
+PENN NATIONAL GAMING INC:  10k link failure
 MORGAN STANLEY SMITH BARNEY SPECTRUM STRATEGIC LP: https://www.sec.gov/Archives/edgar/data/925263/000092526315000002/FilingSummary.xml working statements: balance_sheet income_statement 
 MORGAN STANLEY SMITH BARNEY SPECTRUM TECHNICAL LP: https://www.sec.gov/Archives/edgar/data/925306/000092530615000002/FilingSummary.xml working statements: balance_sheet income_statement 
 Discovery Energy Corp.: https://www.sec.gov/Archives/edgar/data/1435387/000114420415037063/FilingSummary.xml working statements: balance_sheet cash_flow 
-NORTHSIGHT CAPITAL, INC.: https://www.sec.gov/Archives/edgar/data/1439397/000107878215000872/FilingSummary.xml reports are null?? 
 Champion Pain Care Corp: https://www.sec.gov/Archives/edgar/data/1469284/000151116415000237/FilingSummary.xml working statements: balance_sheet cash_flow 
 VapAria Corp: https://www.sec.gov/Archives/edgar/data/1479915/000138713115001290/FilingSummary.xml working statements: balance_sheet cash_flow 
 BALLROOM DANCE FITNESS, INC.: https://www.sec.gov/Archives/edgar/data/1493109/000149310915000011/FilingSummary.xml working statements: income_statement cash_flow 

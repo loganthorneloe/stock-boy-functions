@@ -50,6 +50,7 @@ Duke Energy Florida Project Finance, LLC: https://www.sec.gov/Archives/edgar/dat
 Cars.com Inc.: https://www.sec.gov/Archives/edgar/data/1683606/000156459021008812/FilingSummary.xml working statements: balance_sheet cash_flow 
 Granite Point Mortgage Trust Inc.: https://www.sec.gov/Archives/edgar/data/1703644/000170364421000047/FilingSummary.xml working statements: balance_sheet cash_flow 
 Goldman Sachs Physical Gold ETF: https://www.sec.gov/Archives/edgar/data/1708646/000119312521096466/FilingSummary.xml working statements: income_statement 
+Lazydays Holdings, Inc.:  10k link failure
 Y-mAbs Therapeutics, Inc.: https://www.sec.gov/Archives/edgar/data/1722964/000155837021002172/FilingSummary.xml working statements: balance_sheet cash_flow 
 Grayscale Ethereum Trust (ETH): https://www.sec.gov/Archives/edgar/data/1725210/000156459021011120/FilingSummary.xml working statements: income_statement 
 Tilray, Inc.: https://www.sec.gov/Archives/edgar/data/1731348/000156459021006942/FilingSummary.xml working statements: balance_sheet cash_flow 

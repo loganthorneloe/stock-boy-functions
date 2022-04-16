@@ -74,7 +74,6 @@ Winthrop Realty Liquidating Trust: https://www.sec.gov/Archives/edgar/data/37008
 MILLS MUSIC TRUST: https://www.sec.gov/Archives/edgar/data/66496/000119312517106359/FilingSummary.xml working statements: 
 REALMARK PROPERTY INVESTORS LTD PARTNERSHIP II: https://www.sec.gov/Archives/edgar/data/704165/000109991017000027/FilingSummary.xml working statements: income_statement cash_flow 
 KIEWIT ROYALTY TRUST: https://www.sec.gov/Archives/edgar/data/711477/000110465917020306/FilingSummary.xml working statements: 
-HECLA MINING CO/DE/: https://www.sec.gov/Archives/edgar/data/719413/000143774917003050/FilingSummary.xml reports are null?? 
 RELIV INTERNATIONAL INC: https://www.sec.gov/Archives/edgar/data/768710/000114420417016959/FilingSummary.xml working statements: balance_sheet cash_flow 
 OGLETHORPE POWER CORP: https://www.sec.gov/Archives/edgar/data/788816/000104746917002021/FilingSummary.xml working statements: balance_sheet cash_flow 
 REALMARK PROPERTY INVESTORS LTD PARTNERSHIP V: https://www.sec.gov/Archives/edgar/data/790067/000109991017000028/FilingSummary.xml working statements: income_statement cash_flow 

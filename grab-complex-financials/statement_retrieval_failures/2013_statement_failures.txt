@@ -73,7 +73,6 @@ Man AHL FuturesAccess LLC: https://www.sec.gov/Archives/edgar/data/1498325/00011
 Lantheus Medical Imaging, Inc.: https://www.sec.gov/Archives/edgar/data/1500157/000104746913003601/FilingSummary.xml working statements: balance_sheet cash_flow 
 NorthStar Healthcare Income, Inc.: https://www.sec.gov/Archives/edgar/data/1503707/000104746913002865/FilingSummary.xml working statements: balance_sheet 
 Managed Futures Premier BHM L.P.: https://www.sec.gov/Archives/edgar/data/1504886/000119312513129724/FilingSummary.xml working statements: balance_sheet income_statement 
-Lion Lam Diamond Inc:  10k link failure
 Memorial Production Partners LP: https://www.sec.gov/Archives/edgar/data/1521847/000119312513091519/FilingSummary.xml working statements: balance_sheet cash_flow 
 AAA Energy Opportunities Fund LLC: https://www.sec.gov/Archives/edgar/data/1529004/000110465913025378/FilingSummary.xml working statements: balance_sheet income_statement 
 ICON Oil & Gas Fund-A L.P.: https://www.sec.gov/Archives/edgar/data/1529692/000094798613000086/FilingSummary.xml working statements: balance_sheet 

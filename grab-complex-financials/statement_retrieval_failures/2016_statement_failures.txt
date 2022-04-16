@@ -1,5 +1,4 @@
 BCTC IV ASSIGNOR CORP: https://www.sec.gov/Archives/edgar/data/1003815/000100381516000011/FilingSummary.xml working statements: balance_sheet 
-RenovaCare, Inc.: https://www.sec.gov/Archives/edgar/data/1016708/000147793216009210/FilingSummary.xml reports are null?? 
 RJO GLOBAL TRUST: https://www.sec.gov/Archives/edgar/data/1027099/000118518516004012/FilingSummary.xml working statements: balance_sheet income_statement 
 WESTPORT FUTURES FUND L.P.: https://www.sec.gov/Archives/edgar/data/1037189/000119312516519569/FilingSummary.xml working statements: balance_sheet income_statement 
 POTOMAC FUTURES FUND LP: https://www.sec.gov/Archives/edgar/data/1043565/000119312516519598/FilingSummary.xml working statements: balance_sheet income_statement 

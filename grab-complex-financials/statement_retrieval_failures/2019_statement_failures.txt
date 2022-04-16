@@ -61,6 +61,11 @@ MORGAN STANLEY SMITH BARNEY SPECTRUM SELECT LP: https://www.sec.gov/Archives/edg
 AMBAC FINANCIAL GROUP INC: https://www.sec.gov/Archives/edgar/data/874501/000087450119000023/FilingSummary.xml working statements: balance_sheet cash_flow 
 NESTOR PARTNERS: https://www.sec.gov/Archives/edgar/data/888471/000161577419004778/FilingSummary.xml working statements: balance_sheet income_statement 
 AMANASU ENVIRONMENT CORP: https://www.sec.gov/Archives/edgar/data/1142801/000165495419003787/FilingSummary.xml working statements: balance_sheet cash_flow 
+SPORTS FIELD HOLDINGS, INC.:  10k link failure
+AEP Texas Central Transition Funding III LLC:  10k link failure
+Starco Brands, Inc.:  10k link failure
+Brazil Minerals, Inc.:  10k link failure
+PROLUNG INC:  10k link failure
 VanEck Merk Gold Trust: https://www.sec.gov/Archives/edgar/data/1546652/000121390019006270/FilingSummary.xml working statements: income_statement 
 Medicine Man Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1622879/000168316819001081/FilingSummary.xml working statements: balance_sheet cash_flow 
 Motors Liquidation Co: https://www.sec.gov/Archives/edgar/data/40730/000119312519164665/FilingSummary.xml working statements: cash_flow 
