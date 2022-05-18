@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      // Allow read for anon user
+      allow read: if request.auth.uid != null;
+      // Don't allow writes for users -> only write using firebase sdk
+			allow write: if false;
+    }
+  }
+}

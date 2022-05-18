@@ -1,0 +1,21 @@
+SOUTH JERSEY GAS Co: https://www.sec.gov/Archives/edgar/data/1035216/000009192820000013/FilingSummary.xml array error for given company
+SONIC AUTOMOTIVE INC: https://www.sec.gov/Archives/edgar/data/1043509/000104350920000006/FilingSummary.xml array error for given company
+EPR PROPERTIES: https://www.sec.gov/Archives/edgar/data/1045450/000104545020000019/FilingSummary.xml array error for given company
+PROVIDENCE SERVICE CORP: https://www.sec.gov/Archives/edgar/data/1220754/000122075420000007/FilingSummary.xml array error for given company
+BATTALION OIL CORP: https://www.sec.gov/Archives/edgar/data/1282648/000155837020003121/FilingSummary.xml array error for given company
+Federal Home Loan Bank of San Francisco: https://www.sec.gov/Archives/edgar/data/1316944/000131694420000043/FilingSummary.xml array error for given company
+Compass Group Diversified Holdings LLC: https://www.sec.gov/Archives/edgar/data/1345122/000134512620000007/FilingSummary.xml array error for given company
+Compass Diversified Holdings: https://www.sec.gov/Archives/edgar/data/1345126/000134512620000007/FilingSummary.xml array error for given company
+Zyla Life Sciences: https://www.sec.gov/Archives/edgar/data/1586105/000155837020003190/FilingSummary.xml array error for given company
+GTY Technology Holdings Inc.: https://www.sec.gov/Archives/edgar/data/1682325/000155837020002686/FilingSummary.xml array error for given company
+CNL Strategic Capital, LLC: https://www.sec.gov/Archives/edgar/data/1684682/000168468220000003/FilingSummary.xml array error for given company
+Andover National Corp: https://www.sec.gov/Archives/edgar/data/1712543/000110465920040347/FilingSummary.xml array error for given company
+Tradeweb Markets Inc.: https://www.sec.gov/Archives/edgar/data/1758730/000155837020001170/FilingSummary.xml array error for given company
+InterPrivate Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1789029/000121390020008023/FilingSummary.xml table was not found at one of the table urls
+FEDERAL SIGNAL CORP /DE/: https://www.sec.gov/Archives/edgar/data/277509/000027750920000006/FilingSummary.xml table was not found at one of the table urls
+CPS TECHNOLOGIES CORP/DE/: https://www.sec.gov/Archives/edgar/data/814676/000081467620000013/FilingSummary.xml array error for given company
+TREDEGAR CORP: https://www.sec.gov/Archives/edgar/data/850429/000085042920000014/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192820000013/FilingSummary.xml array error for given company
+LABORATORY CORP OF AMERICA HOLDINGS: https://www.sec.gov/Archives/edgar/data/920148/000092014820000011/FilingSummary.xml array error for given company
+STATE STREET CORP: https://www.sec.gov/Archives/edgar/data/93751/000009375120000684/FilingSummary.xml array error for given company
+MAXIM INTEGRATED PRODUCTS INC: https://www.sec.gov/Archives/edgar/data/743316/000074331620000025/FilingSummary.xml array error for given company

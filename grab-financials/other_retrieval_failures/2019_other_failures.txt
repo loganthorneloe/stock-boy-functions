@@ -1,0 +1,18 @@
+SOUTH JERSEY GAS Co: https://www.sec.gov/Archives/edgar/data/1035216/000009192819000032/FilingSummary.xml array error for given company
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060619000006/FilingSummary.xml array error for given company
+Federal Home Loan Bank of San Francisco: https://www.sec.gov/Archives/edgar/data/1316944/000131694419000042/FilingSummary.xml array error for given company
+Federal Home Loan Bank of Pittsburgh: https://www.sec.gov/Archives/edgar/data/1330399/000133039919000006/FilingSummary.xml array error for given company
+NorthStar Healthcare Income, Inc.: https://www.sec.gov/Archives/edgar/data/1503707/000150370719000006/FilingSummary.xml array error for given company
+Great Ajax Corp.: https://www.sec.gov/Archives/edgar/data/1614806/000162828019002552/FilingSummary.xml array error for given company
+CNL Strategic Capital, LLC: https://www.sec.gov/Archives/edgar/data/1684682/000168468219000005/FilingSummary.xml array error for given company
+PEOPLES BANCORP INC: https://www.sec.gov/Archives/edgar/data/318300/000031830019000095/FilingSummary.xml array error for given company
+CPS TECHNOLOGIES CORP/DE/: https://www.sec.gov/Archives/edgar/data/814676/000081467619000013/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060619000006/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192819000032/FilingSummary.xml array error for given company
+LABORATORY CORP OF AMERICA HOLDINGS: https://www.sec.gov/Archives/edgar/data/920148/000092014819000033/FilingSummary.xml table was not found at one of the table urls
+VALIDIAN CORP: https://www.sec.gov/Archives/edgar/data/1100644/000105291819000089/FilingSummary.xml array error for given company
+Medley LLC: https://www.sec.gov/Archives/edgar/data/1536577/000153657719000005/FilingSummary.xml array error for given company
+MEDLEY MANAGEMENT INC.: https://www.sec.gov/Archives/edgar/data/1611110/000161111019000012/FilingSummary.xml array error for given company
+Catalent, Inc.: https://www.sec.gov/Archives/edgar/data/1596783/000159678319000183/FilingSummary.xml array error for given company
+MAXIM INTEGRATED PRODUCTS INC: https://www.sec.gov/Archives/edgar/data/743316/000074331619000024/FilingSummary.xml array error for given company
+ESCALON MEDICAL CORP: https://www.sec.gov/Archives/edgar/data/862668/000086266819000010/FilingSummary.xml array error for given company

@@ -1,0 +1,17 @@
+SYNTEL INC: https://www.sec.gov/Archives/edgar/data/1040426/000119312517066104/FilingSummary.xml table was not found at one of the table urls
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060617000006/FilingSummary.xml array error for given company
+Federal Home Loan Bank of San Francisco: https://www.sec.gov/Archives/edgar/data/1316944/000131694417000066/FilingSummary.xml array error for given company
+Federal Home Loan Bank of Pittsburgh: https://www.sec.gov/Archives/edgar/data/1330399/000133039917000004/FilingSummary.xml array error for given company
+Glucose Health, Inc.: https://www.sec.gov/Archives/edgar/data/1420108/000147793217001354/FilingSummary.xml table was not found at one of the table urls
+NorthStar Real Estate Income Trust, Inc.: https://www.sec.gov/Archives/edgar/data/1455650/000145565017000008/FilingSummary.xml array error for given company
+NorthStar Healthcare Income, Inc.: https://www.sec.gov/Archives/edgar/data/1503707/000150370717000004/FilingSummary.xml array error for given company
+NorthStar/RXR New York Metro Real Estate, Inc.: https://www.sec.gov/Archives/edgar/data/1603671/000160367117000021/FilingSummary.xml array error for given company
+DIEBOLD NIXDORF, Inc: https://www.sec.gov/Archives/edgar/data/28823/000002882317000052/FilingSummary.xml array error for given company
+CPS TECHNOLOGIES CORP/DE/: https://www.sec.gov/Archives/edgar/data/814676/000081467617000013/FilingSummary.xml array error for given company
+ON ASSIGNMENT INC: https://www.sec.gov/Archives/edgar/data/890564/000089056417000046/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060617000006/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192817000032/FilingSummary.xml array error for given company
+BIRNER DENTAL MANAGEMENT SERVICES INC: https://www.sec.gov/Archives/edgar/data/948072/000114036117014174/FilingSummary.xml table was not found at one of the table urls
+DELTA NATURAL GAS CO INC: https://www.sec.gov/Archives/edgar/data/277375/000027737517000180/FilingSummary.xml array error for given company
+ESCALON MEDICAL CORP: https://www.sec.gov/Archives/edgar/data/862668/000086266817000014/FilingSummary.xml array error for given company
+MONSANTO CO /NEW/: https://www.sec.gov/Archives/edgar/data/1110783/000111078317000187/FilingSummary.xml table was not found at one of the table urls

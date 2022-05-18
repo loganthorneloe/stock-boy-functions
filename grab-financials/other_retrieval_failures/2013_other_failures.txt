@@ -1,0 +1,16 @@
+ENSIGN GROUP, INC: https://www.sec.gov/Archives/edgar/data/1125376/000112537613000022/FilingSummary.xml array error for given company
+CYS Investments, Inc.: https://www.sec.gov/Archives/edgar/data/1396446/000139644613000004/FilingSummary.xml array error for given company
+Atlas Financial Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1539894/000153989413000054/FilingSummary.xml array error for given company
+US NUCLEAR CORP.: https://www.sec.gov/Archives/edgar/data/1543623/000126246313000054/FilingSummary.xml table was not found at one of the table urls
+APEX 5 INC.: https://www.sec.gov/Archives/edgar/data/1552743/000126246313000100/FilingSummary.xml table was not found at one of the table urls
+APEX 6 INC.: https://www.sec.gov/Archives/edgar/data/1554864/000126246313000087/FilingSummary.xml table was not found at one of the table urls
+APEX 7, Inc.: https://www.sec.gov/Archives/edgar/data/1566039/000126246313000118/FilingSummary.xml table was not found at one of the table urls
+SCANA CORP: https://www.sec.gov/Archives/edgar/data/754737/000075473713000015/FilingSummary.xml array error for given company
+WEST MARINE INC: https://www.sec.gov/Archives/edgar/data/912833/000091283313000003/FilingSummary.xml array error for given company
+SOUTH CAROLINA ELECTRIC & GAS CO: https://www.sec.gov/Archives/edgar/data/91882/000075473713000015/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192813000022/FilingSummary.xml array error for given company
+Toro Ventures Inc.: https://www.sec.gov/Archives/edgar/data/1333519/000126246313000414/FilingSummary.xml table was not found at one of the table urls
+Sector 5, Inc.: https://www.sec.gov/Archives/edgar/data/1550737/000147793213001849/FilingSummary.xml table was not found at one of the table urls
+CHINA FORESTRY INC: https://www.sec.gov/Archives/edgar/data/805729/000154972713000047/FilingSummary.xml array error for given company
+Novation Holdings Inc: https://www.sec.gov/Archives/edgar/data/1080602/000108060213000062/FilingSummary.xml array error for given company
+Tarheel Billboard Inc: https://www.sec.gov/Archives/edgar/data/1553620/000147793213004663/FilingSummary.xml table was not found at one of the table urls

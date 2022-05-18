@@ -1,0 +1,21 @@
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060615000006/FilingSummary.xml array error for given company
+ZAP COM CORP: https://www.sec.gov/Archives/edgar/data/1083243/000108324315000003/FilingSummary.xml array error for given company
+METRO BANCORP, INC.: https://www.sec.gov/Archives/edgar/data/1085706/000108570615000013/FilingSummary.xml array error for given company
+WILLIS GROUP HOLDINGS PLC: https://www.sec.gov/Archives/edgar/data/1140536/000114053615000003/FilingSummary.xml array error for given company
+UNITED STATES STEEL CORP: https://www.sec.gov/Archives/edgar/data/1163302/000116330215000011/FilingSummary.xml array error for given company
+BioMed Realty Trust Inc: https://www.sec.gov/Archives/edgar/data/1289236/000128923615000004/FilingSummary.xml array error for given company
+BioMed Realty L P: https://www.sec.gov/Archives/edgar/data/1301932/000128923615000004/FilingSummary.xml array error for given company
+Federal Home Loan Bank of San Francisco: https://www.sec.gov/Archives/edgar/data/1316944/000131694415000052/FilingSummary.xml array error for given company
+Verso Corp: https://www.sec.gov/Archives/edgar/data/1421182/000142118215000010/FilingSummary.xml table was not found at one of the table urls
+Sunshine Financial Inc: https://www.sec.gov/Archives/edgar/data/1500837/000092708915000213/FilingSummary.xml array error for given company
+Tumi Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/1535031/000153503115000009/FilingSummary.xml array error for given company
+SunEdison Semiconductor Ltd: https://www.sec.gov/Archives/edgar/data/1585854/000158585415000020/FilingSummary.xml array error for given company
+Hydropot Inc.: https://www.sec.gov/Archives/edgar/data/1606700/000126246315000247/FilingSummary.xml table was not found at one of the table urls
+ANDES 3 INC.: https://www.sec.gov/Archives/edgar/data/1612254/000126246315000183/FilingSummary.xml table was not found at one of the table urls
+COUSINS PROPERTIES INC: https://www.sec.gov/Archives/edgar/data/25232/000002523215000006/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060615000006/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192815000019/FilingSummary.xml array error for given company
+TELEFLEX INC: https://www.sec.gov/Archives/edgar/data/96943/000009694315000023/FilingSummary.xml array error for given company
+MARIPOSA HEALTH, INC.: https://www.sec.gov/Archives/edgar/data/1612253/000114420415022820/FilingSummary.xml table was not found at one of the table urls
+MONSANTO CO /NEW/: https://www.sec.gov/Archives/edgar/data/1110783/000111078315000230/FilingSummary.xml table was not found at one of the table urls
+HOLOGIC INC: https://www.sec.gov/Archives/edgar/data/859737/000085973715000034/FilingSummary.xml array error for given company

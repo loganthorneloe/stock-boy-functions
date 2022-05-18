@@ -1,0 +1,87 @@
+BCTC IV ASSIGNOR CORP: https://www.sec.gov/Archives/edgar/data/1003815/000100381518000004/FilingSummary.xml working statements: balance_sheet 
+POTOMAC FUTURES FUND LP: https://www.sec.gov/Archives/edgar/data/1043565/000119312518098996/FilingSummary.xml working statements: balance_sheet income_statement 
+MANAGED FUTURES PREMIER ENERGY FUND L.P.: https://www.sec.gov/Archives/edgar/data/1057051/000119312518098930/FilingSummary.xml working statements: balance_sheet income_statement 
+MANAGED FUTURES PREMIER GRAHAM L.P.: https://www.sec.gov/Archives/edgar/data/1066656/000119312518099090/FilingSummary.xml working statements: balance_sheet income_statement 
+GLOBAL DIVERSIFIED FUTURES FUND L.P.: https://www.sec.gov/Archives/edgar/data/1068237/000119312518099052/FilingSummary.xml working statements: balance_sheet income_statement 
+DIVERSIFIED 2000 FUTURES FUND L.P.: https://www.sec.gov/Archives/edgar/data/1095007/000119312518099140/FilingSummary.xml working statements: balance_sheet income_statement 
+CERES TACTICAL CURRENCY L.P.: https://www.sec.gov/Archives/edgar/data/1097396/000119312518099381/FilingSummary.xml working statements: balance_sheet income_statement 
+METLIFE POLICYHOLDER TRUST: https://www.sec.gov/Archives/edgar/data/1110795/000093783418000012/FilingSummary.xml working statements: income_statement 
+ROGERS INTERNATIONAL RAW MATERIALS FUND LP: https://www.sec.gov/Archives/edgar/data/1118384/000111838418000003/FilingSummary.xml working statements: balance_sheet income_statement 
+GLOBAL MACRO TRUST: https://www.sec.gov/Archives/edgar/data/1145765/000161577418002184/FilingSummary.xml working statements: balance_sheet income_statement 
+DOVER DOWNS GAMING & ENTERTAINMENT INC: https://www.sec.gov/Archives/edgar/data/1162556/000110465918014097/FilingSummary.xml working statements: balance_sheet cash_flow 
+CERES TACTICAL SYSTEMATIC L.P.: https://www.sec.gov/Archives/edgar/data/1209709/000119312518099063/FilingSummary.xml working statements: balance_sheet income_statement 
+CERES ORION L.P.: https://www.sec.gov/Archives/edgar/data/1227265/000119312518099113/FilingSummary.xml working statements: balance_sheet income_statement 
+Managed Futures Premier Energy Fund L.P. II: https://www.sec.gov/Archives/edgar/data/1227268/000119312518098940/FilingSummary.xml working statements: balance_sheet income_statement 
+BCTC V ASSIGNOR CORP: https://www.sec.gov/Archives/edgar/data/1267426/000126742618000004/FilingSummary.xml working statements: balance_sheet 
+EMERGING CTA PORTFOLIO LP: https://www.sec.gov/Archives/edgar/data/1269190/000119312518099242/FilingSummary.xml working statements: balance_sheet income_statement 
+ISHARES GOLD TRUST: https://www.sec.gov/Archives/edgar/data/1278680/000143774918003506/FilingSummary.xml working statements: income_statement cash_flow 
+Aspect FuturesAccess LLC: https://www.sec.gov/Archives/edgar/data/1309132/000110465918018530/FilingSummary.xml working statements: balance_sheet income_statement 
+ML Winton FuturesAccess LLC: https://www.sec.gov/Archives/edgar/data/1309136/000110465918018532/FilingSummary.xml working statements: balance_sheet income_statement 
+Ceres Tactical Commodity L.P.: https://www.sec.gov/Archives/edgar/data/1325676/000119312518099283/FilingSummary.xml working statements: balance_sheet income_statement 
+Federal Home Loan Bank of Des Moines: https://www.sec.gov/Archives/edgar/data/1325814/000132581418000047/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of Cincinnati: https://www.sec.gov/Archives/edgar/data/1326771/000132677118000009/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of New York: https://www.sec.gov/Archives/edgar/data/1329842/000110465918019592/FilingSummary.xml working statements: income_statement cash_flow 
+iShares Silver Trust: https://www.sec.gov/Archives/edgar/data/1330568/000143774918003508/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of Chicago: https://www.sec.gov/Archives/edgar/data/1331451/000133145118000041/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of Boston: https://www.sec.gov/Archives/edgar/data/1331463/000133146318000056/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of Atlanta: https://www.sec.gov/Archives/edgar/data/1331465/000133146518000044/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of Indianapolis: https://www.sec.gov/Archives/edgar/data/1331754/000133175418000043/FilingSummary.xml working statements: income_statement cash_flow 
+Federal Home Loan Bank of Dallas: https://www.sec.gov/Archives/edgar/data/1331757/000133175718000005/FilingSummary.xml working statements: income_statement cash_flow 
+MANAGED FUTURES PREMIER WARRINGTON L.P.: https://www.sec.gov/Archives/edgar/data/1353282/000156459018006830/FilingSummary.xml working statements: balance_sheet income_statement 
+CERES ABINGDON L.P.: https://www.sec.gov/Archives/edgar/data/1386164/000119312518099192/FilingSummary.xml working statements: balance_sheet income_statement 
+Lightning Gaming, Inc.: https://www.sec.gov/Archives/edgar/data/1392545/000089016318000015/FilingSummary.xml working statements: balance_sheet income_statement 
+MAN FRM MANAGED FUTURES STRATEGIES LLC: https://www.sec.gov/Archives/edgar/data/1393359/000110465918021283/FilingSummary.xml working statements: balance_sheet income_statement 
+ETFS SILVER TRUST: https://www.sec.gov/Archives/edgar/data/1450922/000145092218000003/FilingSummary.xml working statements: income_statement 
+ETFS Gold Trust: https://www.sec.gov/Archives/edgar/data/1450923/000145092318000003/FilingSummary.xml working statements: income_statement 
+ETFS PALLADIUM TRUST: https://www.sec.gov/Archives/edgar/data/1459862/000145986218000004/FilingSummary.xml working statements: income_statement 
+ETFS Platinum Trust: https://www.sec.gov/Archives/edgar/data/1460235/000146023518000008/FilingSummary.xml working statements: income_statement 
+Millburn Multi-Markets Fund L.P.: https://www.sec.gov/Archives/edgar/data/1468910/000161577418002181/FilingSummary.xml working statements: balance_sheet income_statement 
+Teucrium Commodity Trust: https://www.sec.gov/Archives/edgar/data/1471824/000165495418002662/FilingSummary.xml working statements: income_statement cash_flow 
+ETFS Precious Metals Basket Trust: https://www.sec.gov/Archives/edgar/data/1483386/000148338618000003/FilingSummary.xml working statements: income_statement 
+Ceres Tactical Macro L.P.: https://www.sec.gov/Archives/edgar/data/1504886/000119312518099261/FilingSummary.xml working statements: balance_sheet income_statement 
+Amplify Energy Corp: https://www.sec.gov/Archives/edgar/data/1521847/000156459018005304/FilingSummary.xml working statements: balance_sheet cash_flow 
+WMI Liquidating Trust: https://www.sec.gov/Archives/edgar/data/1545078/000119312518097841/FilingSummary.xml working statements: 
+Cavendish Futures Fund LLC: https://www.sec.gov/Archives/edgar/data/1562622/000110465918021487/FilingSummary.xml working statements: balance_sheet income_statement 
+Greenbacker Renewable Energy Co LLC: https://www.sec.gov/Archives/edgar/data/1563922/000161577418001699/FilingSummary.xml working statements: income_statement cash_flow 
+Marcus & Millichap, Inc.: https://www.sec.gov/Archives/edgar/data/1578732/000119312518084734/FilingSummary.xml working statements: balance_sheet cash_flow 
+Blue Capital Reinsurance Holdings Ltd.: https://www.sec.gov/Archives/edgar/data/1582086/000158208618000007/FilingSummary.xml working statements: balance_sheet cash_flow 
+Gyrodyne, LLC: https://www.sec.gov/Archives/edgar/data/1589061/000143774918005759/FilingSummary.xml working statements: 
+Vaulted Gold Bullion Trust: https://www.sec.gov/Archives/edgar/data/1593812/000121465918000672/FilingSummary.xml working statements: income_statement 
+American Renaissance Capital, Inc.: https://www.sec.gov/Archives/edgar/data/1614106/000161410618000003/FilingSummary.xml working statements: balance_sheet cash_flow 
+Medicine Man Technologies, Inc.: https://www.sec.gov/Archives/edgar/data/1622879/000168316818000768/FilingSummary.xml working statements: balance_sheet cash_flow 
+WildHorse Resource Development Corp: https://www.sec.gov/Archives/edgar/data/1681714/000156459018005291/FilingSummary.xml working statements: balance_sheet cash_flow 
+CATERPILLAR INC: https://www.sec.gov/Archives/edgar/data/18230/000001823018000042/FilingSummary.xml working statements: income_statement cash_flow 
+AKORN INC: https://www.sec.gov/Archives/edgar/data/3116/000162828018002518/FilingSummary.xml working statements: balance_sheet cash_flow 
+GALLAGHER ARTHUR J & CO: https://www.sec.gov/Archives/edgar/data/354190/000119312518038261/FilingSummary.xml working statements: balance_sheet cash_flow 
+Winthrop Realty Liquidating Trust: https://www.sec.gov/Archives/edgar/data/37008/000119312518085854/FilingSummary.xml working statements: 
+KIEWIT ROYALTY TRUST: https://www.sec.gov/Archives/edgar/data/711477/000110465918021464/FilingSummary.xml working statements: 
+RELIV INTERNATIONAL INC: https://www.sec.gov/Archives/edgar/data/768710/000143774918005793/FilingSummary.xml working statements: balance_sheet cash_flow 
+OGLETHORPE POWER CORP: https://www.sec.gov/Archives/edgar/data/788816/000104746918002324/FilingSummary.xml working statements: balance_sheet cash_flow 
+GRANT PARK FUTURES FUND LIMITED PARTNERSHIP: https://www.sec.gov/Archives/edgar/data/845698/000155837018001474/FilingSummary.xml working statements: balance_sheet income_statement 
+MORGAN STANLEY SMITH BARNEY SPECTRUM SELECT LP: https://www.sec.gov/Archives/edgar/data/873799/000119312518099028/FilingSummary.xml working statements: balance_sheet income_statement 
+AMBAC FINANCIAL GROUP INC: https://www.sec.gov/Archives/edgar/data/874501/000087450118000027/FilingSummary.xml working statements: balance_sheet cash_flow 
+U S PHYSICAL THERAPY INC /NV: https://www.sec.gov/Archives/edgar/data/885978/000114036118013378/FilingSummary.xml working statements: balance_sheet cash_flow 
+NESTOR PARTNERS: https://www.sec.gov/Archives/edgar/data/888471/000161577418002179/FilingSummary.xml working statements: balance_sheet income_statement 
+MORGAN STANLEY SMITH BARNEY CHARTER ASPECT L.P.: https://www.sec.gov/Archives/edgar/data/914747/000119312518099160/FilingSummary.xml working statements: balance_sheet income_statement 
+MORGAN STANLEY SMITH BARNEY SPECTRUM STRATEGIC LP: https://www.sec.gov/Archives/edgar/data/925263/000119312518099172/FilingSummary.xml working statements: balance_sheet income_statement 
+AMANASU ENVIRONMENT CORP: https://www.sec.gov/Archives/edgar/data/1142801/000165495418003756/FilingSummary.xml working statements: balance_sheet cash_flow 
+SUPERFUND GREEN, L.P.: https://www.sec.gov/Archives/edgar/data/1168990/000119312518103580/FilingSummary.xml working statements: income_statement cash_flow 
+Altegris Winton Futures Fund, L.P.: https://www.sec.gov/Archives/edgar/data/1198415/000168316818000865/FilingSummary.xml working statements: balance_sheet income_statement 
+World Monitor Trust III - Series J: https://www.sec.gov/Archives/edgar/data/1345991/000158064218002078/FilingSummary.xml working statements: balance_sheet income_statement 
+Sonoma Pharmaceuticals, Inc.: https://www.sec.gov/Archives/edgar/data/1367083/000168316818001786/FilingSummary.xml working statements: balance_sheet cash_flow 
+NEXEON MEDSYSTEMS INC: https://www.sec.gov/Archives/edgar/data/1416172/000121390018004094/FilingSummary.xml working statements: balance_sheet cash_flow 
+Precision Therapeutics Inc.: https://www.sec.gov/Archives/edgar/data/1446159/000117184318002453/FilingSummary.xml working statements: balance_sheet cash_flow 
+Altegris QIM Futures Fund, L.P.: https://www.sec.gov/Archives/edgar/data/1469317/000168316818000863/FilingSummary.xml working statements: balance_sheet income_statement 
+VanEck Merk Gold Trust: https://www.sec.gov/Archives/edgar/data/1546652/000121390018004389/FilingSummary.xml working statements: income_statement 
+TriLinc Global Impact Fund LLC: https://www.sec.gov/Archives/edgar/data/1550453/000156459018007363/FilingSummary.xml working statements: income_statement cash_flow 
+Achison Inc: https://www.sec.gov/Archives/edgar/data/1672571/000167257118000004/FilingSummary.xml working statements: balance_sheet cash_flow 
+Landbay Inc: https://www.sec.gov/Archives/edgar/data/1672572/000167257218000011/FilingSummary.xml working statements: balance_sheet cash_flow 
+iPic Entertainment Inc.: https://www.sec.gov/Archives/edgar/data/1720201/000121390018005338/FilingSummary.xml working statements: balance_sheet 
+Motors Liquidation Co: https://www.sec.gov/Archives/edgar/data/40730/000119312518189401/FilingSummary.xml working statements: cash_flow 
+MILLS MUSIC TRUST: https://www.sec.gov/Archives/edgar/data/66496/000119312518104385/FilingSummary.xml working statements: 
+QUALITY SYSTEMS, INC: https://www.sec.gov/Archives/edgar/data/708818/000156459018014338/FilingSummary.xml working statements: balance_sheet cash_flow 
+Seneca Foods Corp: https://www.sec.gov/Archives/edgar/data/88948/000143774918012712/FilingSummary.xml working statements: balance_sheet cash_flow 
+ETF Managers Group Commodity Trust I: https://www.sec.gov/Archives/edgar/data/1610940/000161577418010204/FilingSummary.xml working statements: income_statement cash_flow 
+GraniteShares Gold Trust: https://www.sec.gov/Archives/edgar/data/1690437/000149315218012801/FilingSummary.xml working statements: income_statement 
+GraniteShares Platinum Trust: https://www.sec.gov/Archives/edgar/data/1690842/000149315218012802/FilingSummary.xml working statements: income_statement 
+AUTOMATIC DATA PROCESSING INC: https://www.sec.gov/Archives/edgar/data/8670/000000867018000011/FilingSummary.xml working statements: balance_sheet cash_flow 

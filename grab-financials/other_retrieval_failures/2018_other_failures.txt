@@ -1,0 +1,17 @@
+SOUTH JERSEY GAS Co: https://www.sec.gov/Archives/edgar/data/1035216/000009192818000034/FilingSummary.xml array error for given company
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060618000010/FilingSummary.xml array error for given company
+ZIONS BANCORPORATION /UT/: https://www.sec.gov/Archives/edgar/data/109380/000010938018000102/FilingSummary.xml array error for given company
+Federal Home Loan Bank of San Francisco: https://www.sec.gov/Archives/edgar/data/1316944/000131694418000051/FilingSummary.xml array error for given company
+Federal Home Loan Bank of Pittsburgh: https://www.sec.gov/Archives/edgar/data/1330399/000133039918000004/FilingSummary.xml array error for given company
+BLACKHAWK NETWORK HOLDINGS, INC: https://www.sec.gov/Archives/edgar/data/1411488/000141148818000011/FilingSummary.xml array error for given company
+Groupon, Inc.: https://www.sec.gov/Archives/edgar/data/1490281/000149028118000018/FilingSummary.xml array error for given company
+NorthStar/RXR New York Metro Real Estate, Inc.: https://www.sec.gov/Archives/edgar/data/1603671/000160367118000029/FilingSummary.xml array error for given company
+LINDE PLC: https://www.sec.gov/Archives/edgar/data/1707925/000170792518000004/FilingSummary.xml array error for given company
+PENN VIRGINIA CORP: https://www.sec.gov/Archives/edgar/data/77159/000007715918000008/FilingSummary.xml array error for given company
+CPS TECHNOLOGIES CORP/DE/: https://www.sec.gov/Archives/edgar/data/814676/000081467618000010/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060618000010/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192818000034/FilingSummary.xml array error for given company
+NorthStar Healthcare Income, Inc.: https://www.sec.gov/Archives/edgar/data/1503707/000150370718000004/FilingSummary.xml array error for given company
+Billion Holding Inc.: https://www.sec.gov/Archives/edgar/data/1709774/000121390018003934/FilingSummary.xml table was not found at one of the table urls
+LEGG MASON, INC.: https://www.sec.gov/Archives/edgar/data/704051/000070405118000066/FilingSummary.xml array error for given company
+ESCALON MEDICAL CORP: https://www.sec.gov/Archives/edgar/data/862668/000086266818000014/FilingSummary.xml array error for given company

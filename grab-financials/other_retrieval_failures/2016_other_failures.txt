@@ -1,0 +1,15 @@
+REGENCY CENTERS LP: https://www.sec.gov/Archives/edgar/data/1066247/000091060616000047/FilingSummary.xml array error for given company
+WILLIS TOWERS WATSON PLC: https://www.sec.gov/Archives/edgar/data/1140536/000114053616000035/FilingSummary.xml array error for given company
+Federal Home Loan Bank of San Francisco: https://www.sec.gov/Archives/edgar/data/1316944/000131694416000282/FilingSummary.xml array error for given company
+Federal Home Loan Bank of Pittsburgh: https://www.sec.gov/Archives/edgar/data/1330399/000133039916000019/FilingSummary.xml array error for given company
+CDW Corp: https://www.sec.gov/Archives/edgar/data/1402057/000140205716000057/FilingSummary.xml array error for given company
+Westlake Chemical Partners LP: https://www.sec.gov/Archives/edgar/data/1604665/000160466516000033/FilingSummary.xml array error for given company
+PBF Energy Co LLC: https://www.sec.gov/Archives/edgar/data/1645026/000164502616000006/FilingSummary.xml array error for given company
+EOS INC.: https://www.sec.gov/Archives/edgar/data/1651958/000164033416000857/FilingSummary.xml table was not found at one of the table urls
+COUSINS PROPERTIES INC: https://www.sec.gov/Archives/edgar/data/25232/000002523216000046/FilingSummary.xml array error for given company
+CEC ENTERTAINMENT INC: https://www.sec.gov/Archives/edgar/data/813920/000081392016000036/FilingSummary.xml array error for given company
+CPS TECHNOLOGIES CORP/DE/: https://www.sec.gov/Archives/edgar/data/814676/000081467616000065/FilingSummary.xml array error for given company
+REGENCY CENTERS CORP: https://www.sec.gov/Archives/edgar/data/910606/000091060616000047/FilingSummary.xml array error for given company
+SOUTH JERSEY INDUSTRIES INC: https://www.sec.gov/Archives/edgar/data/91928/000009192816000088/FilingSummary.xml array error for given company
+Global 2.0: https://www.sec.gov/Archives/edgar/data/1344736/000144586616001891/FilingSummary.xml table was not found at one of the table urls
+MONSANTO CO /NEW/: https://www.sec.gov/Archives/edgar/data/1110783/000111078316000532/FilingSummary.xml table was not found at one of the table urls
