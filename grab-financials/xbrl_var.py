@@ -102,10 +102,6 @@ long_term_debt_labels = [
   'LongTermDebtNoncurrent'
 ]
 
-# long_term_debt_due_labels = [ 
-#   'LongTermDebtCurrent'
-# ]
-
 liabilities_labels = [ 
   'Liabilities'
 ]

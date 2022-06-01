@@ -119,7 +119,6 @@ def create_simplified_values(data):
   dict["total_assets"] = value_from_label_list(total_assets_labels, data)
   dict["short_term_debt"] = value_from_label_list(short_term_debt_labels, data)
   dict["long_term_debt"] = value_from_label_list(long_term_debt_labels, data)
-  # dict["long_term_debt_due"] = value_from_label_list(long_term_debt_due_labels, data)
   dict["liabilities"] = value_from_label_list(liabilities_labels, data)
   dict["stockholders_equity"] = value_from_label_list(stockholders_equity_labels, data)
   dict["preferred_stock"] = value_from_label_list(preferred_stock_labels, data)

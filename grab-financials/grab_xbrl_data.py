@@ -121,7 +121,7 @@ def create_simple_data(company_name):
             Cash Flow
             24. Capital Expenditures: <25% is really good, > 50% is bad
             Total payments in investing activities and divide by net income -> payments for or payments made in
-            25. Stock buybacks: the existence of these
+            25. Stock buybacks: the existence of these (COMBINED WITH NUMBER 22)
             Repurchase of common stock and it should be negative
             '''
 

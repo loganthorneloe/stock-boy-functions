@@ -2,6 +2,7 @@ from pprint import pprint
 from collections import defaultdict
 from typing import OrderedDict
 import numpy as np
+from datetime import datetime
 
 # returns dict with like keys joining values as a tuple (d1_value, d2_value)
 def merge_dicts(d1, d2):
@@ -41,7 +42,14 @@ def analyze_simple_financials(data_dict):
   # long_term_investments_analysis(data_dict, ret_dict)
   # return_on_assets_analysis(data_dict, ret_dict)
   # short_term_debt_analysis(data_dict, ret_dict)
-  long_term_debt_analysis(data_dict, ret_dict)
+  # long_term_debt_analysis(data_dict, ret_dict)
+  # adjusted_shareholders_equity_analysis(data_dict, ret_dict)
+  # preferred_stock_analysis(data_dict, ret_dict)
+  # retained_earnings_analysis(data_dict, ret_dict)
+  # treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict)
+  # return_on_shareholders_equity_analysis(data_dict, ret_dict)
+  # capital_expenditures_analysis(data_dict, ret_dict)
+  dividends_analysis(data_dict, ret_dict)
 
   pprint(ret_dict)
 
@@ -479,12 +487,184 @@ def long_term_debt_analysis(data_dict, ret_dict):
   info["target"] = net_income_value * 4
   info["color"] = "neutral"
 
-  print(net_income_value)
-  print(long_term_debt_value)
-
-  if info["target"] > long_term_debt_value:
+  if net_income_value * 4 > long_term_debt_value:
     info["color"] = "green"
   if net_income_value * 8 < long_term_debt_value:
     info["color"] = "red"
 
   ret_dict["long_term_debt"] = info
+
+def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
+
+  merged_dict = merge_dicts(data_dict["liabilities"], data_dict["stockholders_equity"])
+  list_data = list(merged_dict.items())
+  value = list_data[-1]
+
+  treasury_shares = data_dict["treasury_shares"]
+  repurchase_of_common_stock = data_dict["repurchase_common_stock"]
+  addition = 0
+
+  info = {}
+  info["year"] = value[0]
+  try:
+    addition = abs(treasury_shares[info["year"]])
+  except:
+    try:
+      addition = abs(repurchase_of_common_stock[info["year"]])
+    except: 
+      pass
+  
+  liabilities = value[1][0]
+  stockholders_equity = value[1][1]
+  info["target"] = liabilities/(addition+stockholders_equity)
+  info["color"] = "neutral"
+
+  if info["target"] < .8:
+    info["color"] = "green"
+  if info["target"] > 2:
+    info["color"] = "red"
+
+  ret_dict["adjusted_stockholders_equity"] = info
+
+def preferred_stock_analysis(data_dict, ret_dict):
+  
+  earnings = data_dict["preferred_stock"]
+  list_data = list(earnings.items())
+  
+  info = {}
+  if list_data == []:
+    info["year"] = "N/A"
+    info["color"] = "green"
+    info["target"] = "N/A"
+  else:
+    info["year"] = list_data[-1][0]
+    info["color"] = "red"
+    info["target"] = list_data[-1][1]
+
+  ret_dict["preferred_stock"] = info
+
+def retained_earnings_analysis(data_dict, ret_dict):
+  
+  earnings = data_dict["retained_earnings"]
+  list_data = list(earnings.items())
+
+  info = {}
+  info["year"] = list_data[-1][0]
+  info["color"] = "neutral"
+  lastest_year = int(list_data[-1][0])
+
+  count = 1
+  index = []
+  new_data = []
+  for value in list_data:
+    year = int(value[0])
+    if year > lastest_year - 10: # analyze past 5 years for a trend
+      index.append(count)
+      count += 1
+      new_data.append(value[1])
+
+  if len(new_data) < 5:
+    info["color"] = "neutral"
+    info["trend"] = "N/A"
+  else:
+    info["trend"] = trendline(index, new_data)
+
+    if info["trend"] > 4.9:
+      info["color"] = "green"
+    else:
+      repurchase = data_dict["repurchase_common_stock"]
+      try:
+        buyback = repurchase[info["year"]]
+        info["buyback"] = buyback
+      except:
+        info["buyback"] = "N/A"
+        info["color"] = "red"
+
+  ret_dict["retained_earnings"] = info
+
+def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
+  
+  treasury_shares = data_dict["treasury_shares"]
+  list_data = list(treasury_shares.items())
+
+  repurchase = data_dict["repurchase_common_stock"]
+  list_data2 = list(repurchase.items())
+
+  info = {}
+  info["year"] = "0"
+  info["color"] = "red"
+
+  if list_data != []:
+    info["year"] = list_data[-1][0]
+    info["color"] = "green"
+
+  if list_data2 != []:
+    info["year"] = str(max(info["year"], list_data2[-1][0]))
+    info["color"] = "green"
+
+  ret_dict["treasury_shares_repurchase_stock"] = info
+
+def return_on_shareholders_equity_analysis(data_dict, ret_dict):
+
+  merged_dict = merge_dicts(data_dict["net_income"], data_dict["stockholders_equity"])
+  list_data = list(merged_dict.items())
+  value = list_data[-1]
+
+  treasury_shares = data_dict["treasury_shares"]
+  repurchase_of_common_stock = data_dict["repurchase_common_stock"]
+  addition = 0
+
+  info = {}
+  info["year"] = value[0]
+  try:
+    addition = abs(treasury_shares[info["year"]])
+  except:
+    try:
+      addition = abs(repurchase_of_common_stock[info["year"]])
+    except: 
+      pass
+  
+  net_income = value[1][0]
+  stockholders_equity = value[1][1]
+  info["target"] = net_income/(addition+stockholders_equity)
+  info["color"] = "neutral"
+
+  if info["target"] > .2:
+    info["color"] = "green"
+
+  if info["target"] < .1:
+    info["color"] = "red"
+
+  ret_dict["return_on_shareholder_equity"] = info
+
+def capital_expenditures_analysis(data_dict, ret_dict):
+
+  merged_dict = merge_dicts(data_dict["payments_in_investing_activities"], data_dict["net_income"])
+  list_data = list(merged_dict.items())
+  value = list_data[-1]
+  
+  info = {}
+  info["year"] = value[0]
+  info["target"] = abs(value[1][0])/value[1][1]
+  info["color"] = "neutral"
+
+  if info["target"] < .25:
+    info["color"] = "green"
+
+  if info["target"] > .5:
+    info["color"] = "red"
+
+  ret_dict["capital_expenditures"] = info
+
+def dividends_analysis(data_dict, ret_dict):
+
+  divs = data_dict["dividends"]
+  list_data = list(divs.items())
+  value = list_data[-1]
+  
+  info = {}
+  info["year"] = value[0]
+  info["target"] = value[1]
+  info["color"] = "neutral"
+
+  ret_dict["dividends"] = info
