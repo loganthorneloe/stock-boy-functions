@@ -1,10 +1,13 @@
 # all possible labels for each var we are looking for ordered by precedence
 
 profit_margin_labels = [
-  'GrossProfit'
+  'GrossProfit',
+  'ProfitLoss'
 ]
 
+# total income, this should be at the top of the income statement
 revenue_labels = [
+  'RevenueFromContractWithCustomerExcludingAssessedTax',
   'Revenues'
 ]
 
@@ -31,18 +34,24 @@ income_tax_labels = [
 ]
 
 pre_tax_income_labels = [ 
-  'IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest'
+  'IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest',
+  'IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments'
 ]
 
-net_income_labels = [ 
+# revenue minus cost of revenue
+net_income_labels = [
+  'NetIncomeLoss',
   'ProfitLoss'
 ]
 
-net_sales_labels = [ 
-  'RevenueFromContractWithCustomerExcludingAssessedTax'
-]
+# revenue minus sales returns, allowances, and discounts
+# net_sales_labels = [ 
+#   'RevenueFromContractWithCustomerExcludingAssessedTax'
+# ]
 
+# first choice is when basic and diluted are the same - it reports under one us-gaap. In this case, the second choice will only include different basic earnings per share
 earnings_per_share_labels = [ 
+  'EarningsPerShareBasicAndDiluted',
   'EarningsPerShareBasic'
 ]
 
@@ -66,8 +75,11 @@ goodwill_labels = [
   'Goodwill'
 ]
 
+# this one is interesting because 
 intangible_assets_labels = [ 
-  'IntangibleAssetsNetExcludingGoodwill'
+  'IntangibleAssetsNetExcludingGoodwill',
+  'FiniteLivedIntangibleAssetsGross',
+  'FiniteLivedIntangibleAssetsNet'
 ]
 
 long_term_investments_labels = [ 
@@ -79,10 +91,12 @@ total_assets_labels = [
   'Assets'
 ]
 
+# this should include long-term debt come due
 short_term_debt_labels = [ 
   'LiabilitiesCurrent'
 ]
 
+# can also calculate this via liabilities - short term debt (liabilities current)
 long_term_debt_labels = [ 
   'LongTermDebtNoncurrent'
 ]
@@ -120,5 +134,6 @@ repurchase_common_stock_labels = [
 ]
 
 dividends_labels = [ 
-  'PaymentsOfDividends'
+  'PaymentsOfDividends',
+  'PaymentsOfDividendsCommonStock'
 ]
