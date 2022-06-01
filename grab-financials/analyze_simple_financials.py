@@ -1,8 +1,10 @@
 from pprint import pprint
-from collections import defaultdict
 from typing import OrderedDict
 import numpy as np
-from datetime import datetime
+
+RED = "red"
+GREEN = "green"
+NEUTRAL = "neutral"
 
 # returns dict with like keys joining values as a tuple (d1_value, d2_value)
 def merge_dicts(d1, d2):
@@ -22,36 +24,45 @@ def trendline(index, data, order=1):
   slope = coeffs[-2]
   return float(slope)
 
+def tally(ret_dict, value):
+  ret_dict[value] += 1
+
 def analyze_simple_financials(data_dict):
 
   ret_dict = {}
-  # profit_margin_analysis(data_dict, ret_dict)
-  # admin_analysis(data_dict, ret_dict)
-  # research_analysis(data_dict, ret_dict)
-  # depreciation_analysis(data_dict, ret_dict)
-  # interest_expense_analysis(data_dict, ret_dict)
-  # income_tax_analysis(data_dict, ret_dict)
-  # net_income_analysis(data_dict, ret_dict)
-  # per_share_analysis(data_dict, ret_dict)
-  # short_term_cash_analysis(data_dict, ret_dict)
-  # inventory_analysis(data_dict, ret_dict)
-  # net_receivable_analysis(data_dict, ret_dict)
-  # property_value_analysis(data_dict, ret_dict)
-  # goodwill_analysis(data_dict, ret_dict)
-  # intangible_assets_analysis(data_dict, ret_dict)
-  # long_term_investments_analysis(data_dict, ret_dict)
-  # return_on_assets_analysis(data_dict, ret_dict)
-  # short_term_debt_analysis(data_dict, ret_dict)
-  # long_term_debt_analysis(data_dict, ret_dict)
-  # adjusted_shareholders_equity_analysis(data_dict, ret_dict)
-  # preferred_stock_analysis(data_dict, ret_dict)
-  # retained_earnings_analysis(data_dict, ret_dict)
-  # treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict)
-  # return_on_shareholders_equity_analysis(data_dict, ret_dict)
-  # capital_expenditures_analysis(data_dict, ret_dict)
+  ret_dict[NEUTRAL] = 0
+  ret_dict[RED] = 0
+  ret_dict[GREEN] = 0
+  profit_margin_analysis(data_dict, ret_dict)
+  admin_analysis(data_dict, ret_dict)
+  research_analysis(data_dict, ret_dict)
+  depreciation_analysis(data_dict, ret_dict)
+  interest_expense_analysis(data_dict, ret_dict)
+  income_tax_analysis(data_dict, ret_dict)
+  net_income_analysis(data_dict, ret_dict)
+  per_share_analysis(data_dict, ret_dict)
+  short_term_cash_analysis(data_dict, ret_dict)
+  inventory_analysis(data_dict, ret_dict)
+  net_receivable_analysis(data_dict, ret_dict)
+  property_value_analysis(data_dict, ret_dict)
+  goodwill_analysis(data_dict, ret_dict)
+  intangible_assets_analysis(data_dict, ret_dict)
+  long_term_investments_analysis(data_dict, ret_dict)
+  return_on_assets_analysis(data_dict, ret_dict)
+  short_term_debt_analysis(data_dict, ret_dict)
+  long_term_debt_analysis(data_dict, ret_dict)
+  adjusted_shareholders_equity_analysis(data_dict, ret_dict)
+  preferred_stock_analysis(data_dict, ret_dict)
+  retained_earnings_analysis(data_dict, ret_dict)
+  treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict)
+  return_on_shareholders_equity_analysis(data_dict, ret_dict)
+  capital_expenditures_analysis(data_dict, ret_dict)
   dividends_analysis(data_dict, ret_dict)
 
   pprint(ret_dict)
+  print("GREEN: " + str(ret_dict[GREEN]))
+  print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
+  print("RED: " + str(ret_dict[RED]))
 
 def profit_margin_analysis(data_dict, ret_dict):
 
@@ -62,14 +73,15 @@ def profit_margin_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] > .40:
-    info["color"] = "green"
+    info["color"] = GREEN
   elif info["target"] < .20:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["profit_margin_over_revenue"] = info
+  tally(ret_dict, info["color"])
 
 def admin_analysis(data_dict, ret_dict):
 
@@ -80,14 +92,15 @@ def admin_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .30:
-    info["color"] = "green"
+    info["color"] = GREEN
   elif info["target"] > .80:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["admin_over_profit_margin"] = info
+  tally(ret_dict, info["color"])
 
 def research_analysis(data_dict, ret_dict):
 
@@ -98,10 +111,10 @@ def research_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .20:
-    info["color"] = "green"
+    info["color"] = GREEN
 
   lastest_year = int(info["year"])
 
@@ -116,26 +129,27 @@ def research_analysis(data_dict, ret_dict):
 
   if len(consistency_check) < 5:
     info["consistent"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
 
   else:
     for value in consistency_check:
       if value[1] > .20:
         info["consistent"] = "No"
-        info["color"] = "neutral"
+        info["color"] = NEUTRAL
 
     for value in consistency_check:
       if value[1] > .40:
         info["consistent"] = "No"
-        info["color"] = "red"
+        info["color"] = RED
 
   # this needs to take precendence for color 
   if info["target"] > .40:
-    info["color"] = "red"
+    info["color"] = RED
 
   info["consistency_data"] = consistency_check    
 
   ret_dict["research_over_profit_margin"] = info
+  tally(ret_dict, info["color"])
 
 def depreciation_analysis(data_dict, ret_dict):
 
@@ -146,14 +160,15 @@ def depreciation_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .10:
-    info["color"] = "green"
+    info["color"] = GREEN
   elif info["target"] > .20:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["depreciation_over_profit_margin"] = info
+  tally(ret_dict, info["color"])
 
 def interest_expense_analysis(data_dict, ret_dict):
 
@@ -164,14 +179,15 @@ def interest_expense_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .15:
-    info["color"] = "green"
+    info["color"] = GREEN
   elif info["target"] > .50:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["interest_expense_over_pre_tax_income"] = info
+  tally(ret_dict, info["color"])
 
 def income_tax_analysis(data_dict, ret_dict):
 
@@ -182,14 +198,15 @@ def income_tax_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] > .20:
-    info["color"] = "green"
+    info["color"] = GREEN
   elif info["target"] < .05:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["income_tax_over_pre_tax_income"] = info
+  tally(ret_dict, info["color"])
 
 def net_income_analysis(data_dict, ret_dict):
 
@@ -200,10 +217,10 @@ def net_income_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] > .20:
-    info["color"] = "green"
+    info["color"] = GREEN
 
   lastest_year = int(info["year"])
 
@@ -219,20 +236,21 @@ def net_income_analysis(data_dict, ret_dict):
 
   if len(new_data) < 5:
     info["trend"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
   else:
     trend = trendline(index, new_data)
     info["trend"] = trend
     if trend < 0:
-      info["color"] = "red"
+      info["color"] = RED
     elif trend == 0:
-      info['color'] = "neutral"
+      info['color'] = NEUTRAL
 
   # this takes precedence
   if info["target"] < .10:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["net_income_over_revenue"] = info
+  tally(ret_dict, info["color"])
 
 def per_share_analysis(data_dict, ret_dict):
 
@@ -241,7 +259,7 @@ def per_share_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "green"
+  info["color"] = GREEN
   lastest_year = int(list_data[-1][0])
 
   count = 1
@@ -260,17 +278,17 @@ def per_share_analysis(data_dict, ret_dict):
 
   if len(new_data) < 5:
     info["trend"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
   else:
     trend = trendline(index, new_data)
     info["trend"] = trend
     if trend < 0:
-      info["color"] = "neutral"
+      info["color"] = NEUTRAL
   if negative_eps:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["earnings_per_share"] = info
-
+  tally(ret_dict, info["color"])
 
 def short_term_cash_analysis(data_dict, ret_dict):
 
@@ -279,7 +297,7 @@ def short_term_cash_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "green"
+  info["color"] = GREEN
   lastest_year = int(list_data[-1][0])
   info["target"] = list_data[-1][1]
 
@@ -294,12 +312,13 @@ def short_term_cash_analysis(data_dict, ret_dict):
 
   if count < 5:
     info["target"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
 
   if negative_cash:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["short_term_cash_on_hand"] = info
+  tally(ret_dict, info["color"])
 
 def inventory_analysis(data_dict, ret_dict):
 
@@ -308,7 +327,7 @@ def inventory_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "green"
+  info["color"] = GREEN
   lastest_year = int(list_data[-1][0])
   info["target"] = list_data[-1][1]
 
@@ -324,17 +343,18 @@ def inventory_analysis(data_dict, ret_dict):
 
   if len(new_data) < 5:
     info["trend"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
   else:
     trend = trendline(index, new_data)
     info["trend"] = trend
     if trend < 0:
-      info["color"] = "red"
+      info["color"] = RED
 
   if info["target"] < 0:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["inventory"] = info
+  tally(ret_dict, info["color"])
 
 def net_receivable_analysis(data_dict, ret_dict):
 
@@ -345,9 +365,10 @@ def net_receivable_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   ret_dict["net_receivables"] = info
+  tally(ret_dict, info["color"])
 
 def property_value_analysis(data_dict, ret_dict):
 
@@ -356,10 +377,11 @@ def property_value_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
   info["target"] = list_data[-1][1]
 
   ret_dict["property_value"] = info
+  tally(ret_dict, info["color"])
 
 def goodwill_analysis(data_dict, ret_dict):
 
@@ -368,7 +390,7 @@ def goodwill_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "green"
+  info["color"] = GREEN
   lastest_year = int(list_data[-1][0])
 
   count = 1
@@ -383,14 +405,15 @@ def goodwill_analysis(data_dict, ret_dict):
 
   if len(new_data) < 5:
     info["trend"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
   else:
     trend = trendline(index, new_data)
     info["trend"] = trend
     if trend < 0:
-      info["color"] = "neutral"
+      info["color"] = NEUTRAL
 
   ret_dict["goodwill"] = info
+  tally(ret_dict, info["color"])
 
 def intangible_assets_analysis(data_dict, ret_dict):
 
@@ -399,7 +422,7 @@ def intangible_assets_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "green"
+  info["color"] = GREEN
   lastest_year = int(list_data[-1][0])
 
   count = 1
@@ -414,14 +437,15 @@ def intangible_assets_analysis(data_dict, ret_dict):
 
   if len(new_data) < 5:
     info["trend"] = "N/A"
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
   else:
     trend = trendline(index, new_data)
     info["trend"] = trend
     if trend < 0:
-      info["color"] = "neutral"
+      info["color"] = NEUTRAL
 
   ret_dict["intangible_assets"] = info
+  tally(ret_dict, info["color"])
 
 def long_term_investments_analysis(data_dict, ret_dict):
 
@@ -430,13 +454,14 @@ def long_term_investments_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
   info["target"] = list_data[-1][1]
 
   if info["target"] > 0:
-    info["color"] = "green"
+    info["color"] = GREEN
 
   ret_dict["long_term_investments"] = info
+  tally(ret_dict, info["color"])
 
 def return_on_assets_analysis(data_dict, ret_dict):
 
@@ -447,14 +472,15 @@ def return_on_assets_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .25:
-    info["color"] = "green"
+    info["color"] = GREEN
   if info["target"] > .35 or info["target"] < .06:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["return_on_assets"] = info
+  tally(ret_dict, info["color"])
 
 def short_term_debt_analysis(data_dict, ret_dict):
 
@@ -465,14 +491,15 @@ def short_term_debt_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1][0]/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .6:
-    info["color"] = "green"
+    info["color"] = GREEN
   if info["target"] > 1:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["short_term_debt"] = info
+  tally(ret_dict, info["color"])
 
 def long_term_debt_analysis(data_dict, ret_dict):
 
@@ -485,14 +512,15 @@ def long_term_debt_analysis(data_dict, ret_dict):
   net_income_value = value[1][0]
   long_term_debt_value = value[1][1]
   info["target"] = net_income_value * 4
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if net_income_value * 4 > long_term_debt_value:
-    info["color"] = "green"
+    info["color"] = GREEN
   if net_income_value * 8 < long_term_debt_value:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["long_term_debt"] = info
+  tally(ret_dict, info["color"])
 
 def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
 
@@ -517,14 +545,15 @@ def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
   liabilities = value[1][0]
   stockholders_equity = value[1][1]
   info["target"] = liabilities/(addition+stockholders_equity)
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .8:
-    info["color"] = "green"
+    info["color"] = GREEN
   if info["target"] > 2:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["adjusted_stockholders_equity"] = info
+  tally(ret_dict, info["color"])
 
 def preferred_stock_analysis(data_dict, ret_dict):
   
@@ -534,14 +563,15 @@ def preferred_stock_analysis(data_dict, ret_dict):
   info = {}
   if list_data == []:
     info["year"] = "N/A"
-    info["color"] = "green"
+    info["color"] = GREEN
     info["target"] = "N/A"
   else:
     info["year"] = list_data[-1][0]
-    info["color"] = "red"
+    info["color"] = RED
     info["target"] = list_data[-1][1]
 
   ret_dict["preferred_stock"] = info
+  tally(ret_dict, info["color"])
 
 def retained_earnings_analysis(data_dict, ret_dict):
   
@@ -550,7 +580,7 @@ def retained_earnings_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = list_data[-1][0]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
   lastest_year = int(list_data[-1][0])
 
   count = 1
@@ -564,13 +594,13 @@ def retained_earnings_analysis(data_dict, ret_dict):
       new_data.append(value[1])
 
   if len(new_data) < 5:
-    info["color"] = "neutral"
+    info["color"] = NEUTRAL
     info["trend"] = "N/A"
   else:
     info["trend"] = trendline(index, new_data)
 
     if info["trend"] > 4.9:
-      info["color"] = "green"
+      info["color"] = GREEN
     else:
       repurchase = data_dict["repurchase_common_stock"]
       try:
@@ -578,9 +608,10 @@ def retained_earnings_analysis(data_dict, ret_dict):
         info["buyback"] = buyback
       except:
         info["buyback"] = "N/A"
-        info["color"] = "red"
+        info["color"] = RED
 
   ret_dict["retained_earnings"] = info
+  tally(ret_dict, info["color"])
 
 def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
   
@@ -592,17 +623,18 @@ def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
 
   info = {}
   info["year"] = "0"
-  info["color"] = "red"
+  info["color"] = RED
 
   if list_data != []:
     info["year"] = list_data[-1][0]
-    info["color"] = "green"
+    info["color"] = GREEN
 
   if list_data2 != []:
     info["year"] = str(max(info["year"], list_data2[-1][0]))
-    info["color"] = "green"
+    info["color"] = GREEN
 
   ret_dict["treasury_shares_repurchase_stock"] = info
+  tally(ret_dict, info["color"])
 
 def return_on_shareholders_equity_analysis(data_dict, ret_dict):
 
@@ -627,15 +659,16 @@ def return_on_shareholders_equity_analysis(data_dict, ret_dict):
   net_income = value[1][0]
   stockholders_equity = value[1][1]
   info["target"] = net_income/(addition+stockholders_equity)
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] > .2:
-    info["color"] = "green"
+    info["color"] = GREEN
 
   if info["target"] < .1:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["return_on_shareholder_equity"] = info
+  tally(ret_dict, info["color"])
 
 def capital_expenditures_analysis(data_dict, ret_dict):
 
@@ -646,15 +679,16 @@ def capital_expenditures_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = abs(value[1][0])/value[1][1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   if info["target"] < .25:
-    info["color"] = "green"
+    info["color"] = GREEN
 
   if info["target"] > .5:
-    info["color"] = "red"
+    info["color"] = RED
 
   ret_dict["capital_expenditures"] = info
+  tally(ret_dict, info["color"])
 
 def dividends_analysis(data_dict, ret_dict):
 
@@ -665,6 +699,7 @@ def dividends_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = value[0]
   info["target"] = value[1]
-  info["color"] = "neutral"
+  info["color"] = NEUTRAL
 
   ret_dict["dividends"] = info
+  tally(ret_dict, info["color"])
