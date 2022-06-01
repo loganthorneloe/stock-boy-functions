@@ -83,7 +83,7 @@ def create_simple_data(company_name):
             interest expense/ pre-tax income -> this expense can be hidden in other income/expense and pre-tax income can be referenced as income before provision for income taxes
             6. Income tax: > 10%, closest to 30%
             provision for income taxes / pre-tax income -> pre-tax income can be references as income before provision for income taxes
-            7. Net income: > 20%, <105 is disqualifying, we want a general upward trand over a decade
+            7. Net income: > 20%, <10% is disqualifying, we want a general upward trand over a decade
             Net income / net sales
             8. Per-share earnings: consistent over past decade, increasing is preferred, want this to be positive
             Earnings per share (basic) or EPS(basic) -> this might be in a header and then sub-row

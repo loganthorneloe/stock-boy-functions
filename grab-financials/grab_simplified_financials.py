@@ -1,3 +1,5 @@
+# grabs simplified financials from api - does ZERO analysis
+
 from re import A
 from tracemalloc import start
 from numpy import short
@@ -5,6 +7,7 @@ import requests
 from pprint import pprint
 import json
 from xbrl_var import *
+from analyze_simple_financials import *
 
 headers = {
     'User-Agent': 'Stock Boy',
@@ -51,13 +54,10 @@ def value_from_label_list(label_list, data):
   # labels are in order or precedence, that means we use the first label only if it exists and ignore the others. If we can't find the data we try other labels
   # we first need to determine which label to use
   used_label = ""
-  print(label_list)
   frames = {}
   for label in label_list:
     try:
-      print(label)
       data_item = data[label]
-      print('got data item')
       try:
         frames = data_item["units"]["USD"]
       except:
@@ -71,7 +71,6 @@ def value_from_label_list(label_list, data):
       continue
 
   # here we want to return if we weren't able to get a proper used_label
-  print(used_label)
   if used_label == "":
     return {}
 
@@ -120,7 +119,7 @@ def create_simplified_values(data):
   dict["total_assets"] = value_from_label_list(total_assets_labels, data)
   dict["short_term_debt"] = value_from_label_list(short_term_debt_labels, data)
   dict["long_term_debt"] = value_from_label_list(long_term_debt_labels, data)
-  dict["long_term_debt_due"] = value_from_label_list(long_term_debt_due_labels, data)
+  # dict["long_term_debt_due"] = value_from_label_list(long_term_debt_due_labels, data)
   dict["liabilities"] = value_from_label_list(liabilities_labels, data)
   dict["stockholders_equity"] = value_from_label_list(stockholders_equity_labels, data)
   dict["preferred_stock"] = value_from_label_list(preferred_stock_labels, data)
@@ -145,9 +144,10 @@ def get_simplified_data(cik):
   print(company)
   data = content['facts']['us-gaap']
 
-  dict_data = create_simplified_values(data)
+  data_dict = create_simplified_values(data)
 
-  pprint(dict_data)
+  analyze_simple_financials(data_dict)
+  # pprint(data_dict)
 
 # Ford
-get_simplified_data('0000037996')
+get_simplified_data('0000320193')

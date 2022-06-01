@@ -92,18 +92,19 @@ total_assets_labels = [
 ]
 
 # this should include long-term debt come due
-short_term_debt_labels = [ 
-  'LiabilitiesCurrent'
+short_term_debt_labels = [
+  'LongTermDebtCurrent'
+  # 'LiabilitiesCurrent'
 ]
 
 # can also calculate this via liabilities - short term debt (liabilities current)
-long_term_debt_labels = [ 
+long_term_debt_labels = [
   'LongTermDebtNoncurrent'
 ]
 
-long_term_debt_due_labels = [ 
-  'LongTermDebtCurrent'
-]
+# long_term_debt_due_labels = [ 
+#   'LongTermDebtCurrent'
+# ]
 
 liabilities_labels = [ 
   'Liabilities'
