@@ -148,5 +148,6 @@ def get_simplified_data(cik):
   analyze_simple_financials(data_dict)
   # pprint(data_dict)
 
-# Microsoft
-get_simplified_data('0000789019')
+# Ford 0000037996
+# abbvie 
+get_simplified_data('0001551152')

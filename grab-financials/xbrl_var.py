@@ -21,6 +21,7 @@ research_labels = [
 ]
 
 depreciation_labels = [ 
+  'Depreciation',
   'DepreciationDepletionAndAmortization',
   'AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment'
 ]
