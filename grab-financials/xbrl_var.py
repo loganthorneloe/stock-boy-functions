@@ -65,7 +65,8 @@ inventory_labels = [
 ]
 
 accounts_receivables_labels = [ 
-  'AccountsReceivableNetCurrent'
+  'AccountsReceivableNetCurrent',
+  'ReceivablesNetCurrent'
 ]
 
 property_value_labels = [ 

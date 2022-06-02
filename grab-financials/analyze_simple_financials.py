@@ -121,6 +121,11 @@ def admin_analysis(data_dict, ret_dict):
         info["color"] = GREEN
       elif info["target"] > .80:
         info["color"] = RED
+
+      if info["target"] < 0: # this means we have a negative profit margin - this is bad
+        info["color"] = RED
+      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+        info["color"] = NA
   
   except Exception as e:
     print(e)
@@ -149,40 +154,44 @@ def research_analysis(data_dict, ret_dict):
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] < .20:
-        info["color"] = GREEN
-
-      lastest_year = int(info["year"])
-
-      # check for this being consistently healthy over the past decade
-      info["consistent"] = "Yes"
-      consistency_check = []
-
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10: # data is too old for accurate analysis
-          consistency_check.append((str(year), value[1][0]/value[1][1]))
-
-      if len(consistency_check) < 5:
-        info["consistent"] = "N/A"
-        info["color"] = NEUTRAL
+      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+        info["color"] = NA
 
       else:
-        for value in consistency_check:
-          if value[1] > .20:
-            info["consistent"] = "No"
-            info["color"] = NEUTRAL
+        if info["target"] < .20:
+          info["color"] = GREEN
 
-        for value in consistency_check:
-          if value[1] > .40:
-            info["consistent"] = "No"
-            info["color"] = RED
+        lastest_year = int(info["year"])
 
-      # this needs to take precendence for color 
-      if info["target"] > .40:
-        info["color"] = RED
+        # check for this being consistently healthy over the past decade
+        info["consistent"] = "Yes"
+        consistency_check = []
 
-      info["consistency_data"] = consistency_check    
+        for value in list_data:
+          year = int(value[0])
+          if year > lastest_year - 10: # data is too old for accurate analysis
+            consistency_check.append((str(year), value[1][0]/value[1][1]))
+
+        if len(consistency_check) < 5:
+          info["consistent"] = "N/A"
+          info["color"] = NEUTRAL
+
+        else:
+          for value in consistency_check:
+            if value[1] > .20:
+              info["consistent"] = "No"
+              info["color"] = NEUTRAL
+
+          for value in consistency_check:
+            if value[1] > .40:
+              info["consistent"] = "No"
+              info["color"] = RED
+
+        # this needs to take precendence for color 
+        if info["target"] > .40:
+          info["color"] = RED
+
+        info["consistency_data"] = consistency_check    
   
   except Exception as e:
     print(e)
@@ -210,7 +219,9 @@ def depreciation_analysis(data_dict, ret_dict):
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] < .10:
+      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+        info["color"] = NA
+      elif info["target"] < .10:
         info["color"] = GREEN
       elif info["target"] > .20:
         info["color"] = RED
@@ -239,7 +250,9 @@ def interest_expense_analysis(data_dict, ret_dict):
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] < .15:
+      if value[1][1] < 0: # this means pre tax income is negative - can't determine anything from this metric
+        info["color"] = NA
+      elif info["target"] < .15:
         info["color"] = GREEN
       elif info["target"] > .50:
         info["color"] = RED
@@ -269,7 +282,9 @@ def income_tax_analysis(data_dict, ret_dict):
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] > .20:
+      if value[1][1] < 0: # this means pre tax income is negative - can't determine anything from this metric
+        info["color"] = NA
+      elif info["target"] > .20:
         info["color"] = GREEN
       elif info["target"] < .05:
         info["color"] = RED
@@ -293,40 +308,42 @@ def net_income_analysis(data_dict, ret_dict):
     merged_dict = merge_dicts(data_dict["net_income"], data_dict["revenue"])
     list_data = list(merged_dict.items())
 
-    print(list_data)
-
     if len(list_data) != 0:
       value = list_data[-1]
       info["year"] = value[0]
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] > .20:
-        info["color"] = GREEN
-
-      lastest_year = int(info["year"])
-
-      count = 1
-      index = []
-      new_data = []
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10: # data is too old for accurate analysis
-          index.append(count)
-          count += 1
-          new_data.append(value[1][0]/value[1][1])
-
-      if len(new_data) > 5:
-        trend = trendline(index, new_data)
-        info["trend"] = trend
-        if trend < 0:
-          info["color"] = RED
-        elif trend == 0:
-          info['color'] = NEUTRAL
-
-      # this takes precedence
-      if info["target"] < .10:
+      if value[1][1] < 0: # this means we have a negative revenue and this is bad
         info["color"] = RED
+
+      else:
+        if info["target"] > .20:
+          info["color"] = GREEN
+
+        lastest_year = int(info["year"])
+
+        count = 1
+        index = []
+        new_data = []
+        for value in list_data:
+          year = int(value[0])
+          if year > lastest_year - 10: # data is too old for accurate analysis
+            index.append(count)
+            count += 1
+            new_data.append(value[1][0]/value[1][1])
+
+        if len(new_data) > 5:
+          trend = trendline(index, new_data)
+          info["trend"] = trend
+          if trend < 0:
+            info["color"] = RED
+          elif trend == 0:
+            info['color'] = NEUTRAL
+
+        # this takes precedence
+        if info["target"] < .10:
+          info["color"] = RED
 
   except Exception as e:
     print(e)
@@ -490,6 +507,9 @@ def net_receivable_analysis(data_dict, ret_dict):
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
+      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+        info["color"] = NA
+
   except Exception as e:
     print(e)
 
@@ -542,15 +562,15 @@ def goodwill_analysis(data_dict, ret_dict):
       new_data = []
       for value in list_data:
         year = int(value[0])
-        if year > lastest_year - 10: # analyze past 5 years for a trend
+        if year > lastest_year - 10: # analyze past 10 years for a trend
           index.append(count)
           count += 1
           new_data.append(value[1])
 
-      if len(new_data) < 5:
-        info["trend"] = "N/A"
-        info["color"] = NA
-      else:
+      if len(new_data) == 1: # only one year of goodwill is good
+        info["trend"] = "1 year of data"
+        info["color"] = GREEN
+      else: # more than one year and we want too see an increasing trend
         trend = trendline(index, new_data)
         info["trend"] = trend
         if trend < 0:
@@ -649,10 +669,13 @@ def return_on_assets_analysis(data_dict, ret_dict):
       info["target"] = value[1][0]/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] < .25:
-        info["color"] = GREEN
-      if info["target"] > .35 or info["target"] < .06:
-        info["color"] = RED
+      if value[1][0] < 0 or value[1][1] < 0: # this means we have a negative income or assets
+        info["color"] = NA
+      else:
+        if info["target"] < .25:
+          info["color"] = GREEN
+        if info["target"] > .35 or info["target"] < .06:
+          info["color"] = RED
 
   except Exception as e:
     print(e)
@@ -671,6 +694,9 @@ def short_term_debt_analysis(data_dict, ret_dict):
 
     merged_dict = merge_dicts(data_dict["short_term_debt"], data_dict["long_term_debt"])
     list_data = list(merged_dict.items())
+
+    print(data_dict["short_term_debt"])
+    print(data_dict["long_term_debt"])
 
     if len(list_data) != 0:
       value = list_data[-1]
@@ -709,9 +735,11 @@ def long_term_debt_analysis(data_dict, ret_dict):
       info["target"] = net_income_value * 4
       info["color"] = NEUTRAL
 
-      if net_income_value * 4 > long_term_debt_value:
+      if net_income_value < 0:
+        info["color"] = RED
+      elif net_income_value * 4 > long_term_debt_value:
         info["color"] = GREEN
-      if net_income_value * 8 < long_term_debt_value:
+      elif net_income_value * 6 < long_term_debt_value:
         info["color"] = RED
 
   except Exception as e:
@@ -785,6 +813,8 @@ def preferred_stock_analysis(data_dict, ret_dict):
       info["year"] = list_data[-1][0]
       info["color"] = RED
       info["target"] = list_data[-1][1]
+      if info["target"] == 0: # this is for companies that put zero instead of leaving is absent
+        info["color"] = GREEN
 
   except Exception as e:
     print(e)
@@ -936,11 +966,15 @@ def capital_expenditures_analysis(data_dict, ret_dict):
       info["target"] = abs(value[1][0])/value[1][1]
       info["color"] = NEUTRAL
 
-      if info["target"] < .25:
-        info["color"] = GREEN
+      if value[1][1] < 0:
+        info["color"] = NA
+      
+      else:
+        if info["target"] < .25:
+          info["color"] = GREEN
 
-      if info["target"] > .5:
-        info["color"] = RED
+        if info["target"] > .5:
+          info["color"] = RED
 
   except Exception as e:
     print(e)
