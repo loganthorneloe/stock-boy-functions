@@ -150,4 +150,4 @@ def get_simplified_data(cik):
 
 # Ford 0000037996
 # abbvie 
-get_simplified_data('0001551152')
+get_simplified_data('0001636282')
