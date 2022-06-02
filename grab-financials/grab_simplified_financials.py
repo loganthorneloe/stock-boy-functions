@@ -14,6 +14,28 @@ headers = {
     'From': 'meetstockboy@gmail.com'
 }
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Setting up firestore connection
+cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-3d183-firebase-adminsdk-zyxu6-76a70bc31c.json')
+firebase_admin.initialize_app(cred, {
+  'projectId': 'stock-boy-3d183',
+})
+
+db = firestore.client()
+
+def set_simplified_data_to_firestore(simplified_data, company_key):
+  doc_ref = db.collection(u'stock_data').document(company_key).set({
+      "simplified": simplified_data # data dict includes multiple years to no need to include in key
+    }, merge=True)
+
+def set_analyzed_data_to_firestore(analyzed_data, company_key):
+  doc_ref = db.collection(u'stock_data').document(company_key).set({
+      "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
+    }, merge=True)
+
 def grab_year_from_frame(frame):
   # "fy" tells us what year the filing is from - this doesn't work because each filing lists the past two years. Instead, to get the year we need to focus on end date of frame
   # this is because it doesn't matter what filing its from as long as its a 10-K, we just need the data assigned to the proper year
@@ -130,7 +152,7 @@ def create_simplified_values(data):
 
   return dict
 
-def get_simplified_data(cik):
+def get_simplified_data(cik, company_name): # company name must be pulled from idx to match key for financial statements
   
   response = requests.get("https://data.sec.gov/api/xbrl/companyfacts/CIK{no}.json".format(no=cik), headers=headers)
 
@@ -143,11 +165,26 @@ def get_simplified_data(cik):
   print(company)
   data = content['facts']['us-gaap']
 
+  # simplified values
   data_dict = create_simplified_values(data)
 
-  analyze_simple_financials(data_dict)
-  # pprint(data_dict)
+  # analyzed financials
+  analyzed_dict = analyze_simple_financials(data_dict)
 
-# Ford 0000037996
-# Microsoft 
-get_simplified_data('0001397187')
+  # adding simplified dict to firestore
+  print('adding simplified dict to firestore')
+  set_simplified_data_to_firestore(data_dict, company_name)
+  print('simplified dict added')
+
+  # print(analyzed_dict)
+
+  # adding analyzed dict to firestore
+  print('adding analyzed dict to firestore')
+  set_analyzed_data_to_firestore(analyzed_dict, company_name)
+  print('analyzed dict added')
+
+# transformations that need to be done from idx to my functions
+cik = '789019'.zfill(10)
+company_name = 'MICROSOFT CORP'.lower().replace('/','')
+
+get_simplified_data(cik, company_name)

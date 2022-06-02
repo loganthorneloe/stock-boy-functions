@@ -61,12 +61,14 @@ def analyze_simple_financials(data_dict):
   capital_expenditures_analysis(data_dict, ret_dict)
   dividends_analysis(data_dict, ret_dict)
 
-  pprint(ret_dict)
-  print("GREEN: " + str(ret_dict[GREEN]))
-  print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
-  print("RED: " + str(ret_dict[RED]))
-  print("N/A: " + str(ret_dict[NA]))
-  print(len(ret_dict.keys()))
+  # pprint(ret_dict)
+  # print("GREEN: " + str(ret_dict[GREEN]))
+  # print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
+  # print("RED: " + str(ret_dict[RED]))
+  # print("N/A: " + str(ret_dict[NA]))
+  # print(len(ret_dict.keys()))
+
+  return ret_dict
 
 def profit_margin_analysis(data_dict, ret_dict):
   
@@ -140,7 +142,6 @@ def research_analysis(data_dict, ret_dict):
   info["year"] = "N/A"
   info["target"] = "N/A"
   info["color"] = NA
-  info["consistency_data"] = "N/A"
 
   try:
 
@@ -189,9 +190,7 @@ def research_analysis(data_dict, ret_dict):
 
         # this needs to take precendence for color 
         if info["target"] > .40:
-          info["color"] = RED
-
-        info["consistency_data"] = consistency_check    
+          info["color"] = RED   
   
   except Exception as e:
     print(e)
@@ -694,9 +693,6 @@ def short_term_debt_analysis(data_dict, ret_dict):
 
     merged_dict = merge_dicts(data_dict["short_term_debt"], data_dict["long_term_debt"])
     list_data = list(merged_dict.items())
-
-    print(data_dict["short_term_debt"])
-    print(data_dict["long_term_debt"])
 
     if len(list_data) != 0:
       value = list_data[-1]

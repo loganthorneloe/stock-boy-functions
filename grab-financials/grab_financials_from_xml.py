@@ -320,7 +320,7 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
-current_year = 2021
+current_year = 2013
 statement_failure_file_name = str(current_year) + "_statement_failures.txt"
 statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
 other_failure_file_name = str(current_year) + "_other_failures.txt"
@@ -521,9 +521,9 @@ for item in download:
     # this will overwrite
 
     # set_statement_data_to_firebase(company_key, current_year, statements_data)
-    doc_ref = db.collection(u'stock_data').document(company_key).update({
+    doc_ref = db.collection(u'stock_data').document(company_key).set({
               str(current_year) + "_complex": statements_data
-            })
+            }, merge=True)
     # remove_from_failures(company_key, current_year)
 
     # need to remove from failures here if this works
@@ -538,7 +538,7 @@ for item in download:
       # try setting instead of updating??
       doc_ref = db.collection(u'stock_data').document(company_key).set({
                 str(current_year) + "_complex": statements_data
-              })
+              }, merge=True)
     
     except Exception as ex:
     
