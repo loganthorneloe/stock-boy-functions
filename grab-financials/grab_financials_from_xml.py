@@ -7,6 +7,9 @@ from pprint import pprint
 import os
 import math
 
+import warnings
+warnings.filterwarnings("ignore")
+
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -215,8 +218,8 @@ def is_nan_col(column):
   return False
 
 def retrieve_statement_data_from_statement_urls(statements_url):
-  print('STATEMENTS URL')
-  print(statements_url)
+  # print('STATEMENTS URL')
+  # print(statements_url)
   # we need this order: balance sheet, income statement, cash flow
   balance_arr = []
   income_arr = []
@@ -320,7 +323,7 @@ def set_or_update_trading_symbol(company_name, symbol):
     })
   return doc_ref
 
-current_year = 2013
+current_year = 2021
 statement_failure_file_name = str(current_year) + "_statement_failures.txt"
 statement_failure_full_path = 'statement_retrieval_failures/' + statement_failure_file_name
 other_failure_file_name = str(current_year) + "_other_failures.txt"
@@ -368,8 +371,8 @@ for item in download:
   # if not start:
   #   continue
 
-  if "MICROSOFT CORP" not in item:
-    continue
+  # if "MICROSOFT CORP" not in item:
+  #   continue
 
   # clean item
   this_company = item
@@ -429,8 +432,8 @@ for item in download:
   trading_symbol = request_for_ticker(new_base_url)
 
   try:
-    print('XML summary')
-    print(xml_summary)
+    # print('XML summary')
+    # print(xml_summary)
     statements_url = get_url_for_statements(xml_summary, new_base_url)
 
   except Exception as ex:

@@ -184,7 +184,7 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   print('analyzed dict added')
 
 # transformations that need to be done from idx to my functions
-cik = '789019'.zfill(10)
-company_name = 'MICROSOFT CORP'.lower().replace('/','')
+cik = '0001636282'.zfill(10)
+company_name = 'Aeglea BioTherapeutics, Inc.'.lower().replace('/','')
 
 get_simplified_data(cik, company_name)

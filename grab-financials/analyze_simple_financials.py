@@ -62,11 +62,11 @@ def analyze_simple_financials(data_dict):
   dividends_analysis(data_dict, ret_dict)
 
   # pprint(ret_dict)
-  # print("GREEN: " + str(ret_dict[GREEN]))
-  # print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
-  # print("RED: " + str(ret_dict[RED]))
-  # print("N/A: " + str(ret_dict[NA]))
-  # print(len(ret_dict.keys()))
+  print("GREEN: " + str(ret_dict[GREEN]))
+  print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
+  print("RED: " + str(ret_dict[RED]))
+  print("N/A: " + str(ret_dict[NA]))
+  print(len(ret_dict.keys()))
 
   return ret_dict
 
@@ -1000,4 +1000,3 @@ def dividends_analysis(data_dict, ret_dict):
     print(e)
 
   ret_dict["dividends"] = info
-  tally(ret_dict, info["color"])
