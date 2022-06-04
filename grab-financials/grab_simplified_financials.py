@@ -8,6 +8,8 @@ from pprint import pprint
 import json
 from xbrl_var import *
 from analyze_simple_financials import *
+import time
+import copy
 
 headers = {
     'User-Agent': 'Stock Boy',
@@ -109,8 +111,9 @@ def value_from_label_list(label_list, data):
   # if the ret dict has no entries, another label will be attempted
   # this is important in cases where a higher precedence label isn't used on 10-K's and only 10-Q's
   if ret_dict == {}:
-    label_list.remove(used_label)
-    return value_from_label_list(label_list, data)
+    new_label_list = copy.deepcopy(label_list)
+    new_label_list.remove(used_label)
+    return value_from_label_list(new_label_list, data)
 
   return ret_dict
 
@@ -157,12 +160,9 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   response = requests.get("https://data.sec.gov/api/xbrl/companyfacts/CIK{no}.json".format(no=cik), headers=headers)
 
   content = json.loads(response.content)
-
   # print(content)
 
   cik = content['cik'] # add zeroes to left until 10 digits
-  company = content['entityName']
-  print(company)
   data = content['facts']['us-gaap']
 
   # simplified values
@@ -172,19 +172,52 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   analyzed_dict = analyze_simple_financials(data_dict)
 
   # adding simplified dict to firestore
-  print('adding simplified dict to firestore')
   set_simplified_data_to_firestore(data_dict, company_name)
-  print('simplified dict added')
+  print('simplified dict added for: ' + company_name)
 
   # print(analyzed_dict)
 
   # adding analyzed dict to firestore
-  print('adding analyzed dict to firestore')
   set_analyzed_data_to_firestore(analyzed_dict, company_name)
-  print('analyzed dict added')
+  print('analyzed dict added for: ' + company_name)
+
+
+
+current_year = 2021
+download = []
+failures = 0
+
+# grab 10ks from idx from local analysis
+with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
+  for line in file:
+      download.append(line.rstrip())
+
+for item in download:
+  # need to get CIK and company name
+
+  this_company = item
+  this_company = this_company.strip()
+  splitted_company = this_company.split('|')
+  if len(splitted_company) < 5:
+    continue
+
+  company_name = splitted_company[1].lower().replace('/','')
+  cik = splitted_company[0].zfill(10)
+
+  try:
+
+    get_simplified_data(cik, company_name)
+  
+  except:
+
+    failures += 1
+
+  time.sleep(.2)
+
+print("num failures: " + str(failures))
 
 # transformations that need to be done from idx to my functions
-cik = '0001636282'.zfill(10)
-company_name = 'Aeglea BioTherapeutics, Inc.'.lower().replace('/','')
+# cik = '103145'.zfill(10)
+# company_name = 'VEECO INSTRUMENTS INC'.lower().replace('/','')
 
-get_simplified_data(cik, company_name)
+# get_simplified_data(cik, company_name)

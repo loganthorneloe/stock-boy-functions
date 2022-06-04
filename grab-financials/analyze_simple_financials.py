@@ -60,7 +60,7 @@ def analyze_simple_financials(data_dict):
   return_on_shareholders_equity_analysis(data_dict, ret_dict)
   capital_expenditures_analysis(data_dict, ret_dict)
   dividends_analysis(data_dict, ret_dict)
-
+  # pprint(data_dict)
   # pprint(ret_dict)
   print("GREEN: " + str(ret_dict[GREEN]))
   print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
@@ -339,6 +339,8 @@ def net_income_analysis(data_dict, ret_dict):
             info["color"] = RED
           elif trend == 0:
             info['color'] = NEUTRAL
+        else:
+          info['color'] = NA
 
         # this takes precedence
         if info["target"] < .10:
@@ -638,11 +640,11 @@ def long_term_investments_analysis(data_dict, ret_dict):
 
     if len(list_data) != 0:
       info["year"] = list_data[-1][0]
-      info["color"] = NEUTRAL
+      info["color"] = RED
       info["target"] = list_data[-1][1]
 
-      if info["target"] > 0:
-        info["color"] = GREEN
+      if info["target"] >= 0:
+        info["color"] = NEUTRAL
 
   except Exception as e:
     print(e)
@@ -875,6 +877,7 @@ def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
   info = {}
   info["year"] = "0"
   info["color"] = RED
+  info["target"] = "N/A"
 
   try:
 
@@ -887,10 +890,12 @@ def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
     if list_data != []:
       info["year"] = list_data[-1][0]
       info["color"] = GREEN
+      info["target"] = list_data[-1][1]
 
     if list_data2 != []:
-      info["year"] = str(max(info["year"], list_data2[-1][0]))
+      info["year"] = list_data2[-1][0]
       info["color"] = GREEN
+      info["target"] = list_data2[-1][1]
 
   except Exception as e:
     print(e)

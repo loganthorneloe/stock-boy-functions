@@ -6,7 +6,7 @@ import time
 from pprint import pprint
 import os
 
-current_year = 2021
+current_year = 2022
 quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
 filing = '10-K'
 headers = {
