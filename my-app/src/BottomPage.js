@@ -10,6 +10,12 @@ library.add(faPatreon)
 
 export class FrontPage extends Component {
 
+    openURL(url){
+      if(typeof url !== 'undefined'){
+          window.open(url, '_blank');
+      }
+    }
+
     render() {
       return (
         <div className="container-fluid" style={{"marginTop":"1em"}}>
@@ -23,8 +29,7 @@ export class FrontPage extends Component {
           <div className="row justify-content-center align-items-center" style={{"marginTop":"-26px"}}>
             <div className= "col-sm-4" align="center">
               <Card.Body>
-                {/* <a href="https://www.patreon.com/bePatron?u=58846812" data-patreon-widget-type="become-patron-button">Become a Patron!</a> */}
-                <Button style={{backgroundColor:"#f96854", border:"#f96854"}} href="https://www.patreon.com/bePatron?u=58846812">
+                <Button style={{backgroundColor:"#f96854", border:"#f96854"}} onClick={() => this.openURL("https://www.patreon.com/bePatron?u=58846812")}>
                   <FontAwesomeIcon icon="fa-brands fa-patreon" /> Become a Patron
                 </Button>{' '}
               </Card.Body>
@@ -50,7 +55,7 @@ export class FrontPage extends Component {
             <Card className="border-0" style={{"marginBottom":"1em"}}>
               <Card.Body>
                 <font size="2" className="roboto">
-                None of the information on this page is financial advice. Please seek a licensed professional for any investment advice. Always do your own research before making investment decisions. This web app contains affiliate links. Trademarks are owned by their respective company.
+                None of the information on this page is financial advice. Please seek a licensed professional for any investment advice. Any investment carries risk. The value of your investment may go up or down. Always do your own research before making an investment. This app contains affiliate links. Trademarks are owned by their respective company.
                 </font>
               </Card.Body>
             </Card>
