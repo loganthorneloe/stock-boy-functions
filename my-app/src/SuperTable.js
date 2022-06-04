@@ -3,12 +3,10 @@ import React, { Component } from "react";
 import Table from 'react-bootstrap/Table'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { Tabs, Tab } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
-import { NavDropdown } from 'react-bootstrap';
 
 class SuperTable extends Component {
     constructor(props) { // props will be dict for certain stock
@@ -19,7 +17,6 @@ class SuperTable extends Component {
       this.cashLink = ""
       this.yearList = []
       this.currentYear = "2021"
-      this.simplify = false 
       this.balanceSheet = []
       this.cashFlow = []
       this.incomeStatement = []
@@ -48,10 +45,13 @@ class SuperTable extends Component {
             return
         }
         var keys_to_use = Object.keys(this.props.companyDict)
+
         var years_arr = []
         for (var i = 0; i < keys_to_use.length; i++){
+          if (keys_to_use[i].includes('_')) {
             var split_key_array = keys_to_use[i].split('_')
             years_arr.unshift(split_key_array[0])
+          }
         }
         
         this.yearList = years_arr.sort()
@@ -64,13 +64,7 @@ class SuperTable extends Component {
             return
         }
         var list_to_use = []
-        var key_to_use = ""
-        if(!this.simplify){
-            key_to_use = this.currentYear + "_complex" 
-            
-        }else{
-            key_to_use = this.currentYear + "_simple"
-        }
+        var key_to_use = this.currentYear + "_complex"
         list_to_use = this.props.companyDict[key_to_use]
         this.tenKLink = list_to_use[list_to_use.length-1]
         this.balanceLink = list_to_use[list_to_use.length-7]
@@ -83,13 +77,7 @@ class SuperTable extends Component {
             return
         }
         var list_to_use = []
-        var key_to_use = ""
-        if(!this.simplify){
-            key_to_use = this.currentYear + "_complex" 
-            
-        }else{
-            key_to_use = this.currentYear + "_simple"
-        }
+        var key_to_use = this.currentYear + "_complex" 
         list_to_use = this.props.companyDict[key_to_use]
         var list_to_use_minus_sources = list_to_use.slice(0, list_to_use.length-8)
 
@@ -241,189 +229,7 @@ class SuperTable extends Component {
     }
 
     render() {    
-    if(typeof this.props.companyDict === "undefined" && typeof this.props.company === "undefined"){
-        return (
-            <div className="container-fluid" style={{"marginTop":"5em"}}>
-              <div className="row justify-content-center" style={{"marginTop":"10px"}}>
-                <div className="col-sm-12 my-auto" align="center">
-                  <img className="stock-boy-caption" src="title_boy.png" alt="Welcome to Stock Boy! Search for companies above to find financial statements."></img>
-                </div>
-              </div>
-              <div className="row justify-content-center" style={{"marginTop":"10px"}}>
-                <div className= "col-sm-6" align="center">
-                  <Card className="border-0">
-                    <Card.Body>
-                      <h4 className="roboto title" style={{"marginBottom":".5em"}}><strong>What is Stock Boy?</strong></h4>
-                      <p>Stock Boy contains 98% of financial statements from the SEC and makes it easy for retail investors to read them from their pocket. Download Stock Boy as an app to give it a try. <strong>Coming Soon</strong>: Stock Boy will do simple fundamental analysis for you!</p>
-                    </Card.Body>
-                  </Card>
-                </div>
-              </div>
-              <div className="row justify-content-center">
-                <div className= "col-sm-6" align="center">
-                  <Card.Body>
-                    <p style={{"marginTop":"-10px"}}>The goal is to keep Stock Boy free. If Stock Boy has been helpful for you, please consider supporting my work on Buy Me a Coffee or following me on Twitter.</p> 
-                  </Card.Body>
-                </div>
-              </div>
-              <div className="row justify-content-center align-items-center" style={{"marginTop":"-26px"}}>
-                <div className= "col-sm-4" align="center">
-                  <Card.Body>
-                    <a href="https://buymeacoffee.com/loganthorneloe">
-                      <img src="bmc-button.png" width="200px" alt="Buy me a coffee logo" style={{"margin":"1em"}}></img>
-                    </a>
-                  </Card.Body>
-                  <Card.Body>
-                  <a href="https://twitter.com/loganthorneloe?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-size="large" data-show-count="false">Follow @loganthorneloe</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>                           
-                  </Card.Body>
-                </div>
-              </div>
-              <div className="row">
-                <div className= "col-sm-1"></div>
-                <div className= "col-sm-10" align="center">
-                <Card className="border-0" style={{"marginBottom":"1em"}}>
-                  <Card.Body>
-                    <font size="2" className="roboto">
-                    None of the information on this page is financial advice. Please seek a licensed professional for any investment or tax advice. Always do your own research before making investment decisions. This web app contains affiliate links. The Buy Me a Coffee logo is owned by its respective company and is in no way affiliated with Stock Boy.
-                    </font>
-                  </Card.Body>
-                </Card>
-                </div>
-                <div className= "col-sm-1"></div>
-              </div>
-                {/* <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0">
-                        <Card.Body>
-                            <h2 className="roboto title" style={{"marginBottom":".5em"}}><strong>Financial freedom starts here.</strong></h2>
-                            <h5 className="roboto title" style={{"marginBottom":"1em"}}>Everyone belongs in the stock market. You just need to know which investing strategy is right for you.</h5>
-                            <h5 className="roboto title"><strong>Why do you want to invest?</strong></h5>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0">
-                        <Card.Body>
-                        <Accordion flush>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>I want to increase my monthly income.</Accordion.Header>
-                                <Accordion.Body>
-                                Dividend cash flow is right for you. You can buy assets in the stock market that will cash flow into your bank account as long as you own them! DivCultivator gives a great overview of this.
-                                <div></div>
-                                <a class="gumroad-button" href="https://gumroad.com/a/820270195/CSdwG" style={{"margin":"1em"}}>Create a Cash Flow Machine</a>
-                                <div></div>
-                                <a href="https://twitter.com/DivCultivator?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @DivCultivator</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header>I want my money to grow hassle-free.</Accordion.Header>
-                                <Accordion.Body>
-                                Index fund investing is for you. This a low-risk, low-work investing strategy that will still get you to millionaire status. I'm currently working on procurring a good source to learn this method.
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="2">
-                                <Accordion.Header>I want to be super rich!</Accordion.Header>
-                                <Accordion.Body>
-                                Individual stock investing is right for you. This high reward investing strategy requires a lot of research to manage risk properly and should only be attempted by seasoned investors. Check out my book to know how to identify the best companies to invest in.
-                                <div></div>
-                                <a class="gumroad-button" href="https://gumroad.com/l/ngaxy" style={{"margin":"1em"}}>I want to learn!</a>
-                                <div></div>
-                                <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="en" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="3">
-                                <Accordion.Header>I don't even know where to start...</Accordion.Header>
-                                <Accordion.Body>
-                                Learning the basics of financial freedom is best for you. Start here to learn the importance of becoming financially free and use FiSavvyDad's roadmap to get there.
-                                <div></div>
-                                <a class="gumroad-button" href="https://gumroad.com/a/310580339/EvgKt" style={{"margin":"1em"}}>Get the Financial Freedom Playbook</a>
-                                <div></div>
-                                <a href="https://twitter.com/FiSavvyDad?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @FiSavvyDad</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0">
-                        <Card.Body>
-                            <h2 className="roboto title"><strong>What is Stock Boy?</strong></h2>
-                            <Card.Text className="roboto">
-                            Stock Boy is your investing personal assistant. He points you to the proper investing strategy based on your financial goals. He also pulls data from the SEC and makes it readily available and easy to read. This enables the common investor to understand companies by just searching for a company at the top of this page.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0">
-                        <Card.Body>
-                            <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-lang="en" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                           
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0">
-                        <Card.Body>
-                            <h2 className="roboto title"><strong>Invest in yourself.</strong></h2>
-                            <Card.Text className="roboto">
-                            Every investor needs a brokerage. Try <a href="https://m1.finance/UHVHgaUnLsdA">M1 Finance</a> &ndash; they make investing simple (practically automated!) and keep new investors out of trouble. Just press their logo below.
-                            </Card.Text>
-                            <a href="https://m1.finance/UHVHgaUnLsdA">
-                                <img src="m1.png" width="100" height="100" alt="M1 Finance Logo" style={{"margin":"1em"}}></img>
-                            </a>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-4"></div>
-                    <div className= "col-sm-4" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
-                        <Card.Body>
-                            <h2 className="roboto title"><strong>Invest in Stock Boy.</strong></h2>
-                            <Card.Text className="roboto">
-                            Patrons help others invest responsibly.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className= "col-sm-1"></div>
-                    <div className= "col-sm-10" align="center">
-                    <Card className="border-0" style={{"marginBottom":"1em"}}>
-                        <Card.Body>
-                            <font size="2" className="roboto">
-                            None of the information on this page is financial advice. Please seek a licensed professional for any investment or tax advice. Always do your own research before making investment decisions. This web app contains affiliate links. The M1 Finance logo is owned by its respective company and is in no way affiliated with Stock Boy.
-                            </font>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    <div className= "col-sm-1"></div>
-                </div> */}
-            </div>
-        )
-    }else if(typeof this.props.companyDict === "undefined" && typeof this.props.company !== "undefined"){
+    if(typeof this.props.companyDict === "undefined" && typeof this.props.company !== "undefined"){
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -432,11 +238,6 @@ class SuperTable extends Component {
                         <div className="card justify-content-center border-light mb-3" style={{"marginTop":"4em","marginBottom":"3em"}}>
                             <div className="card-body">
                                 <div className="container-fluid" align="center">
-                                    <div className="row justify-content-center" style={{"marginTop":"10px"}}>
-                                        <div className="col-sm-12 my-auto" align="center">
-                                            <h4 className="card-title"><strong>{this.props.company}</strong></h4>
-                                        </div>
-                                    </div>
                                     <div className="row justify-content-center" style={{"marginTop":"10px"}}>
                                         <div className="col-sm-12 my-auto" align="center">
                                             <img className="stock-boy-caption" src="noStatements.png" alt="No statements for this company yet"></img>
@@ -452,160 +253,110 @@ class SuperTable extends Component {
         )
     }else{
         return (
-            <div className="container-fluid" style={{"marginTop":"4em","marginBottom":"3em"}}>
-                <div className="row g-2" style={{"marginTop":"20px", "marginBottom":"10px"}}>
-                    <div className= "col-sm-1"></div>
-                    <div className= "col-sm-10" align="center">
-                        <h2 className="card-title"><strong>{this.props.company}</strong></h2>
-                    </div>
-                    <div className= "col-sm-1"></div>
-                </div>
+            <div className="container-fluid" style={{"marginTop":"1em","marginBottom":"3em"}}>
                 <div className="row g-1">
-                    <div className= "col-sm-1"></div>
-                    <div className= "col-sm-10">
-                        <div className="container-fluid">
-                        <Tab.Container id="left-tabs-example" defaultActiveKey="finances">
-                        <Row className="g-2">
-                            <Col sm={3}>
-                            <Accordion defaultActiveKey="1" flush>
-                                <Accordion.Item eventKey="0">
-                                    <Accordion.Header>Company Data</Accordion.Header>
-                                        <Accordion.Body>
-                                            <Nav variant="pills" className="flex-column">
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="finances">Financial Statements</Nav.Link>
-                                                </Nav.Item>
-                                                <NavDropdown.Divider />
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="sources" disabled><strong>Sources</strong></Nav.Link>
-                                                </Nav.Item>
-                                                <NavDropdown.Divider />
-                                                <Nav.Item>
-                                                <Nav.Link onClick={() => this.openURL(this.tenKLink)}>10K</Nav.Link>
-                                                </Nav.Item>
-                                                <Nav.Item>
-                                                <Nav.Link onClick={() => this.openURL(this.balanceLink)}>Balance Sheet</Nav.Link>
-                                                </Nav.Item>
-                                                <Nav.Item>
-                                                <Nav.Link onClick={() => this.openURL(this.incomeLink)}>Income Statement</Nav.Link>
-                                                </Nav.Item>
-                                                <Nav.Item>
-                                                <Nav.Link onClick={() => this.openURL(this.cashLink)}>Cash Flow</Nav.Link>
-                                                </Nav.Item>
-                                                <NavDropdown.Divider />
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="coming_soon" disabled><strong>Coming Soon!</strong></Nav.Link>
-                                                </Nav.Item>
-                                                <NavDropdown.Divider />
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="simplified" disabled>Simplified Statements</Nav.Link>
-                                                </Nav.Item>
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="key" disabled>Key Characteristics</Nav.Link>
-                                                </Nav.Item>
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="business" disabled>Business Profile</Nav.Link>
-                                                </Nav.Item>
-                                                <Nav.Item>
-                                                <Nav.Link eventKey="risks" disabled>Risks</Nav.Link>
-                                                </Nav.Item>
-                                            </Nav>   
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                    <Accordion.Item eventKey="1">
-                                        <Accordion.Header>Years</Accordion.Header>
-                                        <Accordion.Body>
-                                            <Nav variant="pills" activeKey={this.currentYear} className="flex-column">
-                                                {this.yearList.map(this.renderYearAccordion)}
-                                                <Nav.Item>
-                                                    <Nav.Link align="center" eventKey="message" disabled>Can't find a year you're looking for? Check if the company filed under a different name.</Nav.Link>
-                                                </Nav.Item>
-                                            </Nav>
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                </Accordion>
-                            </Col>
-                            <Col sm={9}>
-                            <Tab.Content>
-                                <Tab.Pane eventKey="key">
-                                <Table striped bordered hover>
-                                    <tbody>
-                                        <tr>
-                                        <td>Market Cap</td>
-                                        <td>Coming Soon!</td>
-                                        </tr>
-                                        <tr>
-                                        <td>Second char</td>
-                                        <td>Coming Soon!</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="finances">
-                                <Tabs className="justify-content-center" style={{"marginTop":"10px"}} defaultActiveKey="balance_sheet" onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
-                                    <Tab eventKey={"balance_sheet"} title="Balance Sheet" className="nav nav-tabs justify-content-center custom-tab">
-                                        <h5 style={{"margin":"10px"}}>
-                                        This shows a snapshot of a company’s assets and liabilities on a certain date. 
-                                        </h5>
-                                        <Table striped bordered hover>
-                                            <thead>
-                                                <tr>
-                                                    <th>{this.balanceSheetHeader.key}</th>
-                                                    <th>{this.balanceSheetHeader.value}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {this.balanceSheet.map(this.renderRow)}
-                                            </tbody>
-                                        </Table>
-                                    </Tab>
-                                    <Tab eventKey={"income_statement"} title="Income Statement" className="navß nav-tabs justify-content-center custom-tab">
-                                        <h5 style={{"margin":"10px"}}>
-                                        This shows the results of a company's operations over a period of time and can be used to examine a company's earnings.
-                                        </h5>
-                                        <Table striped bordered hover>
-                                            <thead>
-                                                <tr>
-                                                    <th>{this.incomeStatementHeader.key}</th>
-                                                    <th>{this.incomeStatementHeader.value}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {this.incomeStatement.map(this.renderRow)}
-                                            </tbody>
-                                        </Table>
-                                    </Tab>
-                                    <Tab eventKey={"cash_flow"} title="Cash Flow" className="nav nav-tabs justify-content-center  custom-tab">
-                                        <h5 style={{"margin":"10px"}}>
-                                        This shows if a company is cash flow negative or positive over a period of time. 
-                                        </h5>
-                                        <Table striped bordered hover>
-                                            <thead>
-                                                <tr>
-                                                    <th>{this.cashFlowHeader.key}</th>
-                                                    <th>{this.cashFlowHeader.value}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {this.cashFlow.map(this.renderRow)}
-                                            </tbody>
-                                        </Table>
-                                    </Tab>
-                                </Tabs>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="business">Coming Soon!
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="risks">Coming Soon!
-                                </Tab.Pane>
-                            </Tab.Content>
-                            </Col>
-                        </Row>
-                        </Tab.Container>
-                    </div>
-                    </div>
-                    <div className= "col-sm-1"></div>
-                </div>
+                  <div className="container-fluid">
+                  <Tab.Container id="left-tabs-example" defaultActiveKey="finances">
+                  <Row className="g-2">
+                      <Col sm={3}>
+                      <Accordion defaultActiveKey="1" flush>
+                          <Accordion.Item eventKey="1">
+                              <Accordion.Header>Years</Accordion.Header>
+                              <Accordion.Body>
+                                  <Nav variant="pills" activeKey={this.currentYear} className="flex-column">
+                                      {this.yearList.map(this.renderYearAccordion)}
+                                      <Nav.Item>
+                                          <Nav.Link align="center" eventKey="message" disabled>Can't find a year you're looking for? Check if the company filed under a different name.</Nav.Link>
+                                      </Nav.Item>
+                                  </Nav>
+                              </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>Sources</Accordion.Header>
+                                <Accordion.Body>
+                                    <Nav variant="pills" className="flex-column">
+                                        <Nav.Item>
+                                        <Nav.Link onClick={() => this.openURL(this.tenKLink)}>10K</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                        <Nav.Link onClick={() => this.openURL(this.balanceLink)}>Balance Sheet</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                        <Nav.Link onClick={() => this.openURL(this.incomeLink)}>Income Statement</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                        <Nav.Link onClick={() => this.openURL(this.cashLink)}>Cash Flow</Nav.Link>
+                                        </Nav.Item>
+                                    </Nav>   
+                                </Accordion.Body>
+                            </Accordion.Item>
+                          </Accordion>
+                      </Col>
+                      <Col sm={9}>
+                      <Tab.Content>
+                          <Tab.Pane eventKey="finances">
+                          <Tabs className="justify-content-center" style={{"marginTop":"10px"}} defaultActiveKey="income_statement" onSelect={this.handleSelect.bind(this)} id="controlled-tab-example">
+                              <Tab eventKey={"income_statement"} title="Income Statement" className="navß nav-tabs justify-content-center custom-tab">
+                                  <h5 style={{"margin":"10px"}}>
+                                  This shows the results of a company's operations over a period of time and can be used to examine a company's earnings.
+                                  </h5>
+                                  <Table striped bordered hover>
+                                      <thead>
+                                          <tr>
+                                              <th>{this.incomeStatementHeader.key}</th>
+                                              <th>{this.incomeStatementHeader.value}</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {this.incomeStatement.map(this.renderRow)}
+                                      </tbody>
+                                  </Table>
+                              </Tab>
+                              <Tab eventKey={"balance_sheet"} title="Balance Sheet" className="nav nav-tabs justify-content-center custom-tab">
+                                  <h5 style={{"margin":"10px"}}>
+                                  This shows a snapshot of a company’s assets and liabilities on a certain date. 
+                                  </h5>
+                                  <Table striped bordered hover>
+                                      <thead>
+                                          <tr>
+                                              <th>{this.balanceSheetHeader.key}</th>
+                                              <th>{this.balanceSheetHeader.value}</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {this.balanceSheet.map(this.renderRow)}
+                                      </tbody>
+                                  </Table>
+                              </Tab>
+                              <Tab eventKey={"cash_flow"} title="Cash Flow" className="nav nav-tabs justify-content-center  custom-tab">
+                                  <h5 style={{"margin":"10px"}}>
+                                  This shows if a company is cash flow negative or positive over a period of time. 
+                                  </h5>
+                                  <Table striped bordered hover>
+                                      <thead>
+                                          <tr>
+                                              <th>{this.cashFlowHeader.key}</th>
+                                              <th>{this.cashFlowHeader.value}</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          {this.cashFlow.map(this.renderRow)}
+                                      </tbody>
+                                  </Table>
+                              </Tab>
+                          </Tabs>
+                          </Tab.Pane>
+                          <Tab.Pane eventKey="business">Coming Soon!
+                          </Tab.Pane>
+                          <Tab.Pane eventKey="risks">Coming Soon!
+                          </Tab.Pane>
+                      </Tab.Content>
+                      </Col>
+                  </Row>
+                  </Tab.Container>
+              </div>
             </div>
+        </div>
         )
         }   
     }

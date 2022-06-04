@@ -1,11 +1,14 @@
 import './App.css';
-import SuperTable from './SuperTable';
+
 import Autocomplete from './Autocomplete';
+import FrontPage from './FrontPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInAnonymously } from "firebase/auth";
+import DataPage from './DataPage';
+import BottomPage from './BottomPage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
@@ -102,12 +105,13 @@ function App() {
     if(tickerList.length === 0){ 
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
-      })     
+      })
     }
     if(currentCompany !== company){
     }
   });
 
+  if(typeof companyDict === "undefined" && typeof company === "undefined"){
     return (
       <div>
         <nav className="navbar fixed-top navbar-light bg-primary blue-nav" style={{"paddingTop":"2px","paddingBottom":"2px"}}>
@@ -126,10 +130,36 @@ function App() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          <SuperTable company={company} companyDict={companyDict} yearList={yearList} currentYear={currentYear}/>
+          <FrontPage/>
         </div>
+        <BottomPage/>
+      </div>
+    );
+  }else{
+    return (
+      <div>
+        <nav className="navbar fixed-top navbar-light bg-primary blue-nav" style={{"paddingTop":"2px","paddingBottom":"2px"}}>
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#home">
+              <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
+            </a>
+            <form className="form-inline">
+              <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
+            </form>
+            <div></div>
+          </div>
+        </nav>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <DataPage company={company} companyDict={companyDict} yearList={yearList} currentYear={currentYear}/>
+        </div>
+        <BottomPage/>
       </div>
     );
   }
+}
 
 export default App;
