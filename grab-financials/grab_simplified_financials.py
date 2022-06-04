@@ -10,6 +10,7 @@ from xbrl_var import *
 from analyze_simple_financials import *
 import time
 import copy
+from datetime import datetime
 
 headers = {
     'User-Agent': 'Stock Boy',
@@ -28,14 +29,41 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 
-def set_simplified_data_to_firestore(simplified_data, company_key):
-  doc_ref = db.collection(u'stock_data').document(company_key).set({
+def set_simplified_data_to_firestore(simplified_data, cik):
+  # doc_ref = db.collection(u'stock_data').document(company_key).set({
+  #     "simplified": simplified_data # data dict includes multiple years to no need to include in key
+  #   }, merge=True)
+  doc_ref = db.collection(u'data').document(str(cik)).set({
       "simplified": simplified_data # data dict includes multiple years to no need to include in key
     }, merge=True)
 
-def set_analyzed_data_to_firestore(analyzed_data, company_key):
-  doc_ref = db.collection(u'stock_data').document(company_key).set({
+def set_analyzed_data_to_firestore(analyzed_data, cik):
+  # doc_ref = db.collection(u'stock_data').document(company_key).set({
+  #     "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
+  #   }, merge=True)
+  doc_ref = db.collection(u'data').document(cik).set({
       "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
+    }, merge=True)
+
+# sets up an update in firestore to store the date of the update and the old and new data
+# MUST BE DONE BEFORE UPDATING FIRESTORE WITH NEW ANALYZED DATA
+def set_updates_in_firestore(analyzed_data, cik):
+  doc_ref = db.collection(u'data').document(cik)
+
+  doc = doc_ref.get()
+  old_analyzed = doc.to_dict()["analyzed"]
+
+  currentMonth = datetime.now().month
+  currentYear = datetime.now().year
+  date = str(currentYear) + "-" + str(currentMonth)
+
+  new_dict= {
+    "old": old_analyzed,
+    "new": analyzed_data
+  }
+
+  doc_ref = db.collection(u'updates').document(date).set({
+      cik : new_dict
     }, merge=True)
 
 def grab_year_from_frame(frame):
@@ -161,8 +189,6 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
 
   content = json.loads(response.content)
   # print(content)
-
-  cik = content['cik'] # add zeroes to left until 10 digits
   data = content['facts']['us-gaap']
 
   # simplified values
@@ -172,13 +198,18 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   analyzed_dict = analyze_simple_financials(data_dict)
 
   # adding simplified dict to firestore
-  set_simplified_data_to_firestore(data_dict, company_name)
+  set_simplified_data_to_firestore(data_dict, cik)
   print('simplified dict added for: ' + company_name)
 
-  # print(analyzed_dict)
+  # updates shouldn't happen for any testing, only in production when a new row in the idx is found
+  update = False
+
+  if update:
+    set_updates_in_firestore(analyzed_dict, cik)
+    print('added update for: ' + company_name)
 
   # adding analyzed dict to firestore
-  set_analyzed_data_to_firestore(analyzed_dict, company_name)
+  set_analyzed_data_to_firestore(analyzed_dict, cik)
   print('analyzed dict added for: ' + company_name)
 
 
@@ -217,7 +248,7 @@ for item in download:
 print("num failures: " + str(failures))
 
 # transformations that need to be done from idx to my functions
-# cik = '103145'.zfill(10)
-# company_name = 'VEECO INSTRUMENTS INC'.lower().replace('/','')
+# cik = '320193'.zfill(10)
+# company_name = 'Apple Inc.'.lower().replace('/','')
 
 # get_simplified_data(cik, company_name)

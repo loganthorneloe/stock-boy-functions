@@ -21,7 +21,6 @@ Federal Home Loan Bank of Indianapolis: https://www.sec.gov/Archives/edgar/data/
 Federal Home Loan Bank of Dallas: https://www.sec.gov/Archives/edgar/data/1331757/000133175721000011/FilingSummary.xml working statements: income_statement cash_flow 
 MANAGED FUTURES PREMIER WARRINGTON L.P.: https://www.sec.gov/Archives/edgar/data/1353282/000156459021013478/FilingSummary.xml working statements: balance_sheet income_statement 
 Predictive Oncology Inc.: https://www.sec.gov/Archives/edgar/data/1446159/000117184321001786/FilingSummary.xml working statements: balance_sheet cash_flow 
-VIVOS INC:  10k link failure
 Aberdeen Standard Silver ETF Trust: https://www.sec.gov/Archives/edgar/data/1450922/000138713121002999/FilingSummary.xml working statements: income_statement 
 Aberdeen Standard Gold ETF Trust: https://www.sec.gov/Archives/edgar/data/1450923/000138713121003000/FilingSummary.xml working statements: income_statement 
 Aberdeen Standard Palladium ETF Trust: https://www.sec.gov/Archives/edgar/data/1459862/000138713121002996/FilingSummary.xml working statements: income_statement 
@@ -59,7 +58,6 @@ AEP Texas Restoration Funding LLC: https://www.sec.gov/Archives/edgar/data/17750
 MultiPlan Corp: https://www.sec.gov/Archives/edgar/data/1793229/000179322921000004/FilingSummary.xml working statements: balance_sheet cash_flow 
 Vincerx Pharma, Inc.: https://www.sec.gov/Archives/edgar/data/1796129/000119312521089563/FilingSummary.xml working statements: balance_sheet cash_flow 
 Laser Photonics Corp: https://www.sec.gov/Archives/edgar/data/1807887/000165495421003360/FilingSummary.xml working statements: balance_sheet cash_flow 
-DBJPM 2020-C9 Mortgage Trust:  10k link failure
 Sarissa Capital Acquisition Corp.: https://www.sec.gov/Archives/edgar/data/1821682/000119312521102339/FilingSummary.xml working statements: income_statement cash_flow 
 Arthur J. Gallagher & Co.: https://www.sec.gov/Archives/edgar/data/354190/000156459021004555/FilingSummary.xml working statements: balance_sheet cash_flow 
 DUKE ENERGY FLORIDA, LLC.: https://www.sec.gov/Archives/edgar/data/37637/000166937421000016/FilingSummary.xml working statements: 
@@ -74,18 +72,3 @@ USA TRUCK INC: https://www.sec.gov/Archives/edgar/data/883945/000088394521000008
 OLD DOMINION ELECTRIC COOPERATIVE: https://www.sec.gov/Archives/edgar/data/885568/000156459021013460/FilingSummary.xml working statements: balance_sheet cash_flow 
 NESTOR PARTNERS: https://www.sec.gov/Archives/edgar/data/888471/000182912621001915/FilingSummary.xml working statements: balance_sheet income_statement 
 BALL Corp: https://www.sec.gov/Archives/edgar/data/9389/000155837021001121/FilingSummary.xml working statements: balance_sheet cash_flow 
-VanEck Merk Gold Trust: https://www.sec.gov/Archives/edgar/data/1546652/000121390021021828/FilingSummary.xml working statements: income_statement 
-Gyrodyne, LLC: https://www.sec.gov/Archives/edgar/data/1589061/000143774921008826/FilingSummary.xml working statements: 
-NEXTGEN HEALTHCARE, INC.: https://www.sec.gov/Archives/edgar/data/708818/000156459021030107/FilingSummary.xml working statements: balance_sheet cash_flow 
-Utilicraft Aerospace Industries, Inc.: https://www.sec.gov/Archives/edgar/data/1334740/000147793221004880/FilingSummary.xml working statements: balance_sheet income_statement 
-Sonoma Pharmaceuticals, Inc.: https://www.sec.gov/Archives/edgar/data/1367083/000168316821002977/FilingSummary.xml working statements: balance_sheet cash_flow 
-GraniteShares Gold Trust: https://www.sec.gov/Archives/edgar/data/1690437/000149315221019645/FilingSummary.xml working statements: income_statement 
-GraniteShares Platinum Trust: https://www.sec.gov/Archives/edgar/data/1690842/000149315221019650/FilingSummary.xml working statements: income_statement 
-Grayscale Digital Large Cap Fund LLC: https://www.sec.gov/Archives/edgar/data/1729997/000156459021048888/FilingSummary.xml working statements: income_statement 
-Woodbridge Liquidation Trust: https://www.sec.gov/Archives/edgar/data/1785494/000114036121032502/FilingSummary.xml working statements: 
-ESPEY MFG & ELECTRONICS CORP: https://www.sec.gov/Archives/edgar/data/33533/000117494721000861/FilingSummary.xml working statements: balance_sheet cash_flow 
-Red Cat Holdings, Inc.: https://www.sec.gov/Archives/edgar/data/748268/000155479521000273/FilingSummary.xml working statements: balance_sheet cash_flow 
-AUTOMATIC DATA PROCESSING INC: https://www.sec.gov/Archives/edgar/data/8670/000000867021000027/FilingSummary.xml working statements: balance_sheet cash_flow 
-Aramark: https://www.sec.gov/Archives/edgar/data/1584509/000158450921000256/FilingSummary.xml working statements: balance_sheet cash_flow 
-ASHLAND GLOBAL HOLDINGS INC: https://www.sec.gov/Archives/edgar/data/1674862/000095017021004843/FilingSummary.xml working statements: balance_sheet cash_flow 
-DAILY JOURNAL CORP: https://www.sec.gov/Archives/edgar/data/783412/000143774921028861/FilingSummary.xml working statements: balance_sheet cash_flow 
