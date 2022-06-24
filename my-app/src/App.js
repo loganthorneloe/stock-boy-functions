@@ -4,11 +4,15 @@ import Autocomplete from './Autocomplete';
 import FrontPage from './FrontPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
+import { getFirestore, doc, getDoc, collection, getDocs, limit, query, startAfter } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import DataPage from './DataPage';
 import BottomPage from './BottomPage';
+import { prelim_tickers } from  './Tickers';
+// import { collection, query, getDocs } from "firebase/firestore";
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
@@ -34,82 +38,111 @@ signInAnonymously(auth)
 
 var currentCompany = ''
 
-function setDocToList(doc){
-  var ticker_list = []
-  for (const [key, value] of Object.entries(doc.data())) {
-    if(value !== "null" && !(value.toString().toLowerCase().includes('cik') && value.length > 4)){
-      var new_string = key + ": " + value
-    }else{
-      new_string = key
-    }
-    ticker_list.push(new_string)
-  }
-  return ticker_list
-}
-
 async function retrieveTickerData(){
-  return getDoc(doc(db, 'single_data', 'trading_symbols')).then(docSnap => { // this is calling twice per page load
-    if (docSnap.exists()) {
-      // console.log("Ticker document data:", docSnap.data());
-    } else {
-      console.log("No such document for tickers!");
+  var ticker_list = []
+  console.log('getting tickers')
+
+  const q1 = query(collection(db, "tickers"), limit(4000))
+  const querySnapshot1 = await getDocs(q1);
+  const lastVisible1 = querySnapshot1.docs[querySnapshot1.docs.length-1];
+  console.log('batch 1')
+  const q2 = query(collection(db, "tickers"), startAfter(lastVisible1), limit(4000))
+  const querySnapshot2 = await getDocs(q2);
+  const lastVisible2 = querySnapshot2.docs[querySnapshot2.docs.length-1];
+  console.log('batch 2')
+  const q3 = query(collection(db, "tickers"), startAfter(lastVisible2), limit(4000))
+  const querySnapshot3 = await getDocs(q3);
+  console.log('batch 3')
+
+  querySnapshot1.forEach((doc) => {
+    for (const [key, value] of Object.entries(doc.data())) {
+      if (value === "null"){
+        ticker_list.push(key + '?' + doc.id)
+      }else{
+        ticker_list.push(key + ':' + value + '?' + doc.id )
+      }
     }
-    return setDocToList(docSnap)
   });
+  querySnapshot2.forEach((doc) => {
+    for (const [key, value] of Object.entries(doc.data())) {
+      if (value === "null"){
+        ticker_list.push(key + '?' + doc.id)
+      }else{
+        ticker_list.push(key + ':' + value + '?' + doc.id )
+      }
+    }
+  });
+  querySnapshot3.forEach((doc) => {
+    for (const [key, value] of Object.entries(doc.data())) {
+      if (value === "null"){
+        ticker_list.push(key + '?' + doc.id)
+      }else{
+        ticker_list.push(key + ':' + value + '?' + doc.id )
+      }
+    }
+  });
+  console.log('ticker list length:' + ticker_list.length)
+  return ticker_list;
 }
 
-async function retrieveCompanyData(company_name){
-  return getDoc(doc(db, 'stock_data', company_name)).then(docSnap => { // this is calling twice per page load
-    if (docSnap.exists()) {
-      //console.log("Company document data:", docSnap.data());
-    } else {
-      console.log("No such document with name: ", company_name);
-    }
-    return docSnap.data()
-  });
+async function retrieveCompanyData(cik){
+  console.log(cik)
+  var data = {}
+  console.log(cik)
+  const docRef = doc(db, "data_v2", cik)
+  const docSnap = await getDoc(docRef)
+  if (docSnap.exists()) {
+    data["data"] = docSnap.data()
+  } else {
+    data["data"] = "undefined"
+    console.log("No such document with name: ", cik);
+  }
+  const docRef2 = doc(db, "financial_links", cik)
+  const docSnap2 = await getDoc(docRef2)
+  if (docSnap2.exists()) {
+    data["financials"] = docSnap2.data()
+  } else {
+    data["financials"] = "undefined"
+    console.log("No such document with name: ", cik);
+  }
+  return data
 }
 
 function App() {
 
   const [tickerList, setTickerList] = useState([]);
   const [company, setCompany] = useState();
-  const [companyDict, setCompanyDict] = useState();
-  const [currentYear, setCurrentYear] = useState();
-  const [yearList, setYearList] = useState();
+  const [companyFinancialsDict, setCompanyFinancialsDict] = useState();
+  const [companyDataDict, setCompanyDataDict] = useState();
 
-  const determineYears = (new_dict) => {
-    if(typeof new_dict == "undefined" || new_dict == null){
-        return
-    }
-    var keys_to_use = Object.keys(new_dict)
-    var years_arr = []
-    for (var i = 0; i < keys_to_use.length; i++){
-        var split_key_array = keys_to_use[i].split('_')
-        years_arr.push(split_key_array[0])
+  const pull_data = (selection) => {
+    console.log(selection)
+    var split_selection = selection.split("\n")
+    if(split_selection.length !== 2){
+      split_selection = selection.split("?")
     }
     
-    setYearList(years_arr)
-    setCurrentYear(years_arr[years_arr.length-1])
-  }
-
-  const pull_data = (data) => {
-    retrieveCompanyData(data.split(":")[0]).then(new_dict =>{
-      setCompanyDict(new_dict)
-      setCompany(data)
-      determineYears(new_dict)
-    })    
+    retrieveCompanyData(split_selection[1]).then(new_dict =>{
+      setCompany(split_selection[0])
+      console.log('setting company financials')
+      setCompanyFinancialsDict(new_dict["financials"])
+      setCompanyDataDict(new_dict["data"])
+    })
+    console.log('finished retrieving selection')
   }
 
   // Use an effect to load the ticker list from the database
   useEffect(() => {
-    if(tickerList.length === 0){ 
+    if(tickerList.length === 0){
+      setTickerList(prelim_tickers)
+      console.log('set prelim tickers')
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
       })
     }
     if(currentCompany !== company){
     }
-  });
+  }, [tickerList.length, company]);
 
   if(typeof companyDict === "undefined" && typeof company === "undefined"){
     return (
@@ -154,7 +187,7 @@ function App() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          <DataPage company={company} companyDict={companyDict} yearList={yearList} currentYear={currentYear}/>
+          <DataPage company={company} companyFinancialsDict={companyFinancialsDict} companyDataDict={companyDataDict}/>
         </div>
         <BottomPage/>
       </div>

@@ -6,6 +6,26 @@ import { Accordion } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faO, faX, faBan, faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { Line } from "react-chartjs-2"
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 library.add(faCheck, faO, faX, faBan, faCircleQuestion)
 
@@ -164,38 +184,41 @@ export class LittleTable extends Component {
       this.known_analyzed2 = []
       this.unknown_analyzed1 = []
       this.unknown_analyzed2 = []
-      // this.comparables1 = []
-      // this.comparables2 = []
-
       this.generateAnalyzedData()
     }
 
     componentDidUpdate(prevProps) {
-      if (prevProps.company !== this.props.company) {
-          this.generateAnalyzedData()
-          this.forceUpdate()
+      if (prevProps.companyDataDict !== this.props.companyDataDict || prevProps.company !== this.props.company) {
+        this.generateAnalyzedData()
+        this.forceUpdate()
       }
     }
 
+    retrieveLatestYearValue(data){
+      var returnVal = 0
+      for (const [key, value] of Object.entries(data)) {
+        if (value!==0 && value!=='N/A'){
+          returnVal = value
+        }
+      }
+      return returnVal
+    }
+
     generateAnalyzedData(){
-      if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
+      if(typeof this.props.companyDataDict == "undefined" || this.props.companyDataDict == null){
         return
       }
-      if ("analyzed" in this.props.companyDict){
-        var analyzed = this.props.companyDict["analyzed"]
+      if ("analyzed" in this.props.companyDataDict){
+        var analyzed = this.props.companyDataDict["analyzed"]
         var known_analyzed = []
         var unknown_analyzed = []
 
         for (const [key, value] of Object.entries(analyzed_dict)) {
           var factor_data = analyzed[key]
           if (factor_data["color"] === "N/A"){
-            unknown_analyzed.push({key: value["label"], color: factor_data["color"], target: factor_data[value["key"]], desc: value["desc"], goal: value["target"], goalType: value["key"]})
+            unknown_analyzed.push({key: value["label"], color: factor_data["color"], value: this.retrieveLatestYearValue(factor_data["data"]), desc: value["desc"], target: value["target"], trend: factor_data["trend"], data: factor_data["data"]})
           }else{
-            if (value["key"] === "trend"){
-              known_analyzed.push({key: value["label"], color: factor_data["color"], target: factor_data[value["key"]], desc: value["desc"], goal: value["target"], goalType: "Trend"})
-            }else{
-              known_analyzed.push({key: value["label"], color: factor_data["color"], target: factor_data[value["key"]], desc: value["desc"], goal: value["target"], goalType: "Value"})
-            }
+            known_analyzed.push({key: value["label"], color: factor_data["color"], value: this.retrieveLatestYearValue(factor_data["data"]), desc: value["desc"], target: value["target"], trend: factor_data["trend"], data: factor_data["data"]})
           }
         }
 
@@ -222,6 +245,34 @@ export class LittleTable extends Component {
     }
 
     renderRow(new_list_row) {
+
+      function renderChart(dict){
+        const options = {
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+        
+        var labels = Object.keys(dict);
+        
+        const data = {
+          labels,
+          datasets: [
+            {
+              data: dict,
+              borderColor: 'rgb(0, 0, 0)',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            }
+          ],
+        }
+  
+        return (
+          <Line options={options} data={data} />
+        )
+      }
+
       if(new_list_row.color === "green"){
         return (
           <Accordion defaultActiveKey="0" style ={{background: '#bfe3b4', "margin":"1px" }} flush>
@@ -230,13 +281,16 @@ export class LittleTable extends Component {
                 <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":"1em" }}/> {new_list_row.key}
               </Accordion.Header>
               <Accordion.Body>
-                  <strong>{new_list_row.goalType}: {parseFloat(new_list_row.target).toLocaleString()}</strong>
-                  <div></div>
-                  <strong>Target: {new_list_row.goal}</strong>
-                  <div></div>
-                  {new_list_row.desc}  
+                <h6>Value: <strong>{parseFloat(new_list_row.value).toLocaleString()}</strong></h6>
+                <div></div>
+                <h6>Trend: <strong>{parseFloat(new_list_row.trend).toLocaleString()}</strong></h6>
+                <div></div>
+                <h6>Target: <strong>{new_list_row.target}</strong></h6>
+                <div></div>
+                {new_list_row.desc}
+                {renderChart(new_list_row.data)} 
               </Accordion.Body>
-            </Accordion.Item> 
+            </Accordion.Item>
           </Accordion>
         )
       }
@@ -248,11 +302,14 @@ export class LittleTable extends Component {
                 <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":"1em" }}/> {new_list_row.key}
               </Accordion.Header>
               <Accordion.Body>
-                  <strong>{new_list_row.goalType}: {parseFloat(new_list_row.target).toLocaleString()}</strong>
-                  <div></div>
-                  <strong>Target: {new_list_row.goal}</strong>
-                  <div></div>
-                  {new_list_row.desc}    
+                Value: <strong>{parseFloat(new_list_row.value).toLocaleString()}</strong>
+                <div></div>
+                Trend: <strong>{parseFloat(new_list_row.trend).toLocaleString()}</strong>
+                <div></div>
+                Target: <strong>{new_list_row.target}</strong>
+                <div></div>
+                {new_list_row.desc}
+                {renderChart(new_list_row.data)} 
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -266,11 +323,14 @@ export class LittleTable extends Component {
                 <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":"1em" }}/> {new_list_row.key}
               </Accordion.Header>
               <Accordion.Body>
-                  <strong>{new_list_row.goalType}: {parseFloat(new_list_row.target).toLocaleString()}</strong>
-                  <div></div>
-                  <strong>Target: {new_list_row.goal}</strong>
-                  <div></div>
-                  {new_list_row.desc}   
+                Value: <strong>{parseFloat(new_list_row.value).toLocaleString()}</strong>
+                <div></div>
+                Trend: <strong>{parseFloat(new_list_row.trend).toLocaleString()}</strong>
+                <div></div>
+                Target: <strong>{new_list_row.target}</strong>
+                <div></div>
+                {new_list_row.desc}
+                {renderChart(new_list_row.data)} 
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -294,8 +354,8 @@ export class LittleTable extends Component {
       if (this.known_analyzed1.length === 0){
         return(
           <div>
-            <Alert variant='primary'>
-              Fundamental Analysis for this stock coming soon! Check out the financial statements below in the meantime. Did you expect this analysis to already be here? Check if the company has filed under a different name.
+            <Alert variant='success'>
+              Fundamental Analysis for this stock coming soon! Check out the financial statements below in the meantime.
             </Alert>
           </div>
         );

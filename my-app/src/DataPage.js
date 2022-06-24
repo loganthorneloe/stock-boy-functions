@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LittleTable from './LittleTable';
-import SuperTable from './SuperTable';
+import FinancialLinks from './FinancialLinks';
 import Row from 'react-bootstrap/Row'
 import OverviewBar from "./OverviewBar";
 import { Accordion, Alert } from "react-bootstrap";
@@ -24,25 +24,25 @@ export class DataPage extends Component {
                   </Row>
                   <Accordion defaultActiveKey="1" flush>
                     <Accordion.Item eventKey="1">
-                      <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-sack-dollar fa-xl" style ={{color: 'black', "marginRight":"1em" }}/><strong>Show Fundamental Analysis (Beta)</strong></Accordion.Header>
+                      <Accordion.Header><strong><FontAwesomeIcon icon="fa-solid fa-chart-line fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>Fundamental Analysis (Beta)</strong></Accordion.Header>
                       <Accordion.Body>
                         <Row className="justify-content-md-center">
-                          <Alert variant= 'success' width="80%">
+                          <Alert variant= 'primary' width="80%">
                             The below analysis automates research of stock fundamentals for retail investors to find companies that have a durable, competitive advantage and are considered good investments. The below factors are analyzed according to Warren Buffett's strategy in the book "Warren Buffett and the Interpreration of Financial Statements". Data is taken directly from the SEC. The analysis is still in the beta stage and may be incorrect or incomplete.
                           </Alert>
                         </Row>
                         <Row style={{"marginBottom":"1em"}}>
-                          <OverviewBar companyDict = {this.props.companyDict} company= {this.props.company}/>
+                          <OverviewBar companyDataDict = {this.props.companyDataDict}/>
                         </Row>
                         <Row>
-                          <LittleTable companyDict = {this.props.companyDict} company= {this.props.company}/>
+                          <LittleTable companyDataDict = {this.props.companyDataDict} company= {this.props.company}/>
                         </Row>
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
                   <Accordion defaultActiveKey="0" flush>
                     <Accordion.Item eventKey="1">
-                      <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-chart-line fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>Show Financial Statements</Accordion.Header>
+                      <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-sack-dollar fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>Financial Statements</Accordion.Header>
                       <Accordion.Body>
                         <Row className="justify-content-md-center">
                           <Alert variant= 'primary' width="80%">
@@ -50,7 +50,8 @@ export class DataPage extends Component {
                           </Alert>
                         </Row>
                         <Row>
-                          <SuperTable company={this.props.company} companyDict={this.props.companyDict} yearList={this.props.yearList} currentYear={this.props.currentYear}/>
+                          <FinancialLinks company={this.props.company} companyDict={this.props.companyFinancialsDict}/>
+                          {/* <SuperTable company={this.props.company} companyDict={this.props.companyDict} yearList={this.props.yearList} currentYear={this.props.currentYear}/> */}
                         </Row>
                       </Accordion.Body>
                     </Accordion.Item>

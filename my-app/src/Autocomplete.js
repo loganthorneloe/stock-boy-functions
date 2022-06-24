@@ -19,10 +19,6 @@ class Autocomplete extends Component {
     const { suggestions } = this.props;
     const lowerSuggestions = suggestions.map(s => s.toLowerCase())
     const userInput = e.currentTarget.value.toLowerCase();
-    // const filteredSuggestions = suggestions.filter(
-    //   suggestion =>
-    //     suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    // );
     this.setState({
       showEndStatement: false
     });
@@ -121,7 +117,9 @@ class Autocomplete extends Component {
                 }
                 return (
                   <li className={className} key={suggestion} onClick={onClick}>
-                    {suggestion}
+                    <strong>{suggestion.split('?')[0]}</strong>
+                    <div></div>
+                    {suggestion.split('?')[1]}
                   </li>
                 );
               })}

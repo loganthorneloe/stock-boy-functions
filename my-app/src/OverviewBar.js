@@ -19,19 +19,18 @@ export class OverviewBar extends Component {
     }
 
     componentDidUpdate(prevProps) {
-      if (prevProps.company !== this.props.company) {
-
-          this.generateColors()
-          this.forceUpdate()
+      if (prevProps.companyDataDict !== this.props.companyDataDict) {
+        this.generateColors()
+        this.forceUpdate()
       }
     }
 
     generateColors(){
-      if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
+      if(typeof this.props.companyDataDict == "undefined" || this.props.companyDataDict == null){
         return
       }
-      if ("analyzed" in this.props.companyDict){
-        var analyzed = this.props.companyDict["analyzed"]
+      if ("analyzed" in this.props.companyDataDict){
+        var analyzed = this.props.companyDataDict["analyzed"]
         this.green = analyzed["green"]
         this.red = analyzed["red"]
         this.neutral = analyzed["neutral"]

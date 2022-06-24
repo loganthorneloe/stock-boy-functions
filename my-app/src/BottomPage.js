@@ -22,7 +22,7 @@ export class FrontPage extends Component {
           <div className="row justify-content-center">
             <div className= "col-sm-6" align="center">
               <Card.Body>
-                <p style={{"marginTop":"-20px"}}><strong>Stock Boy runs on Patron support!</strong> Become a Patron and help keep Stock Boy free. Plus, you'll receive a monthly email update on which stock fundamentals have changed and access to an Ebook detailing Stock Boy's investment strategy.</p> 
+                <p style={{"marginTop":"-20px"}}><strong>Stock Boy runs on Patron support!</strong> Become a Patron and help keep Stock Boy free.</p> 
               </Card.Body>
             </div>
           </div>
