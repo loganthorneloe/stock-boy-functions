@@ -358,18 +358,18 @@ with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r
 
 count = 0
 
-start_item = "NANOVIRICIDES, INC."
-start = True
+start_item = "Rocky Mountain Industrials, Inc."
+start = False
 
 #build the first part of the url
 for item in download:
   
   # for testing specific companies
-  # if start_item in item:
-  #   start = True
+  if start_item in item:
+    start = True
 
-  # if not start:
-  #   continue
+  if not start:
+    continue
 
   # if "TESLA MOTORS INC" not in item:
   #   continue

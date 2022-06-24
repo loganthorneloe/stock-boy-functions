@@ -2,6 +2,8 @@ from pprint import pprint
 from typing import OrderedDict
 import numpy as np
 
+from datetime import datetime
+
 RED = "red"
 GREEN = "green"
 NEUTRAL = "neutral"
@@ -37,7 +39,7 @@ def analyze_simple_financials(data_dict):
   ret_dict[NA] = 0
   profit_margin_analysis(data_dict, ret_dict)
   admin_analysis(data_dict, ret_dict)
-  research_analysis(data_dict, ret_dict)
+  research_analysis(data_dict, ret_dict) # float object is not subscriptable exception here with aapl
   depreciation_analysis(data_dict, ret_dict)
   interest_expense_analysis(data_dict, ret_dict)
   income_tax_analysis(data_dict, ret_dict)
@@ -60,38 +62,68 @@ def analyze_simple_financials(data_dict):
   return_on_shareholders_equity_analysis(data_dict, ret_dict)
   capital_expenditures_analysis(data_dict, ret_dict)
   dividends_analysis(data_dict, ret_dict)
-  # pprint(data_dict)
-  # pprint(ret_dict)
   print("GREEN: " + str(ret_dict[GREEN]))
   print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
   print("RED: " + str(ret_dict[RED]))
   print("N/A: " + str(ret_dict[NA]))
-  print(len(ret_dict.keys()))
+  # print(len(ret_dict.keys()))
+  print(ret_dict)
 
   return ret_dict
+
+'''
+analysis plan
+dict of year:values
+trend for values
+info = {}
+info["data"] = {year, calculated_value}
+info["trend"] = value
+info["color"] = GREEN, RED, NEUTRAL based on analysis characteristics
+'''
+
+def create_empty_years_dict():
+  values_dict = {}
+  currentYear = datetime.now().year
+
+  # creates an empty values dict to fill values that are there
+  for i in range(0,11):
+    values_dict[str(currentYear-10+i)] = NA
+  return values_dict
+
 
 def profit_margin_analysis(data_dict, ret_dict):
   
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["profit_margin"], data_dict["revenue"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
 
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    # calculate color
+    if len(values_list) != 0:
+      target = values_list[-1]
       info["color"] = NEUTRAL
 
-      if info["target"] > .40:
+      if target > .40:
         info["color"] = GREEN
-      elif info["target"] < .20:
+      elif target < .20:
         info["color"] = RED
 
   except Exception as e:
@@ -103,30 +135,40 @@ def profit_margin_analysis(data_dict, ret_dict):
 def admin_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["admin"], data_dict["profit_margin"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
-      
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    # color calculation
+    if len(values_list) != 0:
+      value = values_list[-1]
       info["color"] = NEUTRAL
 
-      if info["target"] < .30:
+      if value < .30:
         info["color"] = GREEN
-      elif info["target"] > .80:
+      elif value > .80:
         info["color"] = RED
 
-      if info["target"] < 0: # this means we have a negative profit margin - this is bad
+      if value < 0: # this means we have a negative profit margin - this is bad
         info["color"] = RED
-      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+      if next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative profit margin and can't evaluate further
         info["color"] = NA
   
   except Exception as e:
@@ -138,58 +180,54 @@ def admin_analysis(data_dict, ret_dict):
 def research_analysis(data_dict, ret_dict):
 
   info = {}
-  info["consistent"] = "N/A"
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["research"], data_dict["profit_margin"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
 
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
+      
+      value = values_list[-1]
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+      if next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative profit margin and can't evaluate further
         info["color"] = NA
 
       else:
-        if info["target"] < .20:
+        if value < .20:
           info["color"] = GREEN
 
-        lastest_year = int(info["year"])
-
-        # check for this being consistently healthy over the past decade
-        info["consistent"] = "Yes"
-        consistency_check = []
-
-        for value in list_data:
-          year = int(value[0])
-          if year > lastest_year - 10: # data is too old for accurate analysis
-            consistency_check.append((str(year), value[1][0]/value[1][1]))
-
-        if len(consistency_check) < 5:
-          info["consistent"] = "N/A"
+        if len(values_list) < 5:
           info["color"] = NEUTRAL
 
         else:
-          for value in consistency_check:
-            if value[1] > .20:
-              info["consistent"] = "No"
+          for value in values_list:
+            if value > .20:
               info["color"] = NEUTRAL
 
-          for value in consistency_check:
-            if value[1] > .40:
-              info["consistent"] = "No"
+          for value in values_list:
+            if value > .40:
               info["color"] = RED
 
         # this needs to take precendence for color 
-        if info["target"] > .40:
+        if value > .40:
           info["color"] = RED   
   
   except Exception as e:
@@ -201,28 +239,37 @@ def research_analysis(data_dict, ret_dict):
 def depreciation_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["depreciation"], data_dict["profit_margin"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
 
-      info = {}
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
+      value = values_list[-1]
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+      if next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative profit margin and can't evaluate further
         info["color"] = NA
-      elif info["target"] < .10:
+      elif value < .10:
         info["color"] = GREEN
-      elif info["target"] > .20:
+      elif value > .20:
         info["color"] = RED
 
   except Exception as e:
@@ -234,26 +281,37 @@ def depreciation_analysis(data_dict, ret_dict):
 def interest_expense_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["interest_expense"], data_dict["pre_tax_income"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data)!=0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list)!=0:
+      value = values_list[-1]
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0: # this means pre tax income is negative - can't determine anything from this metric
+      if next(reversed(merged_dict.values()))[1] < 0: # this means pre tax income is negative - can't determine anything from this metric
         info["color"] = NA
-      elif info["target"] < .15:
+      elif value < .15:
         info["color"] = GREEN
-      elif info["target"] > .50:
+      elif value > .50:
         info["color"] = RED
 
   except Exception as e:
@@ -265,27 +323,37 @@ def interest_expense_analysis(data_dict, ret_dict):
 def income_tax_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["income_tax"], data_dict["pre_tax_income"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
 
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
+      value = values_list[-1]
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0: # this means pre tax income is negative - can't determine anything from this metric
+      if next(reversed(merged_dict.values()))[1] < 0: # this means pre tax income is negative - can't determine anything from this metric
         info["color"] = NA
-      elif info["target"] > .20:
+      elif value > .20:
         info["color"] = GREEN
-      elif info["target"] < .05:
+      elif value < .05:
         info["color"] = RED
 
   except Exception as e:
@@ -297,53 +365,49 @@ def income_tax_analysis(data_dict, ret_dict):
 def net_income_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
-  info["color"] = NA
+  info["data"] = {}
   info["trend"] = "N/A"
+  info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["net_income"], data_dict["revenue"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    # calculate the color
+    if len(values_list) != 0:
+      value = values_list[-1]
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0: # this means we have a negative revenue and this is bad
+      if next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative revenue and this is bad
         info["color"] = RED
 
       else:
-        if info["target"] > .20:
+        if value > .20:
           info["color"] = GREEN
-
-        lastest_year = int(info["year"])
-
-        count = 1
-        index = []
-        new_data = []
-        for value in list_data:
-          year = int(value[0])
-          if year > lastest_year - 10: # data is too old for accurate analysis
-            index.append(count)
-            count += 1
-            new_data.append(value[1][0]/value[1][1])
-
-        if len(new_data) > 5:
-          trend = trendline(index, new_data)
-          info["trend"] = trend
-          if trend < 0:
+        if len(values_list) >= 5:
+          if info["trend"] < 0:
             info["color"] = RED
-          elif trend == 0:
+          elif info["trend"] == 0:
             info['color'] = NEUTRAL
         else:
           info['color'] = NA
 
         # this takes precedence
-        if info["target"] < .10:
+        if value < .10:
           info["color"] = RED
 
   except Exception as e:
@@ -355,42 +419,39 @@ def net_income_analysis(data_dict, ret_dict):
 def per_share_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
-  info["color"] = NA
+  info["data"] = {}
   info["trend"] = "N/A"
+  info["color"] = NA
 
   try:
 
     earnings = data_dict["earnings_per_share"]
-    list_data = list(earnings.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    negative_eps = False
+    for key in values_dict.keys():
+      if key in earnings:
+        values_dict[key] = earnings[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+        if values_dict[key] < 0:
+          negative_eps = True
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = GREEN
-      lastest_year = int(list_data[-1][0])
 
-      count = 1
-      index = []
-      new_data = []
-      negative_eps = False
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 5: # analyze past 5 years for a trend
-          index.append(count)
-          count += 1
-          new_data.append(value[1])
-        if year > lastest_year - 10:
-          if value[1] < 0:
-            negative_eps = True # we don't want any negative eps
-
-      if len(new_data) < 5:
-        info["trend"] = "N/A"
+      if len(index) < 5:
         info["color"] = NA
       else:
-        trend = trendline(index, new_data)
-        info["trend"] = trend
-        if trend < 0:
+        if info["trend"] < 0:
           info["color"] = NEUTRAL
       if negative_eps:
         info["color"] = RED
@@ -404,32 +465,36 @@ def per_share_analysis(data_dict, ret_dict):
 def short_term_cash_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
-    earnings = data_dict["cash_and_equivalents"]
-    list_data = list(earnings.items())
+    cash = data_dict["cash_and_equivalents"]
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    negative_cash = False
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in cash:
+        values_dict[key] = cash[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+        if values_dict[key] < 0:
+          negative_cash = True
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = GREEN
-      lastest_year = int(list_data[-1][0])
-      info["target"] = list_data[-1][1]
 
-      count = 0
-      negative_cash = False
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10:
-          count += 1
-          if value[1] < 0:
-            negative_cash = True # we don't want any negative cash
-
-      if count < 5:
-        info["target"] = "N/A"
+      if len(index) < 5:
         info["color"] = NA
 
       if negative_cash:
@@ -444,42 +509,38 @@ def short_term_cash_analysis(data_dict, ret_dict):
 def inventory_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
-  info["color"] = NA
+  info["data"] = {}
   info["trend"] = "N/A"
+  info["color"] = NA
 
   try:
 
-    earnings = data_dict["inventory"]
-    list_data = list(earnings.items())
+    inventory = data_dict["inventory"]
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in inventory:
+        values_dict[key] = inventory[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = GREEN
-      lastest_year = int(list_data[-1][0])
-      info["target"] = list_data[-1][1]
 
-      count = 0
-      index = []
-      new_data = []
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10:
-          index.append(count)
-          count += 1
-          new_data.append(value[1])
-
-      if len(new_data) < 5:
-        info["trend"] = "N/A"
+      if len(index) < 5:
         info["color"] = NA
       else:
-        trend = trendline(index, new_data)
-        info["trend"] = trend
-        if trend < 0:
+        if info["trend"] < 0:
           info["color"] = RED
 
-      if info["target"] < 0:
+      if values_list[-1] < 0:
         info["color"] = RED
 
   except Exception as e:
@@ -491,24 +552,33 @@ def inventory_analysis(data_dict, ret_dict):
 def net_receivable_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["accounts_receivables"], data_dict["revenue"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
 
-      info = {}
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
+
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0: # this means we have a negative profit margin and can't evaluate further
+      if next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative profit margin and can't evaluate further
         info["color"] = NA
 
   except Exception as e:
@@ -520,19 +590,30 @@ def net_receivable_analysis(data_dict, ret_dict):
 def property_value_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
-    earnings = data_dict["property_value"]
-    list_data = list(earnings.items())
+    property_values = data_dict["property_value"]
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in property_values:
+        values_dict[key] = property_values[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = NEUTRAL
-      info["target"] = list_data[-1][1]
 
   except Exception as e:
     print(e)
@@ -543,39 +624,35 @@ def property_value_analysis(data_dict, ret_dict):
 def goodwill_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
-  info["color"] = NA
+  info["data"] = {}
   info["trend"] = "N/A"
+  info["color"] = NA
 
   try:
 
-    earnings = data_dict["goodwill"]
-    list_data = list(earnings.items())
+    goodwill = data_dict["goodwill"]
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in goodwill:
+        values_dict[key] = goodwill[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = GREEN
-      lastest_year = int(list_data[-1][0])
 
-      count = 1
-      index = []
-      new_data = []
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10: # analyze past 10 years for a trend
-          index.append(count)
-          count += 1
-          new_data.append(value[1])
-
-      if len(new_data) == 1: # only one year of goodwill is good
-        info["trend"] = "1 year of data"
+      if len(values_list) == 1: # only one year of goodwill is good
         info["color"] = GREEN
-      else: # more than one year and we want too see an increasing trend
-        trend = trendline(index, new_data)
-        info["trend"] = trend
-        if trend < 0:
-          info["color"] = NEUTRAL
+      elif info["trend"] < 0: # more than one year and we want too see an increasing trend
+        info["color"] = NEUTRAL
 
   except Exception as e:
     print(e)
@@ -586,39 +663,35 @@ def goodwill_analysis(data_dict, ret_dict):
 def intangible_assets_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
-  info["color"] = NA
+  info["data"] = {}
   info["trend"] = "N/A"
+  info["color"] = NA
 
   try:
 
-    earnings = data_dict["intangible_assets"]
-    list_data = list(earnings.items())
+    intangibles = data_dict["intangible_assets"]
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in intangibles:
+        values_dict[key] = intangibles[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = GREEN
-      lastest_year = int(list_data[-1][0])
 
-      count = 1
-      index = []
-      new_data = []
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10:
-          index.append(count)
-          count += 1
-          new_data.append(value[1])
-
-      if len(new_data) < 5:
-        info["trend"] = "N/A"
+      if len(index) < 5:
         info["color"] = NA
-      else:
-        trend = trendline(index, new_data)
-        info["trend"] = trend
-        if trend < 0:
-          info["color"] = NEUTRAL
+      elif info["trend"] < 0:
+        info["color"] = NEUTRAL
 
   except Exception as e:
     print(e)
@@ -629,21 +702,32 @@ def intangible_assets_analysis(data_dict, ret_dict):
 def long_term_investments_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
-    earnings = data_dict["long_term_investments"]
-    list_data = list(earnings.items())
+    long_term_investments = data_dict["long_term_investments"]
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in long_term_investments:
+        values_dict[key] = long_term_investments[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = RED
-      info["target"] = list_data[-1][1]
 
-      if info["target"] >= 0:
+      if values_list[-1] >= 0:
         info["color"] = NEUTRAL
 
   except Exception as e:
@@ -655,27 +739,37 @@ def long_term_investments_analysis(data_dict, ret_dict):
 def return_on_assets_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["net_income"], data_dict["total_assets"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = NEUTRAL
 
-      if value[1][0] < 0 or value[1][1] < 0: # this means we have a negative income or assets
+      if next(reversed(merged_dict.values()))[0] < 0 or next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative income or assets
         info["color"] = NA
       else:
-        if info["target"] < .25:
+        if values_list[-1] < .25:
           info["color"] = GREEN
-        if info["target"] > .35 or info["target"] < .06:
+        if values_list[-1] > .35 or values_list[-1] < .06:
           info["color"] = RED
 
   except Exception as e:
@@ -687,24 +781,34 @@ def return_on_assets_analysis(data_dict, ret_dict):
 def short_term_debt_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["short_term_debt"], data_dict["long_term_debt"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      info["target"] = value[1][0]/value[1][1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = NEUTRAL
 
-      if info["target"] < .6:
+      if values_list[-1] < .6:
         info["color"] = GREEN
-      if info["target"] > 1:
+      if values_list[-1] > 1:
         info["color"] = RED
 
   except Exception as e:
@@ -716,28 +820,36 @@ def short_term_debt_analysis(data_dict, ret_dict):
 def long_term_debt_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["net_income"], data_dict["long_term_debt"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      net_income_value = value[1][0]
-      long_term_debt_value = value[1][1]
-      info["target"] = net_income_value * 4
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = (merged_dict[key][0]*4)/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = NEUTRAL
 
-      if net_income_value < 0:
+      if next(reversed(merged_dict.values()))[0] < 0: # checks for net income less than 0 
         info["color"] = RED
-      elif net_income_value * 4 > long_term_debt_value:
+      elif values_list[-1] > 1: # checks for net_income * 4 > long term debt
         info["color"] = GREEN
-      elif net_income_value * 6 < long_term_debt_value:
+      elif values_list[-1] < 0.5: # checks if net_income * 8 < long-term debt
         info["color"] = RED
 
   except Exception as e:
@@ -749,40 +861,47 @@ def long_term_debt_analysis(data_dict, ret_dict):
 def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["liabilities"], data_dict["stockholders_equity"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data) != 0:
+    treasury_shares = data_dict["treasury_shares"]
+    repurchase_of_common_stock = data_dict["repurchase_common_stock"]
 
-      value = list_data[-1]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        addition = 0
 
-      treasury_shares = data_dict["treasury_shares"]
-      repurchase_of_common_stock = data_dict["repurchase_common_stock"]
-      addition = 0
-
-      info["year"] = value[0]
-      try:
-        addition = abs(treasury_shares[info["year"]])
-      except:
         try:
-          addition = abs(repurchase_of_common_stock[info["year"]])
-        except: 
-          pass
-      
-      liabilities = value[1][0]
-      stockholders_equity = value[1][1]
-      info["target"] = liabilities/(addition+stockholders_equity)
+          addition = abs(treasury_shares[key])
+        except:
+          try:
+            addition = abs(repurchase_of_common_stock[key])
+          except: 
+            pass
+        
+        values_dict[key] = merged_dict[key][0]/(addition+merged_dict[key][1])
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list) != 0:
       info["color"] = NEUTRAL
 
-      if info["target"] < .8:
+      if values_list[-1] < .8:
         info["color"] = GREEN
-      if info["target"] > 2:
+      if values_list[-1] > 2:
         info["color"] = RED
 
   except Exception as e:
@@ -794,24 +913,34 @@ def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
 def preferred_stock_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
   
-    earnings = data_dict["preferred_stock"]
-    list_data = list(earnings.items())
+    preferred_stock = data_dict["preferred_stock"]
+    values_dict = create_empty_years_dict()
+
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in preferred_stock:
+        values_dict[key] = preferred_stock[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    if len(index) != 0:
+      info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
     
-    if list_data == []:
-      info["year"] = "N/A"
+    if values_list == []:
       info["color"] = GREEN
-      info["target"] = "N/A"
     else:
-      info["year"] = list_data[-1][0]
       info["color"] = RED
-      info["target"] = list_data[-1][1]
-      if info["target"] == 0: # this is for companies that put zero instead of leaving is absent
+      if values_list[-1] == 0: # this is for companies that put zero instead of leaving is absent
         info["color"] = GREEN
 
   except Exception as e:
@@ -823,47 +952,41 @@ def preferred_stock_analysis(data_dict, ret_dict):
 def retained_earnings_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
-  info["color"] = NA
+  info["data"] = {}
   info["trend"] = "N/A"
-  info["buyback"] = 0
+  info["color"] = NA
 
   try:
   
     earnings = data_dict["retained_earnings"]
-    list_data = list(earnings.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data)!=0:
-      info["year"] = list_data[-1][0]
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in earnings:
+        values_dict[key] = earnings[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list)!=0:
       info["color"] = NEUTRAL
-      lastest_year = int(list_data[-1][0])
 
-      count = 1
-      index = []
-      new_data = []
-      for value in list_data:
-        year = int(value[0])
-        if year > lastest_year - 10: # analyze past 5 years for a trend
-          index.append(count)
-          count += 1
-          new_data.append(value[1])
-
-      if len(new_data) < 5:
+      if len(values_list) < 5:
         info["color"] = NA
-        info["trend"] = "N/A"
       else:
-        info["trend"] = trendline(index, new_data)
-
         if info["trend"] > 4.9:
           info["color"] = GREEN
         else:
-          repurchase = data_dict["repurchase_common_stock"]
           try:
-            buyback = repurchase[info["year"]]
-            info["buyback"] = buyback
+            repurchase = data_dict["repurchase_common_stock"]
+            buyback = repurchase[str(index[-1])]
           except:
-            info["buyback"] = "N/A"
             info["color"] = RED
 
   except Exception as e:
@@ -875,27 +998,52 @@ def retained_earnings_analysis(data_dict, ret_dict):
 def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "0"
-  info["color"] = RED
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
+  info["color"] = NA
 
   try:
 
     treasury_shares = data_dict["treasury_shares"]
-    list_data = list(treasury_shares.items())
+    values_dict = create_empty_years_dict()
+
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in treasury_shares:
+        values_dict[key] = treasury_shares[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
 
     repurchase = data_dict["repurchase_common_stock"]
-    list_data2 = list(repurchase.items())
+    values_dict2 = {}
+    currentYear = datetime.now().year
 
-    if list_data != []:
-      info["year"] = list_data[-1][0]
-      info["color"] = GREEN
-      info["target"] = list_data[-1][1]
+    # creates an empty values dict to fill values that are there
+    for i in range(0,10):
+      values_dict[str(currentYear-10+i)] = 0
 
-    if list_data2 != []:
-      info["year"] = list_data2[-1][0]
+    # filling out values dict with calculations
+    values_list2 = []
+    index2 = []
+    for key in values_dict.keys():
+      if key in repurchase:
+        values_dict2[key] = repurchase[key]
+        values_list2.append(values_dict[key])
+        index2.append(int(key))
+
+    if values_list != []:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+      info["data"] = values_dict
       info["color"] = GREEN
-      info["target"] = list_data2[-1][1]
+
+    if values_list2 != []:
+      # calculate the trend
+      info["trend"] = trendline(index2, values_list2)
+      info["data"] = values_dict2
+      info["color"] = GREEN
 
   except Exception as e:
     print(e)
@@ -906,41 +1054,46 @@ def treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict):
 def return_on_shareholders_equity_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["net_income"], data_dict["stockholders_equity"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
 
-    if len(list_data)!=0:
+    treasury_shares = data_dict["treasury_shares"]
+    repurchase_of_common_stock = data_dict["repurchase_common_stock"]
 
-      value = list_data[-1]
-
-      treasury_shares = data_dict["treasury_shares"]
-      repurchase_of_common_stock = data_dict["repurchase_common_stock"]
-      addition = 0
-
-      info["year"] = value[0]
-      try:
-        addition = abs(treasury_shares[info["year"]])
-      except:
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        addition = 0
         try:
-          addition = abs(repurchase_of_common_stock[info["year"]])
-        except: 
-          pass
-      
-      net_income = value[1][0]
-      stockholders_equity = value[1][1]
-      info["target"] = net_income/(addition+stockholders_equity)
+          addition = abs(treasury_shares[info["year"]])
+        except:
+          try:
+            addition = abs(repurchase_of_common_stock[info["year"]])
+          except: 
+            pass
+        values_dict[key] = merged_dict[key][0]/(addition+merged_dict[key][1])
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
+
+    if len(values_list)!=0:
       info["color"] = NEUTRAL
 
-      if info["target"] > .2:
+      if values_list[-1] > .2:
         info["color"] = GREEN
 
-      if info["target"] < .1:
+      if values_list[-1] < .1:
         info["color"] = RED
 
   except Exception as e:
@@ -952,29 +1105,39 @@ def return_on_shareholders_equity_analysis(data_dict, ret_dict):
 def capital_expenditures_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     merged_dict = merge_dicts(data_dict["payments_in_investing_activities"], data_dict["net_income"])
-    list_data = list(merged_dict.items())
+    values_dict = create_empty_years_dict()
+
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in merged_dict:
+        values_dict[key] = abs(merged_dict[key][0])/merged_dict[key][1]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict
     
-    if len(list_data)!=0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      info["target"] = abs(value[1][0])/value[1][1]
+    if len(values_list)!=0:
       info["color"] = NEUTRAL
 
-      if value[1][1] < 0:
+      if next(reversed(merged_dict.values()))[1] < 0: # check for negative income here
         info["color"] = NA
       
       else:
-        if info["target"] < .25:
+        if values_list[-1] < .25:
           info["color"] = GREEN
 
-        if info["target"] > .5:
+        if values_list[-1] > .5:
           info["color"] = RED
 
   except Exception as e:
@@ -986,20 +1149,28 @@ def capital_expenditures_analysis(data_dict, ret_dict):
 def dividends_analysis(data_dict, ret_dict):
 
   info = {}
-  info["year"] = "N/A"
-  info["target"] = "N/A"
+  info["data"] = {}
+  info["trend"] = "N/A"
   info["color"] = NA
 
   try:
 
     divs = data_dict["dividends"]
-    list_data = list(divs.items())
-    
-    if len(list_data)!=0:
-      value = list_data[-1]
-      info["year"] = value[0]
-      info["target"] = value[1]
-      info["color"] = NEUTRAL
+    values_dict = create_empty_years_dict()
+
+    # filling out values dict with calculations
+    values_list = []
+    index = []
+    for key in values_dict.keys():
+      if key in divs:
+        values_dict[key] = divs[key]
+        values_list.append(values_dict[key])
+        index.append(int(key))
+
+    # calculate the trend
+    info["trend"] = trendline(index, values_list)
+    info["data"] = values_dict    
+    info["color"] = NEUTRAL
 
   except Exception as e:
     print(e)

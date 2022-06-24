@@ -33,7 +33,7 @@ def set_simplified_data_to_firestore(simplified_data, cik):
   # doc_ref = db.collection(u'stock_data').document(company_key).set({
   #     "simplified": simplified_data # data dict includes multiple years to no need to include in key
   #   }, merge=True)
-  doc_ref = db.collection(u'data').document(str(cik)).set({
+  doc_ref = db.collection(u'data_v2').document(str(cik)).set({
       "simplified": simplified_data # data dict includes multiple years to no need to include in key
     }, merge=True)
 
@@ -41,14 +41,14 @@ def set_analyzed_data_to_firestore(analyzed_data, cik):
   # doc_ref = db.collection(u'stock_data').document(company_key).set({
   #     "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
   #   }, merge=True)
-  doc_ref = db.collection(u'data').document(cik).set({
+  doc_ref = db.collection(u'data_v2').document(cik).set({
       "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
     }, merge=True)
 
 # sets up an update in firestore to store the date of the update and the old and new data
 # MUST BE DONE BEFORE UPDATING FIRESTORE WITH NEW ANALYZED DATA
 def set_updates_in_firestore(analyzed_data, cik):
-  doc_ref = db.collection(u'data').document(cik)
+  doc_ref = db.collection(u'data_v2').document(cik)
 
   doc = doc_ref.get()
   old_analyzed = doc.to_dict()["analyzed"]
@@ -201,54 +201,54 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   set_simplified_data_to_firestore(data_dict, cik)
   print('simplified dict added for: ' + company_name)
 
-  # updates shouldn't happen for any testing, only in production when a new row in the idx is found
-  update = False
+  # # updates shouldn't happen for any testing, only in production when a new row in the idx is found
+  # update = False
 
-  if update:
-    set_updates_in_firestore(analyzed_dict, cik)
-    print('added update for: ' + company_name)
+  # if update:
+  #   set_updates_in_firestore(analyzed_dict, cik)
+  #   print('added update for: ' + company_name)
 
-  # adding analyzed dict to firestore
+  # # adding analyzed dict to firestore
   set_analyzed_data_to_firestore(analyzed_dict, cik)
   print('analyzed dict added for: ' + company_name)
 
 
 
-current_year = 2021
-download = []
-failures = 0
+# current_year = 2021
+# download = []
+# failures = 0
 
-# grab 10ks from idx from local analysis
-with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
-  for line in file:
-      download.append(line.rstrip())
+# # grab 10ks from idx from local analysis
+# with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
+#   for line in file:
+#       download.append(line.rstrip())
 
-for item in download:
-  # need to get CIK and company name
+# for item in download:
+#   # need to get CIK and company name
 
-  this_company = item
-  this_company = this_company.strip()
-  splitted_company = this_company.split('|')
-  if len(splitted_company) < 5:
-    continue
+#   this_company = item
+#   this_company = this_company.strip()
+#   splitted_company = this_company.split('|')
+#   if len(splitted_company) < 5:
+#     continue
 
-  company_name = splitted_company[1].lower().replace('/','')
-  cik = splitted_company[0].zfill(10)
+#   company_name = splitted_company[1].lower().replace('/','')
+#   cik = splitted_company[0].zfill(10)
 
-  try:
+#   try:
 
-    get_simplified_data(cik, company_name)
+#     get_simplified_data(cik, company_name)
   
-  except:
+#   except:
 
-    failures += 1
+#     failures += 1
 
-  time.sleep(.2)
+#   time.sleep(.2)
 
-print("num failures: " + str(failures))
+# print("num failures: " + str(failures))
 
 # transformations that need to be done from idx to my functions
-# cik = '320193'.zfill(10)
-# company_name = 'Apple Inc.'.lower().replace('/','')
+cik = '320193'.zfill(10)
+company_name = 'Apple Inc.'.lower().replace('/','')
 
-# get_simplified_data(cik, company_name)
+get_simplified_data(cik, company_name)

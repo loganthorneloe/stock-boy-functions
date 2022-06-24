@@ -198,7 +198,7 @@ def run_loop():
   link_successes = 0
   ticker_successes = 0
 
-  current_year = 2021
+  current_year = 2022
   statement_failure_file_name = str(current_year) + "_link_failures.txt"
   statement_failure_full_path = 'link_retrieval_failures/' + statement_failure_file_name
   other_failure_file_name = str(current_year) + "_other_failures.txt"
@@ -239,8 +239,8 @@ def run_loop():
     
     cik = splitted_company[0].zfill(10)
 
-    if '320193' not in cik:
-      continue
+    # if '320193' not in cik:
+    #   continue
 
     company_name = splitted_company[1] # grabs company name
     url = splitted_company[-1]
@@ -286,11 +286,11 @@ def run_loop():
       print('Reports is null failure for: ' + company_name)
       print(ex)
 
-      error_str = company_name + ': ' + xml_summary + ' reports are null?? '
-      error_str += "\n"
+      # error_str = company_name + ': ' + xml_summary + ' reports are null?? '
+      # error_str += "\n"
 
-      with open(statement_failure_full_path, 'a') as the_file:
-        the_file.write(error_str)
+      # with open(statement_failure_full_path, 'a') as the_file:
+      #   the_file.write(error_str)
 
       continue
 
@@ -314,10 +314,10 @@ def run_loop():
 
     time.sleep(0.5) # pause in between each year as to not overload edgar
 
-  print("num statement failures: " + str(len(link_failures)))
+  print("num link failures: " + str(len(link_failures)))
   print("num ticker failures: " + str(len(ticker_failures)))
-  print("num statement successes: " + str(link_successes))
+  print("num link successes: " + str(link_successes))
   print("num ticker successes: " + str(ticker_successes))
-  print("percent statement successes: " + str(link_successes/(link_successes + len(link_failures))*100))
+  print("percent links successes: " + str(link_successes/(link_successes + len(link_failures))*100))
 
 run_loop()
