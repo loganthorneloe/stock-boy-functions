@@ -67,7 +67,7 @@ def analyze_simple_financials(data_dict):
   print("RED: " + str(ret_dict[RED]))
   print("N/A: " + str(ret_dict[NA]))
   # print(len(ret_dict.keys()))
-  print(ret_dict)
+  # print(ret_dict)
 
   return ret_dict
 
@@ -107,7 +107,7 @@ def profit_margin_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -148,7 +148,7 @@ def admin_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -195,7 +195,7 @@ def research_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -255,7 +255,7 @@ def depreciation_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -298,7 +298,7 @@ def interest_expense_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -341,7 +341,7 @@ def income_tax_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -384,7 +384,7 @@ def net_income_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -574,7 +574,7 @@ def net_receivable_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -760,7 +760,7 @@ def return_on_assets_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -802,7 +802,7 @@ def short_term_debt_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -841,7 +841,7 @@ def long_term_debt_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = (merged_dict[key][0]*4)/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
@@ -885,7 +885,7 @@ def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         addition = 0
 
         try:
@@ -1079,7 +1079,7 @@ def return_on_shareholders_equity_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         addition = 0
         try:
           addition = abs(treasury_shares[info["year"]])
@@ -1127,7 +1127,7 @@ def capital_expenditures_analysis(data_dict, ret_dict):
     values_list = []
     index = []
     for key in values_dict.keys():
-      if key in merged_dict:
+      if key in merged_dict and merged_dict[key][1] != 0:
         values_dict[key] = abs(merged_dict[key][0])/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))

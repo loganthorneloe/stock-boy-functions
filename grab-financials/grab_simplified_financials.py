@@ -214,41 +214,41 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
 
 
 
-# current_year = 2021
-# download = []
-# failures = 0      
+current_year = 2021
+download = []
+failures = 0      
 
-# # grab 10ks from idx from local analysis
-# with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
-#   for line in file:
-#       download.append(line.rstrip())
+# grab 10ks from idx from local analysis
+with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
+  for line in file:
+      download.append(line.rstrip())
 
-# for item in download:
-#   # need to get CIK and company name
+for item in download:
+  # need to get CIK and company name
 
-#   this_company = item
-#   this_company = this_company.strip()
-#   splitted_company = this_company.split('|')
-#   if len(splitted_company) < 5:
-#     continue
+  this_company = item
+  this_company = this_company.strip()
+  splitted_company = this_company.split('|')
+  if len(splitted_company) < 5:
+    continue
 
-#   company_name = splitted_company[1].lower().replace('/','')
-#   cik = splitted_company[0].zfill(10)
+  company_name = splitted_company[1].lower().replace('/','')
+  cik = splitted_company[0].zfill(10)
 
-#   try:
+  try:
 
-#     get_simplified_data(cik, company_name)
+    get_simplified_data(cik, company_name)
   
-#   except:
+  except:
 
-#     failures += 1
+    failures += 1
 
-#   time.sleep(.2)
+  time.sleep(.2)
 
-# print("num failures: " + str(failures))
+print("num failures: " + str(failures))
 
 # transformations that need to be done from idx to my functions
-cik = '1000228'.zfill(10)
-company_name = 'Apple Inc.'.lower().replace('/','')
+# cik = '1000228'.zfill(10)
+# company_name = 'Apple Inc.'.lower().replace('/','')
 
-get_simplified_data(cik, company_name)
+# get_simplified_data(cik, company_name)

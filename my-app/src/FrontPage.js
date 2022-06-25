@@ -16,7 +16,7 @@ export class FrontPage extends Component {
               <Card className="border-0">
                 <Card.Body>
                   <h4 className="roboto title" style={{"marginBottom":".5em"}}><strong>What is Stock Boy?</strong></h4>
-                  <p>Stock Boy automates fundamental analysis for retail investors to make great investing easy! Download Stock Boy as an app to have access to financial statements and fundamentals all from your pocket. <strong>Coming soon:</strong> A new, more useful front page.</p>
+                  <p>Stock Boy brings fundamental analysis to retail investors by showing what company factors indicate a great long-term investment. Download the Stock Boy app to have access to financial statements and fundamentals all from your pocket. <strong>Coming soon:</strong> A new, more useful front page.</p>
                  </Card.Body>
               </Card>
             </div>

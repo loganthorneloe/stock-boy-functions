@@ -3,8 +3,7 @@ import LittleTable from './LittleTable';
 import FinancialLinks from './FinancialLinks';
 import Row from 'react-bootstrap/Row'
 import OverviewBar from "./OverviewBar";
-import { Accordion, Alert } from "react-bootstrap";
-
+import { Accordion, Alert, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faO, faX, faBan, faCircleQuestion, faChartLine, faSackDollar } from '@fortawesome/free-solid-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -12,6 +11,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faCheck, faO, faX, faBan, faCircleQuestion, faChartLine, faSackDollar)
 
 export class DataPage extends Component {
+
+  openURL = (url) => {
+    if(typeof url !== 'undefined'){
+        window.open(url, '_blank');
+    }
+  }
 
     render() {
         return (
@@ -28,7 +33,7 @@ export class DataPage extends Component {
                       <Accordion.Body>
                         <Row className="justify-content-md-center">
                           <Alert variant= 'primary' width="80%">
-                            The below analysis automates research of stock fundamentals for retail investors to find companies that have a durable, competitive advantage and are considered good investments. The below factors are analyzed according to Warren Buffett's strategy in the book "Warren Buffett and the Interpreration of Financial Statements". Data is taken directly from the SEC. The analysis is still in the beta stage and may be incorrect or incomplete.
+                          The below fundamentals help investors determine if a company has a competitive advantage and is a great long-term investment. They are analyzed according to Warren Buffett's strategy in the book "Warren Buffett and the Interpreration of Financial Statements".
                           </Alert>
                         </Row>
                         <Row style={{"marginBottom":"1em"}}>
@@ -56,9 +61,11 @@ export class DataPage extends Component {
                     </Accordion.Item>
                   </Accordion>
                   <Row className="justify-content-md-center">
-                    <Alert variant= 'danger' width="80%" style ={{"marginTop":"1em" }}>
-                      See incorrect information? DM @meetstockboy on Twitter to let me know.
-                    </Alert>
+                    <div className= "col-sm-1"></div>
+                      <div className= "col-sm-10">
+                        <Button variant="outline-danger" onClick={() => this.openURL("https://twitter.com/messages/compose?recipient_id=1255526571764600834")}>Report Incorrect Information</Button>{''}
+                      </div>
+                    <div className= "col-sm-1"></div>
                   </Row>
                 </div>
                 <div className= "col-sm-1"></div>
