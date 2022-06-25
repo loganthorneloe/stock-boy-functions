@@ -45,14 +45,11 @@ async function retrieveTickerData(){
   const q1 = query(collection(db, "tickers"), limit(4000))
   const querySnapshot1 = await getDocs(q1);
   const lastVisible1 = querySnapshot1.docs[querySnapshot1.docs.length-1];
-  console.log('batch 1')
   const q2 = query(collection(db, "tickers"), startAfter(lastVisible1), limit(4000))
   const querySnapshot2 = await getDocs(q2);
   const lastVisible2 = querySnapshot2.docs[querySnapshot2.docs.length-1];
-  console.log('batch 2')
   const q3 = query(collection(db, "tickers"), startAfter(lastVisible2), limit(4000))
   const querySnapshot3 = await getDocs(q3);
-  console.log('batch 3')
 
   querySnapshot1.forEach((doc) => {
     for (const [key, value] of Object.entries(doc.data())) {
@@ -81,14 +78,12 @@ async function retrieveTickerData(){
       }
     }
   });
-  console.log('ticker list length:' + ticker_list.length)
+  console.log('tickers retrieved')
   return ticker_list;
 }
 
 async function retrieveCompanyData(cik){
-  console.log(cik)
   var data = {}
-  console.log(cik)
   const docRef = doc(db, "data_v2", cik)
   const docSnap = await getDoc(docRef)
   if (docSnap.exists()) {
@@ -116,16 +111,14 @@ function App() {
   const [companyDataDict, setCompanyDataDict] = useState();
 
   const pull_data = (selection) => {
-    console.log(selection)
     var split_selection = selection.split("\n")
     if(split_selection.length !== 2){
       split_selection = selection.split("?")
     }
     
     retrieveCompanyData(split_selection[1]).then(new_dict =>{
-      setCompany(split_selection[0])
-      console.log('setting company financials')
       setCompanyFinancialsDict(new_dict["financials"])
+      setCompany(split_selection[0])
       setCompanyDataDict(new_dict["data"])
     })
     console.log('finished retrieving selection')

@@ -39,7 +39,7 @@ def analyze_simple_financials(data_dict):
   ret_dict[NA] = 0
   profit_margin_analysis(data_dict, ret_dict)
   admin_analysis(data_dict, ret_dict)
-  research_analysis(data_dict, ret_dict) # float object is not subscriptable exception here with aapl
+  research_analysis(data_dict, ret_dict) # non-empty vector for x
   depreciation_analysis(data_dict, ret_dict)
   interest_expense_analysis(data_dict, ret_dict)
   income_tax_analysis(data_dict, ret_dict)
@@ -53,15 +53,15 @@ def analyze_simple_financials(data_dict):
   intangible_assets_analysis(data_dict, ret_dict)
   long_term_investments_analysis(data_dict, ret_dict)
   return_on_assets_analysis(data_dict, ret_dict)
-  short_term_debt_analysis(data_dict, ret_dict)
-  long_term_debt_analysis(data_dict, ret_dict)
+  short_term_debt_analysis(data_dict, ret_dict) # non-empty vector for x
+  long_term_debt_analysis(data_dict, ret_dict) # non-empty vector for x
   adjusted_shareholders_equity_analysis(data_dict, ret_dict)
   preferred_stock_analysis(data_dict, ret_dict)
   retained_earnings_analysis(data_dict, ret_dict)
   treasury_shares_repurchase_of_stock_analysis(data_dict, ret_dict)
   return_on_shareholders_equity_analysis(data_dict, ret_dict)
   capital_expenditures_analysis(data_dict, ret_dict)
-  dividends_analysis(data_dict, ret_dict)
+  dividends_analysis(data_dict, ret_dict) # expected non-empty vector for x
   print("GREEN: " + str(ret_dict[GREEN]))
   print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
   print("RED: " + str(ret_dict[RED]))
@@ -112,12 +112,13 @@ def profit_margin_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     # calculate color
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       target = values_list[-1]
       info["color"] = NEUTRAL
 
@@ -152,12 +153,13 @@ def admin_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     # color calculation
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       value = values_list[-1]
       info["color"] = NEUTRAL
 
@@ -197,12 +199,13 @@ def research_analysis(data_dict, ret_dict):
         values_dict[key] = merged_dict[key][0]/merged_dict[key][1]
         values_list.append(values_dict[key])
         index.append(int(key))
-
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
+    
     info["data"] = values_dict
 
     if len(values_list) != 0:
+
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       
       value = values_list[-1]
       info["color"] = NEUTRAL
@@ -257,11 +260,12 @@ def depreciation_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       value = values_list[-1]
       info["color"] = NEUTRAL
 
@@ -299,11 +303,12 @@ def interest_expense_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list)!=0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       value = values_list[-1]
       info["color"] = NEUTRAL
 
@@ -341,11 +346,12 @@ def income_tax_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       value = values_list[-1]
       info["color"] = NEUTRAL
 
@@ -383,12 +389,13 @@ def net_income_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     # calculate the color
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       value = values_list[-1]
       info["color"] = NEUTRAL
 
@@ -441,11 +448,12 @@ def per_share_analysis(data_dict, ret_dict):
         if values_dict[key] < 0:
           negative_eps = True
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       info["color"] = GREEN
 
       if len(index) < 5:
@@ -487,11 +495,12 @@ def short_term_cash_analysis(data_dict, ret_dict):
         if values_dict[key] < 0:
           negative_cash = True
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
+
       info["color"] = GREEN
 
       if len(index) < 5:
@@ -527,11 +536,11 @@ def inventory_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = GREEN
 
       if len(index) < 5:
@@ -570,12 +579,11 @@ def net_receivable_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
-
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative profit margin and can't evaluate further
@@ -608,11 +616,11 @@ def property_value_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
   except Exception as e:
@@ -642,11 +650,11 @@ def goodwill_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = GREEN
 
       if len(values_list) == 1: # only one year of goodwill is good
@@ -681,11 +689,11 @@ def intangible_assets_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = GREEN
 
       if len(index) < 5:
@@ -720,11 +728,11 @@ def long_term_investments_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = RED
 
       if values_list[-1] >= 0:
@@ -757,11 +765,11 @@ def return_on_assets_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if next(reversed(merged_dict.values()))[0] < 0 or next(reversed(merged_dict.values()))[1] < 0: # this means we have a negative income or assets
@@ -799,11 +807,11 @@ def short_term_debt_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if values_list[-1] < .6:
@@ -838,11 +846,11 @@ def long_term_debt_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if next(reversed(merged_dict.values()))[0] < 0: # checks for net income less than 0 
@@ -892,11 +900,11 @@ def adjusted_shareholders_equity_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list) != 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if values_list[-1] < .8:
@@ -928,15 +936,16 @@ def preferred_stock_analysis(data_dict, ret_dict):
     for key in values_dict.keys():
       if key in preferred_stock:
         values_dict[key] = preferred_stock[key]
-        values_list.append(values_dict[key])
-        index.append(int(key))
+      else:
+        values_dict[key] = 0
+      index.append(int(key))
+      values_list.append(values_dict[key])
 
-    # calculate the trend
-    if len(index) != 0:
-      info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
     
     if values_list == []:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = GREEN
     else:
       info["color"] = RED
@@ -970,11 +979,11 @@ def retained_earnings_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list)!=0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if len(values_list) < 5:
@@ -1083,11 +1092,11 @@ def return_on_shareholders_equity_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
 
     if len(values_list)!=0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if values_list[-1] > .2:
@@ -1123,11 +1132,11 @@ def capital_expenditures_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
     info["data"] = values_dict
     
     if len(values_list)!=0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
       info["color"] = NEUTRAL
 
       if next(reversed(merged_dict.values()))[1] < 0: # check for negative income here
@@ -1167,8 +1176,9 @@ def dividends_analysis(data_dict, ret_dict):
         values_list.append(values_dict[key])
         index.append(int(key))
 
-    # calculate the trend
-    info["trend"] = trendline(index, values_list)
+    if len(values_list) > 0:
+      # calculate the trend
+      info["trend"] = trendline(index, values_list)
     info["data"] = values_dict    
     info["color"] = NEUTRAL
 

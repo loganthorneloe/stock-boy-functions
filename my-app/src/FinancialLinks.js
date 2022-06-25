@@ -25,7 +25,6 @@ class FinancialLinks extends Component {
     }
 
     organizeYears = () => {
-      console.log(this.props.companyDict)
         if(typeof this.props.companyDict == "undefined" || this.props.companyDict == null){
             return
         }
@@ -59,16 +58,16 @@ class FinancialLinks extends Component {
               <Accordion.Body style={{"margin":"-10px", "padding":"-10px"}}>
                 <Nav variant="pills" className="flex-column" align="center">
                   <Nav.Item>
-                    <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["ten_k"])}>10K</Nav.Link>
+                    <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["ten_k"])}>10-K</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["balance_sheet"])}>Balance Sheet</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["income_statement"])}>Income Statement</Nav.Link>
+                    <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["income_statement"])}>Income</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["cash_flow"])}>Cash Flow Statement</Nav.Link>
+                    <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["cash_flow"])}>Cash Flow</Nav.Link>
                   </Nav.Item>
                 </Nav>   
               </Accordion.Body>

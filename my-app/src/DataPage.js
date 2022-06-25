@@ -40,22 +40,26 @@ export class DataPage extends Component {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
-                  <Accordion defaultActiveKey="0" flush>
+                  <Accordion defaultActiveKey="1" flush>
                     <Accordion.Item eventKey="1">
-                      <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-sack-dollar fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>Financial Statements</Accordion.Header>
+                      <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-sack-dollar fa-xl" style ={{color: 'black', "marginRight":"1em" }}/><strong>Financial Statements</strong></Accordion.Header>
                       <Accordion.Body>
                         <Row className="justify-content-md-center">
                           <Alert variant= 'primary' width="80%">
-                            This is a company's income statement, balance sheet, and cash flow statement pulled directly from their filings with the SEC. Due to the inconsistency of filings, some values may not be complete.
+                            This is a company's annual report, balance sheet, income statement, and cash flow statement pulled directly from SEC filings. Due to the inconsistency of filings, some filings may be missing.
                           </Alert>
                         </Row>
                         <Row>
                           <FinancialLinks company={this.props.company} companyDict={this.props.companyFinancialsDict}/>
-                          {/* <SuperTable company={this.props.company} companyDict={this.props.companyDict} yearList={this.props.yearList} currentYear={this.props.currentYear}/> */}
                         </Row>
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
+                  <Row className="justify-content-md-center">
+                    <Alert variant= 'danger' width="80%" style ={{"marginTop":"1em" }}>
+                      See incorrect information? DM @meetstockboy on Twitter to let me know.
+                    </Alert>
+                  </Row>
                 </div>
                 <div className= "col-sm-1"></div>
             </div>

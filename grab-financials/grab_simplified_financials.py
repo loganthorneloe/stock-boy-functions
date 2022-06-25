@@ -202,11 +202,11 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   print('simplified dict added for: ' + company_name)
 
   # # updates shouldn't happen for any testing, only in production when a new row in the idx is found
-  # update = False
+  update = False
 
-  # if update:
-  #   set_updates_in_firestore(analyzed_dict, cik)
-  #   print('added update for: ' + company_name)
+  if update:
+    set_updates_in_firestore(analyzed_dict, cik)
+    print('added update for: ' + company_name)
 
   # # adding analyzed dict to firestore
   set_analyzed_data_to_firestore(analyzed_dict, cik)
@@ -216,7 +216,7 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
 
 # current_year = 2021
 # download = []
-# failures = 0
+# failures = 0      
 
 # # grab 10ks from idx from local analysis
 # with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
@@ -248,7 +248,7 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
 # print("num failures: " + str(failures))
 
 # transformations that need to be done from idx to my functions
-cik = '320193'.zfill(10)
+cik = '1000228'.zfill(10)
 company_name = 'Apple Inc.'.lower().replace('/','')
 
 get_simplified_data(cik, company_name)

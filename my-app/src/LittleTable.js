@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Table from 'react-bootstrap/Table'
 import { Col } from "react-bootstrap";
 import { Row, Alert } from "react-bootstrap";
-import { Accordion } from "react-bootstrap";
+import { Accordion, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faO, faX, faBan, faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
