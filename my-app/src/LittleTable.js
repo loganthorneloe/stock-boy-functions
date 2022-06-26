@@ -118,7 +118,7 @@ var analyzed_dict = {
   "long_term_debt": {
     "desc": "This checks if a company has enough earnings to pay off their long-term debt in 4 years or less.",
     "label" : "Long-term Debt",
-    "target" : "N/A"
+    "target" : ">1"
   },
   "adjusted_stockholders_equity": {
     "desc": "This determines if a company is using debt or earnings to pay for their operations. Using debt to fund operations puts a company's advantage at risk. This adjusted ratio takes stock buybacks into account to get a better picture of total shareholders' equity. Note: this factor is not applicable to financial companies because they need to utilize lots of debt to make money.",

@@ -88,6 +88,16 @@ class Autocomplete extends Component {
     }
   };
 
+  stripCik = (suggestionNameAndTicker) => {
+    var second = suggestionNameAndTicker.split(':')
+    if (second.length > 1){
+      if(second[1].toLowerCase().includes('cik')){
+        return second[0]
+      }
+    }
+    return suggestionNameAndTicker
+  }
+
   render() {
     const {
       onChange,
@@ -117,7 +127,7 @@ class Autocomplete extends Component {
                 }
                 return (
                   <li className={className} key={suggestion} onClick={onClick}>
-                    <strong>{suggestion.split('?')[0]}</strong>
+                    <strong>{this.stripCik(suggestion.split('?')[0])}</strong>
                     <div></div>
                     {suggestion.split('?')[1]}
                   </li>

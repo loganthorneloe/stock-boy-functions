@@ -10,9 +10,10 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 import DataPage from './DataPage';
 import BottomPage from './BottomPage';
 import { prelim_tickers } from  './Tickers';
-// import { collection, query, getDocs } from "firebase/firestore";
+import { Row, Col } from "react-bootstrap";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import Loading from './Loading';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
@@ -109,6 +110,7 @@ function App() {
   const [company, setCompany] = useState();
   const [companyFinancialsDict, setCompanyFinancialsDict] = useState();
   const [companyDataDict, setCompanyDataDict] = useState();
+  const [loading, setLoading] = useState();
 
   const pull_data = (selection) => {
     var split_selection = selection.split("\n")
@@ -116,10 +118,12 @@ function App() {
       split_selection = selection.split("?")
     }
     
+    setLoading(true)
     retrieveCompanyData(split_selection[1]).then(new_dict =>{
       setCompanyFinancialsDict(new_dict["financials"])
       setCompany(split_selection[0])
       setCompanyDataDict(new_dict["data"])
+      setLoading(false)
     })
   }
 
@@ -128,8 +132,10 @@ function App() {
     if(tickerList.length === 0){
       setTickerList(prelim_tickers)
       console.log('set prelim tickers')
+      setLoading(true)
       retrieveTickerData().then(new_list => {
         setTickerList(new_list)
+        setLoading(false)
       })
     }
     if(currentCompany !== company){
@@ -144,9 +150,16 @@ function App() {
             <a className="navbar-brand" href="#home">
               <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
             </a>
-            <form className="form-inline">
-              <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
-            </form>
+            <Row>
+              <Col>
+                <form className="form-inline">
+                  <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
+                </form>
+              </Col>
+              <Col className="d-flex align-items-center justify-content-center" style={{marginLeft:"-3.5em"}}>
+                <Loading loading={loading} height='42px'/>
+              </Col>
+            </Row>
             <div></div>
           </div>
         </nav>
@@ -168,9 +181,16 @@ function App() {
             <a className="navbar-brand" href="#home">
               <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
             </a>
-            <form className="form-inline">
-              <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
-            </form>
+            <Row>
+              <Col>
+                <form className="form-inline">
+                  <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
+                </form>
+              </Col>
+              <Col className="d-flex align-items-center justify-content-center" style={{marginLeft:"-3.5em"}}>
+                <Loading loading={loading} height='42px'/>
+              </Col>
+            </Row>
             <div></div>
           </div>
         </nav>
