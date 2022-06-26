@@ -90,7 +90,7 @@ async function retrieveCompanyData(cik){
     data["data"] = docSnap.data()
   } else {
     data["data"] = "undefined"
-    console.log("No such document with name: ", cik);
+    console.log("No such analyzed with cik: ", cik);
   }
   const docRef2 = doc(db, "financial_links", cik)
   const docSnap2 = await getDoc(docRef2)
@@ -98,7 +98,7 @@ async function retrieveCompanyData(cik){
     data["financials"] = docSnap2.data()
   } else {
     data["financials"] = "undefined"
-    console.log("No such document with name: ", cik);
+    console.log("No such financial statements with cik: ", cik);
   }
   return data
 }
@@ -121,7 +121,6 @@ function App() {
       setCompany(split_selection[0])
       setCompanyDataDict(new_dict["data"])
     })
-    console.log('finished retrieving selection')
   }
 
   // Use an effect to load the ticker list from the database

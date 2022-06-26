@@ -128,7 +128,7 @@ var analyzed_dict = {
   "preferred_stock": {
     "desc": "This checks for the presence of preferred shares on a company's balance sheet. Preferred shares are bad for retail investors and expensive for a company.",
     "label" : "Preferred Stock",
-    "target" : "NaN or zero shares"
+    "target" : "0"
   },
   "retained_earnings": {
     "desc": "This checks for earnings that aren't used for dividends or stock buybacks. These earnings stay with the business and are used to make it to grow. This check will fail if retained earnings aren't growing for the past 5-10 years. Note: some companies pay out all retained earnings toward dividends and buybacks because they are so profitable they don't need to retain them to grow. In this case, a lack of retained earnings can be positive.",
@@ -181,7 +181,11 @@ export class LittleTable extends Component {
     }
 
     generateAnalyzedData(){
-      if(typeof this.props.companyDataDict == "undefined" || this.props.companyDataDict == null){
+      if(typeof this.props.companyDataDict == 'undefined' || this.props.companyDataDict == null || this.props.companyDataDict === "undefined"){
+        this.known_analyzed1 = []
+        this.known_analyzed2 = []
+        this.unknown_analyzed1 = []
+        this.unknown_analyzed2 = []
         return
       }
       if ("analyzed" in this.props.companyDataDict){

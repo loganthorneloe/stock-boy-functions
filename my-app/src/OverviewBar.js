@@ -26,7 +26,8 @@ export class OverviewBar extends Component {
     }
 
     generateColors(){
-      if(typeof this.props.companyDataDict == "undefined" || this.props.companyDataDict == null){
+      if(typeof this.props.companyDataDict == 'undefined' || this.props.companyDataDict == null || this.props.companyDataDict === "undefined"){
+        this.green = ""
         return
       }
       if ("analyzed" in this.props.companyDataDict){
