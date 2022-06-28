@@ -46,3 +46,4 @@ Currently only one functions exists to automate Twitter likes and create a small
 * proper CL tooling for pull and analyzing data
 * testing/logging
 * analytics
+* figure out caching - is firebase creating a caching issue?
