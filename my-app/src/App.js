@@ -13,7 +13,11 @@ import { prelim_tickers } from  './Tickers';
 import { Row, Col } from "react-bootstrap";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import Loading from './Loading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+library.add(faSpinner, faMagnifyingGlass)
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
@@ -38,6 +42,8 @@ signInAnonymously(auth)
   });
 
 var currentCompany = ''
+
+var cacheDict = {}
 
 async function retrieveTickerData(){
   var ticker_list = []
@@ -84,6 +90,10 @@ async function retrieveTickerData(){
 }
 
 async function retrieveCompanyData(cik){
+  if (cik in cacheDict){
+    console.log('cacheDict hit for cik ' + cik)
+    return cacheDict[cik]
+  }
   var data = {}
   const docRef = doc(db, "data_v2", cik)
   const docSnap = await getDoc(docRef)
@@ -101,6 +111,8 @@ async function retrieveCompanyData(cik){
     data["financials"] = "undefined"
     console.log("No such financial statements with cik: ", cik);
   }
+  console.log('setting in cache dict')
+  cacheDict[cik] = data;
   return data
 }
 
@@ -131,43 +143,43 @@ function App() {
   useEffect(() => {
     if(tickerList.length === 0){
       setTickerList(prelim_tickers)
-      console.log('set prelim tickers')
-      setLoading(true)
-      retrieveTickerData().then(new_list => {
-        setTickerList(new_list)
-        setLoading(false)
-      })
+      // console.log('set prelim tickers')
+      // setLoading(true)
+      // retrieveTickerData().then(new_list => {
+      //   setTickerList(new_list)
+      //   setLoading(false)
+      // })
     }
     if(currentCompany !== company){
     }
   }, [tickerList.length, company]);
 
-  if(typeof companyDict === "undefined" && typeof company === "undefined"){
+  if(loading){
     return (
       <div>
-        <nav className="navbar fixed-top navbar-light bg-primary blue-nav" style={{"paddingTop":"2px","paddingBottom":"2px"}}>
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#home">
-              <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
-            </a>
+          <div className="container-fluid d-flex align-items-center justify-content-center new-nav">
             <Row>
               <Col>
                 <form className="form-inline">
-                  <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
+                  <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
                 </form>
               </Col>
-              <Col className="d-flex align-items-center justify-content-center" style={{marginLeft:"-3.5em"}}>
-                <Loading loading={loading} height='42px'/>
-              </Col>
             </Row>
-            <div></div>
           </div>
-        </nav>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+        <div className="content">
+          <FontAwesomeIcon icon="fa-solid fa-spinner fa-xl" style ={{color: '#0d6efd',"marginTop":"5em","marginBottom":"2em"}} pulse/>
+        </div>
+      </div>
+    );
+  }else if(typeof companyDict === "undefined" && typeof company === "undefined"){
+    return (
+      <div>
+          <div className="container-fluid d-flex align-items-center justify-content-center new-nav"> 
+            <form className="form-inline">
+              <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
+            </form>
+          </div>
+        <div className="content">
           <FrontPage/>
         </div>
         <BottomPage/>
@@ -176,29 +188,16 @@ function App() {
   }else{
     return (
       <div>
-        <nav className="navbar fixed-top navbar-light bg-primary blue-nav" style={{"paddingTop":"2px","paddingBottom":"2px"}}>
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#home">
-              <img src="stockBoy.png" className="d-inline-block align-top" onClick={() => window.location.reload()} alt="Logo"/>
-            </a>
+          <div className="container-fluid d-flex align-items-center justify-content-center new-nav">            
             <Row>
               <Col>
                 <form className="form-inline">
-                  <Autocomplete id="autocomplete" className="col-md-4" suggestions={tickerList} func={pull_data}/>
+                  <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
                 </form>
               </Col>
-              <Col className="d-flex align-items-center justify-content-center" style={{marginLeft:"-3.5em"}}>
-                <Loading loading={loading} height='42px'/>
-              </Col>
             </Row>
-            <div></div>
           </div>
-        </nav>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+        <div className="content">
           <DataPage company={company} companyFinancialsDict={companyFinancialsDict} companyDataDict={companyDataDict}/>
         </div>
         <BottomPage/>

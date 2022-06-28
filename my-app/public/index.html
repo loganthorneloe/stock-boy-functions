@@ -24,7 +24,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Stock Boy | Financial Statements</title>
+    <title>Stock Boy | Stock Fundamentals</title>
     <style type="text/css">
       body {
         margin: 0;
@@ -91,36 +91,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-      <nav class="navbar fixed-top navbar-light bg-primary blue-nav">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            <img src="stockBoy.png" class="d-inline-block align-top logo-class" alt="Logo"/>
-          </a>
-          <div></div>
-          <div></div>
+      <div>
+        <div className="container-fluid d-flex align-items-center justify-content-center new-nav"> 
+          <form className="form-inline">
+            <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
+          </form>
         </div>
-      </nav>
-      <div class="center">
-        <video src="loading.mp4" width="120" height="120" display="block" text-align="center">
-          Your browser does not support the HTML5 Video element.
-        </video>
+      <div className="content">
+        <FrontPage/>
       </div>
+      <BottomPage/>
     </div>
-    <!-- <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-            console.log('Worker registration successful', registration.scope);
-          }, function(err) {
-            console.log('Worker registration failed', err);
-          }).catch(function(err) {
-            console.log(err);
-          });
-        });
-      } else {
-        console.log('Service Worker is not supported by browser.');
-      }
-    </script> -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

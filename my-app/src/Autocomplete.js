@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import './Autocomplete.css'
 
-const numResults = 10
+const numResults = 20
 
 class Autocomplete extends Component {
   constructor(props) {
@@ -141,7 +141,7 @@ class Autocomplete extends Component {
 
       return (
         <Fragment>
-            <input id="not_autofill" className="form-control" autoComplete="off" type="search" placeholder="Search..." aria-label="Search"
+            <input id="not_autofill" className="form-control" style={{borderRadius: '50px'}} autoComplete="off" type="search" placeholder="Search for a company..." aria-label="Search"
                 onChange={onChange}
                 onKeyDown={onKeyDown}
                 value={userInput}

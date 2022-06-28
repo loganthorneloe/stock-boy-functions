@@ -30,7 +30,7 @@ export class DataPage extends Component {
 
   render() {
       return (
-        <div className="container-fluid" style={{"marginTop":"5em","marginBottom":".5em"}}>
+        <div className="container-fluid" style={{"marginTop":"4.5em","marginBottom":".5em"}}>
           <div className="row g-2">
               <div className= "col-sm-1"></div>
               <div className= "col-sm-10" align="center">

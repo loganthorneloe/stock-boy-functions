@@ -2,9 +2,15 @@
   text-align: center;
 }
 
-.navbar {
+.new-nav {
+  position:fixed;
+  z-index:999;
+  margin-top:.5em;
+}
+
+.content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 

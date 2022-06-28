@@ -5,7 +5,7 @@ export class FrontPage extends Component {
 
     render() {
       return (
-        <div className="container-fluid" style={{"marginTop":"5em"}}>
+        <div className="container-fluid" style={{"marginTop":"2em"}}>
           <div className="row justify-content-center" style={{"marginTop":"10px"}}>
             <div className="col-sm-12 my-auto" align="center">
               <img className="stock-boy-caption" src="title_boy2.png" alt="Welcome to Stock Boy! Search for companies above to find financial statements."></img>
