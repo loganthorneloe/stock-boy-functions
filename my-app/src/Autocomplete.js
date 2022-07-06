@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import './Autocomplete.css'
 
+
 const numResults = 20
 
 class Autocomplete extends Component {
@@ -141,12 +142,12 @@ class Autocomplete extends Component {
 
       return (
         <Fragment>
-            <input id="not_autofill" className="form-control" style={{borderRadius: '50px'}} autoComplete="off" type="search" placeholder="Search for a company..." aria-label="Search"
-                onChange={onChange}
-                onKeyDown={onKeyDown}
-                value={userInput}
-            />
-            {suggestionsListComponent}
+          <input id="not_autofill" className="form-control" style={{borderRadius: '50px'}} autoComplete="off" type="search" placeholder="Search for a company..." aria-label="Search"
+              onChange={onChange}
+              onKeyDown={onKeyDown}
+              value={userInput}
+          />
+          {suggestionsListComponent}
         </Fragment>
       );
     }
