@@ -1,3 +1,8 @@
+// This is a list of all possible tickers from the firestore
+// It's used for searching, but not all of these ciks are actually properly analyzed
+// This is created by pulling from the firestore, creating a list combining name:ticker?cik and
+// This requires removing all "null" tickers and /'s because they cause issues
+// This must be recreated about once a month
 export const prelim_tickers = [
   "aar corp:AIR?0000001750",
   "abbott laboratories:ABT?0000001800",

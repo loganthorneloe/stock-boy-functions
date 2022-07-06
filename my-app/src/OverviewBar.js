@@ -49,7 +49,6 @@ export class OverviewBar extends Component {
         return (
           <div>
             <Row>
-              <Col lg="4"></Col>
               <Col>
                 <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":"1em" }}/>
                 {this.green}
@@ -66,7 +65,6 @@ export class OverviewBar extends Component {
                 <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>
                 {this.n_a}
               </Col>
-              <Col lg="4"></Col>
             </Row>
           </div>
         );

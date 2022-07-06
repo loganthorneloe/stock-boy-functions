@@ -25,6 +25,15 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 
+def get_idx_from_firestore(year):
+  doc_ref = db.collection(u'idx').document(str(year))
+
+  doc = doc_ref.get()
+  if not doc.exists:
+      print(u'No such document!')
+
+  return doc.to_dict()
+
 # variable setting up for scraping
 quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
 num_years = 1
@@ -215,15 +224,11 @@ def run_loop():
   else:
     print("Can't delete " + other_failure_full_path + " because it doesn't exist.")
 
-  download = []
-
-  # grab 10ks from idx from local analysis
-  with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
-    for line in file:
-        download.append(line.rstrip())
+  data_dict = get_idx_from_firestore(current_year)
+  print('pulled idx from firestore')
 
   #build the first part of the url
-  for item in download:
+  for key, item in data_dict.items():
 
     # if 'APPLE INC' not in item:
     #   continue

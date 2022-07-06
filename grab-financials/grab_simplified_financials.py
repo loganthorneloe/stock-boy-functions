@@ -29,6 +29,15 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 
+def get_idx_from_firestore(year):
+  doc_ref = db.collection(u'idx').document(str(year))
+
+  doc = doc_ref.get()
+  if not doc.exists:
+      print(u'No such document!')
+
+  return doc.to_dict()
+
 def set_simplified_data_to_firestore(simplified_data, cik):
   # doc_ref = db.collection(u'stock_data').document(company_key).set({
   #     "simplified": simplified_data # data dict includes multiple years to no need to include in key
@@ -214,16 +223,15 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
 
 
 
-current_year = 2021
+current_year = 2022
 download = []
 failures = 0      
 
 # grab 10ks from idx from local analysis
-with open('master_10k_idx' + '/' + str(current_year) + '_master_10k_idx.txt', 'r') as file:
-  for line in file:
-      download.append(line.rstrip())
+data_dict = get_idx_from_firestore(current_year)
+print('pulled idx from firestore')
 
-for item in download:
+for key, item in data_dict.items():
   # need to get CIK and company name
 
   this_company = item
@@ -237,7 +245,7 @@ for item in download:
 
   try:
 
-    get_simplified_data(cik, company_name)
+    get_simplified_data(key, company_name)
   
   except:
 
