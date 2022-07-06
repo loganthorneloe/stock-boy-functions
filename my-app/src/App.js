@@ -92,7 +92,7 @@ var cacheDict = {}
 
 async function retrieveCompanyData(cik){
   if (cik in cacheDict){
-    console.log('cacheDict hit for cik ' + cik)
+    // console.log('cacheDict hit for cik ' + cik)
     return cacheDict[cik]
   }
   var data = {}

@@ -38,7 +38,7 @@ export class DataPage extends Component {
                   <h2><strong>{this.stripCik(this.props.company)}</strong></h2>
                 </Row>
                 <Accordion defaultActiveKey="1" flush>
-                  <Accordion.Item eventKey="1">
+                  <Accordion.Item key="item1" eventKey="1">
                     <Accordion.Header><strong><FontAwesomeIcon icon="fa-solid fa-chart-line fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>Fundamental Analysis (Beta)</strong></Accordion.Header>
                     <Accordion.Body>
                       <Row className="justify-content-md-center">
@@ -56,7 +56,7 @@ export class DataPage extends Component {
                   </Accordion.Item>
                 </Accordion>
                 <Accordion defaultActiveKey="1" flush>
-                  <Accordion.Item eventKey="1">
+                  <Accordion.Item key="item1" eventKey="1">
                     <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-sack-dollar fa-xl" style ={{color: 'black', "marginRight":"1em" }}/><strong>Financial Statements</strong></Accordion.Header>
                     <Accordion.Body>
                       <Row className="justify-content-md-center">

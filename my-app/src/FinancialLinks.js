@@ -50,23 +50,23 @@ class FinancialLinks extends Component {
           return
         }
         return(
-          <Accordion defaultActiveKey="0" flush style={{"margin":"-10px", "padding":"-10px"}}>
-            <Accordion.Item>
+          <Accordion key={year} defaultActiveKey="0" flush style={{"margin":"-10px", "padding":"-10px"}}>
+            <Accordion.Item key={year}>
               <Accordion.Header align="center">
                 {year}
               </Accordion.Header>
               <Accordion.Body style={{"margin":"-10px", "padding":"-10px"}}>
                 <Nav variant="pills" className="flex-column" align="center">
-                  <Nav.Item>
+                  <Nav.Item key="key1">
                     <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["ten_k"])}>10-K</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item key="key2">
                     <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["balance_sheet"])}>Balance Sheet</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item key="key3">
                     <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["income_statement"])}>Income</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item key="key4">
                     <Nav.Link onClick={() => this.openURL(this.props.companyDict[year]["cash_flow"])}>Cash Flow</Nav.Link>
                   </Nav.Item>
                 </Nav>   

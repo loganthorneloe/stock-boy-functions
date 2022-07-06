@@ -265,7 +265,7 @@ export class LittleTable extends Component {
 
       if(new_list_row.color === "green"){
         return (
-          <Accordion defaultActiveKey="0" style ={{background: '#bfe3b4', "margin":"1px" }} flush>
+          <Accordion key={new_list_row.key} defaultActiveKey="0" style ={{background: '#bfe3b4', "margin":"1px" }} flush>
             <Accordion.Item style ={{backgroundColor: '#bfe3b4' }}>
               <Accordion.Header>
                 <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":"1em" }}/> {new_list_row.key}
@@ -286,7 +286,7 @@ export class LittleTable extends Component {
       }
       if(new_list_row.color === "red"){
         return (
-          <Accordion defaultActiveKey="0" style ={{backgroundColor: '#F47174' , "margin":"1px" }} flush>
+          <Accordion key={new_list_row.key} defaultActiveKey="0" style ={{backgroundColor: '#F47174' , "margin":"1px" }} flush>
             <Accordion.Item style ={{backgroundColor: '#F47174' }}>
               <Accordion.Header>
                 <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":"1em" }}/> {new_list_row.key}
@@ -307,7 +307,7 @@ export class LittleTable extends Component {
       }
       if(new_list_row.color === "neutral"){
         return (
-          <Accordion defaultActiveKey="0" style ={{backgroundColor: '#D3D3D3' , "margin":"1px"}} flush>
+          <Accordion key={new_list_row.key} defaultActiveKey="0" style ={{backgroundColor: '#D3D3D3' , "margin":"1px"}} flush>
             <Accordion.Item style ={{backgroundColor: '#D3D3D3' }}>
               <Accordion.Header>
                 <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":"1em" }}/> {new_list_row.key}
@@ -327,7 +327,7 @@ export class LittleTable extends Component {
         )
       }
       return (
-        <Accordion defaultActiveKey="0" style ={{backgroundColor: '#D3D3D3' , "margin":"1px"}} flush>
+        <Accordion key={new_list_row.key} defaultActiveKey="0" style ={{backgroundColor: '#D3D3D3' , "margin":"1px"}} flush>
           <Accordion.Item style ={{backgroundColor: '#D3D3D3' }}>
             <Accordion.Header>
               <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/> {new_list_row.key}
