@@ -31,9 +31,26 @@ export class FrontPage extends Component {
           <div className="row justify-content-center">
             <div className= "col-sm-10" align="center">
               <Card className="border-0">
-                <Card.Body>
-                  <h3 className="roboto title" style={{"marginBottom":".5em"}}><strong>Free, automated fundamental analysis for everyone.</strong></h3>
-                  <p>Explore the companies below or search for your own above.</p>
+                <Card.Body style={{"marginBottom":"-1.5em"}}>
+                  <h3 className="roboto title" style={{"marginBottom":".5em"}}><strong>How do the greatest investors get super rich?</strong></h3>
+                  <p>They only buy companies with the best fundamentals. Stock Boy helps you find these companies!</p>
+                  <p>
+                    <p>Stock Boy scans 24 fundamentals for over 8,000 companies and rates them as follows: </p> 
+                    <Card style={{"border":"0px", "marginBottom":"1em"}}>
+                      <Card.Body>
+                        <Card.Text>
+                          <FontAwesomeIcon icon="fa-solid fa-check" size="xl" style ={{color: 'green'}}/> - a factor that indicates growth.
+                        </Card.Text>
+                        <Card.Text>
+                          <FontAwesomeIcon icon="fa-solid fa-x" size="xl" style ={{color: 'red'}}/> - a factor that can hurt growth.
+                        </Card.Text>
+                        <Card.Text>
+                          <FontAwesomeIcon icon="fa-solid fa-o" size="xl" style ={{color: 'grey' }}/> - a factor that is growth-neutral.
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                    <p>Start by searching for a company above or check out a company below.</p>
+                  </p>
                 </Card.Body>
               </Card>
               <div className="content">
@@ -51,8 +68,25 @@ export class FrontPage extends Component {
             <div className= "col-sm-10" align="center">
               <Card className="border-0">
                 <Card.Body style={{"marginBottom":"-1.5em"}}>
-                  <h3 className="roboto title" style={{"marginBottom":".5em"}}><strong>Free, automated fundamental analysis for everyone.</strong></h3>
-                  <p>Explore the companies below or search for one above.</p>
+                  <h3 className="roboto title" style={{"marginBottom":".5em"}}><strong>How do the greatest investors get super rich?</strong></h3>
+                  <p>They only buy companies with the best fundamentals. Stock Boy helps you find these companies!</p>
+                  <p>
+                    <p>Stock Boy scans 24 fundamentals for over 8,000 companies and rates them as follows: </p> 
+                    <Card style={{"border":"0px", "marginBottom":"1em"}}>
+                      <Card.Body>
+                        <Card.Text>
+                          <FontAwesomeIcon icon="fa-solid fa-check" size="xl" style ={{color: 'green'}}/> - a factor that indicates growth.
+                        </Card.Text>
+                        <Card.Text>
+                          <FontAwesomeIcon icon="fa-solid fa-x" size="xl" style ={{color: 'red'}}/> - a factor that can hurt growth.
+                        </Card.Text>
+                        <Card.Text>
+                          <FontAwesomeIcon icon="fa-solid fa-o" size="xl" style ={{color: 'grey' }}/> - a factor that is growth-neutral.
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                    <p>Start by searching for a company above or check out a company below.</p>
+                  </p>
                 </Card.Body>
               </Card>
               <Row>
