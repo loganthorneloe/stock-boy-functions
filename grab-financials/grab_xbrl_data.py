@@ -12,7 +12,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Setting up firestore connection
-cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-3d183-firebase-adminsdk-zyxu6-76a70bc31c.json')
+cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-firebase.json')
 firebase_admin.initialize_app(cred, {
   'projectId': 'stock-boy-3d183',
 })

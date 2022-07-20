@@ -7,7 +7,7 @@ from firebase_admin import firestore
 import random
 
 # Setting up firestore connection
-cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-3d183-firebase-adminsdk-zyxu6-76a70bc31c.json')
+cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-firebase.json')
 firebase_admin.initialize_app(cred, {
   'projectId': 'stock-boy-3d183',
 })
@@ -84,7 +84,7 @@ def get_ticker_from_firestore(ticker):
     else:
       return str(key)
 
-def generate_ten_daily_stock():
+def generate_twelve_daily_stocks():
   print('getting stocks')
   stocks = get_stocks_from_firestore()
   random_stocks = random.sample(stocks,12)
@@ -103,4 +103,4 @@ def generate_ten_daily_stock():
     stock_info["data"] = item[1]["analyzed"]
     set_dailies_to_firestore(stock_info, cik)
 
-generate_ten_daily_stock()
+generate_twelve_daily_stocks()
