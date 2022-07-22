@@ -1,10 +1,9 @@
-
-
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
 import random
+import time
 
 # Setting up firestore connection
 cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-firebase.json')
@@ -50,6 +49,9 @@ def get_stocks_from_firestore():
       stocks.append((doc.id, doc.to_dict()))
 
   while len(docs_list)>0:
+
+    time.sleep(2)
+
     # next query
     query = (
       coll
@@ -87,6 +89,7 @@ def get_ticker_from_firestore(ticker):
 def generate_twelve_daily_stocks():
   print('getting stocks')
   stocks = get_stocks_from_firestore()
+  print('getting random sample')
   random_stocks = random.sample(stocks,12)
 
   # important this takes place after retrieving stocks in case there is a failure there
@@ -100,7 +103,7 @@ def generate_twelve_daily_stocks():
 
     stock_info = {}
     stock_info["name"] = name_and_ticker
-    stock_info["data"] = item[1]["analyzed"]
+    stock_info["analyzed"] = item[1]["analyzed"]
     set_dailies_to_firestore(stock_info, cik)
 
 generate_twelve_daily_stocks()

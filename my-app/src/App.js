@@ -4,13 +4,13 @@ import Autocomplete from './Autocomplete';
 import FrontPage from './FrontPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, /*collection, getDocs, limit, query, startAfter*/ } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, getDocs, collection } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import DataPage from './DataPage';
 import BottomPage from './BottomPage';
 import { prelim_tickers } from  './Tickers';
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -117,20 +117,13 @@ async function retrieveCompanyData(cik){
   return data
 }
 
-async function retrieveTwelveCompanies(prelim_tickers){
+async function retrieveTwelveCompanies(){
   var companies = []
-  var elements = new Set()
-  while(companies.length < 12){
-    var random_element = prelim_tickers[Math.floor(Math.random() * prelim_tickers.length)];
-    if (!elements.has(random_element)){
-      elements.add(random_element)
-      var cik = random_element.split('?')[1]
-      var company_data = await retrieveCompanyData(cik)
-      if(company_data["data"] !== "undefined" && company_data["data"]["analyzed"]["N/A"] <= 10){
-        companies.push([random_element, company_data])
-      }
-    }
-  }
+  const querySnapshot = await getDocs(collection(db, "dailies"));
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    companies.push([doc.data()["name"] + "?" + doc.id, doc.data()])
+  });
   return companies
 }
 

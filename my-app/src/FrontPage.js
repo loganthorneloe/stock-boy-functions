@@ -16,16 +16,16 @@ export class FrontPage extends Component {
     return(
       <Card key={singleCompanyData[0]} className="stockCard" onClick={()=>func(singleCompanyData[0])}>
         <Card.Body>
-          <Card.Header style={{"marginBottom":"1em"}}><strong>{singleCompanyData[0].split('?')[0].split(':')[0]}</strong>
+          <Card.Header style={{"marginBottom":"1em"}}><strong>{singleCompanyData[0].split("?")[0]}</strong>
           </Card.Header>
-          <OverviewBar companyDataDict={singleCompanyData[1]["data"]}/>
+          <OverviewBar companyDataDict={singleCompanyData[1]}/>
         </Card.Body>
       </Card>
     );
   }
 
   render() {
-    if(this.props.tenCompaniesList === undefined){
+    if(this.props.tenCompaniesList === undefined || this.props.tenCompaniesList.length === 0){
       return (
         <div className="container-fluid" style={{"marginTop":"4em"}}>
           <div className="row justify-content-center">
