@@ -8,7 +8,6 @@ from pprint import pprint
 import json
 from xbrl_var import *
 from analyze_simple_financials import *
-import time
 import copy
 from datetime import datetime
 
@@ -16,64 +15,6 @@ headers = {
     'User-Agent': 'Stock Boy',
     'From': 'meetstockboy@gmail.com'
 }
-
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
-
-# Setting up firestore connection
-cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-firebase.json')
-firebase_admin.initialize_app(cred, {
-  'projectId': 'stock-boy-3d183',
-})
-
-db = firestore.client()
-
-def get_idx_from_firestore(year):
-  doc_ref = db.collection(u'idx').document(str(year))
-
-  doc = doc_ref.get()
-  if not doc.exists:
-      print(u'No such document!')
-
-  return doc.to_dict()
-
-def set_simplified_data_to_firestore(simplified_data, cik):
-  # doc_ref = db.collection(u'stock_data').document(company_key).set({
-  #     "simplified": simplified_data # data dict includes multiple years to no need to include in key
-  #   }, merge=True)
-  doc_ref = db.collection(u'data_v2').document(str(cik)).set({
-      "simplified": simplified_data # data dict includes multiple years to no need to include in key
-    }, merge=True)
-
-def set_analyzed_data_to_firestore(analyzed_data, cik):
-  # doc_ref = db.collection(u'stock_data').document(company_key).set({
-  #     "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
-  #   }, merge=True)
-  doc_ref = db.collection(u'data_v2').document(cik).set({
-      "analyzed": analyzed_data # data dict includes multiple years to no need to include in key
-    }, merge=True)
-
-# sets up an update in firestore to store the date of the update and the old and new data
-# MUST BE DONE BEFORE UPDATING FIRESTORE WITH NEW ANALYZED DATA
-def set_updates_in_firestore(analyzed_data, cik):
-  doc_ref = db.collection(u'data_v2').document(cik)
-
-  doc = doc_ref.get()
-  old_analyzed = doc.to_dict()["analyzed"]
-
-  currentMonth = datetime.now().month
-  currentYear = datetime.now().year
-  date = str(currentYear) + "-" + str(currentMonth)
-
-  new_dict= {
-    "old": old_analyzed,
-    "new": analyzed_data
-  }
-
-  doc_ref = db.collection(u'updates').document(date).set({
-      cik : new_dict
-    }, merge=True)
 
 def grab_year_from_frame(frame):
   # "fy" tells us what year the filing is from - this doesn't work because each filing lists the past two years. Instead, to get the year we need to focus on end date of frame
@@ -160,7 +101,7 @@ def create_simplified_values(data):
 
   # this dict has everything we need to grab to analyze, but we need to make sure we can get it 
 
-  # making revenue and net sales the same thing for our purposes!!
+  # making revenue and net sales the same thing for our purposes
   dict["profit_margin"] = value_from_label_list(profit_margin_labels, data)
   dict["revenue"] = value_from_label_list(revenue_labels, data)
   dict["admin"] = value_from_label_list(admin_labels, data)
@@ -192,7 +133,7 @@ def create_simplified_values(data):
 
   return dict
 
-def get_simplified_data(cik, company_name): # company name must be pulled from idx to match key for financial statements
+def return_simplified_and_analyzed_data(cik): # can get rid of company_name here
   
   response = requests.get("https://data.sec.gov/api/xbrl/companyfacts/CIK{no}.json".format(no=cik), headers=headers)
 
@@ -206,57 +147,4 @@ def get_simplified_data(cik, company_name): # company name must be pulled from i
   # analyzed financials
   analyzed_dict = analyze_simple_financials(data_dict)
 
-  # adding simplified dict to firestore
-  set_simplified_data_to_firestore(data_dict, cik)
-  print('simplified dict added for: ' + company_name)
-
-  # # updates shouldn't happen for any testing, only in production when a new row in the idx is found
-  update = False
-
-  if update:
-    set_updates_in_firestore(analyzed_dict, cik)
-    print('added update for: ' + company_name)
-
-  # # adding analyzed dict to firestore
-  set_analyzed_data_to_firestore(analyzed_dict, cik)
-  print('analyzed dict added for: ' + company_name)
-
-
-
-current_year = 2022
-download = []
-failures = 0      
-
-# grab 10ks from idx from local analysis
-data_dict = get_idx_from_firestore(current_year)
-print('pulled idx from firestore')
-
-for key, item in data_dict.items():
-  # need to get CIK and company name
-
-  this_company = item
-  this_company = this_company.strip()
-  splitted_company = this_company.split('|')
-  if len(splitted_company) < 5:
-    continue
-
-  company_name = splitted_company[1].lower().replace('/','')
-  cik = splitted_company[0].zfill(10)
-
-  try:
-
-    get_simplified_data(key, company_name)
-  
-  except:
-
-    failures += 1
-
-  time.sleep(.2)
-
-print("num failures: " + str(failures))
-
-# transformations that need to be done from idx to my functions
-# cik = '1000228'.zfill(10)
-# company_name = 'Apple Inc.'.lower().replace('/','')
-
-# get_simplified_data(cik, company_name)
+  return data_dict, analyzed_dict

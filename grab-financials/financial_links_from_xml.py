@@ -1,38 +1,9 @@
-from collections import OrderedDict
 import bs4 as bs
 import requests
 import pandas as pd
-import time
-from pprint import pprint
-import os
-import math
 
 import warnings
 warnings.filterwarnings("ignore")
-
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
-
-# MUST DECLARE USER_AGENT!!
-# DO NOT MAKE MORE THAN 10 REQUESTS PER SECOND!!
-
-# Setting up firestore connection
-cred = credentials.Certificate('/Users/loganthorneloe/src/stock-boy-firebase.json')
-firebase_admin.initialize_app(cred, {
-  'projectId': 'stock-boy-3d183',
-})
-
-db = firestore.client()
-
-def get_idx_from_firestore(year):
-  doc_ref = db.collection(u'idx').document(str(year))
-
-  doc = doc_ref.get()
-  if not doc.exists:
-      print(u'No such document!')
-
-  return doc.to_dict()
 
 # variable setting up for scraping
 quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
@@ -190,139 +161,62 @@ def get_url_for_statements(xml_summary, new_base_url):
 
   return statements_url
 
-def set_or_update_trading_symbol(company_name, symbol, cik):
+def financial_links_for_one_line(item): # this is one line of an idx here
+  # clean item
+  this_company = item
+  this_company = this_company.strip()
+  splitted_company = this_company.split('|')
+  if len(splitted_company) < 5:
+    return
 
-  if symbol == '': 
-    symbol = "null"
+  base_url = 'https://www.sec.gov'
 
-  doc_ref = db.collection(u'tickers').document(cik).set({
-              company_name: symbol
-            }, merge=True)
-
-def run_loop():
-
-  #report variables
-  link_failures = []
-  ticker_failures = []
-  link_successes = 0
-  ticker_successes = 0
-
-  current_year = 2022
-  statement_failure_file_name = str(current_year) + "_link_failures.txt"
-  statement_failure_full_path = 'link_retrieval_failures/' + statement_failure_file_name
-  other_failure_file_name = str(current_year) + "_other_failures.txt"
-  other_failure_full_path = 'other_retrieval_failures/' + other_failure_file_name
-
-  # remove any existing logs to replace for the year
-  if os.path.exists(statement_failure_full_path):
-    os.remove(statement_failure_full_path)
-  else:
-    print("Can't delete " + statement_failure_full_path + " because it doesn't exist.")
-
-  if os.path.exists(other_failure_full_path):
-    os.remove(other_failure_full_path)
-  else:
-    print("Can't delete " + other_failure_full_path + " because it doesn't exist.")
-
-  data_dict = get_idx_from_firestore(current_year)
-  print('pulled idx from firestore')
-
-  #build the first part of the url
-  for key, item in data_dict.items():
-
-    # if 'APPLE INC' not in item:
-    #   continue
-
-    # clean item
-    this_company = item
-    this_company = this_company.strip()
-    splitted_company = this_company.split('|')
-    if len(splitted_company) < 5:
-      continue
-
-    base_url = 'https://www.sec.gov'
-    
-    cik = splitted_company[0].zfill(10)
-
-    # if '320193' not in cik:
-    #   continue
-
-    company_name = splitted_company[1] # grabs company name
-    url = splitted_company[-1]
-    url2 = url.split('-')
-    url2 = url2[0] + url2[1] + url2[2]
-    url2 = url2.split('.txt')[0]
+  company_name = splitted_company[1] # grabs company name
+  url = splitted_company[-1]
+  url2 = url.split('-')
+  url2 = url2[0] + url2[1] + url2[2]
+  url2 = url2.split('.txt')[0]
 
     # exception handled inside the function
-    ten_k_url = request_for_10k_url(base_url, url, url2)
+  ten_k_url = request_for_10k_url(base_url, url, url2)
 
-    # this gives us the index for all the tables
-    index_url = base_url + '/Archives/'+ url2 + '/' + 'index.json'
+  # this gives us the index for all the tables
+  index_url = base_url + '/Archives/'+ url2 + '/' + 'index.json'
 
-    content = requests.get(index_url, headers=headers).json()
+  content = requests.get(index_url, headers=headers).json()
 
-    xml_summary = ''
+  xml_summary = ''
 
-    # find xml overview
-    for file in content['directory']['item']:
-        if file['name'] == 'FilingSummary.xml':
+  # find xml overview
+  for file in content['directory']['item']:
+      if file['name'] == 'FilingSummary.xml':
 
-            # this is a summary of what can be seen in the 10-k - we need to parse this to find individual tables
-            xml_summary = base_url + content['directory']['name'] + '/' + file['name']
-            break
+          # this is a summary of what can be seen in the 10-k - we need to parse this to find individual tables
+          xml_summary = base_url + content['directory']['name'] + '/' + file['name']
+          break
 
-    # this means there is no xml summary
-    if xml_summary == '':
-      continue
+  # this means there is no xml summary
+  if xml_summary == '':
+    return
 
-    # grab a soup for the xml
-    new_base_url = xml_summary.replace('FilingSummary.xml','')
+  # grab a soup for the xml
+  new_base_url = xml_summary.replace('FilingSummary.xml','')
 
-    trading_symbol = request_for_ticker(new_base_url)
+  trading_symbol = request_for_ticker(new_base_url)
 
-    try:
+  try:
 
-      statements_url = get_url_for_statements(xml_summary, new_base_url)
+    statements_url = get_url_for_statements(xml_summary, new_base_url)
 
-    except Exception as ex:
+  except Exception as ex:
 
-      link_failures.append((company_name, current_year, statements_url, xml_summary))
+    print('Reports is null failure for: ' + company_name)
+    print(ex)
 
-      print('Reports is null failure for: ' + company_name)
-      print(ex)
+    return
 
-      # error_str = company_name + ': ' + xml_summary + ' reports are null?? '
-      # error_str += "\n"
+  # add in the 10k here if it exists
+  if ten_k_url is not None:
+    statements_url['ten_k'] = ten_k_url
 
-      # with open(statement_failure_full_path, 'a') as the_file:
-      #   the_file.write(error_str)
-
-      continue
-
-    # gets rid of / which causes errors
-    company_key = company_name.lower().replace('/','')
-
-    # add in the 10k here if it exists
-    if ten_k_url is not None:
-      statements_url['ten_k'] = ten_k_url
-
-    db.collection(u'financial_links').document(cik).set({
-              str(current_year): statements_url
-            }, merge=True)
-
-    print('adding year: ' + str(current_year) + " for company " + company_name) 
-
-    set_or_update_trading_symbol(company_key, trading_symbol, cik)
-    ticker_successes += 1
-
-    link_successes += 1
-
-    time.sleep(0.5) # pause in between each year as to not overload edgar
-
-  print("num link failures: " + str(len(link_failures)))
-  print("num ticker failures: " + str(len(ticker_failures)))
-  print("num link successes: " + str(link_successes))
-  print("num ticker successes: " + str(ticker_successes))
-  print("percent links successes: " + str(link_successes/(link_successes + len(link_failures))*100))
-
-run_loop()
+  return trading_symbol, statements_url, company_name
