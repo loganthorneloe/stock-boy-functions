@@ -1,4 +1,5 @@
 import requests
+import time
 
 current_year = 2021
 quarters = ['QTR1', 'QTR2', 'QTR3', 'QTR4']
@@ -9,6 +10,7 @@ headers = {
 }
 
 def retrieve_idx_for_given_url(url):
+  time.sleep(1)
   download = requests.get(url, headers=headers).content
   return download.decode("utf-8", errors="ignore").split('\n')
 
@@ -21,7 +23,8 @@ def retrieve_idx_data_from_web(year):
       download = retrieve_idx_for_given_url(f'https://www.sec.gov/Archives/edgar/full-index/{year}/{quarter}/master.idx')
       print('IDX: ' + f'https://www.sec.gov/Archives/edgar/full-index/{year}/{quarter}/master.idx')
 
-      print('length of download: ' + str(len(download)))
+      print('len of idx download: ' + str(len(download)))
+      print(download)
 
       for item in download:
           # clean item

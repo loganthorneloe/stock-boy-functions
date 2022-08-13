@@ -10,6 +10,9 @@ from pprint import pprint
 currentMonth = datetime.now().month
 currentYear = datetime.now().year
 
+print(currentYear)
+print(currentMonth)
+
 update_key = str(currentYear) + "-" + str(currentMonth)
 
 # grab info from idx
@@ -22,7 +25,10 @@ idx_dict_from_firestore = get_idx_from_firestore(currentYear)
 ciks_to_update = {}
 firestore_idx_keys = idx_dict_from_firestore.keys()
 
-for key in cik_to_data_string_dict.keys():
+print('ciks to update len: ' + str(len(cik_to_data_string_dict)))
+print('companies in firestore: ' + str(len(idx_dict_from_firestore)))
+
+for key, value in cik_to_data_string_dict.items():
   if key not in firestore_idx_keys:
     ciks_to_update[key] = cik_to_data_string_dict[key]
 
