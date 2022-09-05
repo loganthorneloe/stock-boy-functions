@@ -12,6 +12,11 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 
+def get_updates_for_month_and_year(month_and_year):
+  doc_ref = db.collection(u'updates').document(month_and_year)
+  doc = doc_ref.get()
+  return doc.to_dict()
+
 def get_idx_from_firestore(year):
   doc_ref = db.collection(u'idx').document(str(year))
 
@@ -145,20 +150,25 @@ def get_stocks_from_firestore():
 
   return stocks
 
-def get_ticker_from_firestore(ticker):
+def get_tickers_from_firestore(cik):
 
   ticker_name = {}
-  doc = db.collection(u'tickers').document(ticker).get()
+  doc = db.collection(u'tickers').document(cik).get()
   if doc.exists:
-      ticker_name = doc.to_dict()
+    ticker_name = doc.to_dict()
   else:
-      print(u'No such name!') # this should never happen
+    print(u'No such name!') # this should never happen
+    return None
+
+  names = []
 
   for key, value in ticker_name.items():
     if str(value) != "null":
-      return str(key) + ":" + str(value)
+      names.append(str(key) + ":" + str(value))
     else:
-      return str(key)
+      names.append(str(key))
+
+  return names
 
 def set_idx_line_to_firestore(year, data_dict):
   doc_ref = db.collection(u'idx').document(str(year)).set(

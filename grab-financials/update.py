@@ -13,6 +13,9 @@ currentYear = datetime.now().year
 print(currentYear)
 print(currentMonth)
 
+unique_misses = 0
+successes = 0
+
 update_key = str(currentYear) + "-" + str(currentMonth)
 
 # grab info from idx
@@ -35,6 +38,8 @@ for key, value in cik_to_data_string_dict.items():
 # grab updated data and financial links
 for key, value in ciks_to_update.items():
 
+  all_misses = 0
+
   try:
 
     trading_symbol, statements_url, company_name = financial_links_for_one_line(value)
@@ -48,6 +53,7 @@ for key, value in ciks_to_update.items():
 
   except Exception as e:
     set_miss(update_key, key, "financial links " + str(e))
+    all_misses += 1
 
   try:
 
@@ -64,6 +70,7 @@ for key, value in ciks_to_update.items():
   
   except Exception as e:
     set_miss(update_key, key, "analyzed/simplified values: " + str(e))
+    all_misses += 1
 
   updated = False
 
@@ -86,6 +93,7 @@ for key, value in ciks_to_update.items():
 
   except Exception as e:
     set_miss(update_key, key, "updating data failure " + str(e))
+    all_misses += 1
 
   try:
     print('setting company to idx: ' + company_name)
@@ -96,3 +104,12 @@ for key, value in ciks_to_update.items():
 
   except Exception as e:
     set_miss(update_key, key, "idx insertion failure " + str(e))
+    all_misses += 1
+
+  if all_misses != 0:
+    unique_misses += 1
+  if all_misses != 4:
+    successes += 1
+
+print('total stock data additions: ' + str(successes))
+print('total stocks with at least one miss: ' + str(unique_misses))
