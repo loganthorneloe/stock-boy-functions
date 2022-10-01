@@ -66,6 +66,8 @@ def analyze_simple_financials(data_dict):
   print("NEUTRAL: " + str(ret_dict[NEUTRAL]))
   print("RED: " + str(ret_dict[RED]))
   print("N/A: " + str(ret_dict[NA]))
+  determine_stock_confidence(ret_dict)
+  print("confidence: " + str(ret_dict["confidence"]))
   # print(len(ret_dict.keys()))
   # print(ret_dict)
 
@@ -1186,3 +1188,14 @@ def dividends_analysis(data_dict, ret_dict):
     print(e)
 
   ret_dict["dividends"] = info
+
+def determine_stock_confidence(ret_dict):
+
+  denom = ret_dict[RED] + ret_dict[NEUTRAL] + ret_dict[NA] + ret_dict[GREEN]
+  numer = (ret_dict[NEUTRAL] * .5) + ret_dict[GREEN]
+
+  percentage = numer/denom
+
+  print(str(percentage))
+
+  ret_dict["confidence"] = percentage
