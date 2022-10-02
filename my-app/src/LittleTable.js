@@ -158,8 +158,6 @@ export class LittleTable extends Component {
       super(props);
       this.known_analyzed1 = []
       this.known_analyzed2 = []
-      this.unknown_analyzed1 = []
-      this.unknown_analyzed2 = []
       this.generateAnalyzedData()
     }
 
@@ -184,22 +182,15 @@ export class LittleTable extends Component {
       if(typeof this.props.companyDataDict == 'undefined' || this.props.companyDataDict == null || this.props.companyDataDict === "undefined"){
         this.known_analyzed1 = []
         this.known_analyzed2 = []
-        this.unknown_analyzed1 = []
-        this.unknown_analyzed2 = []
         return
       }
       if ("analyzed" in this.props.companyDataDict){
         var analyzed = this.props.companyDataDict["analyzed"]
         var known_analyzed = []
-        var unknown_analyzed = []
 
         for (const [key, value] of Object.entries(analyzed_dict)) {
           var factor_data = analyzed[key]
-          if (factor_data["color"] === "N/A"){
-            unknown_analyzed.push({key: value["label"], color: factor_data["color"], value: this.retrieveLatestYearValue(factor_data["data"]), desc: value["desc"], target: value["target"], trend: factor_data["trend"], data: factor_data["data"]})
-          }else{
-            known_analyzed.push({key: value["label"], color: factor_data["color"], value: this.retrieveLatestYearValue(factor_data["data"]), desc: value["desc"], target: value["target"], trend: factor_data["trend"], data: factor_data["data"]})
-          }
+          known_analyzed.push({key: value["label"], color: factor_data["color"], value: this.retrieveLatestYearValue(factor_data["data"]), desc: value["desc"], target: value["target"], trend: factor_data["trend"], data: factor_data["data"]})
         }
 
         var known_split = known_analyzed.length/2
@@ -209,16 +200,7 @@ export class LittleTable extends Component {
         this.known_analyzed1 = known_analyzed.slice(0, known_split)
         this.known_analyzed2 = known_analyzed.slice(known_split, known_analyzed.length)
 
-        var unknown_split = unknown_analyzed.length/2
-        if (unknown_analyzed.length%2 !== 0){
-          unknown_split += .5
-        }
-        this.unknown_analyzed1 = unknown_analyzed.slice(0, unknown_split)
-        this.unknown_analyzed2 = unknown_analyzed.slice(unknown_split, unknown_analyzed.length)
-        
       }else{
-        this.unknown_analyzed1 = []
-        this.unknown_analyzed2 = []
         this.known_analyzed1 = []
         this.known_analyzed2 = []
       }
@@ -327,12 +309,12 @@ export class LittleTable extends Component {
         )
       }
       return (
-        <Accordion key={new_list_row.key} defaultActiveKey="0" style ={{backgroundColor: '#D3D3D3' , "margin":"1px"}} flush>
-          <Accordion.Item style ={{backgroundColor: '#D3D3D3' }}>
+        <Accordion key={new_list_row.key} defaultActiveKey="0" style ={{backgroundColor: '#666666' , "margin":"1px"}} flush>
+          <Accordion.Item style ={{backgroundColor: '#666666'}}>
             <Accordion.Header>
               <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/> {new_list_row.key}
             </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body style={{color: '#ffffff'}}>
                 {new_list_row.desc}  
             </Accordion.Body>
           </Accordion.Item>
@@ -349,18 +331,6 @@ export class LittleTable extends Component {
             </Alert>
           </div>
         );
-      }
-      else if (this.unknown_analyzed1.length === 0){
-        return (
-          <div>
-            <Table bordered hover>
-                <Row>
-                  <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.known_analyzed1.map(this.renderRow)}</Col>
-                  <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.known_analyzed2.map(this.renderRow)}</Col>
-                </Row>
-            </Table>
-          </div>
-        );
       } else{
         return (
           <div>
@@ -370,22 +340,6 @@ export class LittleTable extends Component {
                   <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.known_analyzed2.map(this.renderRow)}</Col>
                 </Row>
             </Table>
-            <Accordion defaultActiveKey="0" flush>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header><FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>Show Failed Analyses</Accordion.Header>
-                <Accordion.Body>
-                  <Row className="justify-content-md-center">
-                    <Alert variant= 'secondary' width="80%">
-                      These include all analyses that can't be completed due to lack of information. This can be due to the way a company reported their financials, Stock Boy being unable to scrape the proper information, or other factors such as negative revenue. A lot of analyses report how much revenue is spent on each operation category. A negative revenue makes it impossible to interpret these.
-                    </Alert>
-                  </Row>
-                  <Row>
-                    <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.unknown_analyzed1.map(this.renderRow)}</Col>
-                    <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.unknown_analyzed2.map(this.renderRow)}</Col>
-                  </Row>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
           </div>
         );
       }

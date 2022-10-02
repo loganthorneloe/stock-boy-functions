@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Card, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import './Socials.css'
 import { faTwitter} from '@fortawesome/free-brands-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -15,17 +15,17 @@ export class Socials extends Component {
         <Col sm={8}>
           <Card style={{"width":"100%","border":"0px"}}>
             <Card.Body>
-              <h3 className="roboto title" style={{"marginBottom":".5em"}}><strong>Stay up-to-date.</strong></h3>
+              {/* <h3 className="roboto title" style={{"marginBottom":".5em"}}><strong>Stay up-to-date.</strong></h3>
               <Card.Text>
                 Subscribe and follow to never miss a fundamentals update.
-              </Card.Text>
-              <form action="https://www.getrevue.co/profile/meetstockboy/add_subscriber" method="post" id="revue-form" name="revue-form"  target="_blank">
+              </Card.Text> */}
+              {/* <form action="https://www.getrevue.co/profile/theStockBoyApp/add_subscriber" method="post" id="revue-form" name="revue-form"  target="_blank">
                 <input className="email-field revue-form-field" placeholder="Email" type="email" name="member[email]" id="member_email"/>
                 <Button type="submit" variant="primary" className="email-button" value="Subscribe" name="member[subscribe]" id="member_submit">Subscribe</Button>
-              </form>
-              <div className="revue-form-footer" style={{"fontSize":"10px"}}>By subscribing, you agree with Revue’s <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</div>
+              </form> */}
+              {/* <div className="revue-form-footer" style={{"fontSize":"10px"}}>By subscribing, you agree with Revue’s <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</div> */}
               <Card.Text style={{"marginTop":"1em"}}>
-                <a href="https://twitter.com/meetstockboy?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-size="large" data-show-count="false">Follow @meetstockboy</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                <a href="https://twitter.com/theStockBoyApp?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-size="large" data-show-count="false">Follow @theStockBoyApp</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
               </Card.Text>
             </Card.Body>
           </Card>

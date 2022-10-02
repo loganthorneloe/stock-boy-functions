@@ -127,14 +127,40 @@ async function retrieveTwelveCompanies(){
   return companies
 }
 
+async function addToCompanies(companies, companyFinancialsDict, company, companyDataDict, confidence){
+  var currentCompany = {
+    "financials" : companyFinancialsDict,
+    "company" : company,
+    "data" : companyDataDict,
+    "confidence" : confidence
+  }
+
+  var tmp = []
+  if (companies === undefined) {
+    tmp.push(currentCompany)
+    return tmp
+  } 
+  tmp = companies
+  for (const element of tmp){
+    if (element["company"] === company){
+      tmp.splice(tmp.indexOf(element), 1);
+      break
+    }
+  }
+  tmp.push(currentCompany)  
+  if (tmp.length > 10){
+    tmp.shift()
+  }
+  return tmp
+}
+
 function App() {
 
   const [tickerList, setTickerList] = useState([]);
   const [company, setCompany] = useState();
-  const [companyFinancialsDict, setCompanyFinancialsDict] = useState();
-  const [companyDataDict, setCompanyDataDict] = useState();
   const [loading, setLoading] = useState();
   const [tenCompaniesList, setTenCompaniesList] = useState();
+  const [companies, setCompanies] = useState();
 
   const pull_data = (selection) => {
     var split_selection = selection.split("\n")
@@ -144,16 +170,18 @@ function App() {
     
     setLoading(true)
     retrieveCompanyData(split_selection[1]).then(new_dict =>{
-      setCompanyFinancialsDict(new_dict["financials"])
-      setCompany(split_selection[0])
-      setCompanyDataDict(new_dict["data"])
+
+      
+      addToCompanies(companies, new_dict["financials"], split_selection[0], new_dict["data"], new_dict["confidence"]).then(temp_recents => {
+        setCompanies(temp_recents)
+        setCompany(split_selection[0])
+      })
       setLoading(false)
     })
   }
 
   const reset = () => {
     setCompany(undefined)
-    setCompanyDataDict(undefined)
   }
 
   // Use an effect to load the ticker list from the database
@@ -228,7 +256,7 @@ function App() {
           <Col xs={3}></Col>
         </div>
         <div className="content">
-          <DataPage company={company} companyFinancialsDict={companyFinancialsDict} companyDataDict={companyDataDict}/>
+          <DataPage companies={companies}/>
         </div>
         <Socials/>
         <BottomPage/>

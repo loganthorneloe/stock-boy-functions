@@ -17,14 +17,14 @@ export class FrontPage extends Component {
 
     render() {
       return (
-        <div className="container-fluid" style={{"marginTop":"1em"}}>
+        <div className="container-fluid">
           <div className="row">
             <div className= "col-sm-1"></div>
             <div className= "col-sm-10" align="center">
             <Card className="border-0" style={{"marginBottom":"1em"}}>
               <Card.Body>
-                <font size="2" className="roboto">
-                The information on this page is not financial advice. Please seek a licensed professional for investment advice. All investments carry risk. This app may contain affiliate links.
+                <font size="1" className="roboto">
+                  The information on this page is not financial advice. Please seek a licensed professional for investment advice. All investments carry risk. This app may contain affiliate links.
                 </font>
               </Card.Body>
             </Card>
