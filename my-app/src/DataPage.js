@@ -93,46 +93,27 @@ export class DataPage extends Component {
     if (this.props.companies.length === 1){
       return (
         <div className="container-fluid" style={{"marginTop":"4.5em","marginBottom":".5em"}}>
-          <div className="row g-2">
           <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.renderData(this.props.companies[this.props.companies.length-1])}</Col>
-              <div className= "col-sm-1"></div>
-              <div className= "col-sm-10">
-                <h2 style={{"marginLeft":"1em", "fontSize":"20px"}}>Recents</h2>
-              </div>
-              <div className= "col-sm-1"></div>
-              <Row className="justify-content-md-center">
-                <div className= "col-sm-1"></div>
-                <div className= "col-sm-10" align="center">
-                  <font size="2" className="roboto">
-                    As you search more stocks, we'll show up to 9 recent searches here to compare fundamentals!
-                  </font>
-                </div>
-                <div className= "col-sm-1"></div>
-              </Row>
-          </div>
+          <Row className="justify-content-md-center">
+            <h2 style={{"marginLeft":"2em", "fontSize":"20px"}} align="left">Recents</h2>
+          </Row>
+          <Row className="justify-content-md-center">
+            <font size="2" className="roboto">
+              As you search more stocks, we'll show up to 9 recent searches here to compare fundamentals!
+            </font>
+          </Row>
         </div>
       );
     } else {
       return (
         <div className="container-fluid" style={{"marginTop":"4.5em","marginBottom":".5em"}}>
-          <div className="row g-2">
           <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.renderData(this.props.companies[this.props.companies.length-1])}</Col>
-              <div className= "col-sm-1"></div>
-              <div className= "col-sm-10">
-                <h2 style={{"marginLeft":"1em", "fontSize":"20px"}}>Recents</h2>
-                <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.props.companies.slice(0,this.props.companies.length-1).reverse().map(this.renderData)}</Col>
-              </div>
-              <div className= "col-sm-1"></div>
-              <Row className="justify-content-md-center">
-                <div className= "col-sm-1"></div>
-                <div className= "col-sm-10" align="center">
-                  <font size="2" className="roboto">
-                    As you search more stocks, we'll show up to 9 recent searches here to compare fundamentals!
-                  </font>
-                </div>
-                <div className= "col-sm-1"></div>
-              </Row>
-          </div>
+          <Row className="justify-content-md-center">
+            <h2 style={{"marginLeft":"2em", "fontSize":"20px"}} align="left">Recents</h2>
+          </Row>
+          <Row className="justify-content-md-center">
+            <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.props.companies.slice(0,this.props.companies.length-1).reverse().map(this.renderData)}</Col>
+          </Row>
         </div>
       );
     }

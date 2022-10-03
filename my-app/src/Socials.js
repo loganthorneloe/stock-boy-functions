@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Button } from "react-bootstrap";
 import './Socials.css'
 import { faTwitter} from '@fortawesome/free-brands-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -24,9 +24,11 @@ export class Socials extends Component {
                 <Button type="submit" variant="primary" className="email-button" value="Subscribe" name="member[subscribe]" id="member_submit">Subscribe</Button>
               </form> */}
               {/* <div className="revue-form-footer" style={{"fontSize":"10px"}}>By subscribing, you agree with Revue’s <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</div> */}
-              <Card.Text style={{"marginTop":"1em"}}>
+              <script src="https://gumroad.com/js/gumroad.js"></script>
+              <Button href="https://stockboy.gumroad.com/l/ngaxy">How do I use this information?</Button>
+              {/* <Card.Text style={{"marginTop":"1em"}}>
                 <a href="https://twitter.com/theStockBoyApp?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-size="large" data-show-count="false">Follow @theStockBoyApp</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-              </Card.Text>
+              </Card.Text> */}
             </Card.Body>
           </Card>
         </Col>

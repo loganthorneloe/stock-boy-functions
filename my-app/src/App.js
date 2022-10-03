@@ -255,7 +255,7 @@ function App() {
           </form>
           <Col xs={3}></Col>
         </div>
-        <div className="content">
+        <div className="content" align="center">
           <DataPage companies={companies}/>
         </div>
         <Socials/>
