@@ -24,7 +24,7 @@ export class FrontPage extends Component {
             <Card className="border-0" style={{"marginBottom":"1em"}}>
               <Card.Body>
                 <font size="1" className="roboto">
-                  The information on this page is not financial advice. Please seek a licensed professional for investment advice. This app may contain affiliate links.
+                  *The information on this page is not financial advice. Please seek a licensed professional for investment advice. This app may contain affiliate links.
                 </font>
               </Card.Body>
             </Card>

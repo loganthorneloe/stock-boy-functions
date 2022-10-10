@@ -12,6 +12,14 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 
+def grab_total_factors():
+  docs = db.collection(u'data_v2').stream()
+  count = 0
+  for doc in docs:
+    count += 1
+  
+  return count*24*10
+
 def get_updates_for_month_and_year(month_and_year):
   doc_ref = db.collection(u'updates').document(month_and_year)
   doc = doc_ref.get()

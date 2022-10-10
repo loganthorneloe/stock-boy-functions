@@ -49,21 +49,21 @@ export class OverviewBar extends Component {
         return (
           <div>
             <Row>
-              <Col>
-                <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":"1em" }}/>
-                {this.green}
+              <Col style ={{color: 'green'}}>
+                <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":".5em" }}/>
+                {this.green} Positive
               </Col>
-              <Col>
-                <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":"1em" }}/>
-                {this.red}
+              <Col style ={{color: 'red'}}>
+                <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":".5em" }}/>
+                {this.red} Negative
               </Col>
-              <Col>
-              <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":"1em" }}/>
-                {this.neutral}
+              <Col style ={{color: 'grey'}}>
+              <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":".5em" }}/>
+                {this.neutral} Neutral
               </Col>
-              <Col>
-                <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>
-                {this.n_a}
+              <Col style ={{color: 'black'}}>
+                <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":".5em" }}/>
+                {this.n_a} Unknown
               </Col>
             </Row>
           </div>

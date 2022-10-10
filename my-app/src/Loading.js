@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { library } from "@fortawesome/fontawesome-svg-core";
+import Spinner from 'react-bootstrap/Spinner';
 
-library.add(faSpinner, faMagnifyingGlass)
 
 export class Loading extends Component {
 
@@ -14,19 +11,13 @@ export class Loading extends Component {
     }
 
     render() {
-      if (this.props.loading){
         return(
-          <div>
-            <FontAwesomeIcon icon="fa-solid fa-spinner" style ={{color: '#0d6efd'}} pulse/>
+          <div style={{"marginTop":"2em", "marginBottom":"2em"}}>
+            <Spinner variant="primary" animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
           </div>
         );
-      }
-      else {
-        return (
-          <div>
-          </div>
-        );
-      }
     }
 }
 

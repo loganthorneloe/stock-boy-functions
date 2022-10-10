@@ -1,6 +1,5 @@
 import './App.css';
 
-import Autocomplete from './Autocomplete';
 import FrontPage from './FrontPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from 'firebase/app';
@@ -14,11 +13,13 @@ import { Col } from "react-bootstrap";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner, faMagnifyingGlass, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner, faMagnifyingGlass, faHouse, faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Socials from './Socials'
+import SearchBar from './SearchBar';
+import Loading from './Loading';
 
-library.add(faSpinner, faMagnifyingGlass, faHouse)
+library.add(faSpinner, faMagnifyingGlass, faHouse, faCircleQuestion)
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLDqpB2jA1pUG8K7jiafhKjzTjQfilWe0",
@@ -205,36 +206,15 @@ function App() {
   if(loading){
     return (
       <div>
-        <div className="container-fluid d-flex align-items-center justify-content-center new-nav">
-          <Col xs={2}></Col>
-          <Col xs={1} align="right">
-            <FontAwesomeIcon onClick={()=>reset()} icon="fa-solid fa-house" size="xl" style={{"marginRight":"10px"}}/>
-          </Col>
-          <form className="form-inline">
-            <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
-          </form>
-          <Col xs={3}></Col>
-        </div>
         <div className="content">
-          <FontAwesomeIcon icon="fa-solid fa-spinner fa-xl" style ={{color: '#0d6efd',"marginTop":"5em","marginBottom":"2em"}} pulse/>
+          <Loading/>        
         </div>
-        <Socials/>
-        <BottomPage/>
       </div>
     );
   }else if(typeof companyDict === "undefined" && typeof company === "undefined"){
     return (
       <div>
-        <div className="container-fluid d-flex align-items-center justify-content-center new-nav"> 
-          <Col xs={2}></Col>
-          <Col xs={1} align="right">
-            <FontAwesomeIcon onClick={()=>reset()} icon="fa-solid fa-house" size="xl" style={{"marginRight":"10px"}}/>
-          </Col>
-          <form className="form-inline">
-            <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
-          </form>
-          <Col xs={3}></Col>
-        </div>
+        <SearchBar suggestions={tickerList} func={pull_data} reset={reset}/>
         <div className="content">
           <FrontPage tenCompaniesList={tenCompaniesList} func={pull_data}/>
         </div>
@@ -245,16 +225,7 @@ function App() {
   }else{
     return (
       <div>
-        <div className="container-fluid d-flex align-items-center justify-content-center new-nav"> 
-          <Col xs={2}></Col>
-          <Col xs={1} align="right">
-            <FontAwesomeIcon onClick={()=>reset()} icon="fa-solid fa-house" size="xl" style={{"marginRight":"10px"}}/>
-          </Col>
-          <form className="form-inline">
-            <Autocomplete id="autocomplete" suggestions={tickerList} func={pull_data}/>
-          </form>
-          <Col xs={3}></Col>
-        </div>
+        <SearchBar suggestions={tickerList} func={pull_data} reset={reset}/>
         <div className="content" align="center">
           <DataPage companies={companies}/>
         </div>
