@@ -1,6 +1,13 @@
 from db import *
 import random
 
+def determine_stock_confidence(ret_dict):
+
+  denom = ret_dict["red"] + ret_dict["neutral"] + ret_dict["N/A"] + ret_dict["green"]
+  numer = (ret_dict["neutral"] * .5) + ret_dict["green"]
+  percentage = numer/denom
+  return percentage
+
 def generate_twelve_daily_stocks():
   print('getting stocks')
   stocks = get_stocks_from_firestore()
@@ -14,11 +21,13 @@ def generate_twelve_daily_stocks():
   print('setting to firestore')
   for item in random_stocks:
     cik = item[0]
-    name_and_ticker = get_ticker_from_firestore(cik)
+    name_and_ticker = get_tickers_from_firestore(cik)
 
     stock_info = {}
-    stock_info["name"] = name_and_ticker
+    stock_info["name"] = name_and_ticker[0]
     stock_info["analyzed"] = item[1]["analyzed"]
+    stock_info["confidence"] = determine_stock_confidence(item[1]["analyzed"])
+
     set_dailies_to_firestore(stock_info, cik)
 
 generate_twelve_daily_stocks()
