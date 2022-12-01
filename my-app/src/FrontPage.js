@@ -8,7 +8,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import OverviewBar from "./OverviewBar";
 import FrontCards from "./FrontCards";
 import Loading from "./Loading";
-import Links from "./Links";
 
 library.add(faSpinner, faCircleRight)
 
@@ -32,7 +31,8 @@ export class FrontPage extends Component {
         <div className="container-fluid"  align="center" style={{"marginTop":"4em"}}>
           <div className= "col-sm-2"></div>
           <div className= "col-sm-8">
-            <FrontCards/>
+            <FrontCards numFundamentals={this.props.numFundamentals}/>
+            <h6><strong>Never miss an update.</strong></h6>
             <div className="content" style={{"marginTop":"1em"}}>
               <Loading/>
             </div>
@@ -45,7 +45,8 @@ export class FrontPage extends Component {
         <div className="container-fluid"  align="center" style={{"marginTop":"3.5em"}}>
           <div className= "col-sm-2"></div>
           <div className= "col-sm-8">
-            <FrontCards/>
+            <FrontCards numFundamentals={this.props.numFundamentals}/>
+            <h6 style={{"marginTop":"1em"}}><strong>Some companies to get you started</strong></h6>
             <Row>
               <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.props.tenCompaniesList.map(this.renderCompanyCard.bind(this, this.props.func))}</Col>
             </Row>

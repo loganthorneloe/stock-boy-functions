@@ -72,19 +72,19 @@ export class OverviewBar extends Component {
         return (
           <div>
             <Row>
-              <Col>
+              <Col style ={{color: 'green'}}>
                 <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":"1em" }}/>
                 ?
               </Col>
-              <Col>
+              <Col style ={{color: 'red'}}>
                 <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":"1em" }}/>
                 ?
               </Col>
-              <Col>
+              <Col style ={{color: 'grey'}}>
               <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":"1em" }}/>
                 ?
               </Col>
-              <Col>
+              <Col style ={{color: 'black'}}>
                 <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>
                 ?
               </Col>

@@ -17,6 +17,8 @@ def generate_twelve_daily_stocks():
   # important this takes place after retrieving stocks in case there is a failure there
   print('deleting current collection')
   delete_collection('dailies', 12)
+  # deleting from front page info
+  db.collection(u'front_page_info').document('dailies').delete()
 
   print('setting to firestore')
   for item in random_stocks:

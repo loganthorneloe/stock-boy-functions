@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card'
-import './BottomPage.css'
 
 import { faPatreon } from '@fortawesome/free-brands-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -8,12 +7,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faPatreon)
 
 export class FrontPage extends Component {
-
-    openURL(url){
-      if(typeof url !== 'undefined'){
-          window.open(url, '_blank');
-      }
-    }
 
     render() {
       return (

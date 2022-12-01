@@ -1,4 +1,5 @@
 
+
 # average market confidence over time
 
 # current average confidence

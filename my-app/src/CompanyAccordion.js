@@ -26,6 +26,18 @@ export class CompanyAccordion extends Component {
     try{
       var percentage = dataDict["analyzed"]["confidence"]
     }catch(error){
+      try{
+        var red = dataDict["analyzed"]["red"]
+        var green = dataDict["analyzed"]["green"]
+        var neutral = dataDict["analyzed"]["neutral"]
+        var unknown = dataDict["analyzed"]["N/A"]
+
+        var denom = red + neutral + unknown + green
+        var numer = (neutral * .5) + green
+        percentage = numer/denom
+      }catch(error){
+        return 'N/A'
+      }
       return 'N/A'
     }
     var truncated = Math.trunc(percentage*100)
@@ -34,21 +46,29 @@ export class CompanyAccordion extends Component {
     }
     return truncated + '%'
   }
+  isActive = () => {
+    console.log(this.props.open)
+    if (this.props.open){
+      return "0"
+    } else {
+      return "1"
+    }
+  }
 
     render() {
       return (
         <div>
-          <div className= "col-sm-3"></div>
-          <div className= "col-sm-6" align="center" class="top-accordion">
+          <div className= "col-sm-2"></div>
+          <div className= "top-accordion col-sm-8" align="center">
             <Accordion defaultActiveKey="0" flush>
-              <Accordion.Item key="item1" eventKey="1">
+              <Accordion.Item key="item1" eventKey={this.isActive()}>
                 <Accordion.Header>
                   <Col align="center">
                     <Row>
                       <h3><strong>{this.stripCik(this.props.companyDict["company"])}</strong></h3>
                     </Row>
                     <Row>
-                      <h2 style={{"fontSize":"50px"}}><strong>{this.format(this.props.companyDict["data"])}</strong></h2>
+                      <h5 style={{"fontSize":"30px"}}>score: <strong>{this.format(this.props.companyDict["data"])}</strong></h5>
                     </Row>
                     <Row style={{"marginTop":".5em"}}>
                       <OverviewBar companyDataDict = {this.props.companyDict["data"]}/>
@@ -62,7 +82,7 @@ export class CompanyAccordion extends Component {
               </Accordion.Item>
             </Accordion>
           </div>
-          <div className= "col-sm-3"></div>
+          <div className= "col-sm-2"></div>
         </div>
       );
     }

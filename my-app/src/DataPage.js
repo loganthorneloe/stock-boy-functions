@@ -18,7 +18,13 @@ export class DataPage extends Component {
 
   renderData(companyDict) {
     return(
-      <CompanyAccordion companyDict={companyDict}/>
+      <CompanyAccordion companyDict={companyDict} open={true}/>
+    )
+  }
+
+  renderDataList(companyDict) {
+    return(
+      <CompanyAccordion companyDict={companyDict} open={false}/>
     )
   }
 
@@ -48,7 +54,7 @@ export class DataPage extends Component {
               <h2 style={{"marginTop":"1em","fontSize":"20px"}} align="center">Recents</h2>
             </Row>
             <Row className="justify-content-md-center">
-              <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.props.companies.slice(0,this.props.companies.length-1).reverse().map(this.renderData)}</Col>
+              <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.props.companies.slice(0,this.props.companies.length-1).reverse().map(this.renderDataList)}</Col>
             </Row>
             </div>
             <div className= "col-sm-2"></div>

@@ -326,7 +326,7 @@ export class LittleTable extends Component {
       if (this.known_analyzed1.length === 0){
         return(
           <div>
-            <Alert variant='success'>
+            <Alert variant='primary'>
               Fundamental Analysis for this stock coming soon! Check out the financial statements below in the meantime.
             </Alert>
           </div>
@@ -334,6 +334,9 @@ export class LittleTable extends Component {
       } else{
         return (
           <div>
+            <Alert variant='primary'>
+              The 24 fundamentals below are determined <strong style ={{color: 'green'}}>good</strong>, <strong style ={{color: 'red'}}>bad</strong>, or <strong style ={{color: 'grey'}}>neutral</strong> for company growth. These determine a % score in the confidence of a stock's long-term competitive advantage.
+            </Alert>
             <Table bordered hover>
                 <Row>
                   <Col style={{"paddingTop":"0", "paddingBottom":"0"}}>{this.known_analyzed1.map(this.renderRow)}</Col>

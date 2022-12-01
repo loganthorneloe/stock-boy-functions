@@ -126,8 +126,8 @@ def delete_collection(collection_name, batch_size):
       return delete_collection(batch_size)
 
 def set_dailies_to_firestore(data, cik):
-  doc_ref = db.collection(u'front_page_info').document('dailies').set({str(cik): data}, merge=False)
-  doc_ref = db.collection(u'dailies').document(str(cik)).set(data)
+  db.collection(u'dailies').document(str(cik)).set(data)
+  db.collection(u'front_page_info').document('dailies').set({str(cik): data}, merge=True)
 
 def get_stocks_from_firestore():
 

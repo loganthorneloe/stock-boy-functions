@@ -30,7 +30,7 @@ def get_names_from_cik(cik):
     return tickers
 
 # grab current year and month
-currentMonth = datetime.now().month - 1
+currentMonth = datetime.now().month
 currentYear = datetime.now().year
 
 update_key = str(currentYear) + "-" + str(currentMonth)

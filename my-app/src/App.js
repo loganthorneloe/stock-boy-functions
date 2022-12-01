@@ -9,10 +9,8 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 import DataPage from './DataPage';
 import BottomPage from './BottomPage';
 import { prelim_tickers } from  './Tickers';
-import { Col } from "react-bootstrap";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faMagnifyingGlass, faHouse, faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import Socials from './Socials'
@@ -47,50 +45,6 @@ var currentCompany = ''
 
 var cacheDict = {}
 
-// async function retrieveTickerData(){
-//   var ticker_list = []
-//   console.log('getting tickers')
-
-//   const q1 = query(collection(db, "tickers"), limit(4000))
-//   const querySnapshot1 = await getDocs(q1);
-//   const lastVisible1 = querySnapshot1.docs[querySnapshot1.docs.length-1];
-//   const q2 = query(collection(db, "tickers"), startAfter(lastVisible1), limit(4000))
-//   const querySnapshot2 = await getDocs(q2);
-//   const lastVisible2 = querySnapshot2.docs[querySnapshot2.docs.length-1];
-//   const q3 = query(collection(db, "tickers"), startAfter(lastVisible2), limit(4000))
-//   const querySnapshot3 = await getDocs(q3);
-
-//   querySnapshot1.forEach((doc) => {
-//     for (const [key, value] of Object.entries(doc.data())) {
-//       if (value === "null"){
-//         ticker_list.push(key + '?' + doc.id)
-//       }else{
-//         ticker_list.push(key + ':' + value + '?' + doc.id )
-//       }
-//     }
-//   });
-//   querySnapshot2.forEach((doc) => {
-//     for (const [key, value] of Object.entries(doc.data())) {
-//       if (value === "null"){
-//         ticker_list.push(key + '?' + doc.id)
-//       }else{
-//         ticker_list.push(key + ':' + value + '?' + doc.id )
-//       }
-//     }
-//   });
-//   querySnapshot3.forEach((doc) => {
-//     for (const [key, value] of Object.entries(doc.data())) {
-//       if (value === "null"){
-//         ticker_list.push(key + '?' + doc.id)
-//       }else{
-//         ticker_list.push(key + ':' + value + '?' + doc.id )
-//       }
-//     }
-//   });
-//   console.log('tickers retrieved')
-//   return ticker_list;
-// }
-
 async function retrieveCompanyData(cik){
   if (cik in cacheDict){
     // console.log('cacheDict hit for cik ' + cik)
@@ -118,14 +72,22 @@ async function retrieveCompanyData(cik){
   return data
 }
 
-async function retrieveTwelveCompanies(){
+async function retrieveFrontPageInfo(){
   var companies = []
-  const querySnapshot = await getDocs(collection(db, "dailies"));
+  var num_fundamentals = 0
+  const querySnapshot = await getDocs(collection(db, "front_page_info"));
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    companies.push([doc.data()["name"] + "?" + doc.id, doc.data()])
+    if(doc.id === "dailies"){
+      var data = doc.data()
+      Object.keys(data).forEach(cik =>
+        companies.push([data[cik]["name"] + "?" + cik, data[cik]])
+      )
+    }
+    if(doc.id === "info"){
+      num_fundamentals = doc.data()["total_fundamentals"]
+    }
   });
-  return companies
+  return [companies, num_fundamentals]
 }
 
 async function addToCompanies(companies, companyFinancialsDict, company, companyDataDict, confidence){
@@ -162,6 +124,7 @@ function App() {
   const [loading, setLoading] = useState();
   const [tenCompaniesList, setTenCompaniesList] = useState();
   const [companies, setCompanies] = useState();
+  const [numFundamentals, setNumFundamentals] = useState();
 
   const pull_data = (selection) => {
     var split_selection = selection.split("\n")
@@ -171,8 +134,6 @@ function App() {
     
     setLoading(true)
     retrieveCompanyData(split_selection[1]).then(new_dict =>{
-
-      
       addToCompanies(companies, new_dict["financials"], split_selection[0], new_dict["data"], new_dict["confidence"]).then(temp_recents => {
         setCompanies(temp_recents)
         setCompany(split_selection[0])
@@ -185,19 +146,13 @@ function App() {
     setCompany(undefined)
   }
 
-  // Use an effect to load the ticker list from the database
   useEffect(() => {
     if(tickerList.length === 0){
       setTickerList(prelim_tickers)
-      retrieveTwelveCompanies(prelim_tickers).then(data =>{
-        setTenCompaniesList(data)
+      retrieveFrontPageInfo().then(data_tuple =>{
+        setTenCompaniesList(data_tuple[0])
+        setNumFundamentals(data_tuple[1])
       })
-      // console.log('set prelim tickers')
-      // setLoading(true)
-      // retrieveTickerData().then(new_list => {
-      //   setTickerList(new_list)
-      //   setLoading(false)
-      // })
     }
     if(currentCompany !== company){
     }
@@ -216,7 +171,7 @@ function App() {
       <div>
         <SearchBar suggestions={tickerList} func={pull_data} reset={reset}/>
         <div className="content">
-          <FrontPage tenCompaniesList={tenCompaniesList} func={pull_data}/>
+          <FrontPage tenCompaniesList={tenCompaniesList} numFundamentals={numFundamentals} func={pull_data}/>
         </div>
         <Socials/>
         <BottomPage/>

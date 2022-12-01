@@ -1,12 +1,20 @@
 import React, { Component } from "react";
-import { Card, Col, Button } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import './Socials.css'
-import { faTwitter} from '@fortawesome/free-brands-svg-icons'
+import { faTwitter, faYoutube, faInstagram} from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-library.add(faTwitter)
+library.add(faTwitter, faYoutube, faInstagram, faEnvelope)
 
 export class Socials extends Component {
+
+  openURL(url){
+    if(typeof url !== 'undefined'){
+        window.open(url, '_blank');
+    }
+  }
 
   render() {
     return (
@@ -15,20 +23,11 @@ export class Socials extends Component {
         <Col sm={8}>
           <Card style={{"width":"100%","border":"0px"}}>
             <Card.Body>
-              <h3 className="roboto title" style={{"marginBottom":".5em"}}>Stay up-to-date.</h3>
-              <Card.Text>
-                Subscribe and follow to never miss a fundamentals update.
-              </Card.Text>
-              <form action="https://www.getrevue.co/profile/theStockBoyApp/add_subscriber" method="post" id="revue-form" name="revue-form"  target="_blank">
-                <input className="email-field revue-form-field" placeholder="Email" type="email" name="member[email]" id="member_email"/>
-                <Button type="submit" variant="primary" className="email-button" value="Subscribe" name="member[subscribe]" id="member_submit">Subscribe</Button>
-              </form>
-              <div className="revue-form-footer" style={{"fontSize":"10px"}}>By subscribing, you agree with Revue’s <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" rel="noreferrer" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</div>
-              {/* <script src="https://gumroad.com/js/gumroad.js"></script>
-              <Button href="https://stockboy.gumroad.com/l/ngaxy">How do I use this information?</Button> */}
-              <Card.Text style={{"marginTop":"1em"}}>
-                <a href="https://twitter.com/theStockBoyApp?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-size="large" data-show-count="false">Follow @theStockBoyApp</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-              </Card.Text>
+              <h6><strong>Never miss an update</strong></h6>
+              <FontAwesomeIcon icon="fa-solid fa-envelope" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://www.getrevue.co/profile/theStockBoyApp")}/>
+              <FontAwesomeIcon icon="fa-brands fa-youtube" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://www.youtube.com/@StockBoy")}/>
+              <FontAwesomeIcon icon="fa-brands fa-twitter" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://twitter.com/theStockBoyApp?ref_src=twsrc%5Etfw")}/>
+              <FontAwesomeIcon icon="fa-brands fa-instagram" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://www.instagram.com/stockboy.app/")}/>
             </Card.Body>
           </Card>
         </Col>
