@@ -4,7 +4,7 @@ from financial_links_from_xml import *
 from grab_simplified_financials import *
 from db import *
 from datetime import datetime
-from pprint import pprint
+from market_overview import *
 
 # grab current year and month
 currentMonth = datetime.now().month
@@ -117,3 +117,6 @@ print('total stocks with at least one miss: ' + str(unique_misses))
 # now we need to append to fundamentals total - multiply by 24 because 24 fundamentals are checked each time
 append_total_fundamental(successes*24)
 print('appended to total fundamentals - added ' + str(successes*24) + " fundamentals.")
+
+print('getting market overview updates')
+market_overview_update()

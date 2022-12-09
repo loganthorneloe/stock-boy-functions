@@ -13,6 +13,13 @@ firebase_admin.initialize_app(cred, {
 db = firestore.client()
 
 # key should be year_month here
+def set_over_60_conf(key, over_60_conf):
+  doc_ref = db.collection(u'updates').document(key).set({
+      "over_60_conf": over_60_conf # data dict includes multiple years to no need to include in key
+    }, merge=True)
+  doc_ref = db.collection(u'front_page_info').document('over_60_conf').set(over_60_conf, merge=False)
+
+# key should be year_month here
 def set_top_40(key, top_40):
   doc_ref = db.collection(u'updates').document(key).set({
       "top_40": top_40 # data dict includes multiple years to no need to include in key
