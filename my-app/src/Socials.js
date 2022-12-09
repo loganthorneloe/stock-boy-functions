@@ -18,12 +18,12 @@ export class Socials extends Component {
 
   render() {
     return (
-      <div align="center" style={{"paddingTop":".5em"}}>
+      <div align="center">
         <Col sm={2}></Col>
         <Col sm={8}>
           <Card style={{"width":"100%","border":"0px"}}>
             <Card.Body>
-              <h6><strong>Never miss an update</strong></h6>
+              <h5 style={{"color":"#0d6efd", "padding":".5em"}}>Never miss an update</h5>
               <FontAwesomeIcon icon="fa-solid fa-envelope" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://www.getrevue.co/profile/theStockBoyApp")}/>
               <FontAwesomeIcon icon="fa-brands fa-youtube" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://www.youtube.com/@StockBoy")}/>
               <FontAwesomeIcon icon="fa-brands fa-twitter" style={{"padding":".25em", "fontSize": "2em"}} onClick={()=>this.openURL("https://twitter.com/theStockBoyApp?ref_src=twsrc%5Etfw")}/>

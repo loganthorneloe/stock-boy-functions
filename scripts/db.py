@@ -12,6 +12,20 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 
+# key should be year_month here
+def set_top_40(key, top_40):
+  doc_ref = db.collection(u'updates').document(key).set({
+      "top_40": top_40 # data dict includes multiple years to no need to include in key
+    }, merge=True)
+  doc_ref = db.collection(u'front_page_info').document('top_40').set(top_40, merge=False)
+
+# key should be year_month here
+def set_market_overview(key, overview):
+  doc_ref = db.collection(u'updates').document(key).set({
+      "market_overview": overview # data dict includes multiple years to no need to include in key
+    }, merge=True)
+  doc_ref = db.collection(u'front_page_info').document('market_overview').set(overview, merge=False)
+
 def grab_total_factors():
   docs = db.collection(u'data_v2').stream()
   count = 0
@@ -129,7 +143,46 @@ def set_dailies_to_firestore(data, cik):
   db.collection(u'dailies').document(str(cik)).set(data)
   db.collection(u'front_page_info').document('dailies').set({str(cik): data}, merge=True)
 
-def get_stocks_from_firestore():
+def get_all_stocks_from_firestore():
+
+  PAGINATION_LIMIT = 2000
+  stocks = []
+  coll = db.collection(u'data_v2')
+
+  query = coll.limit(PAGINATION_LIMIT)
+  docs = query.stream()
+
+  docs_list = list(docs)
+
+  # last doc
+  last_doc = docs_list[-1]
+
+  for doc in docs_list:
+    stocks.append((doc.id, doc.to_dict()))
+
+  while len(docs_list)>0:
+
+    # time.sleep(2)
+
+    # next query
+    query = (
+      coll
+      .start_after(last_doc)
+      .limit(PAGINATION_LIMIT)
+    )
+    docs = query.stream()
+    docs_list = list(docs)
+    # last doc
+    if len(docs_list) > 0:
+      last_doc = docs_list[-1]
+
+    for doc in docs_list:
+      stocks.append((doc.id, doc.to_dict()))
+
+  return stocks
+
+# this is used by dailies scipt to get all stocks that are well-analyzed (N/A < 8)
+def get_qualified_stocks_from_firestore():
 
   PAGINATION_LIMIT = 2000
   stocks = []

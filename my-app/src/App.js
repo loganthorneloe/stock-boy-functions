@@ -74,20 +74,42 @@ async function retrieveCompanyData(cik){
 
 async function retrieveFrontPageInfo(){
   var companies = []
+  var top = []
   var num_fundamentals = 0
+  var market_overview = {}
   const querySnapshot = await getDocs(collection(db, "front_page_info"));
   querySnapshot.forEach((doc) => {
     if(doc.id === "dailies"){
       var data = doc.data()
       Object.keys(data).forEach(cik =>
-        companies.push([data[cik]["name"] + "?" + cik, data[cik]])
+        companies.push([Math.trunc(data[cik]["confidence"]*100), data[cik]["name"] + "?" + cik])
       )
     }
     if(doc.id === "info"){
       num_fundamentals = doc.data()["total_fundamentals"]
     }
+    if(doc.id === "market_overview"){
+      data = doc.data()
+      for (var key in data){
+        var value = data[key]
+        var new_key = Math.trunc(key / 10) * 10
+        if (!(new_key in market_overview)){
+          market_overview[new_key] = 0
+        }
+        market_overview[new_key] += value
+      }
+    }
+    if(doc.id === "top_40"){
+      data = doc.data()
+      for(var cik in data){
+        var name = data[cik]["name"]
+        var confidence = data[cik]["confidence"]
+        top.push([confidence, name + "?" + cik])
+      }
+      top = top.sort().reverse().slice(0,10)
+    }
   });
-  return [companies, num_fundamentals]
+  return [companies, num_fundamentals, market_overview, top]
 }
 
 async function addToCompanies(companies, companyFinancialsDict, company, companyDataDict, confidence){
@@ -125,6 +147,8 @@ function App() {
   const [tenCompaniesList, setTenCompaniesList] = useState();
   const [companies, setCompanies] = useState();
   const [numFundamentals, setNumFundamentals] = useState();
+  const [marketOverview, setMarketOverview] = useState();
+  const [top, setTop] = useState();
 
   const pull_data = (selection) => {
     var split_selection = selection.split("\n")
@@ -152,6 +176,8 @@ function App() {
       retrieveFrontPageInfo().then(data_tuple =>{
         setTenCompaniesList(data_tuple[0])
         setNumFundamentals(data_tuple[1])
+        setMarketOverview(data_tuple[2])
+        setTop(data_tuple[3])
       })
     }
     if(currentCompany !== company){
@@ -169,9 +195,9 @@ function App() {
   }else if(typeof companyDict === "undefined" && typeof company === "undefined"){
     return (
       <div>
-        <SearchBar suggestions={tickerList} func={pull_data} reset={reset}/>
+        <SearchBar suggestions={tickerList} func={pull_data}/>
         <div className="content">
-          <FrontPage tenCompaniesList={tenCompaniesList} numFundamentals={numFundamentals} func={pull_data}/>
+          <FrontPage tenCompaniesList={tenCompaniesList} top={top} numFundamentals={numFundamentals} marketOverview={marketOverview} func={pull_data}/>
         </div>
         <Socials/>
         <BottomPage/>
@@ -180,9 +206,9 @@ function App() {
   }else{
     return (
       <div>
-        <SearchBar suggestions={tickerList} func={pull_data} reset={reset}/>
+        <SearchBar suggestions={tickerList} func={pull_data}/>
         <div className="content" align="center">
-          <DataPage companies={companies}/>
+          <DataPage companies={companies} reset={reset}/>
         </div>
         <Socials/>
         <BottomPage/>

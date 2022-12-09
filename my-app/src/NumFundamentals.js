@@ -13,7 +13,7 @@ export class NumFundamentals extends Component {
       }else{
         return (
         <div>
-            <h1><strong>{parseFloat(this.props.numFundamentals).toLocaleString()}</strong></h1>
+            <h1><strong style={{"fontSize":"45px"}}>{parseFloat(this.props.numFundamentals).toLocaleString()}</strong></h1>
         </div>
         );
       }

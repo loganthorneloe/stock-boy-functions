@@ -218,11 +218,43 @@ export class LittleTable extends Component {
         }
       }
 
-      function renderChart(dict){
-        const options = {
+      function renderChart(dict, value){
+
+        var options = {
           plugins: {
             legend: {
               display: false
+            }
+          }
+        }
+        if(value>1000000){
+          options = {
+            plugins: {
+              legend: {
+                display: false
+              }
+            },
+            scales: {
+              y: {
+                ticks: {
+                  callback: v => `${v/1000000}M`
+                },
+              }
+            }
+          }
+        }else if(value > 1000){
+          options = {
+            plugins: {
+              legend: {
+                display: false
+              }
+            },
+            scales: {
+              y: {
+                ticks: {
+                  callback: v => `${v/1000}K`
+                },
+              }
             }
           }
         }
@@ -260,7 +292,7 @@ export class LittleTable extends Component {
                 <h6>Target: <strong>{new_list_row.target}</strong></h6>
                 <div></div>
                 {new_list_row.desc}
-                {renderChart(new_list_row.data)} 
+                {renderChart(new_list_row.data, new_list_row.value)} 
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -281,7 +313,7 @@ export class LittleTable extends Component {
                 Target: <strong>{new_list_row.target}</strong>
                 <div></div>
                 {new_list_row.desc}
-                {renderChart(new_list_row.data)} 
+                {renderChart(new_list_row.data, new_list_row.value)} 
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -302,7 +334,7 @@ export class LittleTable extends Component {
                 Target: <strong>{new_list_row.target}</strong>
                 <div></div>
                 {new_list_row.desc}
-                {renderChart(new_list_row.data)} 
+                {renderChart(new_list_row.data, new_list_row.value)} 
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>

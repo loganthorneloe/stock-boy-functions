@@ -10,7 +10,7 @@ def determine_stock_confidence(ret_dict):
 
 def generate_twelve_daily_stocks():
   print('getting stocks')
-  stocks = get_stocks_from_firestore()
+  stocks = get_qualified_stocks_from_firestore()
   print('getting random sample')
   random_stocks = random.sample(stocks,12)
 

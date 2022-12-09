@@ -49,19 +49,19 @@ export class OverviewBar extends Component {
         return (
           <div>
             <Row>
-              <Col style ={{color: 'green'}}>
+              <Col style ={{color: 'green', "marginTop":".5em", "marginBottom":".5em"}}>
                 <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":".5em" }}/>
                 {this.green} Positive
               </Col>
-              <Col style ={{color: 'red'}}>
+              <Col style ={{color: 'red', "marginTop":".5em", "marginBottom":".5em"}}>
                 <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":".5em" }}/>
                 {this.red} Negative
               </Col>
-              <Col style ={{color: 'grey'}}>
+              <Col style ={{color: 'grey', "marginTop":".5em", "marginBottom":".5em"}}>
               <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":".5em" }}/>
                 {this.neutral} Neutral
               </Col>
-              <Col style ={{color: 'black'}}>
+              <Col style ={{color: 'black',"marginTop":".5em", "marginBottom":".5em"}}>
                 <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":".5em" }}/>
                 {this.n_a} Unknown
               </Col>
@@ -72,19 +72,19 @@ export class OverviewBar extends Component {
         return (
           <div>
             <Row>
-              <Col style ={{color: 'green'}}>
+              <Col style ={{color: 'green', "marginTop":".5em", "marginBottom":".5em"}}>
                 <FontAwesomeIcon icon="fa-solid fa-check fa-xl" style ={{color: 'green', "marginRight":"1em" }}/>
                 ?
               </Col>
-              <Col style ={{color: 'red'}}>
+              <Col style ={{color: 'red', "marginTop":".5em", "marginBottom":".5em"}}>
                 <FontAwesomeIcon icon="fa-solid fa-x fa-xl" style ={{color: 'red', "marginRight":"1em" }}/>
                 ?
               </Col>
-              <Col style ={{color: 'grey'}}>
+              <Col style ={{color: 'grey', "marginTop":".5em", "marginBottom":".5em"}}>
               <FontAwesomeIcon icon="fa-solid fa-o fa-xl" style ={{color: 'grey', "marginRight":"1em" }}/>
                 ?
               </Col>
-              <Col style ={{color: 'black'}}>
+              <Col style ={{color: 'black',"marginTop":".5em", "marginBottom":".5em"}}>
                 <FontAwesomeIcon icon="fa-solid fa-ban fa-xl" style ={{color: 'black', "marginRight":"1em" }}/>
                 ?
               </Col>

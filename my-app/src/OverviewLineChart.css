@@ -1,0 +1,17 @@
+@media (min-width: 480px) { 
+  .chart {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 350px) { 
+  .chart {
+    width: 300px;
+  }
+}
+
+@media (max-width: 350px) { 
+  .chart {
+    width: 250px;
+  }
+}

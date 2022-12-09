@@ -12,7 +12,7 @@ export class Loading extends Component {
 
     render() {
         return(
-          <div style={{"marginTop":"2em", "marginBottom":"2em"}}>
+          <div style={{"marginTop":"2em"}}>
             <Spinner variant="primary" animation="border" role="status">
               <span className="visually-hidden">Loading...</span>
             </Spinner>
