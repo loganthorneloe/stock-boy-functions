@@ -132,20 +132,6 @@ def append_total_fundamental(additional_fundamentals):
             'total_fundamentals': new_total_fundamentals
           }, merge=True)
 
-# should be 'dailies' for daily collection deletion
-# def delete_collection(collection_name, batch_size):
-#   coll_ref = db.collection(collection_name)
-#   docs = coll_ref.limit(batch_size).stream()
-#   deleted = 0
-
-#   for doc in docs:
-#       # print(f'Deleting doc {doc.id} => {doc.to_dict()}')
-#       doc.reference.delete()
-#       deleted = deleted + 1
-
-#   if deleted >= batch_size:
-#       return delete_collection(batch_size)
-
 def set_dailies_to_firestore(data):
   db.collection(u'front_page_info').document('dailies').set(data, merge=True)
 
@@ -187,7 +173,6 @@ def get_all_stocks_from_firestore():
 
   return stocks
 
-# this is used by dailies scipt to get all stocks that are well-analyzed (N/A < 8)
 def get_qualified_stocks_from_firestore():
 
   over_60_conf = {}

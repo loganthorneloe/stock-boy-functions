@@ -6,7 +6,6 @@ def generate_daily_stocks():
   stocks = get_qualified_stocks_from_firestore()
   print('getting random sample')
   random_stocks = random.sample(stocks.items(),10)
-  print(random_stocks)
 
   dailies = {}
 
@@ -23,7 +22,6 @@ def generate_daily_stocks():
 
   # important this takes place after retrieving stocks in case there is a failure there
   print('deleting current collection')
-  # delete_collection('dailies', 10)
   # deleting from front page info
   db.collection(u'front_page_info').document('dailies').delete()
 
