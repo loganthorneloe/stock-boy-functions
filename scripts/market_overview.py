@@ -117,3 +117,5 @@ def market_overview_update():
   # front_page_info > over_60_conf > name: confidence
   set_over_60_conf(update_key, over_60_conf)
   print('set over 60 conf')
+
+market_overview_update()

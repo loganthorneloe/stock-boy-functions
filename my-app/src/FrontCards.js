@@ -36,7 +36,7 @@ export class FrontCards extends Component {
                 <OverviewLineChart marketOverview={this.props.marketOverview}/>
                 <h5 style={{"color":"#0d6efd", "padding":".5em"}}>Current high scores</h5>
                 <Scoreboard func={this.props.func} list={this.props.top}/>
-                <h5 style={{"color":"#0d6efd", "padding":".5em"}}>Companies worth checking out</h5>
+                <h5 style={{"color":"#0d6efd", "padding":".5em"}}>Companies worth checking out today</h5>
                 <Scoreboard func={this.props.func} list={this.props.tenCompaniesList}/>
               </Card.Body>
             </Card>

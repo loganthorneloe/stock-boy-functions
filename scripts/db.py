@@ -133,22 +133,21 @@ def append_total_fundamental(additional_fundamentals):
           }, merge=True)
 
 # should be 'dailies' for daily collection deletion
-def delete_collection(collection_name, batch_size):
-  coll_ref = db.collection(collection_name)
-  docs = coll_ref.limit(batch_size).stream()
-  deleted = 0
+# def delete_collection(collection_name, batch_size):
+#   coll_ref = db.collection(collection_name)
+#   docs = coll_ref.limit(batch_size).stream()
+#   deleted = 0
 
-  for doc in docs:
-      # print(f'Deleting doc {doc.id} => {doc.to_dict()}')
-      doc.reference.delete()
-      deleted = deleted + 1
+#   for doc in docs:
+#       # print(f'Deleting doc {doc.id} => {doc.to_dict()}')
+#       doc.reference.delete()
+#       deleted = deleted + 1
 
-  if deleted >= batch_size:
-      return delete_collection(batch_size)
+#   if deleted >= batch_size:
+#       return delete_collection(batch_size)
 
-def set_dailies_to_firestore(data, cik):
-  db.collection(u'dailies').document(str(cik)).set(data)
-  db.collection(u'front_page_info').document('dailies').set({str(cik): data}, merge=True)
+def set_dailies_to_firestore(data):
+  db.collection(u'front_page_info').document('dailies').set(data, merge=True)
 
 def get_all_stocks_from_firestore():
 
@@ -191,45 +190,15 @@ def get_all_stocks_from_firestore():
 # this is used by dailies scipt to get all stocks that are well-analyzed (N/A < 8)
 def get_qualified_stocks_from_firestore():
 
-  PAGINATION_LIMIT = 2000
-  stocks = []
-  coll = db.collection(u'data_v2')
+  over_60_conf = {}
+  doc = db.collection(u'front_page_info').document('over_60_conf').get()
+  if doc.exists:
+    over_60_conf = doc.to_dict()
+  else:
+    print(u'No such name!') # this should never happen
+    return None
 
-  query = coll.limit(PAGINATION_LIMIT)
-  docs = query.stream()
-
-  docs_list = list(docs)
-
-  # last doc
-  last_doc = docs_list[-1]
-
-  for doc in docs_list:
-    dictionary = doc.to_dict()
-    if dictionary["analyzed"]["N/A"] < 8:
-      stocks.append((doc.id, doc.to_dict()))
-
-  while len(docs_list)>0:
-
-    time.sleep(2)
-
-    # next query
-    query = (
-      coll
-      .start_after(last_doc)
-      .limit(PAGINATION_LIMIT)
-    )
-    docs = query.stream()
-    docs_list = list(docs)
-    # last doc
-    if len(docs_list) > 0:
-      last_doc = docs_list[-1]
-
-    for doc in docs_list:
-      dictionary = doc.to_dict()
-      if dictionary["analyzed"]["N/A"] < 8:
-        stocks.append((doc.id, doc.to_dict()))
-
-  return stocks
+  return over_60_conf
 
 def get_tickers_from_firestore(cik):
 

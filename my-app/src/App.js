@@ -81,9 +81,12 @@ async function retrieveFrontPageInfo(){
   querySnapshot.forEach((doc) => {
     if(doc.id === "dailies"){
       var data = doc.data()
-      Object.keys(data).forEach(cik =>
-        companies.push([Math.trunc(data[cik]["confidence"]*100), data[cik]["name"] + "?" + cik])
-      )
+      for(var cik in data){
+        var name = data[cik]["name"]
+        var confidence = data[cik]["confidence"]
+        companies.push([confidence, name + "?" + cik])
+      }
+      companies = companies.sort().reverse()
     }
     if(doc.id === "info"){
       num_fundamentals = doc.data()["total_fundamentals"]
