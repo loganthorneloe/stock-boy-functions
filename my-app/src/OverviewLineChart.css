@@ -4,14 +4,26 @@
   }
 }
 
-@media (max-width: 480px) and (min-width: 350px) { 
+@media (max-width: 480px) and (min-width: 400px) { 
   .chart {
-    width: 300px;
+    width: 375px;
   }
 }
 
-@media (max-width: 350px) { 
+@media (max-width: 400px) and (min-width: 375px) { 
   .chart {
-    width: 250px;
+    width: 360px;
+  }
+}
+
+@media (max-width: 375px) and (min-width: 325px) { 
+  .chart {
+    width: 320px;
+  }
+}
+
+@media (max-width: 325px) { 
+  .chart {
+    width: 260px;
   }
 }
