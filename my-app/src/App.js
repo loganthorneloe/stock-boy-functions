@@ -104,10 +104,10 @@ async function retrieveFrontPageInfo(){
     }
     if(doc.id === "top_40"){
       data = doc.data()
-      for(var cik in data){
-        var name = data[cik]["name"]
-        var confidence = data[cik]["confidence"]
-        top.push([confidence, name + "?" + cik])
+      for(var cik2 in data){
+        var name2 = data[cik2]["name"]
+        var confidence2 = data[cik2]["confidence"]
+        top.push([confidence2, name2 + "?" + cik2])
       }
       top = top.sort().reverse().slice(0,10)
     }
